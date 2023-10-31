@@ -162,16 +162,16 @@ nav ul li:first-child {
 
   img {
 	overflow: hidden;
-	border-radius: 5%;
 	border: none;
-	width: 70%;
-  height: 80%;
+	width: 30%;
+  height: 50%;
 	border: none;
 	border-radius: 5px;
 	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
 		  0 10px 10px rgba(0,0,0,0.22);
 	position: relative;
 	overflow: hidden;
+  
   }
 
   p {
@@ -179,3 +179,54 @@ nav ul li:first-child {
     text-align: justify
 
   }
+
+  /*container da imagem */
+  .img-container{
+    display: flex;
+    
+  }
+
+  .img-container p{
+    margin-left: 10px;
+  }
+  
+  .img-container img{
+    margin-right: 10px;
+  }
+
+
+
+  /*Pagina de contacto */
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+.button_contacto {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  	background: #FF416C;
+    background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
+    background: linear-gradient(to right, #FF4B2B, #FF416C);
+    background-repeat: no-repeat;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+	border-radius: 5px;
+  
+}
+
+a {
+  text-decoration: none;
+  font-size: 22px;
+  color: black;
+}
+
+.button_contacto:hover, a:hover {
+  opacity: 0.7;
+}
