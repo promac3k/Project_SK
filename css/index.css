@@ -164,5 +164,18 @@ nav ul li:first-child {
 	overflow: hidden;
 	border-radius: 5%;
 	border: none;
-	width: 90%;
+	width: 70%;
+  height: 80%;
+	border: none;
+	border-radius: 5px;
+	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+		  0 10px 10px rgba(0,0,0,0.22);
+	position: relative;
+	overflow: hidden;
+  }
+
+  p {
+    padding: 2rem;
+    text-align: justify
+
   }
