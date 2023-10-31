@@ -27,10 +27,16 @@
             element.classList.toggle("dark-mode");
             console.log(2);
         }
+
+        function goBack() {
+            window.history.back();
+        }
+
     </script>
 </head>
 <body>
     <div class="container_contact">
+        <button style="position: absolute; top: 4%; left: 7%; transform: translate(-50%, -50%);" onclick="goBack()">Voltar</button>
         <form action="">
             <h1>Contact</h1>
             <div class="social-container">
