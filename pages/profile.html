@@ -40,14 +40,17 @@
       <h1>Aluno</h1>
       <img src="https://imgs.search.brave.com/wVvWqZjpOgQq0WR4gQEDL5FbT9OcgL64hPnC7RoI33o/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9zdGF0/aWMtMDAuaWNvbmR1/Y2suY29tL2Fzc2V0/cy4wMC9wcm9ncmFt/bWVyLWljb24tMTAy/NHgxMDI0LW93ZTIy/bzd0LnBuZw" alt="" style="width:10%">
       <p class="title">CTESP PWDAM</p>
-      <p>ESTS</p>
-      <div style="margin: 24px 0;">
-        <a href="#"><i class="fa fa-dribbble"></i></a>
-        <a href="#"><i class="fa fa-twitter"></i></a>
-        <a href="#"><i class="fa fa-linkedin"></i></a>
-        <a href="#"><i class="fa fa-facebook"></i></a>
-      </div>
-      <p><button class="button_contacto">Contacto</button></p>
+      <p class="title_2">ESTS</p>
+      <form action="/submit_form" method="post">
+        <label for="fname">Nome:</label><br>
+        <input type="text" id="fname" name="fname" value=""><br>
+        <label for="lname">Sobrenome:</label><br>
+        <input type="text" id="lname" name="lname" value=""><br>
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" value=""><br>
+        <input type="submit" value="Submit">
+      </form>
+      <button class="button_contacto">Contacto</button>
     </div>
   </main>
 </body>
