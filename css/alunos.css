@@ -1,15 +1,45 @@
 table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-  }
-  
-  td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-  }
-  
-  tr:{
-    background-color: #FF4B2B;
-  }
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  padding-top: 4%;
+  padding-bottom: 10%;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #FF4B2B;
+}
+
+
+
+td:hover {
+  background-color: #f27755;
+}
+
+table {
+  border-collapse: separate;
+  border-spacing: 5px;
+  /* Adjust the spacing between cells as needed */
+  border-radius: 10px;
+  /* Set the border radius to make the table rounded */
+}
+
+th,
+td {
+  padding: 10px;
+  /* Adjust padding as needed */
+  text-align: center;
+  border-radius: 10px;
+  /* Set the border radius for cells */
+  border: 1px solid #ccc;
+  /* Add borders to cells */
+}
