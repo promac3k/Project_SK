@@ -222,7 +222,7 @@ nav ul li:first-child {
   background-color: #000;
   text-align: center;
   cursor: pointer;
-  width: 98%;
+  width: 95%;
   font-size: 18px;
 	border-radius: 5px;
   margin: 1rem;
@@ -236,4 +236,13 @@ a {
 
 .button_contacto:hover, a:hover {
   opacity: 0.7;
+}
+
+.input_campo {
+  width: 95%;
+  padding: 8px 10px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: 1px solid #555;
 }
