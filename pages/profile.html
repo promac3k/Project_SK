@@ -6,39 +6,41 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../css/index.css">
-  <script src="js/main.js"></script>
+  <script src="../js/main.js"></script>
   <title>Contacto</title>
 </head>
 
-<body>
+<body onload="checkCookie()">
   <main>
     <div class="container">
       <nav>
         <ul>
-          <li><a href="#home">Home</a></li>
+          <li><a href="index.html">Home</a></li>
           <li>
             <div class="social-container">
               <label class="switch">
-                <input type="checkbox" onclick="dark_mode()" id="dark">
+                <input id="switchon" type="checkbox" onclick="mySwitch()">
                 <span class="slider round"></span>
               </label>
             </div>
           </li>
-          <li><a href="#news">News</a></li>
+          <li><a href="contact.html">Contacto</a></li>
           <li class="dropdown">
             <a href="javascript:void(0)" class="dropbtn">Dropdown</a>
             <div class="dropdown-content">
-              <a href="#">Link 1</a>
+              <a href="alunos.html">Alunos</a>
               <a href="#">Link 2</a>
               <a href="#">Link 3</a>
             </div>
           </li>
-          <li><a href="">Account</a></li>
+          <li><a href="profile.html">Account</a></li>
         </ul>
       </nav>
 
       <h1>Aluno</h1>
-      <img src="https://imgs.search.brave.com/wVvWqZjpOgQq0WR4gQEDL5FbT9OcgL64hPnC7RoI33o/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9zdGF0/aWMtMDAuaWNvbmR1/Y2suY29tL2Fzc2V0/cy4wMC9wcm9ncmFt/bWVyLWljb24tMTAy/NHgxMDI0LW93ZTIy/bzd0LnBuZw" alt="" style="width:10%">
+      <img
+        src="https://imgs.search.brave.com/wVvWqZjpOgQq0WR4gQEDL5FbT9OcgL64hPnC7RoI33o/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9zdGF0/aWMtMDAuaWNvbmR1/Y2suY29tL2Fzc2V0/cy4wMC9wcm9ncmFt/bWVyLWljb24tMTAy/NHgxMDI0LW93ZTIy/bzd0LnBuZw"
+        alt="" style="width:10%">
       <p class="title">CTESP PWDAM</p>
       <p class="title_2">ESTS</p>
       <form action="/submit_form" method="post">
@@ -54,6 +56,15 @@
         <input type="email" id="email" name="email" value="" class="input_campo"><br>
         <button class="button_contacto">Change </button>
       </form>
+      <br>
+      <br>
+
+      <footer>
+        <p>
+          Criado <i class="fa fa-heart"></i> por
+          André Nunes, Diogo Oliveira, Gustavo Antunes, Sebastião Costa e Tiago Batista
+        </p>
+      </footer>
     </div>
   </main>
 </body>
