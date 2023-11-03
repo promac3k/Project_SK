@@ -8,35 +8,14 @@
   <link rel="stylesheet" href="../css/index.css">
   <script src="../js/main.js"></script>
   <title>Contacto</title>
+
 </head>
 
 
 <body onload="checkCookie()">
   <main>
-    <div class="container">
-      <nav>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li>
-            <div class="social-container">
-              <label class="switch">
-                <input id="switchon" type="checkbox" onclick="mySwitch()">
-                <span class="slider round"></span>
-              </label>
-            </div>
-          </li>
-          <li><a href="contact.html">Contacto</a></li>
-          <li class="dropdown">
-            <a href="javascript:void(0)" class="dropbtn">Dropdown</a>
-            <div class="dropdown-content">
-              <a href="alunos.html">Alunos</a>
-              <a href="professores.html">professores</a>
-              <a href="#">Link 3</a>
-            </div>
-          </li>
-          <li><a href="profile.html">Account</a></li>
-        </ul>
-      </nav>
+    <div class="container">      
+      <div id="conteudo"></div>
 
       <h1>Aluno</h1>
       <img
@@ -130,4 +109,12 @@
 
 </body>
 
+<script>
+  // Use JavaScript para carregar e incluir a outra página
+  fetch('navbar.html')
+      .then(response => response.text())
+      .then(data => {
+          document.getElementById('conteudo').innerHTML = data;
+      });
+</script>
 </html>

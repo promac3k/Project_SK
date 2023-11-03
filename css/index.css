@@ -390,7 +390,7 @@ th {
   /* Set the border radius to make the table rounded */
 }
 
-th,
+.th,
 td {
   padding: 10px;
   /* Adjust padding as needed */
