@@ -9,11 +9,36 @@
     <script src="../js/main.js"></script>
     <title>Contact</title>
 
+
 </head>
+
 
 <body onload="checkCookie()">
     <main>
-        <div id="conteudo"></div>
+        <div class="container">
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li>
+                        <div class="social-container">
+                            <label class="switch">
+                                <input id="switchon" type="checkbox" onclick="mySwitch()">
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                    </li>
+                    <li><a href="contact.html">Contacto</a></li>
+                    <li class="dropdown">
+                        <a href="javascript:void(0)" class="dropbtn">Dropdown</a>
+                        <div class="dropdown-content">
+                            <a href="alunos.html">Alunos</a>
+                            <a href="professores.html">Professores</a>
+                            <a href="#">Link 3</a>
+                        </div>
+                    </li>
+                    <li><a href="profile.html">Account</a></li>
+                </ul>
+            </nav>
 
             <h1>IPS</h1>
             <div class="img-container">
@@ -23,7 +48,8 @@
                     Estamos entusiasmados por apresentar uma ferramenta dedicada à comunidade acadêmica do IPS, que
                     simplifica e otimiza a gestão de salas e horários, tornando a sua vida acadêmica mais eficiente e
                     conveniente.</br>
-                    A nossa plataforma foi projetada pensando nas necessidades dos estudantes, professores e funcionários
+                    A nossa plataforma foi projetada pensando nas necessidades dos estudantes, professores e
+                    funcionários
                     do IPS. Aqui, você encontrará recursos poderosos que lhe permitirão consultar e reservar salas de
                     aula, laboratórios e espaços comuns de forma rápida e descomplicada. Além disso, nosso sistema de
                     gestão de horários garante que você sempre esteja atualizado sobre suas aulas, eventos e atividades,
@@ -36,7 +62,46 @@
                     aqui para tornar sua vida acadêmica mais simples. Bem-vindo ao IPS, bem-vindo à sua jornada
                     educacional simplificada.
                 </p>
+
             </div>
+            <hr>
+            <h1>Calendário Escolar</h1>
+            <img src="../img/image.png" class="img_card" style="width: 55%; top: 25px;">
+            <div class="Calendário-container">
+                <img src="../img/Início ano letivo Licenciaturas.png" class="img_card" style="width: 50px; height: 27px; float: left; top: -390px; left: -40px;">
+                <p style="position: relative; top: -370px; left: -35px;">
+                    Início ano letivo Licenciaturas, 2º ano CTeSP/ Beginning of the academic year Bachelors, 2nd year CTeSP
+                </p>
+                <img src="../img/Início ano letivo 1º ano CTeSP.png" class="img_card" style="width: 50px; height: 27px; float: left; top: -410px; left: -132px;">
+                <p style="position: absolute; top: 625px; left: 1180px;">
+                    Início ano letivo 1º ano CTeSP/ Beginning of the academic year 1st year CTeSP
+                </p>
+                <img src="../img/Atividades letivas.png" class="img_card" style="width: 50px; height: 27px; float: left; top: -360px; left: -224px;">
+                <p style="position: absolute; top: 675px; left: 1180px;">
+                    Atividades letivas / Academic activities
+                </p>
+                <img src="../img/Férias e feriados.png" class="img_card" style="width: 50px; height: 27px; float: left; top: -310px; left: -316px;">
+
+                <img src="../img/Atividades AAIPS.png" class="img_card" style="width: 50px; height: 27px; float: left; top: -260px; left: -408px;">
+
+                <img src="../img/Recepção novos estudantes.png" class="img_card" style="width: 50px; height: 27px; float: left; top: -210px; left: -500px;">
+
+                <img src="../img/Inscrições para exames.png" class="img_card" style="width: 50px; height: 27px; float: left; top: -160px; left: -593px;">
+
+                <img src="../img/Exames de 1ª e 2ª Época.png" class="img_card" style="width: 50px; height: 27px; float: left; top: -200px; left: -41px;">
+
+                
+                
+
+
+            </div>
+            
+
+
+
+
+
+
             <footer>
                 <p>
                     Criado <i class="fa fa-heart"></i> por
@@ -47,12 +112,5 @@
         </div>
     </main>
 </body>
-<script>
-  // Use JavaScript para carregar e incluir a outra página
-  fetch('navbar.html')
-      .then(response => response.text())
-      .then(data => {
-          document.getElementById('conteudo').innerHTML = data;
-      });
-</script>
+
 </html>

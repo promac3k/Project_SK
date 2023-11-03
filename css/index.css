@@ -217,6 +217,22 @@ input:checked+.slider:before {
   margin-right: 10px;
 }
 
+/*container do calendario */
+.Calendário-container {
+  display: inline-block;
+  margin-right: 10px;
+
+}
+
+.Calendário-container p {
+  margin-left: 10px;
+}
+
+.Calendário-container img {
+  margin-right: 10px;
+ 
+}
+
 
 
 /*Pagina de contacto */

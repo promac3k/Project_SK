@@ -147,12 +147,12 @@ button {
   /* Dark Mode */
 
   .dark-mode {
-    background-color: black;
+    background-color: #141414;
     color: white;
   }
 
   .dark-mode body {
-	background: #000000;
+	background: #141414;
 	display: flex;
     justify-content: center;
     align-items: center;
