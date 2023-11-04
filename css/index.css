@@ -1,24 +1,24 @@
 body {
 
-  background:  #f6f5f7;
+  background: #f6f5f7;
 
   background: #f6f5f7;
-/* fa79059fc65690bdd6bee4501e89444759385f52 */
+  /* fa79059fc65690bdd6bee4501e89444759385f52 */
 }
 
 .container {
   background-color: #FFFFFF;
-/* HEAD CHANGE */
-	height: 100%;
-	text-align: center;
-	margin: 1rem;
-	border-radius: 5%;
-	border: none;
-	border-radius: 10px;
-	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
-		  0 10px 10px rgba(0,0,0,0.22);
-	position: relative;
-	overflow: hidden;
+  /* HEAD CHANGE */
+  height: 100%;
+  text-align: center;
+  margin: 1rem;
+  border-radius: 5%;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+    0 10px 10px rgba(0, 0, 0, 0.22);
+  position: relative;
+  overflow: hidden;
 
   height: 100%;
   text-align: center;
@@ -73,8 +73,11 @@ li.dropdown {
   position: absolute;
   background-color: #f9f9f9;
   min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 8px 16px 2px rgba(0, 0, 0, 0.2);
   z-index: 1;
+  border-radius: 5%;
+  border: none;
+  border-radius: 10px;
 }
 
 .dropdown-content a {
@@ -87,6 +90,9 @@ li.dropdown {
 
 .dropdown-content a:hover {
   background-color: #f1f1f1;
+  border-radius: 5%;
+  border: none;
+  border-radius: 10px;
 }
 
 .dropdown:hover .dropdown-content {
@@ -219,18 +225,15 @@ input:checked+.slider:before {
 
 /*container do calendario */
 .Calendário-container {
-  display: inline-block;
+  display: block;
   margin-right: 10px;
+  margin-bottom: 50px;
 
-}
-
-.Calendário-container p {
-  margin-left: 10px;
 }
 
 .Calendário-container img {
   margin-right: 10px;
- 
+
 }
 
 
@@ -330,6 +333,33 @@ a:hover {
     0 10px 10px rgba(0, 0, 0, 0.22);
   position: relative;
   overflow: hidden;
+}
+
+.dark-mode .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #4e4e4e;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 15px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  border-radius: 5%;
+  border: none;
+  border-radius: 10px;
+}
+
+.dark-mode .dropdown-content a {
+  color: white;
+  padding: 12px 20px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dark-mode .dropdown-content a:hover {
+  background-color: #4d4d4d;
+  border-radius: 5%;
+  border: none;
+  border-radius: 10px;
 }
 
 /* footer */
