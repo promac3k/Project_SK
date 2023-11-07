@@ -419,10 +419,18 @@ th {
 }
 
 .tr_alunos:nth-child(even) {
-  background-color: #FF4B2B;
+  background-color: #d4d2d2;
 }
 
+.table_aula_th {
+  background-color: #c42509;
+  text-align: center;
+}
 
+.table_aula_tp {
+  background-color: #f66c54;
+  text-align: center;
+}
 
 .td:hover {
   background-color: #f27755;
