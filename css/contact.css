@@ -184,7 +184,7 @@ input:checked + .slider:before {
 }
 
 /* media query para deixar o site responsivo para tablet*/
-@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+@media (min-width: 768px) and (max-width: 1024px){
   
   form {
     padding: 0 50px;
