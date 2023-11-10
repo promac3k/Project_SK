@@ -187,8 +187,9 @@ input:checked + .slider:before {
 @media (min-width: 768px) and (max-width: 1024px){
   
   .container_contact {
-    width: 768px;
-    margin-top: 5rem;
+    width: 90%;
+    height: 80%;
+    margin-top: 0;
   }
   
 }
