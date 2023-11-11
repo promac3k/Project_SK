@@ -6,7 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/calendario.css">
     <script src="../js/main.js"></script>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <title>Contact</title>
 
 
@@ -65,68 +68,105 @@
             </div>
             <hr>
             <h1>Calendário Escolar</h1>
-            <img src="../img/image.png" class="img_card" style="width: 55%; top: 25px;">
-            <div class="Calendário-container">
-                <img src="../img/Início ano letivo Licenciaturas.png" class="img_card"
-                    style="width: 50px; height: 27px; left: -450px; ">
-                <p style="margin-top: -58px; margin-left: -100px;">
-                    Início ano letivo Licenciaturas, 2º ano CTeSP/ Beginning of the academic year Bachelors, 2nd year
-                    CTeSP
-                </p>
-                <img src="../img/Início ano letivo 1º ano CTeSP.png" class="img_card"
-                    style="width: 50px; height: 27px; left: -450px; top: -30px; ">
-                <p style="margin-top: -85px; margin-left: -270px;">
-                    Início ano letivo 1º ano CTeSP/ Beginning of the academic year 1st year CTeSP
-                </p>
-                <img src="../img/Atividades letivas.png" class="img_card"
-                    style="width: 50px; height: 27px; left: -450px; top: -30px;">
-                <p style="margin-top: -85px; margin-left: -530px;">
-                    Atividades letivas / Academic activities
-                </p>
-                <img src="../img/Férias e feriados.png" class="img_card"
-                    style="width: 50px; height: 27px; left: -450px; top: -30px;">
-                <p style="margin-top: -85px; margin-left: -610px;">
-                    Férias e feriados /Holidays
-                </p>
+            <br>
 
-                <img src="../img/Atividades AAIPS.png" class="img_card"
-                    style="width: 50px; height: 27px; left: -450px; top: -30px; ">
-                <p style="margin-top: -85px; margin-left: -545px;">
-                    Atividades AAIPS / AAIPS activities
-                </p>
-                <img src="../img/Recepção novos estudantes.png" class="img_card"
-                    style="width: 50px; height: 27px; left: -450px; top: -30px;">
-                <p style="margin-top: -85px; margin-left: -438px;">
-                    Recepção novos estudantes/Reception of new students
-                </p>
-                <img src="../img/Inscrições para exames.png" class="img_card"
-                    style="width: 50px; height: 27px;left: -450px; top: -30px; ">
-                <p style="margin-top: -85px; margin-left: -515px;">
-                    Inscrições para exames/Examination entry
-                </p>
-                <img src="../img/Exames de 1ª e 2ª Época.png" class="img_card"
-                    style="width: 50px; height: 27px;left: -450px; top: -30px; ">
-                <p style="margin-top: -85px; margin-left: -400px;">
-                    Exames de 1ª e 2ª Época / Regular exams (1st and 2nd date)
-                </p>
-                <img src="../img/Época especial.png" class="img_card"
-                    style="width: 50px; height: 27px;left: -450px; top: -30px; ">
-                <p style="margin-top: -85px; margin-left: -590px;">
-                    Época especial /Special exams
-                </p>
-                <img src="../img/Data limite de afixação de pautas.png" class="img_card"
-                    style="width: 50px; height: 27px;left: -450px; top: -30px; ">
-                <p style="margin-top: -85px; margin-left: -390px;">
-                    Data limite de afixação de pautas/Limit date to publish results
-                </p>
-                <img src="../img/Prazo final para entrega de Livros de Termos.png" class="img_card"
-                    style="width: 50px; height: 27px;left: -450px; top: -30px; ">
-                <p style="margin-top: -85px; margin-left: -245px;">
-                    Prazo final para entrega de Livros de Termos / Deadline for delivery of Terms Books
-
-                </p>
-
+            <div style="display: flex; justify-content: center; align-items: center;">
+                <button class="icon-button" onclick="prevMonth()"><span class="material-symbols-outlined">
+                        arrow_back_ios
+                    </span></button>
+                <div id="monthLabel" class="month-label"></div>
+                <button class="icon-button" onclick="nextMonth()"><span class="material-symbols-outlined">
+                        arrow_forward_ios
+                    </span></button>
             </div>
+
+            <div id="calendar" class="calendar"></div>
+
+            <script>
+                let currentYear = 2023;
+                let currentMonth = 10; // November (zero-indexed)
+
+                function generateCalendar(year, month) {
+                    const today = new Date();
+                    const daysInMonth = new Date(year, month + 1, 0).getDate();
+                    const firstDay = new Date(year, month, 1).getDay();
+                    const calendarContainer = document.getElementById('calendar');
+                    calendarContainer.innerHTML = '';
+
+                    // Add days of the week
+                    const daysOfWeek = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
+                    daysOfWeek.forEach(day => {
+                        const dayElement = document.createElement('div');
+                        dayElement.classList.add('week');
+                        dayElement.textContent = day;
+                        calendarContainer.appendChild(dayElement);
+                    });
+
+                    // Add empty cells for days before the first day of the month
+                    for (let i = 0; i < firstDay; i++) {
+                        const emptyCell = document.createElement('div');
+                        emptyCell.classList.add('day');
+                        emptyCell.textContent = '';
+                        calendarContainer.appendChild(emptyCell);
+                    }
+
+                    // Add days of the month with distinctive IDs and click event listener
+                    for (let day = 1; day <= daysInMonth; day++) {
+                        const dayElement = document.createElement('div');
+                        dayElement.classList.add('day');
+                        dayElement.textContent = day;
+                        dayElement.id = `day-${year}-${month + 1}-${day}`;
+
+                        // Highlight the current day
+                        if (year === today.getFullYear() && month === today.getMonth() && day === today.getDate()) {
+                            dayElement.classList.add('today');
+                        }
+
+                        dayElement.addEventListener('click', () => {
+                            alert(`Clicked on ${dayElement.id}`);
+                        });
+
+                        calendarContainer.appendChild(dayElement);
+                    }
+
+                    // Add empty cells for days after the last day of the month
+                    const lastDay = new Date(year, month, daysInMonth).getDay();
+                    const remainingEmptyCells = 7 - ((firstDay + daysInMonth) % 7);
+
+                    for (let i = 0; i < remainingEmptyCells; i++) {
+                        const emptyCell = document.createElement('div');
+                        emptyCell.classList.add('day');
+                        emptyCell.textContent = '';
+                        calendarContainer.appendChild(emptyCell);
+                    }
+
+                    // Update the month label
+                    const monthLabel = document.getElementById('monthLabel');
+                    const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+                    monthLabel.textContent = `${monthNames[month]} ${year}`;
+                }
+
+                function nextMonth() {
+                    currentMonth++;
+                    if (currentMonth > 11) {
+                        currentMonth = 0;
+                        currentYear++;
+                    }
+                    generateCalendar(currentYear, currentMonth);
+                }
+
+                function prevMonth() {
+                    currentMonth--;
+                    if (currentMonth < 0) {
+                        currentMonth = 11;
+                        currentYear--;
+                    }
+                    generateCalendar(currentYear, currentMonth);
+                }
+
+                // Initial generation of calendar
+                generateCalendar(currentYear, currentMonth);
+            </script>
 
             <footer>
                 <p>
