@@ -116,10 +116,6 @@ button {
     font-size: 1.5em;
   }
 
-  form {
-    height: 70vh;
-  }
-
   .container_contact {
     width: 60vh;
     min-height: 70vh;
