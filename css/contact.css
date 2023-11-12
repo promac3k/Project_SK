@@ -17,7 +17,7 @@ body {
   position: relative;
   overflow: hidden;
   width: 50%;
-  min-height: 80%;
+  height: 80%;
   margin-top: 5rem;
 }
 
@@ -127,6 +127,30 @@ button {
 
 /* media query para deixar o site responsivo para telemovel */
 @media (min-width: 320px) and (max-width: 480px) {
-  
-  
+
+  h1{
+    font-size: 1.5em;
+  }
+
+  span{
+    font-size: 1em;
+  }
+
+  form {
+    height: 70vh;
+  }
+
+  .container_contact {
+    width: 40vh;
+    height: 70vh;
+    margin-top: 0;
+  }
+
+  button{
+    font-size: 10px;
+  }
+
+  input{
+    margin: 5px;
+  }
 }
