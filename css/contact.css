@@ -74,8 +74,7 @@ button {
 }
 
 #switchon{
-  display: flex;
-  position: fixed;
+  display: none;
 } 
 
 /* Dark Mode */
