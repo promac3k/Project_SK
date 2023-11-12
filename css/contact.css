@@ -156,8 +156,3 @@ button {
     margin: 5px;
   }
 }
-
-#switchon{
-  display: flex;
-  position: fixed;
-}
