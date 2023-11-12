@@ -73,6 +73,11 @@ button {
   transition: transform 80ms ease-in;
 }
 
+#switchon{
+  display: flex;
+  position: fixed;
+} 
+
 /* Dark Mode */
 .dark-mode {
   background-color: #141414;
@@ -99,6 +104,8 @@ button {
   padding: 7rem 1rem;
   width: 100%;
 }
+
+
 
 /* media query para deixar o site responsivo para tablet*/
 @media (min-width: 768px) and (max-width: 1024px){
