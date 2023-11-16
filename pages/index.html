@@ -8,8 +8,6 @@
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../css/calendario.css">
     <script src="../js/main.js"></script>
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <title>Pagina Incial</title>
 
 
@@ -21,7 +19,7 @@
         <div class="container">
             <nav>
                 <ul>
-                    <li><a href="index.html">Inicio</a></li>
+                    <li style="margin-right: auto;"><a href="index.html">Inicio</a></li>
                     <li>
                         <div class="social-container">
                             <label class="switch">
@@ -41,6 +39,7 @@
                     <li><a href="profile.html">Conta</a></li>
                 </ul>
             </nav>
+
 
             <h1>IPS</h1>
             <div class="img-container">
@@ -67,106 +66,30 @@
 
             </div>
             <hr>
-            <h1>Calendário Escolar</h1>
             <br>
 
+            <div>
+                <nav class="sidebar">
+                    <ul>
+                        <li><a href="blocoA.html">Bloco A</a></li>
+                        <li><a href="blocoB.html">Bloco B</a></li>
+                        <li><a href="blocoC.html">Bloco C</a></li>
+                        <li><a href="blocoD.html">Bloco D</a></li>
+                        <li><a href="blocoE.html">Bloco E</a></li>
+                        <li><a href="blocoF.html">Bloco F</a></li>
+                    </ul>
+                </nav>
+                
+            </div>
+
             <div style="display: flex; justify-content: center; align-items: center;">
-                <button class="icon-button" onclick="prevMonth()"><span class="material-symbols-outlined">
-                        arrow_back_ios
-                    </span></button>
-                <div id="monthLabel" class="month-label"></div>
-                <button class="icon-button" onclick="nextMonth()"><span class="material-symbols-outlined">
-                        arrow_forward_ios
-                    </span></button>
+                <h1>Calendário Escolar</h1>
+                
             </div>
 
             <div id="calendar" class="calendar"></div>
 
-            <script>
-                let currentYear = 2023;
-                let currentMonth = 10; // November (zero-indexed)
-
-                function generateCalendar(year, month) {
-                    const today = new Date();
-                    const daysInMonth = new Date(year, month + 1, 0).getDate();
-                    const firstDay = new Date(year, month, 1).getDay();
-                    const calendarContainer = document.getElementById('calendar');
-                    calendarContainer.innerHTML = '';
-
-                    // Add days of the week
-                    const daysOfWeek = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
-                    daysOfWeek.forEach(day => {
-                        const dayElement = document.createElement('div');
-                        dayElement.classList.add('week');
-                        dayElement.textContent = day;
-                        calendarContainer.appendChild(dayElement);
-                    });
-
-                    // Add empty cells for days before the first day of the month
-                    for (let i = 0; i < firstDay; i++) {
-                        const emptyCell = document.createElement('div');
-                        emptyCell.classList.add('day');
-                        emptyCell.textContent = '';
-                        calendarContainer.appendChild(emptyCell);
-                    }
-
-                    // Add days of the month with distinctive IDs and click event listener
-                    for (let day = 1; day <= daysInMonth; day++) {
-                        const dayElement = document.createElement('div');
-                        dayElement.classList.add('day');
-                        dayElement.textContent = day;
-                        dayElement.id = `day-${year}-${month + 1}-${day}`;
-
-                        // Highlight the current day
-                        if (year === today.getFullYear() && month === today.getMonth() && day === today.getDate()) {
-                            dayElement.classList.add('today');
-                        }
-
-                        dayElement.addEventListener('click', () => {
-                            alert(`Clicked on ${dayElement.id}`);
-                        });
-
-                        calendarContainer.appendChild(dayElement);
-                    }
-
-                    // Add empty cells for days after the last day of the month
-                    const lastDay = new Date(year, month, daysInMonth).getDay();
-                    const remainingEmptyCells = 7 - ((firstDay + daysInMonth) % 7);
-
-                    for (let i = 0; i < remainingEmptyCells; i++) {
-                        const emptyCell = document.createElement('div');
-                        emptyCell.classList.add('day');
-                        emptyCell.textContent = '';
-                        calendarContainer.appendChild(emptyCell);
-                    }
-
-                    // Update the month label
-                    const monthLabel = document.getElementById('monthLabel');
-                    const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-                    monthLabel.textContent = `${monthNames[month]} ${year}`;
-                }
-
-                function nextMonth() {
-                    currentMonth++;
-                    if (currentMonth > 11) {
-                        currentMonth = 0;
-                        currentYear++;
-                    }
-                    generateCalendar(currentYear, currentMonth);
-                }
-
-                function prevMonth() {
-                    currentMonth--;
-                    if (currentMonth < 0) {
-                        currentMonth = 11;
-                        currentYear--;
-                    }
-                    generateCalendar(currentYear, currentMonth);
-                }
-
-                // Initial generation of calendar
-                generateCalendar(currentYear, currentMonth);
-            </script>
+            
 
             <footer>
                 <p>
@@ -178,5 +101,7 @@
         </div>
     </main>
 </body>
+
+<script src="../js/calendario.js"></script>
 
 </html>

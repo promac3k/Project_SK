@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../css/index.css">
+  <link rel="stylesheet" href="../css/modal.css">
   <script src="../js/main.js"></script>
   <title>Perfil</title>
 </head>
@@ -15,7 +16,7 @@
     <div class="container">
       <nav>
         <ul>
-          <li><a href="index.html">Inicio</a></li>
+          <li style="margin-right: auto;"><a href="index.html">Inicio</a></li>
           <li>
             <div class="social-container">
               <label class="switch">
@@ -39,9 +40,32 @@
       <h1>Aluno</h1>
       <img
         src="https://imgs.search.brave.com/wVvWqZjpOgQq0WR4gQEDL5FbT9OcgL64hPnC7RoI33o/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9zdGF0/aWMtMDAuaWNvbmR1/Y2suY29tL2Fzc2V0/cy4wMC9wcm9ncmFt/bWVyLWljb24tMTAy/NHgxMDI0LW93ZTIy/bzd0LnBuZw"
-        alt="" style="width:10%">
+        alt="" style="width:10%" onclick="document.getElementById('modal_editar').style.display='block'">
       <p class="title">CTESP PWDAM</p>
       <p class="title_2">ESTS</p>
+
+      <!-- Modal -->
+      <div id="modal_editar" class="modal">
+        <div class="modal_conteudo">
+          <div class="modal-header">
+            <h1>Alterar Palavra-Passe</h1>
+            <span class="fechar">&times;</span>
+          </div>  
+  
+          <div class="modal-content">
+            <div class="container_Pass">
+              <form action="/submit_form" method="post">
+                <label for="lname">Palavra-Passe:</label><br>
+                <input type="text" id="lname" name="lname" value="" class="input_campo"><br>
+                <label for="email">Confirmar Palavra-Passe:</label><br>
+                <input type="email" id="email" name="email" value="" class="input_campo"><br>
+                <button class="button_contacto">Change </button>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+      </div>
 
       <div class="flex-container">
 
@@ -119,19 +143,7 @@
           </tr>
         </table>
 
-
-        <div class="container_Pass">
-          <form action="/submit_form" method="post">
-            <label for="lname">Password:</label><br>
-            <input type="text" id="lname" name="lname" value="" class="input_campo"><br>
-            <label for="email">Confirm a Password:</label><br>
-            <input type="email" id="email" name="email" value="" class="input_campo"><br>
-            <button class="button_contacto">Change </button>
-          </form>
-        </div>
-
       </div>
-
 
       <footer>
         <p>
@@ -144,3 +156,16 @@
 </body>
 
 </html>
+
+<script>
+  // vai buscar o id do modal
+  var modal = document.getElementById("modal_editar");
+
+  // vai buscar a class do botao para fechar o modal
+  var span = document.getElementsByClassName("fechar")[0];
+  
+  //fecha o modal quando o botao dentro do modal for clicado
+  span.onclick = function() {
+    modal.style.display = "none";
+  }
+</script>

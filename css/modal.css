@@ -1,0 +1,194 @@
+.modal {
+  display: none;
+  position: absolute;
+  padding-top: 30vh;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  width: 30%;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+.modal-header{
+  background-color: #fefefe;
+  display: flex;
+  margin: auto;
+  padding: 20px;
+  width: 30%;
+  justify-content: space-between;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+}
+
+/* The Close Button */
+.fechar {
+  color: #aaaaaa;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.fechar:hover,
+.fechar:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-header h1{
+  font-size: 20px;
+}
+
+.container_Pass {
+  background-color: #FFFFFF;
+  height: 100%;
+  text-align: center;
+  border-radius: 5%;
+  border: none;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+img:hover {
+  cursor: pointer;
+}
+
+.dark-mode .container_Pass {
+  background-color: #444444;
+}
+
+.dark-mode .modal-header{
+  background-color: #444444;
+}
+
+.dark-mode .modal-content{
+  background-color: #444444;
+}
+
+@media (min-width: 1024px) and (max-width: 1280px) {
+
+  .modal-content {
+    width: 60%;
+  }
+
+  .modal-header {
+    width: 60%;
+  }
+
+  .modal-header h1{
+    font-size: 30px;
+  }
+
+  .container_Pass label{
+    font-size: 25px;
+  }
+  
+  .container_Pass input{
+    width: 60%;
+  }
+
+  .container_Pass button{
+    width: 20%;
+    height: 10%;
+  }
+
+}
+
+/* 
+  ##Device = Tablets, Ipads (portrait)
+*/
+@media (min-width: 768px) and (max-width: 1023px) {
+  
+  .modal-content {
+    width: 70%;
+  }
+  
+  .modal-header {
+    width: 70%;
+  }
+  
+  .container_Pass label{
+    font-size: 25px;
+  }
+  
+  .container_Pass input{
+    width: 60%;
+  }
+
+  .container_Pass button{
+    width: 20%;
+    height: 10%;
+  }
+}
+
+/* Alguns Tablets e telemoveis no */
+@media (min-width: 481px) and (max-width: 767px) {
+  .modal-content {
+    width: 70%;
+  }
+  
+  .modal-header {
+    width: 70%;
+  }
+}
+
+/* mobile */
+@media (min-width: 320px) and (max-width: 480px) {
+  
+  .modal-content {
+    width: 60%;
+  }
+  
+  .modal-header {
+    width: 60%;
+  }
+  
+  .modal-header h1{
+    font-size: 15px;
+  }
+
+  .fechar {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 319px){
+  .modal-content {
+    width: 70%;
+  }
+  
+  .modal-header {
+    width: 70%;
+  }
+
+  .modal-header h1{ 
+    font-size: 14px;
+  }
+
+  .fechar {
+    font-size: 19px;
+  }
+
+  .container_Pass label{
+    font-size: 15px;
+  }
+  
+  .container_Pass input{
+    width: 90%;
+  }
+
+  .container_Pass button{
+    width: 60%;
+    height: 10%;
+  }
+}
