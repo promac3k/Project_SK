@@ -1,35 +1,66 @@
 .cal {
-    font-family: Arial, sans-serif;
-    
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 5rem;
-  }
+  font-family: Arial, sans-serif;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 5rem;
+  margin-top: 5rem;
+  margin-left: 5rem;
+  margin-right: 5rem;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+    0 10px 10px rgba(0, 0, 0, 0.22);
+  overflow: hidden;
+}
 
-  h1 {
-    text-align: center;
-    color: #333;
-  }
+h1 {
+  text-align: center;
+  color: #333;
+}
 
-  .cal table {
-    width: 80%;
-    background-color: #f7f7f7;
-    margin: auto;
-    border-collapse: collapse;
-  }
+.cal table {
+  width: 50%;
+  background-color: #f7f7f7;
+  margin: auto;
+  border-collapse: collapse;
 
-  .cal th, td {
-    border: 1px solid #ccc;
-    padding: 1px;
-    text-align: center;
-  }
+}
 
-  .cal th {
-    background-color: #f2f2f2;
-  }
+.cal th,
+td {
+  border: 1px solid #ccc;
+  padding: 1px;
+  text-align: center;
+}
 
-  .cal td.empty {
-    background-color: #f4f4f4;
-  }
+.cal th {
+  background-color: #f2f2f2;
+}
+
+.cal td.empty {
+  background-color: #f4f4f4;
+}
+
+.cal thead th {
+  padding-left: 7px;
+  padding-right: 7px;
+  background: #FF416C;
+  background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
+  background: linear-gradient(to right, #FF4B2B, #FF416C);
+}
+
+.cal th,
+.cal td {
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cal td.month {
+  text-align: left;
+}
