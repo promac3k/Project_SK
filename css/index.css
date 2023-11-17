@@ -189,6 +189,7 @@ nav ul {
   height: 0;
 }
 
+/* Estilos para o slider */
 .slider {
   position: absolute;
   cursor: pointer;
@@ -196,11 +197,16 @@ nav ul {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ccc;
+  background-color: #2196F3;
+  background-image: url("../img/light_mode.png");
+  background-size: 50%;
+  background-position: right 25% center;
   -webkit-transition: .4s;
   transition: .4s;
+  background-repeat: no-repeat; 
 }
 
+/* Estilos para o slider:before */
 .slider:before {
   position: absolute;
   content: "";
@@ -208,13 +214,18 @@ nav ul {
   width: 12px;
   left: 4px;
   bottom: 4px;
-  background-color: white;
+  background: white;
   -webkit-transition: .4s;
   transition: .4s;
 }
 
+/* Estilos para input:checked+.slider */
 input:checked+.slider {
-  background-color: #2196F3;
+  background-color: #0f4067;
+  background-image: url("../img/dark_mode.png");
+  background-size: 40%;
+  background-position: left 25% center;
+  background-repeat: no-repeat; 
 }
 
 input:focus+.slider {
