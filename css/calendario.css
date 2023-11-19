@@ -6,8 +6,8 @@
   justify-content: center;
   margin-bottom: 5rem;
   margin-top: 5rem;
-  margin-left: 5rem;
-  margin-right: 5rem;
+  margin-left: 22.4rem;
+  margin-right: 22.4rem;
   border: none;
   border-radius: 10px;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
@@ -22,8 +22,8 @@ h1 {
 
 .cal table {
   width: 50%;
-  background-color: #f7f7f7;
   margin: auto;
+  background-color: white;
   border-collapse: collapse;
 
 }
@@ -31,16 +31,18 @@ h1 {
 .cal th,
 td {
   border: 1px solid #ccc;
-  padding: 1px;
   text-align: center;
-}
-
-.cal th {
-  background-color: #f2f2f2;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .cal td.empty {
-  background-color: #f4f4f4;
+  background-color: white;
+  border: none;
 }
 
 .cal thead th {
@@ -49,16 +51,6 @@ td {
   background: #FF416C;
   background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
   background: linear-gradient(to right, #FF4B2B, #FF416C);
-}
-
-.cal th,
-.cal td {
-  width: 25px;
-  height: 25px;
-  text-align: center;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
 .cal td.month {
