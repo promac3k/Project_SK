@@ -110,10 +110,17 @@ function generateCalendar() {
     // Add day cells for the entire month with distinctive IDs
     for (let day = 1; day <= daysInMonth; day++) {
       const dayId = `${months[i].name}-${day}`;
-      monthRow.innerHTML += `<td id="${dayId}">${day}</td>`;
-    }
+      const td = document.createElement('td');
+      td.id = dayId;
+      td.onclick = function() {
+          alert(this.id);
+      };
+      td.textContent = day;
+      monthRow.appendChild(td);
+  }
 
 
     calendarBody.appendChild(monthRow);
+
   }
 }

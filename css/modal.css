@@ -104,9 +104,7 @@ img:hover {
 
 }
 
-/* 
-  ##Device = Tablets, Ipads (portrait)
-*/
+/* media query para deixar o site responsivo para tablet*/
 @media (min-width: 768px) and (max-width: 1023px) {
   
   .modal-content {
@@ -131,7 +129,7 @@ img:hover {
   }
 }
 
-/* Alguns Tablets e telemoveis no */
+/* Alguns Tablets e telemoveis*/
 @media (min-width: 481px) and (max-width: 767px) {
   .modal-content {
     width: 70%;
@@ -142,7 +140,7 @@ img:hover {
   }
 }
 
-/* mobile */
+/* media query para deixar o site responsivo para mobile */
 @media (min-width: 320px) and (max-width: 480px) {
   
   .modal-content {
@@ -162,6 +160,7 @@ img:hover {
   }
 }
 
+/* media query para deixar o site responsivo para mobiles mais pequenos*/
 @media (max-width: 319px){
   .modal-content {
     width: 70%;
