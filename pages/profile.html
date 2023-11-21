@@ -40,9 +40,12 @@
       <h1>Aluno</h1>
       <img
         src="https://imgs.search.brave.com/wVvWqZjpOgQq0WR4gQEDL5FbT9OcgL64hPnC7RoI33o/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9zdGF0/aWMtMDAuaWNvbmR1/Y2suY29tL2Fzc2V0/cy4wMC9wcm9ncmFt/bWVyLWljb24tMTAy/NHgxMDI0LW93ZTIy/bzd0LnBuZw"
-        alt="" style="width:10%" onclick="document.getElementById('modal_editar').style.display='block'">
+        alt="" style="width:10%">
       <p class="title">CTESP PWDAM</p>
       <p class="title_2">ESTS</p>
+      <span id="hoverText" onmouseover="changeColor()" onmouseout="resetColor()" style="cursor: pointer;"
+        onclick="document.getElementById('modal_editar').style.display='block'">Alterar
+        definições</span>
 
       <!-- Modal -->
       <div id="modal_editar" class="modal">
@@ -50,8 +53,8 @@
           <div class="modal-header">
             <h1>Alterar Palavra-Passe</h1>
             <span class="fechar">&times;</span>
-          </div>  
-  
+          </div>
+
           <div class="modal-content">
             <div class="container_Pass">
               <form action="/submit_form" method="post">
@@ -64,7 +67,7 @@
             </div>
           </div>
         </div>
-        
+
       </div>
 
       <div class="flex-container">
@@ -163,9 +166,19 @@
 
   // vai buscar a class do botao para fechar o modal
   var span = document.getElementsByClassName("fechar")[0];
-  
+
   //fecha o modal quando o botao dentro do modal for clicado
-  span.onclick = function() {
+  span.onclick = function () {
     modal.style.display = "none";
+  }
+
+  function changeColor() {
+    document.getElementById('hoverText').style.color = 'red';
+  }
+
+  function resetColor() {
+    var bodyStyles = window.getComputedStyle(document.body);
+    var currentColor = bodyStyles.getPropertyValue('--text-color');
+    document.getElementById('hoverText').style.color = currentColor;
   }
 </script>
