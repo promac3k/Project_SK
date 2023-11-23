@@ -67,12 +67,10 @@ td {
 
 
 @media (min-width: 768px) and (max-width: 1023px) {
-  .cal{
+  .cal {
     margin-left: 3vw;
     margin-right: 3vw;
   }
 
-  tbody{
-    
-  }
+  tbody {}
 }
