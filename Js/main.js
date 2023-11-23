@@ -147,52 +147,29 @@ function generateCalendar() {
 }
 
 function generateBlocos() {
-  const calendarBody = document.getElementById('calendar-body');
+  document.addEventListener("DOMContentLoaded", function () {
+    // Access data attributes to get values for the script
+    var table = document.getElementById("floorTable");
+    var roomCounts = table.dataset.roomCounts.split(",").map(Number);
+    var startingRoomNumbers = table.dataset.startingRoomNumbers.split(",").map(Number);
+    var roomPrefix = table.dataset.roomPrefix || "D"; // Set the room prefix, defaulting to "D" if not specified
+    var tableBody = document.getElementById("tableBody");
 
-  const months = [
-    { name: 'Piso 1' },
-    { name: 'Piso 2' },
-    { name: 'Piso 3' },
-  ];
+    for (var floor = 0; floor < roomCounts.length; floor++) {
+        var row = document.createElement("tr");
+        row.innerHTML = "<td>" + (floor + 1) + "</td>";
 
+        // Add cells for each room in the current floor
+        for (var room = 1; room <= roomCounts[floor]; room++) {
+            var roomNumber = startingRoomNumbers[floor] + room;
 
-  for (let i = 0; i < months.length; i++) {
-    const monthRow = document.createElement('tr');
-    monthRow.innerHTML = `<td class="month">${months[i].name}</td>`;
+            // Combine floor and room numbers to create a unique ID for each cell
+            var cellId = "floor" + (floor + 1) + "_room" + roomNumber;
 
-    // Get the first day of the month and the total number of days
-    const firstDay = months[i].firstDay;
-    const daysInMonth = months[i].days;
+            row.innerHTML += "<td id='" + cellId + "'>" + roomPrefix + roomNumber + "</td>";
+        }
 
-    // Add empty cells for the days before the first day of the month
-    for (let j = 0; j < firstDay; j++) {
-      monthRow.innerHTML += '<td class="empty"></td>';
+        tableBody.appendChild(row);
     }
-
-    // Add day cells for the entire month with distinctive IDs
-    for (let day = 1; day <= daysInMonth; day++) {
-      const dayId = `${months[i].name}-${day}`;
-      const td = document.createElement('td');
-      td.id = dayId;
-      td.onclick = function () {
-        alert(this.id);
-      };
-
-      //Here ...
-      td.onmousemove = function () {
-        // Adiciona um estilo à borda quando o mouse se move sobre a célula
-        this.style.backgroundColor = "red";
-      };
-      td.onmouseout = function () {
-        // Remove o estilo da borda quando o mouse sai da célula
-        this.style.backgroundColor = "";
-      };
-
-      td.textContent = day;
-      monthRow.appendChild(td);
-    }
-
-    calendarBody.appendChild(monthRow);
-
-  }
+});
 }

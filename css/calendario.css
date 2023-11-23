@@ -21,11 +21,10 @@ h1 {
 }
 
 .cal table {
-  width: 50%;
+  width: 100%;
   margin: auto;
   background-color: white;
   border-collapse: collapse;
-
 }
 
 .cal th,
@@ -55,5 +54,25 @@ td {
 }
 
 .cal td.month {
-  text-align: left;
+  text-align: center;
+}
+
+.dark-mode .cal table {
+  background-color: #5a5a5a;
+}
+
+.dark-mode .cal td.empty {
+  background-color: #5a5a5a;
+}
+
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .cal{
+    margin-left: 3vw;
+    margin-right: 3vw;
+  }
+
+  tbody{
+    
+  }
 }
