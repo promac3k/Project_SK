@@ -1,8 +1,9 @@
 const express = require("express")
+const router = require("./router")
 
 const app = express()
 
-
-app.listen(3333, () => console.log("Estou Vivo Port: 3333 "))
+app.use(router)
+// Aqui você pode adicionar mais configurações para o app, como middlewares, rotas, etc.
 
 module.exports = app
