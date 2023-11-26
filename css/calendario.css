@@ -21,7 +21,7 @@ h1 {
 }
 
 .cal table {
-  width: 50%;
+  width: 100%;
   margin: auto;
   background-color: white;
   border-collapse: collapse;
@@ -55,7 +55,6 @@ td {
 }
 
 .cal td.month {
-<<<<<<< HEAD
   text-align: center;
 }
 
@@ -73,9 +72,5 @@ td {
     margin-left: 3vw;
     margin-right: 3vw;
   }
-
-  tbody {}
-=======
-  text-align: left;
->>>>>>> parent of f223f8f (.)
+  
 }

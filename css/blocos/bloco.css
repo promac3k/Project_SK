@@ -21,7 +21,7 @@
   }
   
   .cal table {
-    width: 50%;
+    width: 100%;
     margin: auto;
     background-color: white;
     border-collapse: collapse;
@@ -54,11 +54,19 @@
   }
   
   .cal td.month {
-    text-align: left;
+    text-align: center;
+  }
+
+  .dark-mode .cal table {
+    background-color: #5a5a5a;
+  }
+  
+  .dark-mode .cal td.empty {
+    background-color: #5a5a5a;
   }
 
 .button_back {
-    border-radius: 20px;
+  border-radius: 20px;
 	border: 1px solid #FF4B2B;
 	background-color: #FF4B2B;
 	color: #FFFFFF;
@@ -68,9 +76,9 @@
 	letter-spacing: 1px;
 	text-transform: uppercase;
 	transition: transform 80ms ease-in;
-    margin: 2rem;
-    position: absolute;
-    top: 1;
-    left: 0;
+  margin: 2rem;
+  position: absolute;
+  top: 1;
+  left: 0;
   cursor: pointer;
 }

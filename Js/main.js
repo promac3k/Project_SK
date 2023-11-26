@@ -98,30 +98,16 @@ function generateCalendar() {
     const monthRow = document.createElement('tr');
     monthRow.innerHTML = `<td class="month">${months[i].name}</td>`;
 
-    // Get the first day of the month and the total number of days
+    // Obtém o primeiro dia do mês e o número total de dias
     const firstDay = months[i].firstDay;
     const daysInMonth = months[i].days;
 
-    // Add empty cells for the days before the first day of the month
+    // Adicione células vazias para os dias anteriores ao primeiro dia do mês
     for (let j = 0; j < firstDay; j++) {
       monthRow.innerHTML += '<td class="empty"></td>';
     }
 
-    /*
-    breve explicacao blocos ciclo 
-        bloco = "E"
-        a = 101 
-        for (let day = 1; day == 120; day++) {
-           const dayId = `${months[i].name}-${bloco+day}`;
-          const td = document.createElement('td');
-          td.id = dayId;
-          td.onclick = function() {
-              alert(this.id);
-          };
-        
-    */
-
-    // Add day cells for the entire month with distinctive IDs
+    //Adicione células diárias para o mês inteiro com IDs distintos
     for (let day = 1; day <= daysInMonth; day++) {
       const dayId = `${months[i].name}-${day}`;
       const td = document.createElement('td');
@@ -147,52 +133,36 @@ function generateCalendar() {
 }
 
 function generateBlocos() {
-  const calendarBody = document.getElementById('calendar-body');
+  document.addEventListener("DOMContentLoaded", function () {
+    // Adiciona os valores
+    var table = document.getElementById("floorTable");
+    var roomCounts = table.dataset.roomCounts.split(",").map(Number);
+    var startingRoomNumbers = table.dataset.startingRoomNumbers.split(",").map(Number);
+    var roomPrefix = table.dataset.roomPrefix; 
+    var transitionRoomNumber = table.dataset.transitionRoomNumber; 
+    var customRoomNumber = table.dataset.customRoomNumber;
+    var tableBody = document.getElementById("tableBody");
 
-  const months = [
-    { name: 'Piso 1' },
-    { name: 'Piso 2' },
-    { name: 'Piso 3' },
-  ];
+    for (var floor = 0; floor < roomCounts.length; floor++) {
+        var row = document.createElement("tr");
+        row.innerHTML = "<td>" + (floor + 1) + "</td>";
 
+        // Adiciona células para cada sala do andar atual
+        for (var room = 1; room <= roomCounts[floor]; room++) {
+            var roomNumber = startingRoomNumbers[floor] + room;
 
-  for (let i = 0; i < months.length; i++) {
-    const monthRow = document.createElement('tr');
-    monthRow.innerHTML = `<td class="month">${months[i].name}</td>`;
+            // Verifiqua se o número da sala atual corresponde ao ponto de transição
+            if (roomNumber > transitionRoomNumber) {
+              roomNumber = customRoomNumber++;
+          }
+            
+            // Combina tudo para formar um ID distinto
+            var cellId = "floor" + (floor + 1) + "_room" + roomNumber;
 
-    // Get the first day of the month and the total number of days
-    const firstDay = months[i].firstDay;
-    const daysInMonth = months[i].days;
+            row.innerHTML += "<td id='" + cellId + "'>" + roomPrefix + roomNumber + "</td>";
+        }
 
-    // Add empty cells for the days before the first day of the month
-    for (let j = 0; j < firstDay; j++) {
-      monthRow.innerHTML += '<td class="empty"></td>';
+        tableBody.appendChild(row);
     }
-
-    // Add day cells for the entire month with distinctive IDs
-    for (let day = 1; day <= daysInMonth; day++) {
-      const dayId = `${months[i].name}-${day}`;
-      const td = document.createElement('td');
-      td.id = dayId;
-      td.onclick = function () {
-        alert(this.id);
-      };
-
-      //Here ...
-      td.onmousemove = function () {
-        // Adiciona um estilo à borda quando o mouse se move sobre a célula
-        this.style.backgroundColor = "red";
-      };
-      td.onmouseout = function () {
-        // Remove o estilo da borda quando o mouse sai da célula
-        this.style.backgroundColor = "";
-      };
-
-      td.textContent = day;
-      monthRow.appendChild(td);
-    }
-
-    calendarBody.appendChild(monthRow);
-
-  }
+});
 }

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../../css/index.css">
     <link rel="stylesheet" href="../../css/blocos/bloco.css">
     <script src="../../js/main.js"></script>
-    <title>Pagina Incial</title>
+    <title>Bloco F</title>
 
 
 </head>
@@ -29,13 +29,7 @@
                         </div>
                     </li>
                     <li><a href="../contact.html">Contacto</a></li>
-                    <li class="dropdown">
-                        <a href="javascript:void(0)" class="dropbtn">Horários</a>
-                        <div class="dropdown-content">
-                            <a href="alunos.html">Alunos</a>
-                            <a href="professores.html">Professores</a>
-                        </div>
-                    </li>
+                    <li><a href="../eventos.html">Eventos</a></li>
                     <li><a href="../profile.html">Conta</a></li>
                 </ul>
             </nav>
@@ -45,71 +39,36 @@
 
             <h1>Bloco F</h1>
             <div class="cal">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Month</th>
-                            <th>D</th>
-                            <th>2º</th>
-                            <th>3º</th>
-                            <th>4º</th>
-                            <th>5º</th>
-                            <th>6º</th>
-                            <th>S</th>
-                            <th>D</th>
-                            <th>2º</th>
-                            <th>3º</th>
-                            <th>4º</th>
-                            <th>5º</th>
-                            <th>6º</th>
-                            <th>S</th>
-                            <th>D</th>
-                            <th>2º</th>
-                            <th>3º</th>
-                            <th>4º</th>
-                            <th>5º</th>
-                            <th>6º</th>
-                            <th>S</th>
-                            <th>D</th>
-                            <th>2º</th>
-                            <th>3º</th>
-                            <th>4º</th>
-                            <th>5º</th>
-                            <th>6º</th>
-                            <th>S</th>
-                            <th>D</th>
-                            <th>2º</th>
-                            <th>3º</th>
-                            <th>4º</th>
-                            <th>5º</th>
-                            <th>6º</th>
-                            <th>S</th>
-                            <th>D</th>
-                            <th>2º</th>
-                        </tr>
-                    </thead>
-                    <tbody id="calendar-body"></tbody>
-                </table>
+                <table id="floorTable" 
+                data-room-counts="21, 36, 26" 
+                data-starting-room-numbers="100, 203, 303"
+                data-room-prefix="D"
+                data-transition-room-number="326"
+                data-custom-room-number="351">
+             <thead>
+                 <tr>
+                     <th>Floor</th>
+                     <!-- Add a colspan attribute to the header cell for rooms -->
+                     <th colspan="100">Rooms</th>
+                 </tr>
+             </thead>
+             <tbody id="tableBody"></tbody>
+         </table>
+
             </div>
-
-            <div id="calendar" class="calendar"></div>
-
-
-
             <footer>
                 <p>
                     Criado <i class="fa fa-heart"></i> por
                     André Nunes, Diogo Oliveira, Gustavo Antunes, Sebastião Costa e Tiago Batista
                 </p>
             </footer>
-
         </div>
     </main>
 </body>
 
 <script>
     window.onload = checkCookie();
-    generateCalendar();
+    generateBlocos();
 </script>
 
 </html>
