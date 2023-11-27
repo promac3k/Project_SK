@@ -112,6 +112,7 @@ function generateCalendar() {
       const dayId = `${months[i].name}-${day}`;
       const td = document.createElement('td');
       td.id = dayId;
+      td.className = 'number';
       td.onclick = function () {
         alert(this.id);
       };
@@ -128,10 +129,10 @@ function generateCalendar() {
     }
 
     calendarBody.appendChild(monthRow);
-
+  
   }
+  
 }
-
 function generateBlocos() {
   document.addEventListener("DOMContentLoaded", function () {
     // Adiciona os valores
@@ -145,8 +146,8 @@ function generateBlocos() {
 
     for (var floor = 0; floor < roomCounts.length; floor++) {
         var row = document.createElement("tr");
-        row.innerHTML = "<td>" + (floor + 1) + "</td>";
-
+        row.innerHTML = "<td>" + (floor + 1) + "</td>"
+        
         // Adiciona células para cada sala do andar atual
         for (var room = 1; room <= roomCounts[floor]; room++) {
             var roomNumber = startingRoomNumbers[floor] + room;
@@ -154,15 +155,33 @@ function generateBlocos() {
             // Verifiqua se o número da sala atual corresponde ao ponto de transição
             if (roomNumber > transitionRoomNumber) {
               roomNumber = customRoomNumber++;
-          }
+            }
             
             // Combina tudo para formar um ID distinto
-            var cellId = "floor" + (floor + 1) + "_room" + roomNumber;
+            const cellId = "floor" + (floor + 1) + "_room" + roomNumber;
 
-            row.innerHTML += "<td id='" + cellId + "'>" + roomPrefix + roomNumber + "</td>";
+            // Cria um novo elemento td
+            var td = document.createElement('td');
+            td.id = cellId;
+            td.textContent = roomPrefix + roomNumber;
+
+            // Adiciona os eventos onmousemove e onmouseout
+            td.onmousemove = function () {
+                // Adiciona um estilo à borda quando o mouse se move sobre a célula
+                this.style.backgroundColor = "red";
+            };
+            td.onmouseout = function () {
+                // Remove o estilo da borda quando o mouse sai da célula
+                this.style.backgroundColor = "";
+            };
+            td.onclick = function () {
+              alert(this.id);
+            };
+
+            // Adiciona o elemento td à linha
+            row.appendChild(td);
         }
-
         tableBody.appendChild(row);
     }
-});
+  });
 }
