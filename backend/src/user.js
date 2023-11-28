@@ -1,6 +1,12 @@
 const express = require("express")
 const bcrypt = require("bcrypt")
 const router = express()
+const connection = require("./models/connection")
+
+// Verifica se a importação ocorreu corretamente
+console.log("Conexão importada com sucesso:", connection)
+
+
 
 let users = []
 

@@ -2,21 +2,18 @@ const mysql = require("mysql2/promise")
 const { router } = require("../user")
 
 const connection = mysql.createPool({
-    host: "localhost",
-    user: "root",
-    password: "12345",
-    database: "db_teste"
+    host: process.env.MYSQL_HOST,
+    user: process.env.MYSQL_USER,
+    password: process.env.MYSQL_PASSWORD,
+    database: process.env.MYSQL_DATABASE
 })
 
-router.get("/login", async (req, res) => {
-    try {
-        const [rows, fields] = await connection.query("SELECT * FROM users")
-        res.status(200).send(rows)
-        console.log(rows)
-    } catch {
-        res.status(500).send()
-        console.log("erro")
-    }
-})
+// Testar a conexão
+connection.getConnection()
+    // O método .getConnection() retorna uma Promise que representa a tentativa de obter uma conexão.
+    .then(() => console.log("Conexão bem-sucedida ao banco de dados"))
+    .catch(err => {
+        console.error("Erro ao conectar ao banco de dados:", err.message)
+    })
 
 module.exports = connection
