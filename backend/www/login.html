@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="./css/login.css">
     <script src="js/main.js"></script>
     <title>Login</title>
 
@@ -15,15 +15,15 @@
     <h2>Bem Vindos</h2>
     <div class="container" id="container">
         <div class="form-container sign-in-container">
-            <form action="#">
+            <form action="/user/login" method="post">
                 <h1>Inicie Sessão</h1>
                 <span>Utilizando a sua conta</span>
-                <input type="email" placeholder="Email" />
-                <input type="password" placeholder="Palavra-passe" />
+                <input type="email" name="name" placeholder="Email" />
+                <input type="password" name="password" placeholder="Palavra-passe" />
                 <button>Inicie Sessão</button>
             </form>
         </div>
-        <form action="./pages/index.html">
+        <form action="#">
             <div class="overlay-container">
                 <div class="overlay">
                     <div class="overlay-panel overlay-left">
