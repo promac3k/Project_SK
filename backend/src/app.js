@@ -1,9 +1,15 @@
-const express = require("express")
-const router = require("./router")
+const express = require("express");
+const router = require("./router");
 
-const app = express()
+const app = express();
 
-app.use(router)
-// Aqui você pode adicionar mais configurações para o app, como middlewares, rotas, etc.
+// Serve static files from the "www" directory
+app.use(express.static("www"));
 
-module.exports = app
+app.use(router);
+
+app.get("/", (req, res) => {
+    res.redirect("/login.html");
+});
+
+module.exports = app;
