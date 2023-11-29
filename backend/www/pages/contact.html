@@ -13,9 +13,8 @@
 
 <body onload="checkCookie()">
     <div class="container_contact">
-        <button style="position: absolute; top: 4%; left: 8%; transform: translate(-50%, -50%);"
-            onclick="goBack()">Voltar</button>
-        <form action="">
+        <button style="position: absolute; top: 4%; left: 8%; transform: translate(-50%, -50%);" onclick="goBack()">Voltar</button>
+        <form action="/user/contact" method="post">
             <h1>Contactos</h1>
 
             <label class="switch">
@@ -24,9 +23,9 @@
             </label>
 
             <span>Entre em contato conosco</span>
-            <input type="email" placeholder="Email" />
-            <input type="text" placeholder="Cabeçalho" />
-            <input type="text" placeholder="Corpo do E-mail" class="input_corpo" />
+            <input type="email" placeholder="Email" name="email" />
+            <input type="text" placeholder="Cabeçalho" name="cabecalho"/>
+            <input type="text" placeholder="Corpo do E-mail" class="input_corpo" name="text_mail"/>
             <button>Enviar</button>
         </form>
     </div>

@@ -6,12 +6,13 @@ const app = express();
 app.use(express.json()); 
 
 // Serve static files from the "www" directory
-app.use(express.static("www"));
+app.use(express.static("www"))
 
-app.use("/user", users);
+app.use("/user", users)
+
 
 app.get("/", (req, res) => {
-    res.redirect("/login.html");
+    res.redirect("/login.html")
 });
 
 app.listen(3000);
