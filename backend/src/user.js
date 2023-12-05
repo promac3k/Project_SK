@@ -15,28 +15,30 @@ router.set("view-engine", "ejs")
 router.use(express.urlencoded({ extended: false }))
 
 router.post("/login", async (req, res) => {
-    console.log(req.body.name)
-    try {
-        const username = req.body.name
-        const password = req.body.password
-        // Verificar se o usuário existe na base de dados
-        const user = await User.findOne({ username })
-
-        if (!user) {
-            return res.status(404).send("Usuário não encontrado")
-        }
-        // Verificar a senha
-        const isPasswordValid = await bcrypt.compare(password, user.password)
-
-        if (!isPasswordValid) {
-            return res.status(401).send("Senha incorreta")
-        }
-
-        // Autenticação bem-sucedida
-        res.status(200).send("Autenticação bem-sucedida")
-    } catch (error) {
-        console.error(error)
-        res.status(500).send("Erro no servidor")
+    // Capture the input fields
+    let username = request.body.name;
+    let password = request.body.password;
+    // Ensure the input fields exists and are not empty
+    if (username && password) {
+        // Execute SQL query that'll select the account from the database based on the specified username and password
+        connection.query('SELECT * FROM accounts WHERE username = ? AND password = ?', [username, password], function (error, results, fields) {
+            // If there is an issue with the query, output the error
+            if (error) throw error;
+            // If the account exists
+            if (results.length > 0) {
+                // Authenticate the user
+                request.session.loggedin = true;
+                request.session.username = username;
+                // Redirect to home page
+                response.redirect('/pages/index.html');
+            } else {
+                response.send('Incorrect Username and/or Password!');
+            }
+            response.end();
+        });
+    } else {
+        response.send('Please enter Username and Password!');
+        response.end();
     }
 })
 
@@ -49,7 +51,7 @@ const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
         user: "projetosk81@gmail.com",
-        pass: "TuacotaEgrande"
+        pass: "txbz jxba jfrq ialn"
     }
 })
 
@@ -79,7 +81,8 @@ router.post("/contact", (req, res) => {
             res.status(500).send("Erro ao enviar o e-mail.")
         } else {
             console.log("Email enviado: ' + info.response")
-            res.status(200).send("E-mail enviado com sucesso.")
+            res.redirect("http://localhost:3333/login.html")
+
         }
     })
 
