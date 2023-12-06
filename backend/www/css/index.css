@@ -6,6 +6,11 @@ body {
   /* fa79059fc65690bdd6bee4501e89444759385f52 */
 }
 
+.h1_ghgh {
+  text-align: center;
+  color: #333;
+}
+
 .container {
   background-color: #FFFFFF;
   /* HEAD CHANGE */
@@ -33,14 +38,9 @@ body {
 
 }
 
-
-
 /*Tabela lateral
 Blocos salas*/
 .sidebar {
-  position: absolute;
-  right: 0;
-  height: 100%;
   width: 11%;
   background-color: #333;
   overflow-x: auto;
@@ -52,8 +52,8 @@ Blocos salas*/
     0 10px 10px rgba(0, 0, 0, 0.22);
   position: relative;
   float: right;
-  margin-right: 1rem;
-  margin-top: 3rem;
+  margin-right: 2rem;
+  margin-top: 5.6rem;
   text-align: center;
 }
 
@@ -120,6 +120,9 @@ nav ul {
   justify-content: flex-end;
 }
 
+.adada {
+  margin-right: 1.3rem;  
+}
 /* Dark Mode button */
 .social-container {
   margin: 1rem;
@@ -163,9 +166,9 @@ nav ul {
   background-image: url("../img/light_mode.png");
   background-size: 50%;
   background-position: right 25% center;
+  background-repeat: no-repeat;
   -webkit-transition: .4s;
   transition: .4s;
-  background-repeat: no-repeat;
 }
 
 /* Estilos para o slider:before */
@@ -212,7 +215,7 @@ input:checked+.slider:before {
 .img_card {
   overflow: hidden;
   border: none;
-  width: 35%;
+  width: 85%;
   height: 55%;
   border: none;
   border-radius: 5px;
@@ -220,13 +223,16 @@ input:checked+.slider:before {
     0 10px 10px rgba(0, 0, 0, 0.22);
   position: relative;
   overflow: hidden;
-  margin: 2rem;
+  margin-left: 2rem;
+  margin-top: 1.8rem;
+  margin-bottom: 3rem;
 }
 
 .p_1 {
-  padding: 2rem;
+  padding-top: 0.5rem;
+  padding-left: 0.5rem;
+  padding-right: 2rem ;
   text-align: justify !important;
-  margin: 2rem;
   line-height: 1.5;
   font-size: 15px;
 }
@@ -331,7 +337,9 @@ a:hover {
 }
 
 .dark-mode .p_1 {
-  padding: 2rem;
+  padding-top: 0.5rem;    
+  padding-left: 0.5rem;
+  padding-right: 2rem;
   text-align: justify;
   color: white;
 

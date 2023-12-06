@@ -11,10 +11,10 @@
 
 </head>
 
-<body onload="checkCookie()">
+<body>
     <div class="container_contact">
         <button style="position: absolute; top: 4%; left: 8%; transform: translate(-50%, -50%);" onclick="goBack()">Voltar</button>
-        <form action="/user/contact" method="post">
+        <form  action="/user/contact" method="post">
             <h1>Contactos</h1>
 
             <label class="switch">
@@ -30,5 +30,9 @@
         </form>
     </div>
 </body>
+
+<script>
+    window.onload = checkCookie() 
+</script>
 
 </html>

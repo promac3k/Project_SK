@@ -57,12 +57,14 @@ const transporter = nodemailer.createTransport({
 
 router.post("/contact", (req, res) => {
 
+
+
     const user_email = req.body.email
     const user_cabecalho = req.body.cabecalho
     const user_mensagem = req.body.text_mail
 
     // Verificar se a propriedade email não está definida ou é undefined
-    if (!user_email ||!user_cabecalho || !user_mensagem) { 
+    if (!user_email || !user_cabecalho || !user_mensagem) { 
         return res.status(400).json({ error: "Os campos são todos obrigatorios" })
     }
 
@@ -77,14 +79,20 @@ router.post("/contact", (req, res) => {
     // Enviando o e-mail
     transporter.sendMail(mailOptions, function (error) {
         if (error) {
+            
             console.log(error)
             res.status(500).send("Erro ao enviar o e-mail.")
+            
+            
         } else {
+            
             console.log("Email enviado: ' + info.response")
             res.redirect("http://localhost:3333/login.html")
-
+            
         }
     })
+
+
 
     console.log(user_email, user_cabecalho)
 })

@@ -62,6 +62,9 @@ button:focus {
 button.ghost {
 	background-color: transparent;
 	border-color: #FFFFFF;
+		border-radius: 30px;
+		box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),0 10px 10px rgba(0, 0, 0, 0.22);
+	
 }
 
 form {
@@ -154,7 +157,8 @@ input {
 }
 
 .overlay {
-	background: linear-gradient(to right, #FF4B2B, #FF416C);
+	background: -webkit-linear-gradient(to right, #ed715b, #ab3752);
+	background: linear-gradient(to right, #ff4321, #f50000);
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: 0 0;
@@ -265,7 +269,11 @@ footer a {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #ccc;
+	background-color: #2196F3;
+	background-image: url("../img/light_mode.png");
+	background-size: 40%;
+	background-position: right 25% center;
+	background-repeat: no-repeat;
     -webkit-transition: .4s;
     transition: .4s;
   }
@@ -283,7 +291,11 @@ footer a {
   }
   
   input:checked + .slider {
-    background-color: #2196F3;
+	background-color: #0f4067;
+		background-image: url("../img/dark_mode.png");
+		background-size: 40%;
+		background-position: left 25% center;
+		background-repeat: no-repeat;
   }
   
   input:focus + .slider {
@@ -327,7 +339,10 @@ footer a {
 }
 
 .dark-mode .overlay {
-	background: linear-gradient(to right, #a8230b, #f8003a);
+	background: -webkit-linear-gradient(to right, #ed715b, #ab3752);
+		background: linear-gradient(to right, #ff4321, #f50000);
+		background-repeat: no-repeat;
+		background-size: cover;
 }
   
 /* media query para deixar o site responsivo para telemovel */
