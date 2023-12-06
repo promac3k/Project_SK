@@ -81,13 +81,13 @@ router.post("/contact", (req, res) => {
         if (error) {
             
             console.log(error)
-            res.status(500).send("Erro ao enviar o e-mail.")
+            res.status(500).send("Erro ao enviar o e-mail")
             
             
         } else {
             
             console.log("Email enviado: ' + info.response")
-            res.redirect("http://localhost:3333/login.html")
+            res.status(200).send("E-mail enviado com sucesso!")
             
         }
     })
