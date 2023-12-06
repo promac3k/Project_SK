@@ -1,5 +1,5 @@
 const express = require("express")
-const router = require("./router")
+//const router = require("./router")
 const users = require("./user")
 
 const app = express()
@@ -15,6 +15,5 @@ app.get("/", (req, res) => {
     res.redirect("/login.html")
 })
 
-app.listen(3000)
 
 module.exports = app
