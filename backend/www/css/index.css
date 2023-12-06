@@ -42,6 +42,7 @@ body {
 Blocos salas*/
 .sidebar {
   width: 11%;
+  height: 18rem;
   background-color: #333;
   overflow-x: auto;
   overflow-y: auto;
@@ -76,6 +77,16 @@ Blocos salas*/
   color: #f1f1f1;
 }
 
+.sidebar li {
+  padding: 0;
+}
+
+.sidebar li a {
+  display: block;
+  color: white;
+  padding: 0.65rem;
+  text-decoration: none;
+}
 
 
 .blocos {
