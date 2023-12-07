@@ -1,37 +1,37 @@
-// nao esquecer de criar o arquivo .env na raiz do projeto
-// entra no caminho backend/ 
-// iniciar o projecto com o 'npm run dev' ou 'npm start'
+// Lembre-se de criar o arquivo .env na raiz do projeto
+// Entre no diretório backend/
+// Inicie o projeto com 'npm run dev' ou 'npm start'
 
-// EXPRESS
+// Importa o módulo Express
 const express = require('express');
 
-// LER O FICHEIRO .ENV
+// Lê o arquivo .env e carrega as variáveis de ambiente
 require('dotenv/config');
 
-// Modulos Locais com routas
+// Importa o módulo de rotas local
 const myRoute = require('./routes/myRoute.js');
 
-// Inicialização Express e ler a porta do ficheiro env
+// Inicializa o Express e lê a porta do arquivo .env
 const app = express();
 const PORT = process.env.PORT;
 
-// Middlewares 
+// Adiciona o middleware para parsear o corpo das requisições como JSON
 app.use(express.json());
-//app.use(express.urlencoded({ extended: false }))
+// Adiciona o middleware para parsear o corpo das requisições como dados de formulário
+// app.use(express.urlencoded({ extended: false }))
 
-// Codigo Front-end, html, css, js
+// Serve arquivos estáticos do diretório './www/static'
 app.use(express.static('./www/static'))
 
-
-// Rota principal serão escritas aqui , ou seja todas as rotas iniciam com /api/v1/
+// Adiciona as rotas do módulo 'myRoute' ao app
+// Todas as rotas definidas em 'myRoute' serão prefixadas com '/'
 app.use('/', myRoute);
 
-// Server Listen Along with Database 
-// connection(in case of data persistence) 
+// Inicia o servidor e escuta na porta especificada
+// Em caso de erro, loga o erro no console
 app.listen(PORT, (error) => {
     if (!error)
         console.log("Server is Successfully Running, and App is listening on port " + PORT)
     else
         console.log("Error occurred, server can't start", error);
-}
-);
+});
