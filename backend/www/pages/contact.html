@@ -30,12 +30,7 @@
             <button type="submit">Enviar</button>
         </form>
     </div>
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-          <span class="close">&times;</span>
-          <p id="modalText"></p>
-        </div>
-    </div>
+    
 </body>
 
 <script>
@@ -65,34 +60,22 @@
         })
             .then(response => {
 
-                var modal = document.getElementById("myModal");
-                var span = document.getElementsByClassName("close")[0];
-                var text = document.getElementById("modalText");
 
                 // Verifica o código de status da resposta
                 if (response.status === 200) {
-                    text.innerHTML = 'E-mail enviado com sucesso!';
-                    modal.style.display = "block";
+                    // Armazena a mensagem no armazenamento local
+                    localStorage.setItem('modalMessage', 'E-mail enviado com sucesso!');
+                    // Redireciona o usuário para a página de login
+                    window.location.href = '/login';
                     
                 } else if (response.status === 500) {
-                    ext.innerHTML = 'Erro ao enviar o e-mail. Por favor, tente novamente.';
-                    modal.style.display = "block";
-                }
-
-                span.onclick = function() {
-                    modal.style.display = "none";
+                    // Armazena a mensagem no armazenamento local
+                    localStorage.setItem('modalMessage', 'Erro ao enviar o e-mail. Por favor, tente novamente.');
                     // Redireciona o usuário para a página de login
-                    window.location.href = '/';
+                    window.location.href = '/login';
                 }
 
-                window.onclick = function(event) {
-                    if (event.target == modal) {
-                        modal.style.display = "none";
-                        // Redireciona o usuário para a página de login
-                        window.location.href = '/';
-                    }
-                }
-
+                
                 // Retorna o corpo da resposta como texto
                 return response.text();
             })

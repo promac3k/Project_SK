@@ -17,17 +17,17 @@ const config = require('../config')
 
 // Define uma função assíncrona para testar a função de query
 // Esta função executa uma query SQL para selecionar todos os registros da tabela 'alunos'
- function testQuery() {
-    const results =  query("select * from alunos")
+ async function testQuery() {
+    const results =  await query("select * from alunos")
     // Exibe os resultados da query no console em formato de tabela
     console.table(results)
 }
 
 // Executa a função de teste
 // Esta linha está comentada, então a função de teste não será executada
-testQuery()
+//testQuery()
 
 // Exporta a função de query para que ela possa ser importada e usada em outros arquivos
-/*module.exports = {
+module.exports = {
     query,
-}*/
+}

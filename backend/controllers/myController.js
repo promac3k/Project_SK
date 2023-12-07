@@ -3,7 +3,7 @@ const connection = require('../services/db'); // Módulo para conexão com o ban
 const email = require('../services/email'); // Módulo para enviar emails
 const path = require('path'); // Módulo Node.js para trabalhar com caminhos de arquivos
 
-const login = true; // Variável para controlar o estado de login
+const login = false; // Variável para controlar o estado de login
 
 // Métodos para serem executados nas rotas
 const get_index = (req, res) => {
