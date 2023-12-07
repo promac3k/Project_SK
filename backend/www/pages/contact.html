@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/contact.css">
-    <script src="../js/main.js"></script>
+    <link rel="stylesheet" href="css/contact.css">
+    <script src="js/main.js"></script>
     <title>Contactos</title>
 
 </head>
@@ -15,7 +15,7 @@
     <div class="container_contact">
         <button style="position: absolute; top: 4%; left: 8%; transform: translate(-50%, -50%);"
             onclick="goBack()">Voltar</button>
-        <form id="contact-form" action="/user/contact" method="post">
+        <form id="contact-form" action="/contact" method="post">
             <h1>Contactos</h1>
 
             <label class="switch">
@@ -56,7 +56,7 @@
         var data = { email, cabecalho, text_mail };
 
         // Envia uma solicitação POST para o servidor
-        fetch('/user/contact', {
+        fetch('/contact', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -82,14 +82,14 @@
                 span.onclick = function() {
                     modal.style.display = "none";
                     // Redireciona o usuário para a página de login
-                    window.location.href = 'http://localhost:3333/login.html';
+                    window.location.href = '/';
                 }
 
                 window.onclick = function(event) {
                     if (event.target == modal) {
                         modal.style.display = "none";
                         // Redireciona o usuário para a página de login
-                        window.location.href = 'http://localhost:3333/login.html';
+                        window.location.href = '/';
                     }
                 }
 
