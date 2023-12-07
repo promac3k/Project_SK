@@ -1,5 +1,4 @@
 const express = require("express")
-//const router = require("./router")
 const users = require("./user")
 
 const app = express()
@@ -12,7 +11,7 @@ app.use("/user", users)
 
 
 app.get("/", (req, res) => {
-    res.redirect("/login.html")
+	res.redirect("/login.html")
 })
 
 
