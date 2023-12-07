@@ -245,7 +245,7 @@ input:checked+.slider:before {
   padding-right: 2rem ;
   text-align: justify !important;
   line-height: 1.5;
-  font-size: 15px;
+  font-size: 0.938rem;
 }
 
 /*container da imagem */
@@ -394,6 +394,11 @@ a:hover {
 
 .dark-mode .cal td.empty {
   background-color: #5a5a5a;
+}
+
+.dark-mode #calendar-body tr td.number:nth-of-type(7n+2),
+#calendar-body tr td.number:nth-of-type(7n+8) {
+  background-color: #3e3e3e;
 }
 
 /* footer */
