@@ -11,33 +11,28 @@
 
 </head>
 
-<div class="container_contact">
-    
-    
-    
-    <header>
-        <h1>Contact</h1>
-    </header>
+<body>
+    <div class="container_contact">
 
-    <button style="position: absolute; top: 6%; left: 10%; transform: translate(-50%, -50%);" onclick="goBack()">Voltar</button>
-    <form id="contact-form" action="/contact" method="post">
-        <label class="switch">
-            <input id="switchon" type="checkbox" onclick="mySwitch()">
-            <span class="slider round"></span>
-        </label><br>
-        <span class="title_contact">Entre em contato conosco</span>
-        <input type="email" placeholder="Email" name="email" />
-        <input type="text" placeholder="Cabeçalho" name="cabecalho" />
-        <textarea type="text" class="input_corpo" name="text_mail"></textarea>
-        <button type="submit" style="position: relative; top: 1%;">Enviar</button>
-    </form>
+        <header>
+            <h1>Contact</h1>
+        </header>
 
-    
-    <footer>
-        
-    </footer>
+        <button style="position: absolute; top: 6%; left: 10%; transform: translate(-50%, -50%);"
+            onclick="goBack()">Voltar</button>
+        <form id="contact-form" action="/contact" method="post">
+            <label class="switch">
+                <input id="switchon" type="checkbox" onclick="mySwitch()">
+                <span class="slider round"></span>
+            </label><br>
+            <span class="title_contact">Entre em contato conosco</span>
+            <input type="email" placeholder="Email" name="email" />
+            <input type="text" placeholder="Cabeçalho" name="cabecalho" />
+            <textarea type="text" class="input_corpo" name="text_mail"></textarea>
+            <button type="submit" style="position: relative; top: 1%;">Enviar</button>
+        </form>
 
-</div>
+    </div>
 </body>
 
 <script>
@@ -74,7 +69,7 @@
                     localStorage.setItem('modalMessage', 'E-mail enviado com sucesso!');
                     // Redireciona o usuário para a página de login
                     window.location.href = '/login';
-                    
+
                 } else if (response.status === 500) {
                     // Armazena a mensagem no armazenamento local
                     localStorage.setItem('modalMessage', 'Erro ao enviar o e-mail. Por favor, tente novamente.');
@@ -82,7 +77,7 @@
                     window.location.href = '/login';
                 }
 
-                
+
                 // Retorna o corpo da resposta como texto
                 return response.text();
             })
