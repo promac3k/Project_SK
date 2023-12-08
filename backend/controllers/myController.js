@@ -2,6 +2,7 @@
 const connection = require('../services/db'); // Módulo para conexão com o banco de dados
 const email = require('../services/email'); // Módulo para enviar emails
 const path = require('path'); // Módulo Node.js para trabalhar com caminhos de arquivos
+const string = require("string-sanitizer");
 
 
 
@@ -44,6 +45,17 @@ const post_login = async (req, res) => {
     let email = req.body.email;
     let password = req.body.password;
 
+    if (string.validate.isEmail(email) === false) {
+        return res.status(404).send('Por favor, insira um email valido!');
+
+    }
+
+    /*if (string.validate.isPassword6to15(password) === false) {
+
+        return res.status(404).send('Por favor, insira uma senha valida!');
+
+    }*/
+
     console.log(email, password);
     // Garante que os campos de entrada existem e nao estao vazios
     if (email && password) {
@@ -63,16 +75,16 @@ const post_login = async (req, res) => {
             res.cookie("curso_aluno", result[0].cursos_id_cursos);
             res.cookie("ano_aluno", result[0].ano_alunos);
             res.redirect('/');
-            
+
         }
         else {
-            res.send('Email ou senha incorretos!');
-            res.end();
+            return res.send('Email ou senha incorretos!');
+
         };
 
     } else {
-        res.send('Por favor, insira o Email e a Senha!');
-        res.end();
+        return res.send('Por favor, insira o Email e a Senha!');
+
     }
 }
 
@@ -82,7 +94,7 @@ const get_contacts = (req, res) => {
 
     // Envia o arquivo contact.html como resposta
     res.sendFile(path.join(__dirname, '..', 'www/pages/contact.html'))
-   
+
 }
 
 // Método para lidar com a rota POST para /contact
@@ -102,6 +114,15 @@ const post_contact = (req, res) => {
         return res.status(400).json({ error: "Os campos são todos obrigatorios" })
     }
 
+    if (string.validate.isEmail(user_email) === false) {
+
+        console.log("email invalido");
+
+        return res.status(404).send('Por favor, insira um email valido!');
+
+    }
+
+
     // Define as opções do email a ser enviado
     const mailOptions = {
         from: user_email,
@@ -115,7 +136,7 @@ const post_contact = (req, res) => {
         if (error) {
             // Se houver um erro, loga o erro e retorna uma mensagem de erro
             console.log(error)
-            res.status(500).send("Erro ao enviar o e-mail")
+            return res.status(500).send("Erro ao enviar o e-mail")
         } else {
             // Se o email for enviado com sucesso, loga uma mensagem de sucesso e retorna uma mensagem de sucesso
             console.log("Email enviado: ' + info.response")
