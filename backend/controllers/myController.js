@@ -45,6 +45,11 @@ const post_login = async (req, res) => {
     let email = req.body.email;
     let password = req.body.password;
 
+    // Se algum dos campos estiver vazio, retorna um erro
+    if (!email || !password) {
+        return res.status(400).send("Os campos são todos obrigatorios");
+    }
+
     if (string.validate.isEmail(email) === false) {
         return res.status(404).send('Por favor, insira um email valido!');
 
@@ -61,8 +66,8 @@ const post_login = async (req, res) => {
     if (email && password) {
 
         const result = await connection.query('SELECT * FROM alunos WHERE email_alunos = ? AND pass_alunos = ?', [email, password])
-        console.table(result[0]);
-        console.log(result.length);
+        //console.table(result[0]);
+        //console.log(result.length);
         if (result.length > 0) {
             req.session.loggedin = true;
             req.session.user = email;
@@ -74,16 +79,14 @@ const post_login = async (req, res) => {
             res.cookie("turma_aluno", result[0].turma_alunos);
             res.cookie("curso_aluno", result[0].cursos_id_cursos);
             res.cookie("ano_aluno", result[0].ano_alunos);
-            res.redirect('/');
+
+            res.status(200).send("E-mail enviado com sucesso!")
 
         }
         else {
-            return res.send('Email ou senha incorretos!');
+            return res.status(404).send('Email ou senha incorretos!');
 
         };
-
-    } else {
-        return res.send('Por favor, insira o Email e a Senha!');
 
     }
 }

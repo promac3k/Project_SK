@@ -15,19 +15,19 @@
     <h2>Bem Vindos</h2>
     <div id="myModal" class="modal">
         <div class="modal-content">
-          <span id="modalText"></span>
-          <div id="progressBar" class="progress-bar"></div>
+            <span id="modalText"></span>
+            <div id="progressBar" class="progress-bar"></div>
         </div>
     </div>
-    
+
     <div class="container" id="container">
         <div class="form-container sign-in-container">
-            <form action="/login" method="post">
+            <form id="login-form" action="/login" method="post">
                 <h1>Inicie Sessão</h1>
                 <span>Utilizando a sua conta</span>
                 <input type="email" name="email" placeholder="Email" />
                 <input type="password" name="password" placeholder="Palavra-passe" />
-                <button>Inicie Sessão</button>
+                <button type="submit">Inicie Sessão</button>
             </form>
         </div>
         <form action="#">
@@ -54,7 +54,7 @@
             </div>
         </form>
     </div>
-    
+
 
     <footer>
         <p>
@@ -64,43 +64,99 @@
     </footer>
 </body>
 
-    <script>
+<script>
 
-        
-
-        window.onload = function() {
-
-            checkCookie();
+    window.onload = checkCookie();
 
 
-            var modal = document.getElementById("myModal");
-            var span = document.getElementsByClassName("close")[0];
-            var text = document.getElementById("modalText");
-            var progressBar = document.getElementById('progressBar');
+    var modal = document.getElementById("myModal");
+    var span = document.getElementsByClassName("close")[0];
+    var text = document.getElementById("modalText");
+    var progressBar = document.getElementById('progressBar');
 
-            // Obtém a mensagem do armazenamento local
-            var message = localStorage.getItem('modalMessage');
-            
-            // Se houver uma mensagem, exibe o modal
-            if (message) {
+    // Obtém a mensagem do armazenamento local
+    var message = localStorage.getItem('modalMessage');
+
+    // Se houver uma mensagem, exibe o modal
+    if (message) {
+        text.innerHTML = message;
+        modal.style.display = "block";
+        progressBar.style.visibility = 'visible';
+        // Inicia a barra de progresso
+        progressBar.style.width = '100%';
+        setTimeout(function () {
+            progressBar.style.width = '0%';
+        }, 0);
+        // Remove a mensagem do armazenamento local
+        localStorage.removeItem('modalMessage');
+        // Fecha o modal após 5 segundos
+        setTimeout(function () {
+            modal.style.display = "none";
+        }, 5000);
+    }
+
+    // Adiciona um ouvinte de evento 'submit' ao formulário com o id 'contact-form'
+    document.getElementById('login-form').addEventListener('submit', function (event) {
+        // Previne o comportamento padrão do evento 'submit', que é recarregar a página
+        event.preventDefault();
+
+        // Obtém os valores dos campos do formulário
+        var email = document.querySelector('input[name="email"]').value;
+        var password = document.querySelector('input[name="password"]').value;
+
+
+        // Cria um objeto com os dados do formulário
+        var data = { email, password };
+
+        console.log(data);
+
+        // Envia uma solicitação POST para o servidor
+        fetch('/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data), // Converte os dados do formulário em uma string JSON
+        })
+            .then(response => {
+
+                // Verifica o código de status da resposta
+                if (response.status === 200) {
+
+                    window.location.href = '/';
+
+                } else if (response.status === 404) {
+
+                    return response.text();
+
+                } else if (response.status === 400) {
+
+                    return response.text();
+
+                }
+            })
+            .then(message => {
+
                 text.innerHTML = message;
                 modal.style.display = "block";
-                // Inicia a barra de progresso
-                progressBar.style.width = '100%';
-                setTimeout(function() {
-                    progressBar.style.width = '0%';
-                }, 0);
-                // Remove a mensagem do armazenamento local
-                localStorage.removeItem('modalMessage');
+
                 // Fecha o modal após 5 segundos
-                setTimeout(function() {
+                setTimeout(function () {
                     modal.style.display = "none";
                 }, 5000);
-            }
 
-        }
+            })
+            .then(data => {
+                // Loga o corpo da resposta no console
+                console.log('Sucesso:', data);
+            })
+            .catch((error) => {
+                // Loga qualquer erro que ocorra durante a solicitação no console
+                console.error('Erro:', error);
+            });
+    });
 
 
-    </script>
+</script>
 
 </html>
