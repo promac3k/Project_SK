@@ -273,7 +273,7 @@ footer a {
 
 .modal-content {
 	background-color: #dbdbdb;
-	color: white;
+	color: black;
 	margin: 15% auto;
 	/* Ajusta a margem superior para centralizar verticalmente */
 	padding: 20px;
@@ -292,6 +292,7 @@ footer a {
 	background-color: green;
 	transition: width 5s linear;
 	direction: ltr;
+	visibility: hidden;
 }
 
 

@@ -31,7 +31,12 @@
             <textarea type="text" class="input_corpo" name="text_mail"></textarea>
             <button type="submit" style="position: relative; top: 1%;">Enviar</button>
         </form>
-
+    </div>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span id="modalText"></span>
+            <div id="progressBar" class="progress-bar"></div>
+        </div>
     </div>
 </body>
 
@@ -48,6 +53,10 @@
         var email = document.querySelector('input[name="email"]').value;
         var cabecalho = document.querySelector('input[name="cabecalho"]').value;
         var text_mail = document.querySelector('textarea[name="text_mail"]').value;
+
+        var modal = document.getElementById("myModal");
+        var text = document.getElementById("modalText");
+        var progressBar = document.getElementById('progressBar');
 
         // Cria um objeto com os dados do formulário
         var data = { email, cabecalho, text_mail };
@@ -71,12 +80,38 @@
                     window.location.href = '/login';
 
                 } else if (response.status === 500) {
-                    // Armazena a mensagem no armazenamento local
-                    localStorage.setItem('modalMessage', 'Erro ao enviar o e-mail. Por favor, tente novamente.');
-                    // Redireciona o usuário para a página de login
-                    window.location.href = '/login';
-                }
 
+                    text.innerHTML = 'Erro ao enviar o e-mail';
+                    modal.style.display = "block";
+                    
+
+                    // Fecha o modal após 5 segundos
+                    setTimeout(function () {
+                        modal.style.display = "none";
+                    }, 5000);
+                } else if (response.status === 400) {
+
+                    text.innerHTML = "Preencha todos os campos!";
+                    modal.style.display = "block";
+                    
+
+                    // Fecha o modal após 5 segundos
+                    setTimeout(function () {
+                        modal.style.display = "none";
+                    }, 3000);
+
+                } else if (response.status === 404) {
+
+                    text.innerHTML = "Por favor, insira um email valido!";
+                    modal.style.display = "block";
+                    
+
+                    // Fecha o modal após 5 segundos
+                    setTimeout(function () {
+                        modal.style.display = "none";
+                    }, 3000);
+
+                }
 
                 // Retorna o corpo da resposta como texto
                 return response.text();
