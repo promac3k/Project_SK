@@ -50,11 +50,11 @@ const post_login = async (req, res) => {
 
     }
 
-    if (string.validate.isPassword6to15(password) === false) {
+    /*if (string.validate.isPassword6to15(password) === false) {
 
         return res.status(404).send('Por favor, insira uma senha valida!');
 
-    }
+    }*/
 
     console.log(email, password);
     // Garante que os campos de entrada existem e nao estao vazios
@@ -114,13 +114,13 @@ const post_contact = (req, res) => {
         return res.status(400).json({ error: "Os campos são todos obrigatorios" })
     }
 
-    /*if (string.validate.isEmail(user_email) === false) {
+    if (string.validate.isEmail(user_email) === false) {
 
         console.log("email invalido");
 
         return res.status(404).send('Por favor, insira um email valido!');
 
-    }*/
+    }
 
 
     // Define as opções do email a ser enviado
