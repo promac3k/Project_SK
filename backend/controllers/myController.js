@@ -3,57 +3,86 @@ const connection = require('../services/db'); // Módulo para conexão com o ban
 const email = require('../services/email'); // Módulo para enviar emails
 const path = require('path'); // Módulo Node.js para trabalhar com caminhos de arquivos
 
-const login = false; // Variável para controlar o estado de login
+
 
 // Métodos para serem executados nas rotas
 const get_index = (req, res) => {
-    // Se o usuário estiver logado, envia o arquivo index.html
-    // Caso contrário, envia o arquivo login.html
-    if (login) {
-        res.sendFile(path.join(__dirname, '..', 'www/index.html'))
+
+    console.log("get_index >>>>> " + req.session.loggedin);
+
+    if (req.session.loggedin) {
+        // Output username
+        var cookie = req.cookies.user;
+        console.log(cookie);
+        if (cookie === undefined) {
+            res.cookie("user", req.session.user);
+        }
+        res.sendFile(path.join(__dirname, '..', 'www/index.html'));
     } else {
-        res.sendFile(path.join(__dirname, '..', 'www/pages/login.html'))
+
+        res.sendFile(path.join(__dirname, '..', 'www/pages/login.html'));
     }
 }
 
+
 const get_login = (req, res) => {
     // Envia o arquivo login.html
-    res.sendFile(path.join(__dirname, '..', 'www/pages/login.html'))
+    console.log("get_login >>>>> " + req.session.loggedin);
+    if (req.session.loggedin) {
+        res.sendFile(path.join(__dirname, '..', 'www/index.html'))
+    } else {
+
+        res.sendFile(path.join(__dirname, '..', 'www/pages/login.html'));
+    }
 }
 
 
-const post_login = (req, res) => {
-    //res.send("Hello, This was a post Request");
-    let username = request.body.name
-    let password = request.body.password
-    // Ensure the input fields exists and are not empty
-    if (username && password) {
-        // Execute SQL query that'll select the account from the database based on the specified username and password
-        connection.query('SELECT * FROM accounts WHERE username = ? AND password = ?', [username, password], function (error, results, fields) {
-            // If there is an issue with the query, output the error
-            if (error) throw error
-            // If the account exists
-            if (results.length > 0) {
-                // Authenticate the user
-                request.session.loggedin = true
-                request.session.username = username
-                // Redirect to home page
-                response.redirect('/index.html')
-            } else {
-                response.send('Incorrect Username and/or Password!')
-            }
-            response.end()
-        });
+// aluno1@example.com
+// 098f6bcd4621d373cade4e832627b4f6
+const post_login = async (req, res) => {
+    // Captura os campos de entrada do formulário
+    let email = req.body.email;
+    let password = req.body.password;
+
+    console.log(email, password);
+    // Garante que os campos de entrada existem e nao estao vazios
+    if (email && password) {
+
+        const result = await connection.query('SELECT * FROM alunos WHERE email_alunos = ? AND pass_alunos = ?', [email, password])
+        console.table(result[0]);
+        console.log(result.length);
+        if (result.length > 0) {
+            req.session.loggedin = true;
+            req.session.user = email;
+            req.session.save(function (err) {
+                if (err) return next(err);
+            });
+            res.cookie("user", result[0].nome_alunos);
+            res.cookie("email_aluno", result[0].email_alunos);
+            res.cookie("turma_aluno", result[0].turma_alunos);
+            res.cookie("curso_aluno", result[0].cursos_id_cursos);
+            res.cookie("ano_aluno", result[0].ano_alunos);
+            res.redirect('/');
+            
+        }
+        else {
+            res.send('Email ou senha incorretos!');
+            res.end();
+        };
+
     } else {
-        response.send('Please enter Username and Password!');
-        response.end();
+        res.send('Por favor, insira o Email e a Senha!');
+        res.end();
     }
 }
 
 // Método para lidar com a rota GET para /contacts
 const get_contacts = (req, res) => {
+    console.log("get_contacts >>>>> " + req.session.loggedin);
+
     // Envia o arquivo contact.html como resposta
     res.sendFile(path.join(__dirname, '..', 'www/pages/contact.html'))
+   
 }
 
 // Método para lidar com a rota POST para /contact
@@ -100,50 +129,120 @@ const post_contact = (req, res) => {
 
 // Método para lidar com a rota GET para /eventos
 const get_eventos = (req, res) => {
-    // Envia o arquivo eventos.html como resposta
-    res.sendFile(path.join(__dirname, '..', 'www/pages/eventos.html'))
+    console.log("get_eventos >>>>> " + req.session.loggedin);
+
+    if (req.session.loggedin) {
+        // Envia o arquivo eventos.html como resposta
+        res.sendFile(path.join(__dirname, '..', 'www/pages/eventos.html'))
+    } else {
+
+        res.sendFile(path.join(__dirname, '..', 'www/pages/login.html'));
+    }
+
+
 }
 
 // Método para lidar com a rota GET para /profile
 const get_profile = (req, res) => {
-    // Envia o arquivo profile.html como resposta
-    res.sendFile(path.join(__dirname, '..', 'www/pages/profile.html'))
+    console.log("get_profile >>>>> " + req.session.loggedin);
+
+    if (req.session.loggedin) {
+        // Envia o arquivo profile.html como resposta
+        res.sendFile(path.join(__dirname, '..', 'www/pages/profile.html'))
+    } else {
+
+        res.sendFile(path.join(__dirname, '..', 'www/pages/login.html'));
+    }
+
 }
 
 // Método para lidar com a rota GET para /blocoA
 const get_blocoA = (req, res) => {
-    // Envia o arquivo blocoA.html como resposta
-    res.sendFile(path.join(__dirname, '..', 'www/pages/blocos/blocoA.html'))
+    console.log("get_blocoA >>>>> " + req.session.loggedin);
+
+    if (req.session.loggedin) {
+        // Envia o arquivo blocoA.html como resposta
+        res.sendFile(path.join(__dirname, '..', 'www/pages/blocos/blocoA.html'))
+    } else {
+
+        res.sendFile(path.join(__dirname, '..', 'www/pages/login.html'));
+    }
+
+
 }
 
 // Método para lidar com a rota GET para /blocoB
 const get_blocoB = (req, res) => {
-    // Envia o arquivo blocoB.html como resposta
-    res.sendFile(path.join(__dirname, '..', 'www/pages/blocos/blocoB.html'))
+    console.log("get_blocoB >>>>> " + req.session.loggedin);
+
+    if (req.session.loggedin) {
+        // Envia o arquivo blocoB.html como resposta
+        res.sendFile(path.join(__dirname, '..', 'www/pages/blocos/blocoB.html'))
+    } else {
+
+        res.sendFile(path.join(__dirname, '..', 'www/pages/login.html'));
+    }
+
+
 }
 
 // Método para lidar com a rota GET para /blocoC
 const get_blocoC = (req, res) => {
-    // Envia o arquivo blocoC.html como resposta
-    res.sendFile(path.join(__dirname, '..', 'www/pages/blocos/blocoC.html'))
+    console.log("get_blocoC >>>>> " + req.session.loggedin);
+
+    if (req.session.loggedin) {
+        // Envia o arquivo blocoC.html como resposta
+        res.sendFile(path.join(__dirname, '..', 'www/pages/blocos/blocoC.html'))
+    } else {
+
+        res.sendFile(path.join(__dirname, '..', 'www/pages/login.html'));
+    }
+
+
 }
 
 // Método para lidar com a rota GET para /blocoD
 const get_blocoD = (req, res) => {
-    // Envia o arquivo blocoD.html como resposta
-    res.sendFile(path.join(__dirname, '..', 'www/pages/blocos/blocoD.html'))
+    console.log("get_blocoD >>>>> " + req.session.loggedin);
+
+    if (req.session.loggedin) {
+        // Envia o arquivo blocoD.html como resposta
+        res.sendFile(path.join(__dirname, '..', 'www/pages/blocos/blocoD.html'))
+    } else {
+
+        res.sendFile(path.join(__dirname, '..', 'www/pages/login.html'));
+    }
+
+
 }
 
 // Método para lidar com a rota GET para /blocoE
 const get_blocoE = (req, res) => {
-    // Envia o arquivo blocoE.html como resposta
-    res.sendFile(path.join(__dirname, '..', 'www/pages/blocos/blocoE.html'))
+    console.log("get_blocoE >>>>> " + req.session.loggedin);
+
+    if (req.session.loggedin) {
+        // Envia o arquivo blocoE.html como resposta
+        res.sendFile(path.join(__dirname, '..', 'www/pages/blocos/blocoE.html'))
+    } else {
+
+        res.sendFile(path.join(__dirname, '..', 'www/pages/login.html'));
+    }
+
+
 }
 
 // Método para lidar com a rota GET para /blocoF
 const get_blocoF = (req, res) => {
-    // Envia o arquivo blocoF.html como resposta
-    res.sendFile(path.join(__dirname, '..', 'www/pages/blocos/blocoF.html'))
+    console.log("get_blocoF >>>>> " + req.session.loggedin);
+
+    if (req.session.loggedin) {
+        // Envia o arquivo blocoF.html como resposta
+        res.sendFile(path.join(__dirname, '..', 'www/pages/blocos/blocoF.html'))
+    } else {
+
+        res.sendFile(path.join(__dirname, '..', 'www/pages/login.html'));
+    }
+
 }
 
 // Exporta todos os métodos como um objeto para serem usados em outros arquivos
