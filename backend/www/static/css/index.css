@@ -61,6 +61,11 @@ Blocos salas*/
   text-align: center;
 }
 
+#switchon {  
+position: absolute;
+top: 1000%;
+}
+
 .sidebar ul {
   display: flex;
   flex-direction: column;
@@ -283,13 +288,13 @@ input:checked+.slider:before {
 /*Pagina de contacto */
 
 .title {
-  color: grey;
+  color: white;
   font-size: 24px;
   text-align: center;
 }
 
 .title_2 {
-  color: grey;
+  color: white;
   font-size: 16px;
   text-align: center;
 }

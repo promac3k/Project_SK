@@ -11,26 +11,33 @@
 
 </head>
 
-<body>
-    <div class="container_contact">
-        <button style="position: absolute; top: 4%; left: 8%; transform: translate(-50%, -50%);"
-            onclick="goBack()">Voltar</button>
-        <form id="contact-form" action="/contact" method="post">
-            <h1>Contactos</h1>
-
-            <label class="switch">
-                <input id="switchon" type="checkbox" onclick="mySwitch()">
-                <span class="slider round"></span>
-            </label>
-
-            <span>Entre em contato conosco</span>
-            <input type="email" placeholder="Email" name="email" />
-            <input type="text" placeholder="Cabeçalho" name="cabecalho" />
-            <input type="text" placeholder="Corpo do E-mail" class="input_corpo" name="text_mail" />
-            <button type="submit">Enviar</button>
-        </form>
-    </div>
+<div class="container_contact">
     
+    
+    
+    <header>
+        <h1>Contact</h1>
+    </header>
+
+    <button style="position: absolute; top: 6%; left: 10%; transform: translate(-50%, -50%);" onclick="goBack()">Voltar</button>
+    <form id="contact-form" action="/contact" method="post">
+        <label class="switch">
+            <input id="switchon" type="checkbox" onclick="mySwitch()">
+            <span class="slider round"></span>
+        </label><br>
+        <span class="title_contact">Entre em contato conosco</span>
+        <input type="email" placeholder="Email" name="email" />
+        <input type="text" placeholder="Cabeçalho" name="cabecalho" />
+        <textarea type="text" class="input_corpo" name="text_mail"></textarea>
+        <button type="submit" style="position: relative; top: 1%;">Enviar</button>
+    </form>
+
+    
+    <footer>
+        
+    </footer>
+
+</div>
 </body>
 
 <script>
@@ -45,7 +52,7 @@
         // Obtém os valores dos campos do formulário
         var email = document.querySelector('input[name="email"]').value;
         var cabecalho = document.querySelector('input[name="cabecalho"]').value;
-        var text_mail = document.querySelector('input[name="text_mail"]').value;
+        var text_mail = document.querySelector('textarea[name="text_mail"]').value;
 
         // Cria um objeto com os dados do formulário
         var data = { email, cabecalho, text_mail };
@@ -90,5 +97,6 @@
     });
 
 </script>
+
 
 </html>
