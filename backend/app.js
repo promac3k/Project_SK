@@ -2,8 +2,10 @@
 // Entre no diretório backend/
 // Inicie o projeto com 'npm run dev' ou 'npm start'
 
-// Importa o módulo Express
+// Importa os módulos necessários
 const express = require('express');
+const session = require('express-session');
+const cookieParser = require('cookie-parser');
 
 // Lê o arquivo .env e carrega as variáveis de ambiente
 require('dotenv/config');
@@ -15,13 +17,29 @@ const myRoute = require('./routes/myRoute.js');
 const app = express();
 const PORT = process.env.PORT;
 
+// Iniciar session
+app.use(session({
+    secret: 'secret',
+    resave: true,
+    saveUninitialized: false,
+    cookie: {
+        path: '/',
+        maxAge: 60 * 60 * 1000,
+        sameSite: true,
+    },
+}));
+
+
+
 // Adiciona o middleware para parsear o corpo das requisições como JSON
 app.use(express.json());
 // Adiciona o middleware para parsear o corpo das requisições como dados de formulário
-// app.use(express.urlencoded({ extended: false }))
+app.use(express.urlencoded({ extended: true }))
 
 // Serve arquivos estáticos do diretório './www/static'
 app.use(express.static('./www/static'))
+
+app.use(cookieParser());
 
 // Adiciona as rotas do módulo 'myRoute' ao app
 // Todas as rotas definidas em 'myRoute' serão prefixadas com '/'

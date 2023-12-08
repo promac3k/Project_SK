@@ -11,14 +11,21 @@
 
 </head>
 
-<body onload="checkCookie()">
+<body>
     <h2>Bem Vindos</h2>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+          <span id="modalText"></span>
+          <div id="progressBar" class="progress-bar"></div>
+        </div>
+    </div>
+    
     <div class="container" id="container">
         <div class="form-container sign-in-container">
             <form action="/login" method="post">
                 <h1>Inicie Sessão</h1>
                 <span>Utilizando a sua conta</span>
-                <input type="email" name="name" placeholder="Email" />
+                <input type="email" name="email" placeholder="Email" />
                 <input type="password" name="password" placeholder="Palavra-passe" />
                 <button>Inicie Sessão</button>
             </form>
@@ -47,6 +54,7 @@
             </div>
         </form>
     </div>
+    
 
     <footer>
         <p>
@@ -55,5 +63,44 @@
         </p>
     </footer>
 </body>
+
+    <script>
+
+        
+
+        window.onload = function() {
+
+            checkCookie();
+
+
+            var modal = document.getElementById("myModal");
+            var span = document.getElementsByClassName("close")[0];
+            var text = document.getElementById("modalText");
+            var progressBar = document.getElementById('progressBar');
+
+            // Obtém a mensagem do armazenamento local
+            var message = localStorage.getItem('modalMessage');
+            
+            // Se houver uma mensagem, exibe o modal
+            if (message) {
+                text.innerHTML = message;
+                modal.style.display = "block";
+                // Inicia a barra de progresso
+                progressBar.style.width = '100%';
+                setTimeout(function() {
+                    progressBar.style.width = '0%';
+                }, 0);
+                // Remove a mensagem do armazenamento local
+                localStorage.removeItem('modalMessage');
+                // Fecha o modal após 5 segundos
+                setTimeout(function() {
+                    modal.style.display = "none";
+                }, 5000);
+            }
+
+        }
+
+
+    </script>
 
 </html>
