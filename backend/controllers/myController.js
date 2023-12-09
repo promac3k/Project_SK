@@ -2,18 +2,19 @@
 const connection = require('../services/db'); // Módulo para conexão com o banco de dados
 const email = require('../services/email'); // Módulo para enviar emails
 const path = require('path'); // Módulo Node.js para trabalhar com caminhos de arquivos
-const string = require("string-sanitizer");
-
+const string = require("string-sanitizer"); // Módulo para sanitizar strings
+const bcrypt = require('bcrypt'); // Módulo para criptografar senhas
+//const saltRounds = 10; // Número de saltos para gerar o hash da senha
 
 
 // Métodos para serem executados nas rotas
 const get_index = (req, res) => {
 
     console.log("get_index >>>>> " + req.session.loggedin);
-    if (req.cookies.user){
+    if (req.cookies.user) {
         console.log("get_index >>>>> " + JSON.parse(req.cookies.user));
     }
-    
+
     if (req.session.loggedin) {
         // Output username
         var cookie = req.cookies.user;
@@ -58,6 +59,9 @@ const post_login = async (req, res) => {
     let email = req.body.email;
     let password = req.body.password;
 
+    /*bcrypt.hash(password, saltRounds, function(err, hash) {
+    console.log(`Hash: ${hash}`);
+    });*/
 
     // Se algum dos campos estiver vazio, retorna um erro
     if (!email || !password) {
@@ -76,22 +80,33 @@ const post_login = async (req, res) => {
     // Garante que os campos de entrada existem e nao estao vazios
     if (email && password) {
 
-        const result = await connection.query('SELECT * FROM alunos WHERE email_aluno = ? AND pass_aluno = ?', [email, password])
+        const result = await connection.query('SELECT * FROM alunos WHERE email_aluno = ?', [email])
         //console.table(result[0]);
         //console.log(result.length);
         if (result.length > 0) {
-            req.session.loggedin = true;
-            req.session.user = email;
-            req.session.save(function (err) {
-                if (err) return next(err);
+
+            const db = result[0];
+
+            bcrypt.compare(password, db.pass_aluno, function (err, result) {
+
+                if (result) {
+
+                    req.session.loggedin = true;
+                    req.session.user = email;
+                    req.session.save(function (err) {
+                        if (err) return next(err);
+                    });
+
+                    const user = { nome: db.nome_aluno, email: db.email_aluno, turma: db.turma_aluno, curso: db.cursos_id_cursos, ano: db.ano_aluno }
+                    res.cookie("user", JSON.stringify(user));
+
+
+                    res.status(200).send("Login efetuado com sucesso!")
+
+                } else {
+                    return res.status(404).send('Email ou senha incorretos!');
+                };
             });
-
-            const user = { nome: result[0].nome_aluno, email: result[0].email_aluno, turma: result[0].turma_aluno, curso: result[0].cursos_id_cursos, ano: result[0].ano_aluno }
-            res.cookie("user",JSON.stringify(user));
-
-
-            res.status(200).send("Login efetuado com sucesso!")
-
         }
         else {
             return res.status(404).send('Email ou senha incorretos!');
