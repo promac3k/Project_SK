@@ -39,7 +39,11 @@ const get_login = (req, res) => {
 
 
 // aluno1@example.com
-// 098f6bcd4621d373cade4e832627b4f6
+// uasg2!GH36SV
+// aluno2@example.com
+// TUpA72U!63Y
+// aluno3@example.com
+// HS63u!mPuagM
 const post_login = async (req, res) => {
     // Captura os campos de entrada do formulário
     let email = req.body.email;
@@ -51,21 +55,18 @@ const post_login = async (req, res) => {
     }
 
     if (string.validate.isEmail(email) === false) {
-        return res.status(404).send('Por favor, insira um email valido!');
-
+        return res.status(404).send('Por favor, insira um email/senha valido!');
     }
 
-    /*if (string.validate.isPassword6to15(password) === false) {
+    if (string.validate.isPassword6to15(password) === false) {
+        return res.status(404).send('Por favor, insira uma email/senha valida!');
+    }
 
-        return res.status(404).send('Por favor, insira uma senha valida!');
-
-    }*/
-
-    console.log(email, password);
+    //console.log(email, password);
     // Garante que os campos de entrada existem e nao estao vazios
     if (email && password) {
 
-        const result = await connection.query('SELECT * FROM alunos WHERE email_alunos = ? AND pass_alunos = ?', [email, password])
+        const result = await connection.query('SELECT * FROM alunos WHERE email_aluno = ? AND pass_aluno = ?', [email, password])
         //console.table(result[0]);
         //console.log(result.length);
         if (result.length > 0) {
@@ -80,7 +81,7 @@ const post_login = async (req, res) => {
             res.cookie("curso_aluno", result[0].cursos_id_cursos);
             res.cookie("ano_aluno", result[0].ano_alunos);
 
-            res.status(200).send("E-mail enviado com sucesso!")
+            res.status(200).send("Login efetuado com sucesso!")
 
         }
         else {
