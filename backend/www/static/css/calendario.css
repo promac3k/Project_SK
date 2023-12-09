@@ -77,7 +77,6 @@ td {
 }
 
 
-
 .legenda_calendario {
   display: flex;
   justify-content: left;
@@ -93,9 +92,7 @@ td {
   flex-direction: column;
   align-items: left ;
   background: #FFFFFF !important;
-  border: #e9e6e6 5px solid !important;
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
-    0 10px 10px rgba(0, 0, 0, 0.22);
+  overflow: visible !important;
 }
 
 .dark-mode .legenda_calendario {
@@ -113,9 +110,7 @@ td {
   flex-direction: column;
   align-items: left ;
   background: #444444 !important;
-  border: #3e3e3e 5px solid !important;
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
-    0 10px 10px rgba(0, 0, 0, 0.22);
+  overflow: visible !important;
 }
 
 
@@ -123,11 +118,121 @@ td {
   text-align: left ;
 }
 
-.rectangle {
+.rectangle1 {
   width: 20px; /* Specify the width of the rectangle */
   height: 10px; /* Specify the height of the rectangle */
-  background-color: #3498db; /* Specify the background color of the rectangle */
-  border: 2px solid #2980b9; /* Specify the border color and thickness */
+  background-color: #16365c; /* Specify the background color of the rectangle */
+  border: 2px solid black; /* Specify the border color and thickness */
+  position: absolute;
+  margin-top: 0.1rem;
+}
+
+.rectangle2 {
+  width: 20px; /* Specify the width of the rectangle */
+  height: 10px; /* Specify the height of the rectangle */
+  background-color: #0070c0; /* Specify the background color of the rectangle */
+  border: 2px solid black; /* Specify the border color and thickness */
+  position: absolute;
+  margin-top: 0.1rem;
+}
+
+.rectangle3 {
+  width: 20px; /* Specify the width of the rectangle */
+  height: 10px; /* Specify the height of the rectangle */
+  background-color: #92cddc; /* Specify the background color of the rectangle */
+  border: 2px solid black; /* Specify the border color and thickness */
+  position: absolute;
+  margin-top: 0.1rem;
+}
+
+.rectangle4 {
+  width: 20px; /* Specify the width of the rectangle */
+  height: 10px; /* Specify the height of the rectangle */
+  background-color: #92d050; /* Specify the background color of the rectangle */
+  border: 2px solid black; /* Specify the border color and thickness */
+  position: absolute;
+  margin-top: 0.1rem;
+}
+
+.rectangle5 {
+  width: 20px; /* Specify the width of the rectangle */
+  height: 10px; /* Specify the height of the rectangle */
+  background-color: #ff33cc; /* Specify the background color of the rectangle */
+  border: 2px solid black; /* Specify the border color and thickness */
+  position: absolute;
+  margin-top: 0.1rem;
+}
+
+.rectangle6 {
+  width: 20px; /* Specify the width of the rectangle */
+  height: 10px; /* Specify the height of the rectangle */
+  background-color: #963634; /* Specify the background color of the rectangle */
+  border: 2px solid black; /* Specify the border color and thickness */
+  position: absolute;
+  margin-top: 0.1rem;
+}
+
+.rectangle7 {
+  width: 20px; /* Specify the width of the rectangle */
+  height: 10px; /* Specify the height of the rectangle */
+  background-color: #7030a0; /* Specify the background color of the rectangle */
+  border: 2px solid black; /* Specify the border color and thickness */
+  position: absolute;
+  margin-top: 0.1rem;
+}
+
+.rectangle8 {
+  width: 20px; /* Specify the width of the rectangle */
+  height: 10px; /* Specify the height of the rectangle */
+  background-color: #fde9d9; /* Specify the background color of the rectangle */
+  border: 2px solid black; /* Specify the border color and thickness */
+  position: absolute;
+  margin-top: 0.1rem;
+}
+
+.rectangle9 {
+  width: 20px; /* Specify the width of the rectangle */
+  height: 10px; /* Specify the height of the rectangle */
+  background-color: #e26b0a; /* Specify the background color of the rectangle */
+  border: 2px solid black; /* Specify the border color and thickness */
+  position: absolute;
+  margin-top: 0.1rem;
+}
+
+.rectangle10 {
+  width: 20px; /* Specify the width of the rectangle */
+  height: 10px; /* Specify the height of the rectangle */
+  background-color: white; /* Specify the background color of the rectangle */
+  border: 2px solid #00b0f0; /* Specify the border color and thickness */
+  position: absolute;
+  margin-top: 0.1rem;
+}
+
+.rectangle11 {
+  width: 20px; /* Specify the width of the rectangle */
+  height: 10px; /* Specify the height of the rectangle */
+  background-color: white; /* Specify the background color of the rectangle */
+  border: 2px solid #ffc000; /* Specify the border color and thickness */
+  position: absolute;
+  margin-top: 0.1rem;
+}
+
+.dark-mode .rectangle10 {
+  width: 20px; /* Specify the width of the rectangle */
+  height: 10px; /* Specify the height of the rectangle */
+  background-color: #5a5a5a; /* Specify the background color of the rectangle */
+  border: 2px solid #00b0f0; /* Specify the border color and thickness */
+  position: absolute;
+  margin-top: 0.1rem;
+}
+
+.dark-mode .rectangle11 {
+  width: 20px; /* Specify the width of the rectangle */
+  height: 10px; /* Specify the height of the rectangle */
+  background-color: #5a5a5a; /* Specify the background color of the rectangle */
+  border: 2px solid #ffc000; /* Specify the border color and thickness */
+  position: absolute;
+  margin-top: 0.1rem;
 }
 
 

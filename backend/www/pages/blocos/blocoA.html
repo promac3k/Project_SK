@@ -39,8 +39,7 @@
 
             <h1>Bloco A</h1>
             <div class="cal">
-                <table id="floorTable" data-room-counts="1, 1, 1" data-starting-room-numbers="100, 203, 306"
-                    data-room-prefix="A">
+                <table id="floorTable">
                     <thead>
                         <tr>
                             <th>Floor</th>
@@ -48,8 +47,29 @@
                             <th colspan="100">Rooms</th>
                         </tr>
                     </thead>
-                    <tbody id="tableBody"></tbody>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td id="floor2_room213" onmousemove="highlightCell(this)" onmouseout="resetCell(this)" onclick="showAlert(this)">A213</td>
+                            <td id="floor2_room220" onmousemove="highlightCell(this)" onmouseout="resetCell(this)" onclick="showAlert(this)">A220</td>
+                            <td id="floor2_room231" onmousemove="highlightCell(this)" onmouseout="resetCell(this)" onclick="showAlert(this)">A231</td>
+                            <td id="floor2_room242" onmousemove="highlightCell(this)" onmouseout="resetCell(this)" onclick="showAlert(this)">A242</td>
+                            <td id="floor2_room259" onmousemove="highlightCell(this)" onmouseout="resetCell(this)" onclick="showAlert(this)">A259</td>
+                            <td id="floor2_room260" onmousemove="highlightCell(this)" onmouseout="resetCell(this)" onclick="showAlert(this)">A260</td>
+                            <td id="floor2_room261" onmousemove="highlightCell(this)" onmouseout="resetCell(this)" onclick="showAlert(this)">A261</td>
+                            <td id="floor2_room262" onmousemove="highlightCell(this)" onmouseout="resetCell(this)" onclick="showAlert(this)">A262</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                           
+                    </tbody>
                 </table>
+
+            </div>
 
             </div>
 
@@ -64,8 +84,24 @@
 </body>
 
 <script>
-    window.onload = checkCookie();
-    generateBlocos();
+
+window.onload = checkCookie();
+
+       // JavaScript functions for events
+       function highlightCell(cell) {
+            cell.style.backgroundColor = "red";
+        }
+
+        function resetCell(cell) {
+            cell.style.backgroundColor = "";
+        }
+
+        function showAlert(cell) {
+            alert(cell.id);
+        }
+
+   
+  
 </script>
 
 </html>
