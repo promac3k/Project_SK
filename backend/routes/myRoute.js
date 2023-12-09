@@ -11,6 +11,8 @@ const router = Router();
 // Cada rota é associada a um método do objeto myController
 router.get('/', myController.get_index); // Rota para a página inicial
 
+router.get('/logout', myController.get_logout); // Rota para a página de logout (GET)
+
 router.get('/login', myController.get_login); // Rota para a página de login (GET)
 
 router.post('/login', myController.post_login); // Rota para a página de login (POST)

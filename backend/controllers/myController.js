@@ -10,7 +10,10 @@ const string = require("string-sanitizer");
 const get_index = (req, res) => {
 
     console.log("get_index >>>>> " + req.session.loggedin);
-
+    if (req.cookies.user){
+        console.log("get_index >>>>> " + JSON.parse(req.cookies.user));
+    }
+    
     if (req.session.loggedin) {
         // Output username
         var cookie = req.cookies.user;
@@ -25,6 +28,16 @@ const get_index = (req, res) => {
     }
 }
 
+const get_logout = (req, res) => {
+
+    console.log("get_logout >>>>> " + req.session.loggedin);
+
+    req.session.destroy();
+    res.clearCookie('user');
+    res.clearCookie('connect.sid');
+    res.redirect('/');
+}
+
 
 const get_login = (req, res) => {
     // Envia o arquivo login.html
@@ -37,7 +50,6 @@ const get_login = (req, res) => {
     }
 }
 
-
 // aluno1@example.com
 // uasg2!GH36SV
 // aluno2@example.com
@@ -48,6 +60,7 @@ const post_login = async (req, res) => {
     // Captura os campos de entrada do formulário
     let email = req.body.email;
     let password = req.body.password;
+
 
     // Se algum dos campos estiver vazio, retorna um erro
     if (!email || !password) {
@@ -75,18 +88,16 @@ const post_login = async (req, res) => {
             req.session.save(function (err) {
                 if (err) return next(err);
             });
-            res.cookie("user", result[0].nome_alunos);
-            res.cookie("email_aluno", result[0].email_alunos);
-            res.cookie("turma_aluno", result[0].turma_alunos);
-            res.cookie("curso_aluno", result[0].cursos_id_cursos);
-            res.cookie("ano_aluno", result[0].ano_alunos);
+
+            const user = { nome: result[0].nome_aluno, email: result[0].email_aluno, turma: result[0].turma_aluno, curso: result[0].cursos_id_cursos, ano: result[0].ano_aluno }
+            res.cookie("user",JSON.stringify(user));
+
 
             res.status(200).send("Login efetuado com sucesso!")
 
         }
         else {
             return res.status(404).send('Email ou senha incorretos!');
-
         };
 
     }
@@ -273,6 +284,7 @@ const get_blocoF = (req, res) => {
 // Exporta todos os métodos como um objeto para serem usados em outros arquivos
 module.exports = {
     get_index,
+    get_logout,
     get_login,
     post_login,
     get_contacts,
