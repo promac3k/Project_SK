@@ -50,9 +50,8 @@ td {
 .cal thead th {
   padding-left: 7px;
   padding-right: 7px;
-  background: #FF416C;
-  background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
-  background: linear-gradient(to right, #FF4B2B, #FF416C);
+  background: #ff1c0c;
+  
 }
 
 .cal td.month {
