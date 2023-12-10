@@ -44,10 +44,6 @@ Blocos salas*/
   text-align: center;
 }
 
-#switchon {  
-position: absolute;
-top: 1000%;
-}
 
 .sidebar ul {
   display: flex;
