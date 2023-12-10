@@ -80,7 +80,8 @@ const post_login = async (req, res) => {
     // Garante que os campos de entrada existem e nao estao vazios
     if (email && password) {
 
-        const result = await connection.query('SELECT * FROM alunos WHERE email_aluno = ?', [email])
+        //const result = await connection.query('SELECT * FROM alunos WHERE email_aluno = ?', [email])
+        const result = await connection.query('SELECT alunos.*, cursos.nome_curso FROM alunos LEFT JOIN cursos ON alunos.cursos_id_cursos = cursos.id_cursos WHERE email_aluno = ?', [email])
         //console.table(result[0]);
         //console.log(result.length);
         if (result.length > 0) {
@@ -97,7 +98,7 @@ const post_login = async (req, res) => {
                         if (err) return next(err);
                     });
 
-                    const user = { nome: db.nome_aluno, email: db.email_aluno, turma: db.turma_aluno, curso: db.cursos_id_cursos, ano: db.ano_aluno }
+                    const user = { nome: db.nome_aluno, email: db.email_aluno, turma: db.turma_aluno, curso: db.nome_curso, ano: db.ano_aluno }
                     res.cookie("user", JSON.stringify(user));
 
 

@@ -29,7 +29,8 @@
         <img
           src="https://imgs.search.brave.com/wVvWqZjpOgQq0WR4gQEDL5FbT9OcgL64hPnC7RoI33o/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9zdGF0/aWMtMDAuaWNvbmR1/Y2suY29tL2Fzc2V0/cy4wMC9wcm9ncmFt/bWVyLWljb24tMTAy/NHgxMDI0LW93ZTIy/bzd0LnBuZw"
           alt="" style="width:80%" class>
-        <p class="title" id="turma-curso"></p>
+        <p class="title" id="curso"></p>  
+        <p class="title" id="turma"></p>
         <p class="title_2">ESTS</p>
       </div>
       <div class="profile_settings">
@@ -201,7 +202,8 @@
   if (userCookie) {
     const user = JSON.parse(decodeURIComponent(userCookie));
     document.getElementById('nome').textContent = user.nome;
-    document.getElementById('turma-curso').textContent = user.curso + '  ' + user.turma;
+    document.getElementById('turma').textContent = user.turma;
+    document.getElementById('curso').textContent = user.curso;
   }
 
 
