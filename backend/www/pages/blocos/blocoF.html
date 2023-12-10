@@ -30,32 +30,128 @@
                     </li>
                     <li><a href="/contact">Contacto</a></li>
                     <li><a href="/eventos">Eventos</a></li>
-                    <li  class="adada"><a href="/perfil">Conta</a></li>
+                    <li class="adada"><a href="/perfil">Conta</a></li>
                 </ul>
             </nav>
+            <br>
 
+            <a href="/"> <button class="button_back"> Voltar </button> </a>
 
-            <a href="/"> <button class="button_back"> Voltar </button> </a> 
-
-            <h1>Bloco F</h1>
+            <h1>Bloco F</h1><br>
             <div class="cal">
-                <table id="floorTable" 
-                data-room-counts="21, 36, 26" 
-                data-starting-room-numbers="100, 203, 303"
-                data-room-prefix="D"
-                data-transition-room-number="326"
-                data-custom-room-number="351">
-             <thead>
-                 <tr>
-                     <th>Floor</th>
-                     <!-- Add a colspan attribute to the header cell for rooms -->
-                     <th colspan="100">Rooms</th>
-                 </tr>
-             </thead>
-             <tbody id="tableBody"></tbody>
-         </table>
+                <table id="floorTable">
+                    <thead>
+                        <tr>
+                            <th>Pisos</th>
+                            <!-- Add a colspan attribute to the header cell for rooms -->
+                            <th colspan="100">Salas</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td id="floor2_room213" onmousemove="highlightCell(this)" onmouseout="resetCell(this)"
+                                onclick="showAlert(this)">F103</td>
+                            <td id="floor2_room220" onmousemove="highlightCell(this)" onmouseout="resetCell(this)"
+                                onclick="showAlert(this)">F104</td>
+                            <td id="floor2_room231" onmousemove="highlightCell(this)" onmouseout="resetCell(this)"
+                                onclick="showAlert(this)">F105</td>
+                            <td id="floor2_room242" onmousemove="highlightCell(this)" onmouseout="resetCell(this)"
+                                onclick="showAlert(this)">F106</td>
+                            <td id="floor2_room259" onmousemove="highlightCell(this)" onmouseout="resetCell(this)"
+                                onclick="showAlert(this)">F107</td>
+                            <td id="floor2_room260" onmousemove="highlightCell(this)" onmouseout="resetCell(this)"
+                                onclick="showAlert(this)">F108</td>
+                            <td id="floor2_room261" onmousemove="highlightCell(this)" onmouseout="resetCell(this)"
+                                onclick="showAlert(this)">F109</td>
+                            <td id="floor2_room262" onmousemove="highlightCell(this)" onmouseout="resetCell(this)"
+                                onclick="showAlert(this)">F110</td>
+                            <td id="floor2_room213" onmousemove="highlightCell(this)" onmouseout="resetCell(this)"
+                                onclick="showAlert(this)">F111</td>
+                            <td id="floor2_room213" onmousemove="highlightCell(this)" onmouseout="resetCell(this)"
+                                onclick="showAlert(this)">F151</td>
+                            <td id="floor2_room213" onmousemove="highlightCell(this)" onmouseout="resetCell(this)"
+                                onclick="showAlert(this)">F152</td>
+                            <td id="floor2_room213" onmousemove="highlightCell(this)" onmouseout="resetCell(this)"
+                                onclick="showAlert(this)">F153</td>
+                            <td id="floor2_room213" onmousemove="highlightCell(this)" onmouseout="resetCell(this)"
+                                onclick="showAlert(this)">F154</td>
+                            <td id="floor2_room260" onmousemove="highlightCell(this)" onmouseout="resetCell(this)"
+                                onclick="showAlert(this)">F155</td>
+                            <td id="floor2_room261" onmousemove="highlightCell(this)" onmouseout="resetCell(this)"
+                                onclick="showAlert(this)">F156</td>
+                            <td id="floor2_room262" onmousemove="highlightCell(this)" onmouseout="resetCell(this)"
+                                onclick="showAlert(this)">F158</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td id="floor2_room213" onmousemove="highlightCell(this)" onmouseout="resetCell(this)"
+                                onclick="showAlert(this)">F203</td>
+                            <td id="floor2_room220" onmousemove="highlightCell(this)" onmouseout="resetCell(this)"
+                                onclick="showAlert(this)">F204</td>
+                            <td id="floor2_room231" onmousemove="highlightCell(this)" onmouseout="resetCell(this)"
+                                onclick="showAlert(this)">F205</td>
+                            <td id="floor2_room242" onmousemove="highlightCell(this)" onmouseout="resetCell(this)"
+                                onclick="showAlert(this)">F206</td>
+                            <td id="floor2_room259" onmousemove="highlightCell(this)" onmouseout="resetCell(this)"
+                                onclick="showAlert(this)">F207</td>
+                            <td id="floor2_room260" onmousemove="highlightCell(this)" onmouseout="resetCell(this)"
+                                onclick="showAlert(this)">F208</td>
+                            <td id="floor2_room261" onmousemove="highlightCell(this)" onmouseout="resetCell(this)"
+                                onclick="showAlert(this)">F209</td>
+                            <td id="floor2_room262" onmousemove="highlightCell(this)" onmouseout="resetCell(this)"
+                                onclick="showAlert(this)">F210</td>
+                            <td id="floor2_room213" onmousemove="highlightCell(this)" onmouseout="resetCell(this)"
+                                onclick="showAlert(this)">F211</td>
+                            <td id="floor2_room213" onmousemove="highlightCell(this)" onmouseout="resetCell(this)"
+                                onclick="showAlert(this)">F212</td>
+                            <td id="floor2_room213" onmousemove="highlightCell(this)" onmouseout="resetCell(this)"
+                                onclick="showAlert(this)">F251</td>
+                            <td id="floor2_room213" onmousemove="highlightCell(this)" onmouseout="resetCell(this)"
+                                onclick="showAlert(this)">F252</td>
+                            <td id="floor2_room213" onmousemove="highlightCell(this)" onmouseout="resetCell(this)"
+                                onclick="showAlert(this)">F253</td>
+                            <td id="floor2_room260" onmousemove="highlightCell(this)" onmouseout="resetCell(this)"
+                                onclick="showAlert(this)">F254</td>
+                            <td id="floor2_room261" onmousemove="highlightCell(this)" onmouseout="resetCell(this)"
+                                onclick="showAlert(this)">F255</td>
+                            <td id="floor2_room262" onmousemove="highlightCell(this)" onmouseout="resetCell(this)"
+                                onclick="showAlert(this)">F256</td>
+                                <td id="floor2_room213" onmousemove="highlightCell(this)" onmouseout="resetCell(this)"
+                                onclick="showAlert(this)">F257</td>
+                            <td id="floor2_room213" onmousemove="highlightCell(this)" onmouseout="resetCell(this)"
+                                onclick="showAlert(this)">F258</td>
+                            <td id="floor2_room213" onmousemove="highlightCell(this)" onmouseout="resetCell(this)"
+                                onclick="showAlert(this)">F259</td>
+                            <td id="floor2_room213" onmousemove="highlightCell(this)" onmouseout="resetCell(this)"
+                                onclick="showAlert(this)">F260</td>
+                            <td id="floor2_room260" onmousemove="highlightCell(this)" onmouseout="resetCell(this)"
+                                onclick="showAlert(this)">F261</td>
+                            <td id="floor2_room261" onmousemove="highlightCell(this)" onmouseout="resetCell(this)"
+                                onclick="showAlert(this)">F262</td>
+                            <td id="floor2_room262" onmousemove="highlightCell(this)" onmouseout="resetCell(this)"
+                                onclick="showAlert(this)">F263</td>
+                            <td id="floor2_room213" onmousemove="highlightCell(this)" onmouseout="resetCell(this)"
+                                onclick="showAlert(this)">F264</td>
+                            <td id="floor2_room213" onmousemove="highlightCell(this)" onmouseout="resetCell(this)"
+                                onclick="showAlert(this)">F265</td>
+                            <td id="floor2_room213" onmousemove="highlightCell(this)" onmouseout="resetCell(this)"
+                                onclick="showAlert(this)">F266</td>
+                            <td id="floor2_room260" onmousemove="highlightCell(this)" onmouseout="resetCell(this)"
+                                onclick="showAlert(this)">F267</td>
+                            <td id="floor2_room261" onmousemove="highlightCell(this)" onmouseout="resetCell(this)"
+                                onclick="showAlert(this)">F268</td>
+                            <td id="floor2_room262" onmousemove="highlightCell(this)" onmouseout="resetCell(this)"
+                                onclick="showAlert(this)">F269</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
 
-            </div>
+                    </tbody>
+                </table>
+
+            </div><br><br>
+
             <footer>
                 <p>
                     Criado <i class="fa fa-heart"></i> por
@@ -63,6 +159,7 @@
                 </p>
             </footer>
         </div>
+
     </main>
 </body>
 

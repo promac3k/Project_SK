@@ -30,48 +30,54 @@
                     </li>
                     <li><a href="/contact">Contacto</a></li>
                     <li><a href="/eventos">Eventos</a></li>
-                    <li  class="adada"><a href="/perfil">Conta</a></li>
+                    <li class="adada"><a href="/perfil">Conta</a></li>
                 </ul>
             </nav>
 
 
-            <a href="/"> <button class="button_back"> Voltar </button> </a> 
+            <a href="/"> <button class="button_back"> Voltar </button> </a>
 
-            <h1>Bloco A</h1>
+            <h1>Bloco A</h1><br>
             <div class="cal">
                 <table id="floorTable">
                     <thead>
                         <tr>
-                            <th>Floor</th>
+                            <th>Pisos</th>
                             <!-- Add a colspan attribute to the header cell for rooms -->
-                            <th colspan="100">Rooms</th>
+                            <th colspan="100">Salas</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>1</td>
-                            
+
                         </tr>
                         <tr>
                             <td>2</td>
-                            <td id="floor2_room213" onmousemove="highlightCell(this)" onmouseout="resetCell(this)" onclick="showAlert(this)">A213</td>
-                            <td id="floor2_room220" onmousemove="highlightCell(this)" onmouseout="resetCell(this)" onclick="showAlert(this)">A220</td>
-                            <td id="floor2_room231" onmousemove="highlightCell(this)" onmouseout="resetCell(this)" onclick="showAlert(this)">A231</td>
-                            <td id="floor2_room242" onmousemove="highlightCell(this)" onmouseout="resetCell(this)" onclick="showAlert(this)">A242</td>
-                            <td id="floor2_room259" onmousemove="highlightCell(this)" onmouseout="resetCell(this)" onclick="showAlert(this)">A259</td>
-                            <td id="floor2_room260" onmousemove="highlightCell(this)" onmouseout="resetCell(this)" onclick="showAlert(this)">A260</td>
-                            <td id="floor2_room261" onmousemove="highlightCell(this)" onmouseout="resetCell(this)" onclick="showAlert(this)">A261</td>
-                            <td id="floor2_room262" onmousemove="highlightCell(this)" onmouseout="resetCell(this)" onclick="showAlert(this)">A262</td>
+                            <td id="floor2_room213" onmousemove="highlightCell(this)" onmouseout="resetCell(this)"
+                                onclick="showAlert(this)">A213</td>
+                            <td id="floor2_room220" onmousemove="highlightCell(this)" onmouseout="resetCell(this)"
+                                onclick="showAlert(this)">A220</td>
+                            <td id="floor2_room231" onmousemove="highlightCell(this)" onmouseout="resetCell(this)"
+                                onclick="showAlert(this)">A231</td>
+                            <td id="floor2_room242" onmousemove="highlightCell(this)" onmouseout="resetCell(this)"
+                                onclick="showAlert(this)">A242</td>
+                            <td id="floor2_room259" onmousemove="highlightCell(this)" onmouseout="resetCell(this)"
+                                onclick="showAlert(this)">A259</td>
+                            <td id="floor2_room260" onmousemove="highlightCell(this)" onmouseout="resetCell(this)"
+                                onclick="showAlert(this)">A260</td>
+                            <td id="floor2_room261" onmousemove="highlightCell(this)" onmouseout="resetCell(this)"
+                                onclick="showAlert(this)">A261</td>
+                            <td id="floor2_room262" onmousemove="highlightCell(this)" onmouseout="resetCell(this)"
+                                onclick="showAlert(this)">A262</td>
                         </tr>
                         <tr>
                             <td>3</td>
-                           
+
                     </tbody>
                 </table>
 
-            </div>
-
-            </div>
+            </div><br><br>
 
             <footer>
                 <p>
@@ -80,28 +86,30 @@
                 </p>
             </footer>
         </div>
+
+        </div>
     </main>
 </body>
 
 <script>
 
-window.onload = checkCookie();
+    window.onload = checkCookie();
 
-       // JavaScript functions for events
-       function highlightCell(cell) {
-            cell.style.backgroundColor = "red";
-        }
+    // JavaScript functions for events
+    function highlightCell(cell) {
+        cell.style.backgroundColor = "red";
+    }
 
-        function resetCell(cell) {
-            cell.style.backgroundColor = "";
-        }
+    function resetCell(cell) {
+        cell.style.backgroundColor = "";
+    }
 
-        function showAlert(cell) {
-            alert(cell.id);
-        }
+    function showAlert(cell) {
+        alert(cell.id);
+    }
 
-   
-  
+
+
 </script>
 
 </html>
