@@ -80,7 +80,6 @@ const post_login = async (req, res) => {
     // Garante que os campos de entrada existem e nao estao vazios
     if (email && password) {
 
-        //const result = await connection.query('SELECT * FROM alunos WHERE email_aluno = ?', [email])
         const result = await connection.query('SELECT alunos.*, cursos.nome_curso FROM alunos LEFT JOIN cursos ON alunos.cursos_id_cursos = cursos.id_cursos WHERE email_aluno = ?', [email])
         //console.table(result[0]);
         //console.log(result.length);
