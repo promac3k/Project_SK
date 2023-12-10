@@ -572,3 +572,142 @@ th {
     0 10px 10px rgba(0, 0, 0, 0.22);
   overflow: hidden;
 }
+
+
+
+/* media query para deixar o site responsivo para tablet*/
+@media (min-width: 768px) and (max-width: 1023px) {
+  .legenda_calendario {
+    width: 60% !important; 
+    position: unset !important;
+    margin-left: 140px !important;
+    margin-bottom: 100px !important;
+  }
+
+  .legenda_calendario li {
+    font-size: 20px;
+  }
+
+  .img-container img {
+    display: none;
+  }
+
+  .sidebar {
+    width: 20%;
+    margin-top: 5.4rem;
+  }
+
+  .profile_info {
+    width: 30%;
+  }
+
+  .profile_settings {
+    width: 15%;
+  }
+
+  .flex-container {
+    margin-top: 15rem;
+    margin-left: 15rem;
+    margin-right: 0;
+    width: 57%;
+    height: 42%;
+}
+}
+  
+
+/* media query para deixar o site responsivo para mobile */
+@media (min-width: 320px) and (max-width: 480px) {
+
+  .img-container img {
+    display: none;
+  }
+
+  li{
+    width: 90px;
+  }
+
+  .p_1{
+    display: none;
+  }
+
+  .legenda{
+    width: 100%;
+    margin: 5px 0 5px;
+  }
+
+  .legenda_calendario {
+    width: 80% !important; 
+    position: unset !important;
+    margin-left: 18px !important;
+    margin-bottom: 100px !important;
+  }
+
+  .sidebar {
+    float: unset;
+    width: 40%;
+    height: 23rem;
+    margin-right: 0;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .blocos{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #444444;
+  }
+
+  
+  .sidebar li a{
+    text-align: center;
+  }
+
+  .blocos_li{
+    width: 100%;
+    margin-bottom: 23px;
+  }
+
+  .profile_info {
+    width: 30%;
+  }
+
+  h1{
+    font-size: 20px;
+    margin-top: 75%;
+  }
+
+  .title {
+    font-size: 15px;
+  }
+
+  .container_profile {
+    background-color: #FFFFFF;
+    height: 100%;
+    text-align: center;
+    margin: 1rem;
+    border-radius: 5%;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    position: relative;
+    overflow: hidden;
+    width: 90%;
+    top: 1%;
+    left: 1%;
+    transform: none;
+  }
+
+  .profile_settings {
+    width: 16%;
+    top: 62%;
+  }
+
+  .flex-container {
+    margin-top: 1rem;
+    margin-left: 8rem;
+    margin-right: 0;
+    margin-bottom: 7rem;
+    width: 57%;
+  }
+}
