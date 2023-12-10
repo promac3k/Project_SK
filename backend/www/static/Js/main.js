@@ -117,15 +117,17 @@ function generateCalendar() {
       td.onclick = function () {
         alert(this.id);
       };
-      td.onmousemove = function () {
-        // Adiciona um estilo à borda quando o mouse se move sobre a célula
-        this.style.backgroundColor = "red";
+      const span = document.createElement('span');
+      span.onmouseover = function () {
+        // Altera a cor do número quando o mouse passa sobre ele
+        this.style.color = "red";
       };
-      td.onmouseout = function () {
-        // Remove o estilo da borda quando o mouse sai da célula
-        this.style.backgroundColor = "";
+      span.onmouseout = function () {
+        // Retorna à cor original quando o mouse sai do número
+        this.style.color = "";
       };
-      td.textContent = day;
+      span.textContent = day;
+      td.appendChild(span);
       monthRow.appendChild(td);
     }
 
