@@ -577,5 +577,69 @@ td {
     margin-left: 3vw;
     margin-right: 3vw;
   }
+
+  .rectangle1 {
+    width: 30px;
+    height: 16px;
+  }
   
+  .rectangle2 {
+    width: 30px;
+    height: 16px;
+  }
+  
+  .rectangle3 {
+    width: 30px;
+    height: 16px;
+  }
+  
+  .rectangle4 {
+    width: 30px;
+    height: 16px;
+  }
+  
+  .rectangle5 {
+    width: 30px;
+    height: 16px;
+  }
+  
+  .rectangle6 {
+    width: 30px;
+    height: 16px;
+  }
+  
+  .rectangle7 {
+    width: 30px;
+    height: 16px;
+  }
+  
+  .rectangle8 {
+    width: 30px;
+    height: 16px;
+  }
+  
+  .rectangle9 {
+    width: 30px;
+    height: 16px;
+  }
+  
+  .rectangle10 {
+    width: 30px;
+    height: 16px;
+  }
+  
+  .rectangle11 {
+    width: 30px;
+    height: 16px;
+  }
+  
+  .dark-mode .rectangle10 {
+    width: 30px;
+    height: 16px;
+  }
+  
+  .dark-mode .rectangle11 {
+    width: 30px;
+    height: 16px;
+  }
 }
