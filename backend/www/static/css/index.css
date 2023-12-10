@@ -274,7 +274,6 @@ input:checked+.slider:before {
 
 .container_profile {
   background-color: #FFFFFF;
-  /* HEAD CHANGE */
   height: 95%;
   width: 80%;
   text-align: center;
@@ -316,38 +315,6 @@ input:checked+.slider:before {
   border:rgb(255, 255, 255)3px solid;
 }
 
-.legenda_profile {
-  display: flex;
-  justify-content: left;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 5rem;
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
-    0 10px 10px rgba(0, 0, 0, 0.22);
-  width: 40%;
-  position: relative;
-  left: 38.2%;
-  padding: 1rem;
-  overflow: hidden;
-  border-radius: 20px;
-  border: 3px solid #ff1c0c;
-}
-
-.legenda_profile ul {
-  list-style-type: none;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: left ;
-  background: #FFFFFF !important;
-  overflow: visible !important;
-}
-
-.legenda_profile li {
-  text-align: left ;
-  margin-bottom: 0.3rem;
-}
-
 .title {
   color: black;
   font-size: 24px;
@@ -360,17 +327,20 @@ input:checked+.slider:before {
   text-align: center;
 }
 
-.button_profile {
+.button_contacto {
   border: none;
   outline: 0;
   display: inline-block;
   padding: 8px;
   background: #ff4c34;
+  border: 1px solid #FF4B2B;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25), 0 4px 4px rgba(0, 0, 0, 0.22);
+  border-color: #FFFFFF;
   background-repeat: no-repeat;
   text-align: center;
   cursor: pointer;
   font-size: 18px;
-  border-radius: 5px;
+  border-radius: 12px;
   margin: 1rem;
 }
 
@@ -393,23 +363,6 @@ a:hover {
   border: 1px solid #555;
 }
 
-.rectangle1 {
-  width: 20px; /* Specify the width of the rectangle */
-  height: 10px; /* Specify the height of the rectangle */
-  background-color: #16365c; /* Specify the background color of the rectangle */
-  border: 2px solid black; /* Specify the border color and thickness */
-  position: absolute;
-  margin-top: 0.1rem;
-}
-
-.rectangle2 {
-  width: 20px; /* Specify the width of the rectangle */
-  height: 10px; /* Specify the height of the rectangle */
-  background-color: #0070c0; /* Specify the background color of the rectangle */
-  border: 2px solid black; /* Specify the border color and thickness */
-  position: absolute;
-  margin-top: 0.1rem;
-}
 
 /* Dark mode*/
 
@@ -508,8 +461,12 @@ a:hover {
   background-color: #5a5a5a;
 }
 
-/* footer */
+.dark-mode .button_contacto {
+  border-color: #FFFFFF;
+  color: #FFFFFF;
+}
 
+/* footer */
 footer {
   color: #fff;
   font-size: 14px;

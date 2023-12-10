@@ -39,7 +39,6 @@ const get_logout = (req, res) => {
     res.redirect('/');
 }
 
-
 const get_login = (req, res) => {
     // Envia o arquivo login.html
     console.log("get_login >>>>> " + req.session.loggedin);
@@ -51,9 +50,6 @@ const get_login = (req, res) => {
     }
 }
 
-// aluno1@example.com - uasg2!GH36SV
-// aluno2@example.com - TUpA72U!63Y
-// aluno3@example.com - HS63u!mPuagM
 const post_login = async (req, res) => {
     // Captura os campos de entrada do formulário
     let email = req.body.email;

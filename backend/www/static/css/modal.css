@@ -17,6 +17,8 @@
   width: 30%;
   border-bottom-right-radius: 20px;
   border-bottom-left-radius: 20px;
+  position: relative;
+  top: -5px;
 }
 
 .modal-header{
@@ -32,7 +34,7 @@
 
 /* The Close Button */
 .fechar {
-  color: #aaaaaa;
+  color: #000;
   font-size: 28px;
   font-weight: bold;
 }
@@ -73,6 +75,10 @@ img:hover {
 
 .dark-mode .modal-content{
   background-color: #444444;
+}
+
+.dark-mode .fechar {
+  color: #FFFFFF;
 }
 
 @media (min-width: 1024px) and (max-width: 1280px) {
