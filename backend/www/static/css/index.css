@@ -305,7 +305,7 @@ input:checked+.slider:before {
 .profile_settings {
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
   position: absolute;
-  top: 60%;
+  top: 64%;
   left: 7.2%;
   height: 25%;
   width: 7%;
@@ -314,6 +314,38 @@ input:checked+.slider:before {
   display: grid;
   place-items: center;
   border:rgb(255, 255, 255)3px solid;
+}
+
+.legenda_profile {
+  display: flex;
+  justify-content: left;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 5rem;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+    0 10px 10px rgba(0, 0, 0, 0.22);
+  width: 40%;
+  position: relative;
+  left: 38.2%;
+  padding: 1rem;
+  overflow: hidden;
+  border-radius: 20px;
+  border: 3px solid #ff1c0c;
+}
+
+.legenda_profile ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: left ;
+  background: #FFFFFF !important;
+  overflow: visible !important;
+}
+
+.legenda_profile li {
+  text-align: left ;
+  margin-bottom: 0.3rem;
 }
 
 .title {
@@ -361,7 +393,23 @@ a:hover {
   border: 1px solid #555;
 }
 
+.rectangle1 {
+  width: 20px; /* Specify the width of the rectangle */
+  height: 10px; /* Specify the height of the rectangle */
+  background-color: #16365c; /* Specify the background color of the rectangle */
+  border: 2px solid black; /* Specify the border color and thickness */
+  position: absolute;
+  margin-top: 0.1rem;
+}
 
+.rectangle2 {
+  width: 20px; /* Specify the width of the rectangle */
+  height: 10px; /* Specify the height of the rectangle */
+  background-color: #0070c0; /* Specify the background color of the rectangle */
+  border: 2px solid black; /* Specify the border color and thickness */
+  position: absolute;
+  margin-top: 0.1rem;
+}
 
 /* Dark mode*/
 
@@ -408,60 +456,34 @@ a:hover {
   overflow: hidden;
 }
 
+.dark-mode .legenda_profile ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: left ;
+  background: #444444 !important;
+
+}
+
 .dark-mode .container_profile {
   background-color: #444444;
-  /* HEAD CHANGE */
-  height: 95%;
-  width: 80%;
-  text-align: center;
-  margin: 1rem;
-  border-radius: 5%;
-  border: none;
-  border-radius: 50px;
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
-    0 10px 10px rgba(0, 0, 0, 0.22);
-  overflow: hidden;
-  position: absolute;
-  top: 49%;
-  left: 50%;
-  margin-right: -50%;
-  transform: translate(-50%, -50%);
 }
 
 .dark-mode .profile_info {
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-  position: absolute;
-  height: 100%;
-  width: 22%;
- 
-  overflow: hidden;
   border-right: #1a1a1a 3px solid;
 }
 
 .dark-mode .profile_settings {
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-  position: absolute;
-  top: 60%;
-  left: 7.2%;
-  height: 25%;
-  width: 7%;
-  border-radius: 50px;
-  overflow: hidden;
-  display: grid;
-  place-items: center;
   border: #1a1a1a 3px solid;
 }
 
 .dark-mode .title {
   color: white;
-  font-size: 24px;
-  text-align: center;
 }
 
 .dark-mode .title_2 {
   color: white;
-  font-size: 16px;
-  text-align: center;
 }
 
 .dark-mode .dropdown-content {

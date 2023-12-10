@@ -13,6 +13,7 @@
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
     0 10px 10px rgba(0, 0, 0, 0.22);
   overflow: hidden;
+ 
   
 }
 
@@ -77,25 +78,337 @@ td {
 }
 
 
+
+/* Inicio Ano Letivo Licenciaturas,2º Ano */ 
+
+#Outubro-2-2023
+{
+  background-color: #16365c !important;
+}
+
+/* Inicio Ano Letivo 1º Ano */ 
+
+#Outubro-9-2023
+{
+  background-color: #0070c0 !important;
+  color: #333;
+}
+
+/* Atividades AAIPS */ 
+
+#Outubro-12-2023,
+#Maio-23-2023,
+#Maio-24-2023
+{
+  background-color: #ff33cc !important;
+  color: #333;
+}
+
+/* Exames de 1º e 2º Epoca */ 
+
+#Janeiro-31-2023,
+#Fevereiro-1-2023,
+#Fevereiro-2-2023,
+#Fevereiro-3-2023,
+#Fevereiro-5-2023,
+#Fevereiro-6-2023,
+#Fevereiro-7-2023,
+#Fevereiro-8-2023,
+#Fevereiro-9-2023,
+#Fevereiro-10-2023,
+#Fevereiro-12-2023,
+#Fevereiro-14-2023,
+#Fevereiro-15-2023,
+#Fevereiro-16-2023,
+#Fevereiro-17-2023,
+#Fevereiro-19-2023,
+#Fevereiro-20-2023,
+#Fevereiro-21-2023,
+#Fevereiro-22-2023,
+#Fevereiro-23-2023,
+#Fevereiro-24-2023,
+#Fevereiro-26-2023,
+#Fevereiro-27-2023,
+#Fevereiro-28-2023,
+#Fevereiro-29-2023,
+#Julho-1-2023,
+#Julho-2-2023,
+#Julho-3-2023,
+#Julho-4-2023,
+#Julho-5-2023,
+#Julho-6-2023,
+#Julho-8-2023,
+#Julho-9-2023,
+#Julho-10-2023,
+#Julho-11-2023,
+#Julho-12-2023,
+#Julho-13-2023,
+#Julho-15-2023,
+#Julho-16-2023,
+#Julho-17-2023,
+#Julho-18-2023,
+#Julho-19-2023,
+#Julho-20-2023,
+#Julho-22-2023,
+#Julho-23-2023,
+#Julho-24-2023,
+#Julho-25-2023,
+#Julho-26-2023,
+#Julho-27-2023
+{
+  background-color: #fde9d9 !important;
+  color: #333;
+}
+
+/* Epoca Especial */ 
+
+#Setembro-2-2024,
+#Setembro-3-2024,
+#Setembro-4-2024,
+#Setembro-5-2024,
+#Setembro-6-2024,
+#Setembro-9-2024,
+#Setembro-10-2024,
+#Setembro-11-2024,
+#Setembro-12-2024,
+#Setembro-13-2024,
+#Setembro-14-2024,
+#Setembro-16-2024,
+#Setembro-17-2024
+{
+  background-color: #e26b0a !important;
+  color: #333;
+}
+
+/* Atividades Letivas */ 
+
+#Outubro-3-2023,
+#Outubro-4-2023,
+#Outubro-6-2023,
+#Outubro-10-2023,
+#Outubro-11-2023,
+#Outubro-13-2023,
+#Outubro-16-2023,
+#Outubro-17-2023,
+#Outubro-18-2023,
+#Outubro-19-2023,
+#Outubro-20-2023,
+#Outubro-23-2023,
+#Outubro-24-2023,
+#Outubro-25-2023,
+#Outubro-26-2023,
+#Outubro-27-2023,
+#Outubro-30-2023,
+#Outubro-31-2023,
+#Novembro-2-2023,
+#Novembro-3-2023,
+#Novembro-6-2023,
+#Novembro-7-2023,
+#Novembro-8-2023,
+#Novembro-9-2023,
+#Novembro-10-2023,
+#Novembro-13-2023,
+#Novembro-14-2023,
+#Novembro-15-2023,
+#Novembro-16-2023,
+#Novembro-17-2023,
+#Novembro-20-2023,
+#Novembro-21-2023,
+#Novembro-22-2023,
+#Novembro-23-2023,
+#Novembro-24-2023,
+#Novembro-27-2023,
+#Novembro-28-2023,
+#Novembro-29-2023,
+#Novembro-30-2023,
+#Dezembro-1-2023,
+#Dezembro-4-2023,
+#Dezembro-5-2023,
+#Dezembro-6-2023,
+#Dezembro-7-2023,
+#Dezembro-11-2023,
+#Dezembro-12-2023,
+#Dezembro-13-2023,
+#Dezembro-14-2023,
+#Dezembro-15-2023,
+#Dezembro-18-2023,
+#Dezembro-19-2023,
+#Dezembro-20-2023,
+#Dezembro-21-2023,
+#Janeiro-3-2023,
+#Janeiro-4-2023,
+#Janeiro-5-2023,
+#Janeiro-8-2023,
+#Janeiro-9-2023,
+#Janeiro-10-2023,
+#Janeiro-11-2023,
+#Janeiro-12-2023,
+#Janeiro-15-2023,
+#Janeiro-16-2023,
+#Janeiro-17-2023,
+#Janeiro-18-2023,
+#Janeiro-19-2023,
+#Janeiro-22-2023,
+#Janeiro-23-2023,
+#Janeiro-24-2023,
+#Janeiro-25-2023,
+#Janeiro-26-2023,
+#Março-4-2023,
+#Março-5-2023,
+#Março-6-2023,
+#Março-7-2023,
+#Março-8-2023,
+#Março-11-2023,
+#Março-12-2023,
+#Março-13-2023,
+#Março-14-2023,
+#Março-15-2023,
+#Março-18-2023,
+#Março-19-2023,
+#Março-20-2023,
+#Março-21-2023,
+#Março-22-2023,
+#Abril-2-2023,
+#Abril-3-2023,
+#Abril-4-2023,
+#Abril-5-2023,
+#Abril-8-2023,
+#Abril-9-2023,
+#Abril-10-2023,
+#Abril-11-2023,
+#Abril-12-2023,
+#Abril-15-2023,
+#Abril-16-2023,
+#Abril-17-2023,
+#Abril-18-2023,
+#Abril-19-2023,
+#Abril-22-2023,
+#Abril-23-2023,
+#Abril-24-2023,
+#Abril-26-2023,
+#Abril-29-2023,
+#Abril-30-2023,
+#Maio-2-2023,
+#Maio-3-2023,
+#Maio-6-2023,
+#Maio-7-2023,
+#Maio-8-2023,
+#Maio-9-2023,
+#Maio-10-2023,
+#Maio-13-2023,
+#Maio-14-2023,
+#Maio-15-2023,
+#Maio-16-2023,
+#Maio-17-2023,
+#Maio-20-2023,
+#Maio-21-2023,
+#Maio-22-2023,
+#Maio-27-2023,
+#Maio-28-2023,
+#Maio-29-2023,
+#Maio-31-2023,
+#Junho-3-2023,
+#Junho-4-2023,
+#Junho-5-2023,
+#Junho-6-2023,
+#Junho-7-2023,
+#Junho-11-2023,
+#Junho-12-2023,
+#Junho-13-2023,
+#Junho-14-2023,
+#Junho-17-2023,
+#Junho-18-2023,
+#Junho-19-2023,
+#Junho-20-2023,
+#Junho-21-2023,
+#Junho-24-2023,
+#Junho-25-2023,
+#Junho-26-2023,
+#Junho-27-2023
+{
+  background-color: #92cddc !important;
+  color: #333;
+}
+
+/* Férias e feriados */ 
+
+#Setembro-15-2023, 
+#Outubro-5-2023,
+#Novembro-1-2023,
+#Dezembro-1-2023,
+#Dezembro-8-2023,
+#Dezembro-22-2023,
+#Dezembro-25-2023,
+#Dezembro-26-2023,
+#Dezembro-27-2023,
+#Dezembro-28-2023,
+#Dezembro-29-2023,
+#Janeiro-1-2023,
+#Janeiro-2-2023,
+#Fevereiro-13-2023,
+#Março-25-2023,
+#Março-26-2023,
+#Março-27-2023,
+#Março-28-2023,
+#Março-29-2023,
+#Abril-1-2023,
+#Abril-25-2023,
+#Maio-1-2023,
+#Maio-30-2023,
+#Junho-10-2023,
+#Agosto-1-2023,
+#Agosto-2-2023,
+#Agosto-5-2023,
+#Agosto-6-2023,
+#Agosto-7-2023,
+#Agosto-8-2023,
+#Agosto-9-2023,
+#Agosto-12-2023,
+#Agosto-13-2023,
+#Agosto-14-2023,
+#Agosto-15-2023,
+#Agosto-16-2023,
+#Agosto-19-2023,
+#Agosto-20-2023,
+#Agosto-21-2023,
+#Agosto-22-2023,
+#Agosto-23-2023,
+#Agosto-26-2023,
+#Agosto-27-2023,
+#Agosto-28-2023,
+#Agosto-29-2023,
+#Agosto-30-2023,
+#Setembro-15-2024
+{
+  background-color: #92d050 !important;
+  color: #333;
+}
+
+/* Prazo Final Entrega de Livros */ 
+
+#Fevereiro-15-2023,
+#Março-4-2023,
+#Julho-13-2023,
+#Julho-31-2023,
+#Setembro-19-2024
+{
+  border: #ffc000 3px solid;
+  
+}
+
+/* Data limite de afixação de pautas */ 
+
+#Fevereiro-13-2023,
+#Fevereiro-29-2023,
+#Julho-11-2023,
+#Julho-29-2023,
+#Setembro-18-2024
+{
+  border: #00b0f0 3px solid;
+ 
+}
+
 .legenda_calendario {
-  display: flex;
-  justify-content: left;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 5rem;
-}
-
-.legenda_calendario ul {
-  list-style-type: none;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: left ;
-  background: #FFFFFF !important;
-  overflow: visible !important;
-}
-
-.dark-mode .legenda_calendario {
   display: flex;
   justify-content: left;
   flex-direction: column;
@@ -110,8 +423,18 @@ td {
   overflow: hidden;
   border-radius: 20px;
   border: 3px solid #ff1c0c;
-  
 }
+
+.legenda_calendario ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: left ;
+  background: #FFFFFF !important;
+  overflow: visible !important;
+}
+
 
 .dark-mode .legenda_calendario ul {
   list-style-type: none;
@@ -120,14 +443,14 @@ td {
   flex-direction: column;
   align-items: left ;
   background: #444444 !important;
- 
-  
-  
+
 }
+
 
 
 .legenda_calendario li {
   text-align: left ;
+  margin-bottom: 0.3rem;
 }
 
 .rectangle1 {

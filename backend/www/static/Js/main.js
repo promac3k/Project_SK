@@ -78,19 +78,19 @@ function generateCalendar() {
   const calendarBody = document.getElementById('calendar-body');
 
   const months = [
-    { name: 'Setembro', days: 30, firstDay: 5 },
-    { name: 'Outubro', days: 31, firstDay: 0 },
-    { name: 'Novembro', days: 30, firstDay: 3 },
-    { name: 'Dezembro', days: 31, firstDay: 5 },
-    { name: 'Janeiro', days: 31, firstDay: 1 },
-    { name: 'Fevereiro', days: 28, firstDay: 4 },
-    { name: 'Março', days: 31, firstDay: 5 },
-    { name: 'Abril', days: 30, firstDay: 1 },
-    { name: 'Maio', days: 31, firstDay: 3 },
-    { name: 'Junho', days: 30, firstDay: 6 },
-    { name: 'Julho', days: 31, firstDay: 1 },
-    { name: 'Agosto', days: 31, firstDay: 4 },
-    { name: 'Setembro', days: 30, firstDay: 7 },
+    { name: 'Setembro', days: 30, firstDay: 5, year: 2023 },
+    { name: 'Outubro', days: 31, firstDay: 0, year: 2023 },
+    { name: 'Novembro', days: 30, firstDay: 3, year: 2023 },
+    { name: 'Dezembro', days: 31, firstDay: 5, year: 2023 },
+    { name: 'Janeiro', days: 31, firstDay: 1, year: 2023 },
+    { name: 'Fevereiro', days: 28, firstDay: 4, year: 2023 },
+    { name: 'Março', days: 31, firstDay: 5, year: 2023 },
+    { name: 'Abril', days: 30, firstDay: 1, year: 2023 },
+    { name: 'Maio', days: 31, firstDay: 3, year: 2023 },
+    { name: 'Junho', days: 30, firstDay: 6, year: 2023 },
+    { name: 'Julho', days: 31, firstDay: 1, year: 2023 },
+    { name: 'Agosto', days: 31, firstDay: 4, year: 2023 },
+    { name: 'Setembro', days: 30, firstDay: 7, year: 2024 },
   ];
 
 
@@ -101,6 +101,7 @@ function generateCalendar() {
     // Obtém o primeiro dia do mês e o número total de dias
     const firstDay = months[i].firstDay;
     const daysInMonth = months[i].days;
+    const year = months[i].year;
 
     // Adicione células vazias para os dias anteriores ao primeiro dia do mês
     for (let j = 0; j < firstDay; j++) {
@@ -109,7 +110,7 @@ function generateCalendar() {
 
     //Adicione células diárias para o mês inteiro com IDs distintos
     for (let day = 1; day <= daysInMonth; day++) {
-      const dayId = `${months[i].name}-${day}`;
+      const dayId = `${months[i].name}-${day}-${year}`;
       const td = document.createElement('td');
       td.id = dayId;
       td.className = 'number';
@@ -129,7 +130,6 @@ function generateCalendar() {
     }
 
     calendarBody.appendChild(monthRow);
-  
   }
   
 }
