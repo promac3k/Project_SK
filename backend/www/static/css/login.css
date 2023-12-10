@@ -93,6 +93,7 @@ input {
 	padding: 12px 15px;
 	margin: 8px 0;
 	width: 100%;
+	border-radius: 10px;
 }
 
 .container {
@@ -191,7 +192,7 @@ input {
 	position: absolute;
 	display: flex;
 	align-items: center;
-	justify-content: center;
+	justify-content: space-evenly;
 	flex-direction: column;
 	padding: 0 40px;
 	text-align: center;
@@ -423,12 +424,40 @@ input:checked+.slider:before {
 	border-radius: 15px;
 }
 
-/* media query para deixar o site responsivo para telemovel */
-@media (min-width: 320px) and (max-width: 480px) {
 
+@media (min-width: 1024px) and (max-width: 1280px) {
+  
+}
+  
+/* media query para deixar o site responsivo para tablet*/
+@media (min-width: 768px) and (max-width: 1023px) {
 	.container {
 		width: 90vw;
-		min-height: 100vw;
+	}
+
+	input {
+		font-size: 15px;
+	}
+
+	button {
+		padding: 18px 45px;
+	}
+
+	span {
+		font-size: 15px;
+	}
+}
+  
+
+/* media query para deixar o site responsivo para mobile */
+@media (min-width: 320px) and (max-width: 480px) {
+	.container {
+		width: 90vw;
+		min-height: 80vw;
+	}
+
+	#direita{
+		font-size: 15px;
 	}
 
 	h1 {
@@ -436,18 +465,36 @@ input:checked+.slider:before {
 	}
 
 	h3 {
-		font-size: 15px;
+		font-size: 10px;
 	}
 
 	span {
 		font-size: 10px;
 	}
+	
 
 	input {
 		width: 40vw;
+		margin: 0;
 	}
 
 	p {
 		font-size: 10px;
+		line-height: normal;
+		margin: 12px 0 12px;
+	}
+
+	button {
+		font-size: 10px;
+		padding: 5px 15px;
+	}
+
+	.switch {
+		width: 60px;
+		height: 34px;
+	}
+
+	.social-container {
+		margin-bottom: 0;
 	}
 }
