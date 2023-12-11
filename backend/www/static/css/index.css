@@ -81,7 +81,7 @@ Blocos salas*/
   background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
   background: linear-gradient(to right, #FF4B2B, #FF416C);
   background-repeat: no-repeat;
-  
+
 }
 
 
@@ -119,8 +119,9 @@ nav ul {
 }
 
 .adada {
-  margin-right: 1.3rem;  
+  margin-right: 1.3rem;
 }
+
 /* Dark Mode button */
 
 
@@ -138,7 +139,7 @@ nav ul {
 /*toggle switch */
 .switch {
   position: relative;
-  
+
   width: 45px;
   height: 20px;
 }
@@ -234,11 +235,11 @@ input:checked+.slider:before {
 .p_1 {
   padding-top: 0.5rem;
   padding-left: 0.5rem;
-  padding-right: 2rem ;
+  padding-right: 2rem;
   text-align: justify !important;
   line-height: 1.5;
   font-size: 1.16rem;
-  
+
 }
 
 /*container da imagem */
@@ -298,7 +299,7 @@ input:checked+.slider:before {
   width: 22%;
   border-radius: 5px;
   overflow: hidden;
-  
+
 }
 
 .profile_settings {
@@ -312,7 +313,7 @@ input:checked+.slider:before {
   overflow: hidden;
   display: grid;
   place-items: center;
-  border:rgb(255, 255, 255)3px solid;
+  border: rgb(255, 255, 255)3px solid;
 }
 
 .title {
@@ -325,6 +326,56 @@ input:checked+.slider:before {
   color: black;
   font-size: 16px;
   text-align: center;
+}
+
+.legenda_profile {
+  display: flex;
+  justify-content: left;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 5rem;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+    0 10px 10px rgba(0, 0, 0, 0.22);
+    margin-left: 35rem;
+  width: 20%;
+  left: 38.2%;
+  padding: 1rem;
+  overflow: hidden;
+  border-radius: 20px;
+  border: 3px solid #ff1c0c;
+}
+
+.legenda_profile ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  background: #FFFFFF !important;
+  overflow: visible !important;
+}
+
+.legenda_profile li {
+  text-align: left;
+  margin-bottom: 0.3rem;
+}
+
+.rectangle1 {
+  width: 20px; /* Specify the width of the rectangle */
+  height: 10px; /* Specify the height of the rectangle */
+  background-color: #16365c; /* Specify the background color of the rectangle */
+  border: 2px solid black; /* Specify the border color and thickness */
+  position: absolute;
+  margin-top: 0.1rem;
+}
+
+.rectangle2 {
+  width: 20px; /* Specify the width of the rectangle */
+  height: 10px; /* Specify the height of the rectangle */
+  background-color: #0070c0; /* Specify the background color of the rectangle */
+  border: 2px solid black; /* Specify the border color and thickness */
+  position: absolute;
+  margin-top: 0.1rem;
 }
 
 .button_contacto {
@@ -383,7 +434,7 @@ a:hover {
 }
 
 .dark-mode .p_1 {
-  padding-top: 0.5rem;    
+  padding-top: 0.5rem;
   padding-left: 0.5rem;
   padding-right: 2rem;
   text-align: justify;
@@ -414,7 +465,7 @@ a:hover {
   padding: 0;
   display: flex;
   flex-direction: column;
-  align-items: left ;
+  align-items: left;
   background: #444444 !important;
 
 }
@@ -578,7 +629,7 @@ th {
 /* media query para deixar o site responsivo para tablet*/
 @media (min-width: 768px) and (max-width: 1023px) {
   .legenda_calendario {
-    width: 60% !important; 
+    width: 60% !important;
     position: unset !important;
     margin-left: 140px !important;
     margin-bottom: 100px !important;
@@ -611,9 +662,9 @@ th {
     margin-right: 0;
     width: 57%;
     height: 42%;
+  }
 }
-}
-  
+
 
 /* media query para deixar o site responsivo para mobile */
 @media (min-width: 320px) and (max-width: 480px) {
@@ -622,21 +673,21 @@ th {
     display: none;
   }
 
-  li{
+  li {
     width: 90px;
   }
 
-  .p_1{
+  .p_1 {
     display: none;
   }
 
-  .legenda{
+  .legenda {
     width: 100%;
     margin: 5px 0 5px;
   }
 
   .legenda_calendario {
-    width: 80% !important; 
+    width: 80% !important;
     position: unset !important;
     margin-left: 18px !important;
     margin-bottom: 100px !important;
@@ -651,19 +702,19 @@ th {
     margin-bottom: 20px;
   }
 
-  .blocos{
+  .blocos {
     display: flex;
     justify-content: center;
     align-items: center;
     background: #444444;
   }
 
-  
-  .sidebar li a{
+
+  .sidebar li a {
     text-align: center;
   }
 
-  .blocos_li{
+  .blocos_li {
     width: 100%;
     margin-bottom: 23px;
   }
@@ -672,7 +723,7 @@ th {
     width: 30%;
   }
 
-  h1{
+  h1 {
     font-size: 20px;
     margin-top: 75%;
   }
