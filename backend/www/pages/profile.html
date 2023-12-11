@@ -232,8 +232,6 @@
 
     var data = { pass_antiga, pass_nova, pass_confirme };
 
-    console.log(data);
-
     fetch('/change-password', {
       method: 'POST',
       headers: {
@@ -245,15 +243,12 @@
 
         // Verifica o código de status da resposta
         if (response.status === 200) {
-
           window.location.href = '/logout';
 
         } else if (response.status === 404) {
-
           return response.text();
 
         } else if (response.status === 400) {
-
           return response.text();
 
         }
