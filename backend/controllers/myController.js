@@ -3,8 +3,7 @@ const connection = require('../services/db'); // Módulo para conexão com o ban
 const email = require('../services/email'); // Módulo para enviar emails
 const path = require('path'); // Módulo Node.js para trabalhar com caminhos de arquivos
 const string = require("string-sanitizer"); // Módulo para sanitizar strings
-const bcrypt = require('bcrypt'); // Módulo para criptografar senhas
-//const saltRounds = 10; // Número de saltos para gerar o hash da senha
+const bcrypt = require('../services/bcrypt'); // Módulo para criptografar senhas
 
 
 // Métodos para serem executados nas rotas
@@ -82,33 +81,80 @@ const post_login = async (req, res) => {
         if (result.length > 0) {
 
             const db = result[0];
+            const result_pass = await bcrypt.comparePasswords(password, db.pass_aluno);
 
-            bcrypt.compare(password, db.pass_aluno, function (err, result) {
+            if (result_pass) {
 
-                if (result) {
+                req.session.loggedin = true;
+                req.session.user = email;
+                req.session.save(function (err) {
+                    if (err) return next(err);
+                });
 
-                    req.session.loggedin = true;
-                    req.session.user = email;
-                    req.session.save(function (err) {
-                        if (err) return next(err);
-                    });
+                const user = { nome: db.nome_aluno, email: db.email_aluno, turma: db.turma_aluno, curso: db.nome_curso, ano: db.ano_aluno }
 
-                    const user = { nome: db.nome_aluno, email: db.email_aluno, turma: db.turma_aluno, curso: db.nome_curso, ano: db.ano_aluno }
-                    res.cookie("user", JSON.stringify(user));
+                res.cookie("user", JSON.stringify(user));
+                res.status(200).send("Login efetuado com sucesso!")
 
-
-                    res.status(200).send("Login efetuado com sucesso!")
-
-                } else {
-                    return res.status(404).send('Email ou senha incorretos!');
-                };
-            });
+            } else {
+                return res.status(404).send('Email ou senha incorretos!');
+            };
         }
         else {
             return res.status(404).send('Email ou senha incorretos!');
         };
-
     }
+}
+
+const post_change_password = async (req, res) => {
+
+    const { pass_antiga, pass_nova, pass_confirme } = req.body;
+
+    if (!pass_antiga || !pass_nova || !pass_confirme) {
+        return res.status(400).send("Os campos são todos obrigatorios");
+    }
+
+    if (string.validate.isPassword6to15(pass_antiga) === false) {
+        return res.status(404).send('Por favor, insira uma senha valida!');
+    }
+
+    if (string.validate.isPassword6to15(pass_nova) === false) {
+        return res.status(404).send('Por favor, insira uma senha valida, com 6 a 15 caracteres e um caracter especial!');
+    }
+
+    if (string.validate.isPassword6to15(pass_confirme) === false) {
+        return res.status(404).send('Por favor, insira uma senha valida, com 6 a 15 caracteres e um caracter especial!');
+    }
+
+    const result = await connection.query('SELECT pass_aluno FROM alunos WHERE email_aluno = ?', [req.session.user]);
+
+    if (result.length > 0) {
+
+        const db = result[0];
+        const result_pass = await bcrypt.comparePasswords(pass_antiga, db.pass_aluno);
+
+        if (result_pass) {
+
+            if (pass_nova === pass_confirme) {
+
+                const hash = await bcrypt.hashPassword(pass_nova);
+                const result = await connection.query('UPDATE alunos SET pass_aluno = ? WHERE email_aluno = ?', [hash, req.session.user]);
+
+                if (result.affectedRows > 0) {
+                    return res.status(200).send("Senha alterada com sucesso!");
+                } else {
+                    return res.status(404).send('Erro ao alterar a senha!');
+                }
+
+            } else {
+                return res.status(404).send('As senhas não correspondem!');
+            }
+
+        } else {
+            return res.status(404).send('Senha incorreta!');
+        }
+    }
+
 }
 
 // Método para lidar com a rota GET para /contacts
@@ -295,6 +341,7 @@ module.exports = {
     get_logout,
     get_login,
     post_login,
+    post_change_password,
     get_contacts,
     post_contact,
     get_eventos,

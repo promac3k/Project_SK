@@ -64,15 +64,14 @@
 
           <div class="modal-content">
             <div class="container_Pass">
-              <form action="/submit_form" method="post">
+              <form id="change-password-form" action="/change-password" method="post">
                 <label for="lname">Palavra-Passe Antiga:</label><br>
-                <input type="text" id="lname" name="lname" value="" class="input_campo"><br>
+                <input type="password" name="pass_antiga" class="input_campo"><br>
                 <label for="lname">Nova Palavra-Passe:</label><br>
-                <input type="text" id="lname" name="lname" value="" class="input_campo"><br>
+                <input type="password" name="pass_nova" class="input_campo"><br>
                 <label for="email">Confirmar Palavra-Passe:</label><br>
-                <input type="email" id="email" name="email" value="" class="input_campo"><br>
-
-                <button class="button_contacto">Gravar </button>
+                <input type="password" name="pass_confirme" class="input_campo"><br>
+                <button type="submit" class="button_contacto">Gravar </button>
               </form>
             </div>
           </div>
@@ -224,5 +223,57 @@
     document.getElementById('curso').textContent = user.curso;
   }
 
+  document.querySelector('change-password-form').addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    var pass_antiga = document.querySelector('input[name="pass_antiga"]').value;
+    var pass_nova = document.querySelector('input[name="pass_nova"]').value;
+    var pass_confirme = document.querySelector('input[name="pass_confirme"]').value;
+
+    var data = { pass_antiga, pass_nova, pass_confirme };
+
+    fetch('/change-password', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data),
+    }).then(response => {
+
+      // Verifica o código de status da resposta
+      if (response.status === 200) {
+        
+        window.location.href = '/';
+
+      } else if (response.status === 404) {
+
+        return response.text();
+
+      } else if (response.status === 400) {
+
+        return response.text();
+
+      }
+    })
+      .then(message => {
+
+        text.innerHTML = message;
+        modal.style.display = "block";
+
+        // Fecha o modal após 5 segundos
+        setTimeout(function () {
+          modal.style.display = "none";
+        }, 5000);
+
+      })
+      .then(data => {
+        // Loga o corpo da resposta no console
+        console.log('Sucesso:', data);
+      })
+      .catch((error) => {
+        // Loga qualquer erro que ocorra durante a solicitação no console
+        console.error('Erro:', error);
+      });
+  });
 
 </script>

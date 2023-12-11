@@ -17,6 +17,8 @@ router.get('/login', myController.get_login); // Rota para a página de login (G
 
 router.post('/login', myController.post_login); // Rota para a página de login (POST)
 
+router.post('/change-password', myController.post_change_password); // Rota para a página de mudança de senha (POST)
+
 router.get('/contact', myController.get_contacts); // Rota para a página de contatos (GET)
 
 router.post('/contact', myController.post_contact); // Rota para a página de contatos (POST)
