@@ -1,0 +1,156 @@
+/* Dark mode*/
+.dark-mode {
+    background-color: #141414;
+    color: white;
+}
+
+.dark-mode h1 { 
+    color: white;
+}  
+
+.dark-mode .title {
+  color: white;
+}
+
+/* navbar */
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border-radius: 5%;
+    border: none;
+    background: linear-gradient(to right, #FF4B2B, #FF416C);
+    background-repeat: no-repeat;
+}
+
+nav ul {
+    display: flex;
+    justify-content: flex-end;
+    height: 3.2rem;
+}
+
+li {
+    display: inline-block;
+}
+
+li a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.perfil {
+    margin-right: 1.3rem;
+}
+
+a {
+    text-decoration: none;
+    font-size: 22px;
+    color: black;
+  }
+
+/*Tabela lateral Blocos salas*/
+.sidebar {
+    width: 8%;
+    height: 15rem;
+    background-color: #333;
+    overflow-x: auto;
+    overflow-y: auto;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+      0 10px 10px rgba(0, 0, 0, 0.22);
+    position: relative;
+    float: right;
+    margin-right: 2rem;
+    margin-top: 3.4rem;
+    text-align: center;
+}
+  
+.sidebar ul {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    list-style-type: none;
+    padding: 0;
+}
+  
+.sidebar li {
+    display: block;
+    text-align: center;
+}
+  
+.sidebar li a:hover {
+    color: #f1f1f1;
+}
+  
+.sidebar li {
+    padding: 0;
+}
+  
+.sidebar li a {
+    display: block;
+    color: white;
+    padding: 0.65rem;
+}
+
+.blocos {
+    border: none;
+    background: linear-gradient(to right, #FF4B2B, #FF416C);
+    background-repeat: no-repeat;
+}
+
+/* container */
+.dark-mode .container {
+    background-color: #444444;
+}
+
+.container {
+    background-color: #FFFFFF;
+    height: 100%;
+    text-align: center;
+    margin: 1rem;
+    border-radius: 5%;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    position: relative;
+    overflow: hidden;
+}
+
+/* footer */
+footer {
+    color: #fff;
+    font-size: 14px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 999;
+    padding: 5px;
+    background: linear-gradient(to right, #FF4B2B, #FF416C);
+    background-repeat: no-repeat;
+    position: absolute;
+}
+  
+footer p {
+    margin: 10px 0;
+    font-size: 17px;
+    font-weight: 100;
+    line-height: 20px;
+    letter-spacing: 0.5px;
+  
+}
+  
+footer i {
+    color: red;
+}
+  
+footer a {
+    color: #3c97bf;
+    text-decoration: none;
+}

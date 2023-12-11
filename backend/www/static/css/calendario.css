@@ -435,7 +435,6 @@ td {
   overflow: visible !important;
 }
 
-
 .dark-mode .legenda_calendario ul {
   list-style-type: none;
   padding: 0;
@@ -445,8 +444,6 @@ td {
   background: #444444 !important;
 
 }
-
-
 
 .legenda_calendario li {
   text-align: left ;

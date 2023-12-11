@@ -82,6 +82,41 @@ img:hover {
   color: #FFFFFF;
 }
 
+.dark-mode .button_contacto {
+  border-color: #FFFFFF;
+  color: #FFFFFF;
+}
+
+.button_contacto {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  background: #ff4c34;
+  border: 1px solid #FF4B2B;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25), 0 4px 4px rgba(0, 0, 0, 0.22);
+  border-color: #FFFFFF;
+  background-repeat: no-repeat;
+  text-align: center;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 12px;
+  margin: 1rem;
+}
+
+.button_contacto:hover,
+a:hover {
+  opacity: 0.7;
+}
+
+.input_campo {
+  padding: 8px 10px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: 1px solid #555;
+}
+
 @media (min-width: 1024px) and (max-width: 1280px) {
 
   .modal-content {
