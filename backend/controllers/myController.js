@@ -135,12 +135,17 @@ const post_change_password = async (req, res) => {
 
         if (result_pass) {
 
+            if (pass_antiga === pass_nova) {
+                return res.status(404).send('A nova senha não pode ser igual a antiga!');
+            }
+
             if (pass_nova === pass_confirme) {
 
                 const hash = await bcrypt.hashPassword(pass_nova);
                 const result = await connection.query('UPDATE alunos SET pass_aluno = ? WHERE email_aluno = ?', [hash, req.session.user]);
 
                 if (result.affectedRows > 0) {
+                    console.log(">>>>> Senha alterada com sucesso!");
                     return res.status(200).send("Senha alterada com sucesso!");
                 } else {
                     return res.status(404).send('Erro ao alterar a senha!');

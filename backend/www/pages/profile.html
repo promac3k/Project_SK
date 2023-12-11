@@ -223,7 +223,7 @@
     document.getElementById('curso').textContent = user.curso;
   }
 
-  document.querySelector('change-password-form').addEventListener('submit', function (event) {
+  document.getElementById('change-password-form').addEventListener('submit', function (event) {
     event.preventDefault();
 
     var pass_antiga = document.querySelector('input[name="pass_antiga"]').value;
@@ -232,29 +232,32 @@
 
     var data = { pass_antiga, pass_nova, pass_confirme };
 
+    console.log(data);
+
     fetch('/change-password', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(data),
-    }).then(response => {
-
-      // Verifica o código de status da resposta
-      if (response.status === 200) {
-        
-        window.location.href = '/';
-
-      } else if (response.status === 404) {
-
-        return response.text();
-
-      } else if (response.status === 400) {
-
-        return response.text();
-
-      }
     })
+      .then(response => {
+
+        // Verifica o código de status da resposta
+        if (response.status === 200) {
+
+          window.location.href = '/logout';
+
+        } else if (response.status === 404) {
+
+          return response.text();
+
+        } else if (response.status === 400) {
+
+          return response.text();
+
+        }
+      })
       .then(message => {
 
         text.innerHTML = message;
