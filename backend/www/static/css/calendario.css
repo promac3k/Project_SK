@@ -1,4 +1,5 @@
 .cal {
+<<<<<<< Updated upstream
   font-family: Arial, sans-serif;
   padding: 0;
   display: flex;
@@ -13,96 +14,110 @@
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
     0 10px 10px rgba(0, 0, 0, 0.22);
   overflow-x:auto;
+=======
+    font-family: Arial, sans-serif;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    overflow: hidden;
+>>>>>>> Stashed changes
 }
 
 h1 {
-  text-align: center;
-  color: #333;
+    text-align: center;
+    color: #333;
 }
 
 .cal table {
-  width: 100%;
-  margin: auto;
-  background-color: white;
-  border-collapse: collapse;
-
+    width: 100%;
+    margin: auto;
+    background-color: white;
+    border-collapse: collapse;
 }
 
 .cal th,
 td {
-  border: 1px solid #ccc;
-  text-align: center;
-  width: 25px;
-  height: 25px;
-  text-align: center;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  cursor: pointer;
+    border: 1px solid #ccc;
+    text-align: center;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
 }
 
 .cal td.empty {
-  background-color: white;
-  border: none;
+    background-color: white;
+    border: none;
 }
 
 .cal thead th {
-  padding-left: 7px;
-  padding-right: 7px;
-  background: #ff1c0c;
-  
+    padding-left: 7px;
+    padding-right: 7px;
+    background: #ff1c0c;
 }
 
 .cal td.month {
-  text-align: center;
+    text-align: center;
 }
 
 .dark-mode .cal table {
-  background-color: #5a5a5a;
+    background-color: #5a5a5a;
 }
 
 .dark-mode .cal td.empty {
-  background-color: #5a5a5a;
+    background-color: #5a5a5a;
 }
 
 .dark-mode #calendar-body tr td.number:nth-of-type(7n+2),
-.dark-mode #calendar-body tr td.number:nth-of-type(7n+8){ /* Para 'D' */
-  background-color: #3e3e3e;
+.dark-mode #calendar-body tr td.number:nth-of-type(7n+8) {
+    /* Para 'D' */
+    background-color: #3e3e3e;
 }
 
 #calendar-body tr td.number:nth-of-type(7n+2),
-#calendar-body tr td.number:nth-of-type(7n+8){ /* Para 'D' */
-  background-color: #A0A0A0;
+#calendar-body tr td.number:nth-of-type(7n+8) {
+    /* Para 'D' */
+    background-color: #A0A0A0;
 }
 
 
+/* Inicio Ano Letivo Licenciaturas,2º Ano */
 
-/* Inicio Ano Letivo Licenciaturas,2º Ano */ 
-
-#Outubro-2-2023
-{
-  background-color: #16365c !important;
+#Outubro-2-2023 {
+    background-color: #16365c !important;
 }
 
-/* Inicio Ano Letivo 1º Ano */ 
 
-#Outubro-9-2023
-{
-  background-color: #0070c0 !important;
-  color: #333;
+/* Inicio Ano Letivo 1º Ano */
+
+#Outubro-9-2023 {
+    background-color: #0070c0 !important;
+    color: #333;
 }
 
-/* Atividades AAIPS */ 
+
+/* Atividades AAIPS */
 
 #Outubro-12-2023,
 #Maio-23-2023,
-#Maio-24-2023
-{
-  background-color: #ff33cc !important;
-  color: #333;
+#Maio-24-2023 {
+    background-color: #ff33cc !important;
+    color: #333;
 }
 
-/* Exames de 1º e 2º Epoca */ 
+
+/* Exames de 1º e 2º Epoca */
 
 #Janeiro-31-2023,
 #Fevereiro-1-2023,
@@ -152,13 +167,13 @@ td {
 #Julho-24-2023,
 #Julho-25-2023,
 #Julho-26-2023,
-#Julho-27-2023
-{
-  background-color: #fde9d9 !important;
-  color: #333;
+#Julho-27-2023 {
+    background-color: #fde9d9 !important;
+    color: #333;
 }
 
-/* Epoca Especial */ 
+
+/* Epoca Especial */
 
 #Setembro-2-2024,
 #Setembro-3-2024,
@@ -172,13 +187,13 @@ td {
 #Setembro-13-2024,
 #Setembro-14-2024,
 #Setembro-16-2024,
-#Setembro-17-2024
-{
-  background-color: #e26b0a !important;
-  color: #333;
+#Setembro-17-2024 {
+    background-color: #e26b0a !important;
+    color: #333;
 }
 
-/* Atividades Letivas */ 
+
+/* Atividades Letivas */
 
 #Outubro-3-2023,
 #Outubro-4-2023,
@@ -322,15 +337,15 @@ td {
 #Junho-24-2023,
 #Junho-25-2023,
 #Junho-26-2023,
-#Junho-27-2023
-{
-  background-color: #92cddc !important;
-  color: #333;
+#Junho-27-2023 {
+    background-color: #92cddc !important;
+    color: #333;
 }
 
-/* Férias e feriados */ 
 
-#Setembro-15-2023, 
+/* Férias e feriados */
+
+#Setembro-15-2023,
 #Outubro-5-2023,
 #Novembro-1-2023,
 #Dezembro-1-2023,
@@ -376,265 +391,307 @@ td {
 #Agosto-28-2023,
 #Agosto-29-2023,
 #Agosto-30-2023,
-#Setembro-15-2024
-{
-  background-color: #92d050 !important;
-  color: #333;
+#Setembro-15-2024 {
+    background-color: #92d050 !important;
+    color: #333;
 }
 
-/* Prazo Final Entrega de Livros */ 
+
+/* Prazo Final Entrega de Livros */
 
 #Fevereiro-15-2023,
 #Março-4-2023,
 #Julho-13-2023,
 #Julho-31-2023,
-#Setembro-19-2024
-{
-  border: #ffc000 3px solid;
-  
+#Setembro-19-2024 {
+    border: #ffc000 3px solid;
 }
 
-/* Data limite de afixação de pautas */ 
+
+/* Data limite de afixação de pautas */
 
 #Fevereiro-13-2023,
 #Fevereiro-29-2023,
 #Julho-11-2023,
 #Julho-29-2023,
-#Setembro-18-2024
-{
-  border: #00b0f0 3px solid;
- 
+#Setembro-18-2024 {
+    border: #00b0f0 3px solid;
 }
 
 .legenda_calendario {
-  display: flex;
-  justify-content: left;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 5rem;
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
-    0 10px 10px rgba(0, 0, 0, 0.22);
-  width: 40%;
-  position: relative;
-  left: 29%;
-  padding: 1rem;
-  overflow: hidden;
-  border-radius: 20px;
-  border: 3px solid #ff1c0c;
+    display: flex;
+    margin-bottom: 5rem;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    width: 60%;
+    position: relative;
+    left: 20%;
+    padding: 1rem;
+    overflow: hidden;
+    border-radius: 20px;
+    border: 3px solid #ff1c0c;
 }
 
 .legenda_calendario ul {
-  list-style-type: none;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: left ;
-  background: #FFFFFF !important;
-  overflow: visible !important;
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    background: #FFFFFF !important;
+    overflow: visible !important;
 }
 
 .dark-mode .legenda_calendario ul {
-  list-style-type: none;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: left ;
-  background: #444444 !important;
-
+    list-style-type: none;
+    padding: 0;
+    flex-direction: column;
+    align-items: left;
+    background: #444444 !important;
+    display: flex;
 }
 
 .legenda_calendario li {
-  text-align: left ;
-  margin-bottom: 0.3rem;
+    text-align: left;
+    margin-bottom: 0.5rem;
+    width: 100%;
+}
+
+.vertical_line {
+    border-left: 2px solid #ff1c0c;
+    height: 85%;
+    position: absolute;
+    left: 49%;
+}
+
+.column {
+    flex: 1;
+    padding: 0 10px;
 }
 
 .rectangle1 {
-  width: 20px; /* Specify the width of the rectangle */
-  height: 10px; /* Specify the height of the rectangle */
-  background-color: #16365c; /* Specify the background color of the rectangle */
-  border: 2px solid black; /* Specify the border color and thickness */
-  position: absolute;
-  margin-top: 0.1rem;
+    width: 22px;
+    /* Specify the width of the rectangle */
+    height: 10px;
+    /* Specify the height of the rectangle */
+    background-color: #16365c;
+    /* Specify the background color of the rectangle */
+    border: 2px solid black;
+    /* Specify the border color and thickness */
+    position: absolute;
+    margin-top: 0.1rem;
 }
 
 .rectangle2 {
-  width: 20px; /* Specify the width of the rectangle */
-  height: 10px; /* Specify the height of the rectangle */
-  background-color: #0070c0; /* Specify the background color of the rectangle */
-  border: 2px solid black; /* Specify the border color and thickness */
-  position: absolute;
-  margin-top: 0.1rem;
+    width: 22px;
+    /* Specify the width of the rectangle */
+    height: 10px;
+    /* Specify the height of the rectangle */
+    background-color: #0070c0;
+    /* Specify the background color of the rectangle */
+    border: 2px solid black;
+    /* Specify the border color and thickness */
+    position: absolute;
+    margin-top: 0.1rem;
 }
 
 .rectangle3 {
-  width: 20px; /* Specify the width of the rectangle */
-  height: 10px; /* Specify the height of the rectangle */
-  background-color: #92cddc; /* Specify the background color of the rectangle */
-  border: 2px solid black; /* Specify the border color and thickness */
-  position: absolute;
-  margin-top: 0.1rem;
+    width: 22px;
+    /* Specify the width of the rectangle */
+    height: 10px;
+    /* Specify the height of the rectangle */
+    background-color: #92cddc;
+    /* Specify the background color of the rectangle */
+    border: 2px solid black;
+    /* Specify the border color and thickness */
+    position: absolute;
+    margin-top: 0.1rem;
 }
 
 .rectangle4 {
-  width: 20px; /* Specify the width of the rectangle */
-  height: 10px; /* Specify the height of the rectangle */
-  background-color: #92d050; /* Specify the background color of the rectangle */
-  border: 2px solid black; /* Specify the border color and thickness */
-  position: absolute;
-  margin-top: 0.1rem;
+    width: 22px;
+    /* Specify the width of the rectangle */
+    height: 10px;
+    /* Specify the height of the rectangle */
+    background-color: #92d050;
+    /* Specify the background color of the rectangle */
+    border: 2px solid black;
+    /* Specify the border color and thickness */
+    position: absolute;
+    margin-top: 0.1rem;
 }
 
 .rectangle5 {
-  width: 20px; /* Specify the width of the rectangle */
-  height: 10px; /* Specify the height of the rectangle */
-  background-color: #ff33cc; /* Specify the background color of the rectangle */
-  border: 2px solid black; /* Specify the border color and thickness */
-  position: absolute;
-  margin-top: 0.1rem;
+    width: 22px;
+    /* Specify the width of the rectangle */
+    height: 10px;
+    /* Specify the height of the rectangle */
+    background-color: #ff33cc;
+    /* Specify the background color of the rectangle */
+    border: 2px solid black;
+    /* Specify the border color and thickness */
+    position: absolute;
+    margin-top: 0.1rem;
 }
 
 .rectangle6 {
-  width: 20px; /* Specify the width of the rectangle */
-  height: 10px; /* Specify the height of the rectangle */
-  background-color: #963634; /* Specify the background color of the rectangle */
-  border: 2px solid black; /* Specify the border color and thickness */
-  position: absolute;
-  margin-top: 0.1rem;
+    width: 22px;
+    /* Specify the width of the rectangle */
+    height: 10px;
+    /* Specify the height of the rectangle */
+    background-color: #963634;
+    /* Specify the background color of the rectangle */
+    border: 2px solid black;
+    /* Specify the border color and thickness */
+    position: absolute;
+    margin-top: 0.1rem;
 }
 
 .rectangle7 {
-  width: 20px; /* Specify the width of the rectangle */
-  height: 10px; /* Specify the height of the rectangle */
-  background-color: #7030a0; /* Specify the background color of the rectangle */
-  border: 2px solid black; /* Specify the border color and thickness */
-  position: absolute;
-  margin-top: 0.1rem;
+    width: 22px;
+    /* Specify the width of the rectangle */
+    height: 10px;
+    /* Specify the height of the rectangle */
+    background-color: #7030a0;
+    /* Specify the background color of the rectangle */
+    border: 2px solid black;
+    /* Specify the border color and thickness */
+    position: absolute;
+    margin-top: 0.1rem;
 }
 
 .rectangle8 {
-  width: 20px; /* Specify the width of the rectangle */
-  height: 10px; /* Specify the height of the rectangle */
-  background-color: #fde9d9; /* Specify the background color of the rectangle */
-  border: 2px solid black; /* Specify the border color and thickness */
-  position: absolute;
-  margin-top: 0.1rem;
+    width: 22px;
+    /* Specify the width of the rectangle */
+    height: 10px;
+    /* Specify the height of the rectangle */
+    background-color: #fde9d9;
+    /* Specify the background color of the rectangle */
+    border: 2px solid black;
+    /* Specify the border color and thickness */
+    position: absolute;
+    margin-top: 0.1rem;
 }
 
 .rectangle9 {
-  width: 20px; /* Specify the width of the rectangle */
-  height: 10px; /* Specify the height of the rectangle */
-  background-color: #e26b0a; /* Specify the background color of the rectangle */
-  border: 2px solid black; /* Specify the border color and thickness */
-  position: absolute;
-  margin-top: 0.1rem;
+    width: 22px;
+    /* Specify the width of the rectangle */
+    height: 10px;
+    /* Specify the height of the rectangle */
+    background-color: #e26b0a;
+    /* Specify the background color of the rectangle */
+    border: 2px solid black;
+    /* Specify the border color and thickness */
+    position: absolute;
+    margin-top: 0.1rem;
 }
 
 .rectangle10 {
-  width: 20px; /* Specify the width of the rectangle */
-  height: 10px; /* Specify the height of the rectangle */
-  background-color: white; /* Specify the background color of the rectangle */
-  border: 2px solid #00b0f0; /* Specify the border color and thickness */
-  position: absolute;
-  margin-top: 0.1rem;
+    width: 22px;
+    /* Specify the width of the rectangle */
+    height: 10px;
+    /* Specify the height of the rectangle */
+    background-color: white;
+    /* Specify the background color of the rectangle */
+    border: 2px solid #00b0f0;
+    /* Specify the border color and thickness */
+    position: absolute;
+    margin-top: 0.1rem;
 }
 
 .rectangle11 {
-  width: 20px; /* Specify the width of the rectangle */
-  height: 10px; /* Specify the height of the rectangle */
-  background-color: white; /* Specify the background color of the rectangle */
-  border: 2px solid #ffc000; /* Specify the border color and thickness */
-  position: absolute;
-  margin-top: 0.1rem;
+    width: 22px;
+    /* Specify the width of the rectangle */
+    height: 10px;
+    /* Specify the height of the rectangle */
+    background-color: white;
+    /* Specify the background color of the rectangle */
+    border: 2px solid #ffc000;
+    /* Specify the border color and thickness */
+    position: absolute;
+    margin-top: 0.1rem;
 }
 
 .dark-mode .rectangle10 {
-  width: 20px; /* Specify the width of the rectangle */
-  height: 10px; /* Specify the height of the rectangle */
-  background-color: #5a5a5a; /* Specify the background color of the rectangle */
-  border: 2px solid #00b0f0; /* Specify the border color and thickness */
-  position: absolute;
-  margin-top: 0.1rem;
+    width: 20px;
+    /* Specify the width of the rectangle */
+    height: 10px;
+    /* Specify the height of the rectangle */
+    background-color: #5a5a5a;
+    /* Specify the background color of the rectangle */
+    border: 2px solid #00b0f0;
+    /* Specify the border color and thickness */
+    position: absolute;
+    margin-top: 0.1rem;
 }
 
 .dark-mode .rectangle11 {
-  width: 20px; /* Specify the width of the rectangle */
-  height: 10px; /* Specify the height of the rectangle */
-  background-color: #5a5a5a; /* Specify the background color of the rectangle */
-  border: 2px solid #ffc000; /* Specify the border color and thickness */
-  position: absolute;
-  margin-top: 0.1rem;
+    width: 20px;
+    /* Specify the width of the rectangle */
+    height: 10px;
+    /* Specify the height of the rectangle */
+    background-color: #5a5a5a;
+    /* Specify the background color of the rectangle */
+    border: 2px solid #ffc000;
+    /* Specify the border color and thickness */
+    position: absolute;
+    margin-top: 0.1rem;
 }
 
-
-
 @media (min-width: 768px) and (max-width: 1023px) {
-  .cal {
-    margin-left: 3vw;
-    margin-right: 3vw;
-  }
-
-  .rectangle1 {
-    width: 30px;
-    height: 16px;
-  }
-  
-  .rectangle2 {
-    width: 30px;
-    height: 16px;
-  }
-  
-  .rectangle3 {
-    width: 30px;
-    height: 16px;
-  }
-  
-  .rectangle4 {
-    width: 30px;
-    height: 16px;
-  }
-  
-  .rectangle5 {
-    width: 30px;
-    height: 16px;
-  }
-  
-  .rectangle6 {
-    width: 30px;
-    height: 16px;
-  }
-  
-  .rectangle7 {
-    width: 30px;
-    height: 16px;
-  }
-  
-  .rectangle8 {
-    width: 30px;
-    height: 16px;
-  }
-  
-  .rectangle9 {
-    width: 30px;
-    height: 16px;
-  }
-  
-  .rectangle10 {
-    width: 30px;
-    height: 16px;
-  }
-  
-  .rectangle11 {
-    width: 30px;
-    height: 16px;
-  }
-  
-  .dark-mode .rectangle10 {
-    width: 30px;
-    height: 16px;
-  }
-  
-  .dark-mode .rectangle11 {
-    width: 30px;
-    height: 16px;
-  }
+    .cal {
+        margin-left: 3vw;
+        margin-right: 3vw;
+    }
+    .rectangle1 {
+        width: 30px;
+        height: 16px;
+    }
+    .rectangle2 {
+        width: 30px;
+        height: 16px;
+    }
+    .rectangle3 {
+        width: 30px;
+        height: 16px;
+    }
+    .rectangle4 {
+        width: 30px;
+        height: 16px;
+    }
+    .rectangle5 {
+        width: 30px;
+        height: 16px;
+    }
+    .rectangle6 {
+        width: 30px;
+        height: 16px;
+    }
+    .rectangle7 {
+        width: 30px;
+        height: 16px;
+    }
+    .rectangle8 {
+        width: 30px;
+        height: 16px;
+    }
+    .rectangle9 {
+        width: 30px;
+        height: 16px;
+    }
+    .rectangle10 {
+        width: 30px;
+        height: 16px;
+    }
+    .rectangle11 {
+        width: 30px;
+        height: 16px;
+    }
+    .dark-mode .rectangle10 {
+        width: 30px;
+        height: 16px;
+    }
+    .dark-mode .rectangle11 {
+        width: 30px;
+        height: 16px;
+    }
 }
