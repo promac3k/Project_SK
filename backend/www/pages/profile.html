@@ -14,6 +14,12 @@
 </head>
 
 <body>
+        <!-- Modal Erro ao alterar Palavra-Passe -->
+        <div id="modal_erro" class="modal_erro">
+          <div class="modal_erro_content">
+            <span id="modalText"></span>
+          </div>
+        </div>
   <main>
     <div class="container_profile">
 
@@ -53,13 +59,13 @@
 
       </div>
 
-      <!-- Modal -->
+      <!-- Modal Editar Palavra-Passe -->
       <div id="modal_editar" class="modal">
         <div class="modal_conteudo">
           <div class="modal-header">
             <h1>Alterar Palavra-Passe</h1>
 
-            <span class="fechar">&times;</span>
+            <span class="fechar_editar">&times;</span>
           </div>
 
           <div class="modal-content">
@@ -71,12 +77,11 @@
                 <input type="password" name="pass_nova" class="input_campo"><br>
                 <label for="email">Confirmar Palavra-Passe:</label><br>
                 <input type="password" name="pass_confirme" class="input_campo"><br>
-                <button type="submit" class="button_contacto">Gravar </button>
+                <button type="submit" class="button_contacto" onclick="document.getElementById('modal_erro').style.display='block'">Gravar </button>
               </form>
             </div>
           </div>
         </div>
-
       </div>
 
       <div class="flex-container">
@@ -187,14 +192,14 @@
   window.onload = checkCookie();
 
   // vai buscar o id do modal
-  var modal = document.getElementById("modal_editar");
+  var modal_editar = document.getElementById("modal_editar");
 
   // vai buscar a class do botao para fechar o modal
-  var span = document.getElementsByClassName("fechar")[0];
+  var span = document.getElementsByClassName("fechar_editar")[0];
 
   //fecha o modal quando o botao dentro do modal for clicado
   span.onclick = function () {
-    modal.style.display = "none";
+    modal_editar.style.display = "none";
   }
 
   function changeColor() {
@@ -229,6 +234,8 @@
     var pass_antiga = document.querySelector('input[name="pass_antiga"]').value;
     var pass_nova = document.querySelector('input[name="pass_nova"]').value;
     var pass_confirme = document.querySelector('input[name="pass_confirme"]').value;
+    var modal_erro = document.getElementById("modal_erro");
+    var text = document.getElementById("modalText");
 
     var data = { pass_antiga, pass_nova, pass_confirme };
 
@@ -240,27 +247,25 @@
       body: JSON.stringify(data),
     })
       .then(response => {
-
+        console.log(response);
         // Verifica o código de status da resposta
         if (response.status === 200) {
+          
           window.location.href = '/logout';
 
-        } else if (response.status === 404) {
-          return response.text();
+        } else {
+          return response.text(); 
 
-        } else if (response.status === 400) {
-          return response.text();
-
-        }
+        } 
       })
       .then(message => {
 
         text.innerHTML = message;
-        modal.style.display = "block";
+        modal_erro.style.display = "block";
 
         // Fecha o modal após 5 segundos
         setTimeout(function () {
-          modal.style.display = "none";
+          modal_erro.style.display = "none";
         }, 5000);
 
       })
