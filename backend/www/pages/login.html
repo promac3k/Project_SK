@@ -121,15 +121,9 @@
 
                     window.location.href = '/';
 
-                } else if (response.status === 404) {
-
+                } else {
                     return response.text();
-
-                } else if (response.status === 400) {
-
-                    return response.text();
-
-                }
+                } 
             })
             .then(message => {
 

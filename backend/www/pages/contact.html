@@ -79,42 +79,20 @@
                     // Redireciona o usuário para a página de login
                     window.location.href = '/login';
 
-                } else if (response.status === 500) {
-
-                    text.innerHTML = 'Erro ao enviar o e-mail';
-                    modal.style.display = "block";
-                    
-
-                    // Fecha o modal após 5 segundos
-                    setTimeout(function () {
-                        modal.style.display = "none";
-                    }, 5000);
-                } else if (response.status === 400) {
-
-                    text.innerHTML = "Preencha todos os campos!";
-                    modal.style.display = "block";
-                    
-
-                    // Fecha o modal após 5 segundos
-                    setTimeout(function () {
-                        modal.style.display = "none";
-                    }, 3000);
-
-                } else if (response.status === 404) {
-
-                    text.innerHTML = "Por favor, insira um email valido!";
-                    modal.style.display = "block";
-                    
-
-                    // Fecha o modal após 5 segundos
-                    setTimeout(function () {
-                        modal.style.display = "none";
-                    }, 3000);
-
+                } else {
+                    return response.text();
                 }
+            })
+            .then(message => {
 
-                // Retorna o corpo da resposta como texto
-                return response.text();
+                text.innerHTML = message;
+                modal.style.display = "block";
+
+                // Fecha o modal após 5 segundos
+                setTimeout(function () {
+                    modal.style.display = "none";
+                }, 5000);
+
             })
             .then(data => {
                 // Loga o corpo da resposta no console

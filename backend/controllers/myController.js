@@ -179,23 +179,19 @@ const post_contact = (req, res) => {
     const user_mensagem = req.body.text_mail
 
     // Loga os valores recebidos
-    console.log('user_email >>> ' + user_email)
-    console.log('user_cabecalho >>> ' + user_cabecalho)
-    console.log('user_mensagem >>> ' + user_mensagem)
+    //console.log('user_email >>> ' + user_email)
+    //console.log('user_cabecalho >>> ' + user_cabecalho)
+    //console.log('user_mensagem >>> ' + user_mensagem)
 
     // Se algum dos campos estiver vazio, retorna um erro
     if (!user_email || !user_cabecalho || !user_mensagem) {
-        return res.status(400).json({ error: "Os campos são todos obrigatorios" })
+        return res.status(400).send("Os campos são todos obrigatorios");
     }
 
     if (string.validate.isEmail(user_email) === false) {
-
-        console.log("email invalido");
-
         return res.status(404).send('Por favor, insira um email valido!');
 
     }
-
 
     // Define as opções do email a ser enviado
     const mailOptions = {
@@ -209,12 +205,11 @@ const post_contact = (req, res) => {
     email.sendMail(mailOptions, function (error) {
         if (error) {
             // Se houver um erro, loga o erro e retorna uma mensagem de erro
-            console.log(error)
             return res.status(500).send("Erro ao enviar o e-mail")
         } else {
             // Se o email for enviado com sucesso, loga uma mensagem de sucesso e retorna uma mensagem de sucesso
             console.log("Email enviado: ' + info.response")
-            res.status(200).send("E-mail enviado com sucesso!")
+            return res.status(200).send("E-mail enviado com sucesso!")
         }
     })
 
