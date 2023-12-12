@@ -136,6 +136,7 @@ function generateCalendar() {
   
 }
 function generateBlocos() {
+  a = document.getElementById("model_sala")
   document.addEventListener("DOMContentLoaded", function () {
     // Adiciona os valores
     var table = document.getElementById("floorTable");
@@ -178,6 +179,7 @@ function generateBlocos() {
             };
             td.onclick = function () {
               alert(this.id);
+              a.style.display = "none";
             };
 
             // Adiciona o elemento td à linha
