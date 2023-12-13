@@ -135,6 +135,90 @@ function generateCalendar() {
   }
   
 }
+
+// Gera o Horário inicial
+
+
+GenerateCalendarModal(); {
+  const today = new Date();
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+  const firstDay = new Date(year, month, 1).getDay();
+  const calendarContainer = document.getElementById('calendar');
+  calendarContainer.innerHTML = '';
+
+  // Add days of the week
+  const daysOfWeek = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
+  daysOfWeek.forEach(day => {
+      const dayElement = document.createElement('div');
+      dayElement.classList.add('week');
+      dayElement.textContent = day;
+      calendarContainer.appendChild(dayElement);
+  });
+
+  // Add empty cells for days before the first day of the month
+  for (let i = 0; i < firstDay; i++) {
+      const emptyCell = document.createElement('div');
+      emptyCell.classList.add('day');
+      emptyCell.textContent = '';
+      calendarContainer.appendChild(emptyCell);
+  }
+
+  // Add days of the month with distinctive IDs and click event listener
+  for (let day = 1; day <= daysInMonth; day++) {
+      const dayElement = document.createElement('div');
+      dayElement.classList.add('day');
+      dayElement.textContent = day;
+      dayElement.id = `day-${year}-${month + 1}-${day}`;
+
+      // Highlight the current day
+      if (year === today.getFullYear() && month === today.getMonth() && day === today.getDate()) {
+          dayElement.classList.add('today');
+      }
+
+      dayElement.addEventListener('click', () => {
+         horario.style.display = "none";
+         horario_sala.style.display = 'block';
+      });
+
+      calendarContainer.appendChild(dayElement);
+  }
+
+  // Add empty cells for days after the last day of the month
+  const lastDay = new Date(year, month, daysInMonth).getDay();
+  const remainingEmptyCells = 7 - ((firstDay + daysInMonth) % 7);
+
+  for (let i = 0; i < remainingEmptyCells; i++) {
+      const emptyCell = document.createElement('div');
+      emptyCell.classList.add('empty-day');
+      emptyCell.textContent = '1';
+      calendarContainer.appendChild(emptyCell);
+  }
+
+  // Update the month label
+  const monthLabel = document.getElementById('monthLabel');
+  const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  monthLabel.textContent = `${monthNames[month]} ${year}`;
+}
+
+function nextMonth() {
+  currentMonth++;
+  if (currentMonth > 11) {
+      currentMonth = 0;
+      currentYear++;
+  }
+  generateCalendar(currentYear, currentMonth);
+}
+
+function prevMonth() {
+  currentMonth--;
+  if (currentMonth < 0) {
+      currentMonth = 11;
+      currentYear--;
+  }
+  generateCalendar(currentYear, currentMonth);
+}
+
+
 function generateBlocos() {
   a = document.getElementById("model_sala")
   document.addEventListener("DOMContentLoaded", function () {
@@ -178,8 +262,7 @@ function generateBlocos() {
                 this.style.backgroundColor = "";
             };
             td.onclick = function () {
-              alert(this.id);
-              a.style.display = "none";
+              document.getElementById('modal_sala').style.display='block';
             };
 
             // Adiciona o elemento td à linha
