@@ -14,12 +14,12 @@
 </head>
 
 <body>
-        <!-- Modal Erro ao alterar Palavra-Passe -->
-        <div id="modal_erro" class="modal_erro">
-          <div class="modal_erro_content">
-            <span id="modalText"></span>
-          </div>
-        </div>
+  <!-- Modal Erro ao alterar Palavra-Passe -->
+  <div id="modal_erro" class="modal_erro">
+    <div class="modal_erro_content">
+      <span id="modalText"></span>
+    </div>
+  </div>
   <main>
     <div class="container_profile">
 
@@ -77,14 +77,15 @@
                 <input type="password" name="pass_nova" class="input_campo"><br>
                 <label for="email">Confirmar Palavra-Passe:</label><br>
                 <input type="password" name="pass_confirme" class="input_campo"><br>
-                <button type="submit" class="button_contacto" onclick="document.getElementById('modal_erro').style.display='block'">Gravar </button>
+                <button type="submit" class="button_contacto"
+                  onclick="document.getElementById('modal_erro').style.display='block'">Gravar </button>
               </form>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="flex-container">
+      <div class="flex-container" id="tabelaContainer">
 
         <table class="table_alunos">
           <tr class="tr_alunos">
@@ -191,6 +192,8 @@
 
   window.onload = checkCookie();
 
+
+
   // vai buscar o id do modal
   var modal_editar = document.getElementById("modal_editar");
 
@@ -249,13 +252,13 @@
       .then(response => {
         // Verifica o código de status da resposta
         if (response.status === 200) {
-          
+
           window.location.href = '/logout';
 
         } else {
-          return response.text(); 
+          return response.text();
 
-        } 
+        }
       })
       .then(message => {
 
@@ -276,6 +279,22 @@
         // Loga qualquer erro que ocorra durante a solicitação no console
         console.error('Erro:', error);
       });
+  });
+
+  // Use jQuery para fazer uma solicitação AJAX para o servidor
+  $(document).ready(function () {
+    $.get('http://localhost:3333/perfil/horario', function (data) {
+      // Insira a tabela no div com id "tabelaContainer"
+      $('#tabelaContainer').html(data);
+    });
+  });
+
+  // Use jQuery para fazer uma solicitação AJAX para o servidor
+  $(document).ready(function () {
+    $.get('/perfil', function (data) {
+      // Insira a tabela no div com id "tabelaContainer"
+      $('#tabelaContainer').html(data);
+    });
   });
 
 </script>

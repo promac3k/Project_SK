@@ -5,7 +5,7 @@ const path = require('path'); // Módulo Node.js para trabalhar com caminhos de 
 const string = require("string-sanitizer"); // Módulo para sanitizar strings
 const bcrypt = require('../services/bcrypt'); // Módulo para criptografar senhas
 
-
+//Login Page
 // Métodos para serem executados nas rotas
 const get_index = (req, res) => {
 
@@ -162,6 +162,9 @@ const post_change_password = async (req, res) => {
 
 }
 
+
+
+//Contact pages
 // Método para lidar com a rota GET para /contacts
 const get_contacts = (req, res) => {
     console.log("get_contacts >>>>> " + req.session.loggedin);
@@ -217,6 +220,8 @@ const post_contact = (req, res) => {
     console.log(user_email, user_cabecalho)
 }
 
+
+
 // Método para lidar com a rota GET para /eventos
 const get_eventos = (req, res) => {
     console.log("get_eventos >>>>> " + req.session.loggedin);
@@ -232,19 +237,36 @@ const get_eventos = (req, res) => {
 
 }
 
+//Profile pages
 // Método para lidar com a rota GET para /profile
 const get_profile = (req, res) => {
     console.log("get_profile >>>>> " + req.session.loggedin);
 
     if (req.session.loggedin) {
         // Envia o arquivo profile.html como resposta
-        res.sendFile(path.join(__dirname, '..', 'www/pages/profile.html'))
+        res.sendFile(path.join(__dirname, '..', 'www/pages/profile.html'));
+        get_horario();
     } else {
 
         res.sendFile(path.join(__dirname, '..', 'www/pages/login.html'));
     }
 
 }
+
+async function get_horario(){
+    console.log("fsfsf")
+    const result = await connection.query('SELECT * FROM alunos ')
+    console.table(result[0]);
+    console.log(result.length);
+
+}
+// Método para lidar com a rota GET para profile/horario
+
+const get_horario_profile = async (req, res) => {
+    console.log("dhdh")
+   // get_horario();
+}
+
 
 // Método para lidar com a rota GET para /blocoA
 const get_blocoA = (req, res) => {
@@ -346,6 +368,7 @@ module.exports = {
     post_contact,
     get_eventos,
     get_profile,
+    get_horario_profile,
     get_blocoA,
     get_blocoB,
     get_blocoC,
