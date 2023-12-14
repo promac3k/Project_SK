@@ -27,9 +27,6 @@ router.get('/eventos', myController.get_eventos); // Rota para a página de even
 
 router.get('/perfil', myController.get_profile); // Rota para a página de perfil
 
-//Rota para carregar os dados do horario || Perfil
-router.get('/perfil', myController.get_horario_profile);
-
 router.get('/blocos/blocoA', myController.get_blocoA); // Rota para a página do bloco A
 
 router.get('/blocos/blocoB', myController.get_blocoB); // Rota para a página do bloco B

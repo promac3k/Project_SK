@@ -289,14 +289,6 @@ function generateTimetableHTML(data) {
 }
 
 
-
-
-const get_horario_profile = async (req, res) => {
-    console.log("dhdh")
-   // get_horario();
-}
-
-
 // Método para lidar com a rota GET para /blocoA
 const get_blocoA = (req, res) => {
     console.log("get_blocoA >>>>> " + req.session.loggedin);
