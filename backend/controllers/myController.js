@@ -253,16 +253,16 @@ const get_profile = (req, res) => {
 
 }
 
-async function get_horario(){
+async function get_horario() {
     const result = await connection.query('SELECT * FROM alunos ')
     console.table(result[0]);
     console.log(result.length);
 
-        // Process the 'result' data and generate the HTML content for the timetable
-        const timetableHTML = generateTimetableHTML(result);
+    // Process the 'result' data and generate the HTML content for the timetable
+    const timetableHTML = generateTimetableHTML(result);
 
-        console.log(timetableHTML);
-        return timetableHTML;
+    console.log(timetableHTML);
+    return timetableHTML;
 
 }
 
