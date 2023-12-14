@@ -254,13 +254,42 @@ const get_profile = (req, res) => {
 }
 
 async function get_horario(){
-    console.log("fsfsf")
     const result = await connection.query('SELECT * FROM alunos ')
     console.table(result[0]);
     console.log(result.length);
 
+        // Process the 'result' data and generate the HTML content for the timetable
+        const timetableHTML = generateTimetableHTML(result);
+
+        console.log(timetableHTML);
+        return timetableHTML;
+
 }
-// Método para lidar com a rota GET para profile/horario
+
+
+function generateTimetableHTML(data) {
+    // Implement logic to generate HTML based on the 'data' received from the database
+    // You need to iterate through the data and construct the HTML accordingly
+    // Example:
+    const timetableRows = data.map(row => `<tr><td>${row.time}</td><td>${row.monday}</td>...</tr>`);
+
+    // Construct the entire timetable table HTML
+    const timetableHTML = `
+        <table class="table_alunos">
+            <tr class="tr_alunos">
+                <th>Horas</th>
+                <th>Segunda</th>
+                <!-- Add other days of the week headers -->
+            </tr>
+            ${timetableRows.join('')}
+        </table>
+    `;
+
+    return timetableHTML;
+}
+
+
+
 
 const get_horario_profile = async (req, res) => {
     console.log("dhdh")
