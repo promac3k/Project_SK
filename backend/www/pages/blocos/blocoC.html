@@ -23,11 +23,11 @@
         <div id="modal_sala" class="modal">
 
             <div class="modal_sala_content">
-                <div class="modal-header">    
+                <div class="modal-header">
                     <span class="fechar_editar">&times;</span>
-                  </div>
+                </div>
                 <h1>Horário</h1>
-                
+
                 <div id="horario">
                     <div style="display: flex; justify-content: center; align-items: center;">
                         <button class="icon-button" onclick="prevMonth()"><span class="material-symbols-outlined">
@@ -37,14 +37,14 @@
                         <button class="icon-button" onclick="nextMonth()"><span class="material-symbols-outlined">
                                 arrow_forward_ios
                             </span></button>
-    
+
                     </div>
-                    
+
                     <div id="calendar" class="calendar">
-                </div>
+                    </div>
 
                 </div>
-                
+
                 <form method="post">
                     <table class="table_alunos" id="horario_sala">
                         <tr class="tr_alunos">
@@ -55,7 +55,7 @@
                             <th>Quinta</th>
                             <th>Sexta</th>
                         </tr>
-    
+
                         <tr class="tr_alunos">
                             <td>08:00 - 08:30</td>
                             <td></td>
@@ -109,7 +109,7 @@
                             <td></td>
                             <td></td>
                         </tr>
-    
+
                         <tr class="tr_alunos">
                             <td>13:30 - 14:00</td>
                             <td></td>
@@ -147,8 +147,7 @@
 
             <h1>Bloco C</h1><br>
             <div class="cal">
-                <table id="floorTable" data-room-counts="0, 6, 0" data-starting-room-numbers="0, 201, 0"
-                    data-room-prefix="C" data-transition-room-number="1111" data-custom-room-number="1111">
+                <table id="floorTable" data-room-counts="0, 6, 0" data-starting-room-numbers="0, 201, 0" data-room-prefix="C" data-transition-room-number="1111" data-custom-room-number="1111">
                     <thead>
                         <tr>
                             <th>Pisos</th>
@@ -162,8 +161,7 @@
 
             <footer>
                 <p>
-                    Criado <i class="fa fa-heart"></i> por
-                    André Nunes, Diogo Oliveira, Gustavo Antunes, Sebastião Costa e Tiago Batista
+                    Criado <i class="fa fa-heart"></i> por André Nunes, Diogo Oliveira, Gustavo Antunes, Sebastião Costa e Tiago Batista
                 </p>
             </footer>
         </div>
@@ -175,8 +173,8 @@
     window.onload = checkCookie();
     generateBlocos();
 
-    let currentYear = 2023;
-    let currentMonth = 11;
+    let year = 2023;
+    let month = 11;
     let horario = document.getElementById('horario');
     let modal = document.getElementById('modal_sala');
     let horario_sala = document.getElementById('horario_sala');
@@ -186,14 +184,14 @@
     var span = document.getElementsByClassName("fechar_editar")[0];
 
     //fecha o modal quando o botao dentro do modal for clicado
-    span.onclick = function () {
+    span.onclick = function() {
         modal.style.display = "none";
         horario_sala.style.display = 'none';
         gravar.style.display = 'none';
         horario.style.display = "grid";
     }
 
-    function generateCalendar(year, month) {
+    function generateCalendarModal() {
         const today = new Date();
         const daysInMonth = new Date(year, month + 1, 0).getDate();
         const firstDay = new Date(year, month, 1).getDay();
@@ -224,15 +222,9 @@
             dayElement.textContent = day;
             dayElement.id = `day-${year}-${month + 1}-${day}`;
 
-            // Highlight the current day
-            if (year === today.getFullYear() && month === today.getMonth() && day === today.getDate()) {
-                dayElement.classList.add('today');
-            }
-
             dayElement.addEventListener('click', () => {
-               horario.style.display = "none";
-               horario_sala.style.display = 'block';
-               gravar.style.display = 'block';
+                horario.style.display = "none";
+                horario_sala.style.display = 'block';
             });
 
             calendarContainer.appendChild(dayElement);
@@ -256,25 +248,24 @@
     }
 
     function nextMonth() {
-        currentMonth++;
-        if (currentMonth > 11) {
-            currentMonth = 0;
-            currentYear++;
+        month++;
+        if (month > 11) {
+            month = 0;
+            year++;
         }
-        generateCalendar(currentYear, currentMonth);
+        generateCalendarModal(year, month);
     }
 
     function prevMonth() {
-        currentMonth--;
-        if (currentMonth < 0) {
-            currentMonth = 11;
-            currentYear--;
+        month--;
+        if (month < 0) {
+            month = 11;
+            year--;
         }
-        generateCalendar(currentYear, currentMonth);
+        generateCalendarModal(year, month);
     }
 
-    // Initial generation of calendar
-    generateCalendar(currentYear, currentMonth);
+    generateCalendarModal(year, month);
 </script>
 
 </html>
