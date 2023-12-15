@@ -92,7 +92,7 @@ const post_login = async (req, res) => {
                     if (err) return next(err);
                 });
 
-                const user = {nome: db.nome_aluno, email: db.email_aluno, turma: db.turma_aluno, curso: db.nome_curso, ano: db.ano_aluno }
+                const user = { nome: db.nome_aluno, email: db.email_aluno, turma: db.turma_aluno, curso: db.nome_curso, ano: db.ano_aluno }
                 const id = db.id_alunos;
                 res.cookie("user", JSON.stringify(user));
                 res.cookie("id", id);
@@ -245,76 +245,64 @@ const get_profile = async (req, res) => {
     console.log("get_profile >>>>> " + req.session.loggedin);
 
     if (req.session.loggedin) {
-        // Envia o arquivo profile.html como resposta
-        res.sendFile(path.join(__dirname, '..', 'www/pages/profile.html'));
-        const id_aluno = req.cookies.id;
+        try {
+            // Envia o arquivo profile.html como resposta
+            res.sendFile(path.join(__dirname, '..', 'www/pages/profile.html'));
+            const id_aluno = req.cookies.id;
 
-        const inscritas = await connection.query('SELECT * FROM inscritas  WHERE alunos_id_alunos = ?', [id_aluno]);
-        console.table(inscritas[0]);
-        //console.log(inscritas.length);
+            const inscritas = await connection.query('SELECT * FROM inscritas  WHERE alunos_id_alunos = ?', [id_aluno]);
+            console.table(inscritas[0]);
 
-        const db_inscritas = inscritas[0];
-        const id_inscritas = db_inscritas.disciplina_id_disc;
-        //console.log(id_inscritas);
+            const db_inscritas = inscritas[0];
+            const id_inscritas = db_inscritas.disciplina_id_disc;
 
-        const disciplinas = await connection.query('SELECT * FROM disciplina WHERE id_disc = ?', [id_inscritas]);
-        console.table(disciplinas[0]);
+            const disciplinas = await connection.query('SELECT * FROM disciplina WHERE id_disc = ?', [id_inscritas]);
+            console.table(disciplinas[0]);
 
-        const db_disciplinas = disciplinas[0];
-        const id_prof = db_disciplinas.professores_id_prof;
-        
-        const professores = await connection.query('SELECT * FROM professores WHERE id_prof = ?', [id_prof]);
-        console.table(professores[0]);
+            const db_disciplinas = disciplinas[0];
+            const aula = db_disciplinas.nome_disc;
+            const id_prof = db_disciplinas.professores_id_prof;
 
-        const db_professores = professores[0];
-        const nome_prof = db_professores.nome_prof;
+            const professores = await connection.query('SELECT * FROM professores WHERE id_prof = ?', [id_prof]);
+            console.table(professores[0]);
 
-        const presencas = await connection.query('SELECT * FROM presenças WHERE alunos_id_alunos = ? and disciplina_id_disc', [id_aluno], [id_inscritas]);
-        console.table(presencas[0]);
+            const db_professores = professores[0];
+            const nome_prof = db_professores.nome_prof;
 
+            const presencas = await connection.query('SELECT * FROM presenças WHERE alunos_id_alunos = ? and disciplina_id_disc = ?', [id_aluno, id_inscritas]);
+            console.table(presencas[0]);
 
+            const db_presencas = presencas[0];
+            const id_horario = db_presencas.horarios_id_horario;
 
-        const db_presencas = presencas[0];
-        const id_horario = db_presencas.horarios_id_horario;
-        aula = db_presencas.nome_disc;
+            const horario = await connection.query('SELECT * FROM horario WHERE id_horario = ?', [id_horario]);
+            console.table(horario[0]);
+            const db_horario = horario[0];
+            const id_salas = db_horario.salas_id_salas;
 
+            const salas = await connection.query('SELECT * FROM salas WHERE id_salas = ?', [id_salas]);
+            console.table(salas[0]);
 
-        const horario = await connection.query('SELECT * FROM horario WHERE id_horario = ?', [id_horario]);
-        console.table(horario[0]);
-        const db_horario = horario[0];
-        const id_salas = db_horario.salas_id_salas;
+            const db_salas = salas[0];
+            const nr_sala = db_salas.numero_salas;
+            const bloco_sala = db_salas.bloco_salas;
 
+            const aulas = [aula, nr_sala, bloco_sala, nome_prof]
 
-        const salas = await connection.query('SELECT * FROM salas WHERE id_salas = ?', [id_salas]);
-        console.table(salas[0]);
+            console.table(aulas);
 
-        const db_salas = salas[0];
-        const nr_sala = db_salas.numero_salas;
-        const bloco_sala = db_salas.bloco_salas;
+            // Process the 'result' data and generate the HTML content for the timetable
+            //const timetableHTML = generateTimetableHTML(aulas);
 
-
-
-        const result = await connection.query('SELECT * FROM alunos ')
-        console.table(result[0]);
-        console.log(result.length);
-
-
-
-        const aulas = [aula, nr_sala, bloco_sala, nome_prof]
-
-    
-        // Process the 'result' data and generate the HTML content for the timetable
-        const timetableHTML = generateTimetableHTML(result);
-      
-        console.log(timetableHTML);
-        return timetableHTML;
-    
-        //get_horario();
+            //onsole.log(timetableHTML);
+            //res.send(timetableHTML);
+        } catch (err) {
+            console.error(err);
+            res.status(500).send('Ocorreu um erro ao buscar o horario.');
+        }
     } else {
-
         res.sendFile(path.join(__dirname, '..', 'www/pages/login.html'));
     }
-
 }
 
 function generateTimetableHTML(data) {
