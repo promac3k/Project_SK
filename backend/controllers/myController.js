@@ -5,6 +5,7 @@ const path = require('path'); // Módulo Node.js para trabalhar com caminhos de 
 const string = require("string-sanitizer"); // Módulo para sanitizar strings
 const bcrypt = require('../services/bcrypt'); // Módulo para criptografar senhas
 
+
 //Login Page
 // Métodos para serem executados nas rotas
 const get_index = (req, res) => {
@@ -91,9 +92,10 @@ const post_login = async (req, res) => {
                     if (err) return next(err);
                 });
 
-                const user = { nome: db.nome_aluno, email: db.email_aluno, turma: db.turma_aluno, curso: db.nome_curso, ano: db.ano_aluno }
-
+                const user = {nome: db.nome_aluno, email: db.email_aluno, turma: db.turma_aluno, curso: db.nome_curso, ano: db.ano_aluno }
+                const id = db.id_alunos;
                 res.cookie("user", JSON.stringify(user));
+                res.cookie("id", id);
                 res.status(200).send("Login efetuado com sucesso!")
 
             } else {
@@ -239,33 +241,47 @@ const get_eventos = (req, res) => {
 
 //Profile pages
 // Método para lidar com a rota GET para /profile
-const get_profile = (req, res) => {
-    console.log("get_profile >>>>> " + req.session.loggedin);
+const get_profile = async (req, res) => {
+    console.log("get_profile >>>>> " + req.cookies.user);
 
     if (req.session.loggedin) {
         // Envia o arquivo profile.html como resposta
         res.sendFile(path.join(__dirname, '..', 'www/pages/profile.html'));
-        get_horario();
+        const id_aluno = req.cookies.id;
+
+        const inscritas = await connection.query('SELECT * FROM inscritas  WHERE alunos_id_alunos = ?', [id_aluno]);
+        console.table(inscritas[0]);
+        console.log(inscritas.length);
+
+        const db_inscritas = inscritas[0];
+        const id_inscritas = db_inscritas.disciplina_id_disc;
+        console.log(id_inscritas);
+
+        const disciplinas = await connection.query('SELECT * FROM disciplina WHERE id_disc = ?', [id_inscritas]);
+        console.table(disciplinas[0]);
+
+        const presencas = await connection.query('SELECT * FROM presenças WHERE alunos_id_alunos = ? and disciplina_id_disc', [id_aluno], [id_inscritas]);
+        console.table(presencas[0]);
+
+        const result = await connection.query('SELECT * FROM alunos ')
+        console.table(result[0]);
+        console.log(result.length);
+
+
+    
+        // Process the 'result' data and generate the HTML content for the timetable
+        const timetableHTML = generateTimetableHTML(result);
+      
+        console.log(timetableHTML);
+        return timetableHTML;
+    
+        //get_horario();
     } else {
 
         res.sendFile(path.join(__dirname, '..', 'www/pages/login.html'));
     }
 
 }
-
-async function get_horario() {
-    const result = await connection.query('SELECT * FROM alunos ')
-    console.table(result[0]);
-    console.log(result.length);
-
-    // Process the 'result' data and generate the HTML content for the timetable
-    const timetableHTML = generateTimetableHTML(result);
-
-    console.log(timetableHTML);
-    return timetableHTML;
-
-}
-
 
 function generateTimetableHTML(data) {
     // Implement logic to generate HTML based on the 'data' received from the database
