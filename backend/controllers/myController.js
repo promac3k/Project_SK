@@ -242,7 +242,7 @@ const get_eventos = (req, res) => {
 //Profile pages
 // Método para lidar com a rota GET para /profile
 const get_profile = async (req, res) => {
-    console.log("get_profile >>>>> " + req.cookies.user);
+    console.log("get_profile >>>>> " + req.session.loggedin);
 
     if (req.session.loggedin) {
         // Envia o arquivo profile.html como resposta
@@ -251,17 +251,24 @@ const get_profile = async (req, res) => {
 
         const inscritas = await connection.query('SELECT * FROM inscritas  WHERE alunos_id_alunos = ?', [id_aluno]);
         console.table(inscritas[0]);
-        console.log(inscritas.length);
+        //console.log(inscritas.length);
 
         const db_inscritas = inscritas[0];
         const id_inscritas = db_inscritas.disciplina_id_disc;
-        console.log(id_inscritas);
+        //console.log(id_inscritas);
 
         const disciplinas = await connection.query('SELECT * FROM disciplina WHERE id_disc = ?', [id_inscritas]);
         console.table(disciplinas[0]);
 
         const presencas = await connection.query('SELECT * FROM presenças WHERE alunos_id_alunos = ? and disciplina_id_disc', [id_aluno], [id_inscritas]);
         console.table(presencas[0]);
+
+        const db_presencas = presencas[0];
+        const id_horario = db_presencas.horarios_id_horario;
+
+        const horario = await connection.query('SELECT * FROM horario WHERE id_horario = ?', [id_horario]);
+        console.table(horario[0]);
+
 
         const result = await connection.query('SELECT * FROM alunos ')
         console.table(result[0]);
