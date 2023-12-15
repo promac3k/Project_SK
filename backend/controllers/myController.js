@@ -260,20 +260,38 @@ const get_profile = async (req, res) => {
         const disciplinas = await connection.query('SELECT * FROM disciplina WHERE id_disc = ?', [id_inscritas]);
         console.table(disciplinas[0]);
 
+        const db_disciplinas = disciplinas[0];
+        const id_prof = db_disciplinas.professores_id_prof;
+        
+        const professores = await connection.query('SELECT * FROM professores WHERE id_prof = ?', [id_prof]);
+        console.table(professores[0]);
+
+        const db_professores = professores[0];
+        const nome_prof = db_professores.nome_prof;
+
         const presencas = await connection.query('SELECT * FROM presenças WHERE alunos_id_alunos = ? and disciplina_id_disc', [id_aluno], [id_inscritas]);
         console.table(presencas[0]);
 
-        aula = presencas.nome_disc;
+
 
         const db_presencas = presencas[0];
         const id_horario = db_presencas.horarios_id_horario;
+        aula = db_presencas.nome_disc;
+
 
         const horario = await connection.query('SELECT * FROM horario WHERE id_horario = ?', [id_horario]);
         console.table(horario[0]);
-        const id_salas = horario.salas_id_salas;
+        const db_horario = horario[0];
+        const id_salas = db_horario.salas_id_salas;
 
-        //const salas = await connection.query('SELECT * FROM salas WHERE id_salas = ?', [id_salas]);
-        //console.table(salas[0]);
+
+        const salas = await connection.query('SELECT * FROM salas WHERE id_salas = ?', [id_salas]);
+        console.table(salas[0]);
+
+        const db_salas = salas[0];
+        const nr_sala = db_salas.numero_salas;
+        const bloco_sala = db_salas.bloco_salas;
+
 
 
         const result = await connection.query('SELECT * FROM alunos ')
@@ -282,7 +300,7 @@ const get_profile = async (req, res) => {
 
 
 
-        const aulas = [presencas.nome_disc, horario.hora_salas, horario.fimh_salas]
+        const aulas = [aula, nr_sala, bloco_sala, nome_prof]
 
     
         // Process the 'result' data and generate the HTML content for the timetable
