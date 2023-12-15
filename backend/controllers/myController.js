@@ -389,7 +389,6 @@ module.exports = {
     post_contact,
     get_eventos,
     get_profile,
-    get_horario_profile,
     get_blocoA,
     get_blocoB,
     get_blocoC,
