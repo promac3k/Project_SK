@@ -263,17 +263,26 @@ const get_profile = async (req, res) => {
         const presencas = await connection.query('SELECT * FROM presenças WHERE alunos_id_alunos = ? and disciplina_id_disc', [id_aluno], [id_inscritas]);
         console.table(presencas[0]);
 
+        aula = presencas.nome_disc;
+
         const db_presencas = presencas[0];
         const id_horario = db_presencas.horarios_id_horario;
 
         const horario = await connection.query('SELECT * FROM horario WHERE id_horario = ?', [id_horario]);
         console.table(horario[0]);
+        const id_salas = horario.salas_id_salas;
+
+        //const salas = await connection.query('SELECT * FROM salas WHERE id_salas = ?', [id_salas]);
+        //console.table(salas[0]);
 
 
         const result = await connection.query('SELECT * FROM alunos ')
         console.table(result[0]);
         console.log(result.length);
 
+
+
+        const aulas = [presencas.nome_disc, horario.hora_salas, horario.fimh_salas]
 
     
         // Process the 'result' data and generate the HTML content for the timetable
@@ -299,11 +308,14 @@ function generateTimetableHTML(data) {
     // Construct the entire timetable table HTML
     const timetableHTML = `
         <table class="table_alunos">
-            <tr class="tr_alunos">
-                <th>Horas</th>
-                <th>Segunda</th>
-                <!-- Add other days of the week headers -->
-            </tr>
+        <tr class="tr_alunos">
+        <th>Horas</th>
+        <th>Segunda</th>
+        <th>Terça</th>
+        <th>Quarta</th>
+        <th>Quinta</th>
+        <th>Sexta</th>
+      </tr>
             ${timetableRows.join('')}
         </table>
     `;
