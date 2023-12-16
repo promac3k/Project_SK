@@ -291,13 +291,26 @@ const get_profile = async (req, res) => {
             //console.table(aulas);
 
             //Process the 'result' data and generate the HTML content for the timetable
-            const timetableHTML = generateTimetableHTML(aulas);
+            //const timetableHTML = generateTimetableHTML(aulas);
 
-            console.log(timetableHTML);
-            res.send(timetableHTML);
+            //console.log(timetableHTML);
+            //res.send(timetableHTML);
+
+
+            if (!res.headersSent) {
+                res.json({
+                    aula: aula,
+                    nome_prof: nome_prof,
+                    nr_sala: nr_sala,
+                    bloco_sala: bloco_sala
+                });
+            }
+
         } catch (err) {
             console.error(err);
-            res.status(500).send('Ocorreu um erro ao buscar o horario.');
+            if (!res.headersSent) {
+                res.status(500).send('Ocorreu um erro ao buscar o horario.');
+            }
         }
     } else {
         res.sendFile(path.join(__dirname, '..', 'www/pages/login.html'));
@@ -308,7 +321,7 @@ function generateTimetableHTML(aulas) {
     // Implement logic to generate HTML based on the 'data' received from the database
     // You need to iterate through the data and construct the HTML accordingly
     // Example:
-    const timetableRows = aulas.map(h_aula => `<tr><td>${aulas[0] + aulas[1] +  aulas[2] +  aulas[3]}</td></tr>`);
+    const timetableRows = aulas.map(h_aula => `<tr><td>${aulas[0] + aulas[1] + aulas[2] + aulas[3]}</td></tr>`);
 
     // Construct the entire timetable table HTML
     const timetableHTML = `

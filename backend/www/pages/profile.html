@@ -115,11 +115,11 @@
           </tr>
           <tr class="tr_alunos">
             <td>09:00 - 09:30</td>
-            <td rowspan="8" class="table_aula_segunda">CIC (Teorica)<br>1ºPWDAM-01<br>F315----LT</td>
-            <td rowspan="8" class="table_aula_terca">IPINT (TP)<br>1ºPWDAM-01<br>D108-----JVJ</td>
-            <td rowspan="8" class="table_aula_quarta">FM (TP)<br>1ºPWDAM-01<br>F315-----ECSL</td>
-            <td rowspan="8" class="table_aula_quinta">ING (TP)<br>1ºPWDAM-01<br>F315-----ECSL</td>
-            <td rowspan="8" class="table_aula_sexta">SGBD (TP)<br>1ºPWDAM-01<br>F315-----ND_DSI_INF_01</td>
+            <td rowspan="8" class="table_aula_segunda"></td>
+            <td rowspan="8" class="table_aula_terca"></td>
+            <td rowspan="8" class="table_aula_quarta"></td>
+            <td rowspan="8" class="table_aula_quinta"></td>
+            <td rowspan="8" class="table_aula_sexta"></td>
           </tr>
           <tr class="tr_alunos">
             <td>09:30 - 10:00</td>
@@ -281,19 +281,22 @@
       });
   });
 
-  // Use jQuery para fazer uma solicitação AJAX para o servidor
-  $(document).ready(function () {
-    $.get('http://localhost:3333/perfil/horario', function (data) {
-      // Insira a tabela no div com id "tabelaContainer"
-      $('#tabelaContainer').html(data);
-    });
-  });
+  fetch('/perfil')
+    .then(response => response.json())
+    .then(data => {
+      // Seleciona as células da tabela
+      const segundaCell = document.querySelector('.table_aula_segunda');
+      const tercaCell = document.querySelector('.table_aula_terca');
+      const quartaCell = document.querySelector('.table_aula_quarta');
+      const quintaCell = document.querySelector('.table_aula_quinta');
+      const sextaCell = document.querySelector('.table_aula_sexta');
 
-  // Use jQuery para fazer uma solicitação AJAX para o servidor
-  $(document).ready(function () {
-    $.get('/perfil', function (data) {
-      // Insira a tabela no div com id "tabelaContainer"
-      $('#tabelaContainer').html(data);
+      // Preenche as células com os dados
+      segundaCell.textContent = `${data.aula}\n${data.nome_prof}\n${data.nr_sala}`;
+      tercaCell.textContent = `${data.aula}\n${data.nome_prof}\n${data.nr_sala}`;
+      quartaCell.textContent = `${data.aula}\n${data.nome_prof}\n${data.nr_sala}`;
+      quintaCell.textContent = `${data.aula}\n${data.nome_prof}\n${data.nr_sala}`;
+      sextaCell.textContent = `${data.aula}\n${data.nome_prof}\n${data.nr_sala}`;
     });
-  });
+
 </script>
