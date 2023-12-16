@@ -26,7 +26,7 @@ function getCookie(cname) {
 function checkCookie() {
     let theme = getCookie("theme");
     const currentUrl = window.location.href;
-    console.log(currentUrl);
+    //console.log(currentUrl);
     if (theme != "") {
         console.log("Theme used is " + theme);
         var checkBox = document.getElementById("switchon");
@@ -113,15 +113,15 @@ function generateCalendar() {
             const td = document.createElement('td');
             td.id = dayId;
             td.className = 'number';
-            td.onclick = function() {
+            td.onclick = function () {
                 alert(this.id);
             };
             const span = document.createElement('span');
-            span.onmouseover = function() {
+            span.onmouseover = function () {
                 // Altera a cor do número quando o mouse passa sobre ele
                 this.style.color = "red";
             };
-            span.onmouseout = function() {
+            span.onmouseout = function () {
                 // Retorna à cor original quando o mouse sai do número
                 this.style.color = "";
             };
@@ -211,13 +211,11 @@ function prevMonth() {
     generateCalendarModal(year, month);
 }
 
-generateCalendarModal(year, month);
-
 
 
 function generateBlocos() {
     a = document.getElementById("model_sala")
-    document.addEventListener("DOMContentLoaded", function() {
+    document.addEventListener("DOMContentLoaded", function () {
         // Adiciona os valores
         var table = document.getElementById("floorTable");
         var roomCounts = table.dataset.roomCounts.split(",").map(Number);
@@ -249,15 +247,15 @@ function generateBlocos() {
                 td.textContent = roomPrefix + roomNumber;
 
                 // Adiciona os eventos onmousemove e onmouseout
-                td.onmousemove = function() {
+                td.onmousemove = function () {
                     // Adiciona um estilo à borda quando o mouse se move sobre a célula
                     this.style.backgroundColor = "red";
                 };
-                td.onmouseout = function() {
+                td.onmouseout = function () {
                     // Remove o estilo da borda quando o mouse sai da célula
                     this.style.backgroundColor = "";
                 };
-                td.onclick = function() {
+                td.onclick = function () {
                     document.getElementById('modal_sala').style.display = 'block';
                 };
 

@@ -281,8 +281,10 @@
       });
   });
 
-  fetch('/perfil')
-    .then(response => response.json())
+  fetch('/perfil/horarios')
+    .then(response => {
+      return response.json();
+    })
     .then(data => {
       // Seleciona as células da tabela
       const segundaCell = document.querySelector('.table_aula_segunda');
@@ -292,11 +294,11 @@
       const sextaCell = document.querySelector('.table_aula_sexta');
 
       // Preenche as células com os dados
-      segundaCell.textContent = `${data.aula}\n${data.nome_prof}\n${data.nr_sala}`;
-      tercaCell.textContent = `${data.aula}\n${data.nome_prof}\n${data.nr_sala}`;
-      quartaCell.textContent = `${data.aula}\n${data.nome_prof}\n${data.nr_sala}`;
-      quintaCell.textContent = `${data.aula}\n${data.nome_prof}\n${data.nr_sala}`;
-      sextaCell.textContent = `${data.aula}\n${data.nome_prof}\n${data.nr_sala}`;
+      segundaCell.innerHTML = `${data.aula}<br>${data.nome_prof}<br>${data.bloco_sala}<br>${data.nr_sala}`;
+      tercaCell.innerHTML = `${data.aula}<br>${data.nome_prof}<br>${data.bloco_sala}<br>${data.nr_sala}`;
+      quartaCell.innerHTML = `${data.aula}<br>${data.nome_prof}<br>${data.bloco_sala}<br>${data.nr_sala}`;
+      quintaCell.innerHTML = `${data.aula}<br>${data.nome_prof}<br>${data.bloco_sala}<br>${data.nr_sala}`;
+      sextaCell.innerHTML = `${data.aula}<br>${data.nome_prof}<br>${data.bloco_sala}<br>${data.nr_sala}`;
     });
 
 </script>

@@ -241,106 +241,86 @@ const get_eventos = (req, res) => {
 
 //Profile pages
 // Método para lidar com a rota GET para /profile
-const get_profile = async (req, res) => {
+const get_profile = (req, res) => {
     console.log("get_profile >>>>> " + req.session.loggedin);
 
     if (req.session.loggedin) {
-        try {
-            // Envia o arquivo profile.html como resposta
-            res.sendFile(path.join(__dirname, '..', 'www/pages/profile.html'));
-            const id_aluno = req.cookies.id;
+        // Envia o arquivo profile.html como resposta
+        res.sendFile(path.join(__dirname, '..', 'www/pages/profile.html'));
 
-            const inscritas = await connection.query('SELECT * FROM inscritas  WHERE alunos_id_alunos = ?', [id_aluno]);
-            //console.table(inscritas[0]);
-
-            const db_inscritas = inscritas[0];
-            const id_inscritas = db_inscritas.disciplina_id_disc;
-
-            const disciplinas = await connection.query('SELECT * FROM disciplina WHERE id_disc = ?', [id_inscritas]);
-            //console.table(disciplinas[0]);
-
-            const db_disciplinas = disciplinas[0];
-            const aula = db_disciplinas.nome_disc;
-            const id_prof = db_disciplinas.professores_id_prof;
-
-            const professores = await connection.query('SELECT * FROM professores WHERE id_prof = ?', [id_prof]);
-            //console.table(professores[0]);
-
-            const db_professores = professores[0];
-            const nome_prof = db_professores.nome_prof;
-
-            const presencas = await connection.query('SELECT * FROM presenças WHERE alunos_id_alunos = ? and disciplina_id_disc = ?', [id_aluno, id_inscritas]);
-            //console.table(presencas[0]);
-
-            const db_presencas = presencas[0];
-            const id_horario = db_presencas.horarios_id_horario;
-
-            const horario = await connection.query('SELECT * FROM horario WHERE id_horario = ?', [id_horario]);
-            //console.table(horario[0]);
-            const db_horario = horario[0];
-            const id_salas = db_horario.salas_id_salas;
-
-            const salas = await connection.query('SELECT * FROM salas WHERE id_salas = ?', [id_salas]);
-            //console.table(salas[0]);
-
-            const db_salas = salas[0];
-            const nr_sala = db_salas.numero_salas;
-            const bloco_sala = db_salas.bloco_salas;
-
-            const aulas = [aula, nr_sala, bloco_sala, nome_prof];
-            //console.table(aulas);
-
-            //Process the 'result' data and generate the HTML content for the timetable
-            //const timetableHTML = generateTimetableHTML(aulas);
-
-            //console.log(timetableHTML);
-            //res.send(timetableHTML);
-
-
-            if (!res.headersSent) {
-                res.json({
-                    aula: aula,
-                    nome_prof: nome_prof,
-                    nr_sala: nr_sala,
-                    bloco_sala: bloco_sala
-                });
-            }
-
-        } catch (err) {
-            console.error(err);
-            if (!res.headersSent) {
-                res.status(500).send('Ocorreu um erro ao buscar o horario.');
-            }
-        }
     } else {
         res.sendFile(path.join(__dirname, '..', 'www/pages/login.html'));
     }
 }
 
-function generateTimetableHTML(aulas) {
-    // Implement logic to generate HTML based on the 'data' received from the database
-    // You need to iterate through the data and construct the HTML accordingly
-    // Example:
-    const timetableRows = aulas.map(h_aula => `<tr><td>${aulas[0] + aulas[1] + aulas[2] + aulas[3]}</td></tr>`);
 
-    // Construct the entire timetable table HTML
-    const timetableHTML = `
-        <table class="table_alunos">
-        <tr class="tr_alunos">
-        <th>Horas</th>
-        <th>Segunda</th>
-        <th>Terça</th>
-        <th>Quarta</th>
-        <th>Quinta</th>
-        <th>Sexta</th>
-      </tr>
-            ${timetableRows}
-        </table>
-    `;
 
-    return timetableHTML;
+const get_horarios = async (req, res) => {
+
+    if (!req.session.loggedin) {
+        res.sendFile(path.join(__dirname, '..', 'www/pages/login.html'));
+    }
+    try {
+        const id_aluno = req.cookies.id;
+        const inscritas = await connection.query('SELECT * FROM inscritas  WHERE alunos_id_alunos = ?', [id_aluno]);
+        //console.table(inscritas[0]);
+
+        const db_inscritas = inscritas[0];
+        const id_inscritas = db_inscritas.disciplina_id_disc;
+
+        const disciplinas = await connection.query('SELECT * FROM disciplina WHERE id_disc = ?', [id_inscritas]);
+        //console.table(disciplinas[0]);
+
+        const db_disciplinas = disciplinas[0];
+        const aula = db_disciplinas.nome_disc;
+        const id_prof = db_disciplinas.professores_id_prof;
+
+        const professores = await connection.query('SELECT * FROM professores WHERE id_prof = ?', [id_prof]);
+        //console.table(professores[0]);
+
+        const db_professores = professores[0];
+        const nome_prof = db_professores.nome_prof;
+
+        const presencas = await connection.query('SELECT * FROM presenças WHERE alunos_id_alunos = ? and disciplina_id_disc = ?', [id_aluno, id_inscritas]);
+        //console.table(presencas[0]);
+
+        const db_presencas = presencas[0];
+        const id_horario = db_presencas.horarios_id_horario;
+
+        const horario = await connection.query('SELECT * FROM horario WHERE id_horario = ?', [id_horario]);
+        //console.table(horario[0]);
+        const db_horario = horario[0];
+        const id_salas = db_horario.salas_id_salas;
+
+        const salas = await connection.query('SELECT * FROM salas WHERE id_salas = ?', [id_salas]);
+        //console.table(salas[0]);
+
+        const db_salas = salas[0];
+        const nr_sala = db_salas.numero_salas;
+        const bloco_sala = db_salas.bloco_salas;
+
+        const aulas = [aula, nr_sala, bloco_sala, nome_prof];
+        //console.table(aulas);
+
+        //Process the 'result' data and generate the HTML content for the timetable
+        //const timetableHTML = generateTimetableHTML(aulas);
+
+        //console.log(timetableHTML);
+        //res.send(timetableHTML);
+
+        res.json({
+            aula: aula,
+            nome_prof: nome_prof,
+            nr_sala: nr_sala,
+            bloco_sala: bloco_sala
+        });
+
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Ocorreu um erro ao buscar o horario.');
+    }
+
 }
-
 
 // Método para lidar com a rota GET para /blocoA
 const get_blocoA = (req, res) => {
@@ -442,6 +422,7 @@ module.exports = {
     post_contact,
     get_eventos,
     get_profile,
+    get_horarios,
     get_blocoA,
     get_blocoB,
     get_blocoC,
