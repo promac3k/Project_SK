@@ -305,11 +305,33 @@ th {
     }
 
     .flex-container {
-        margin-top: 15rem;
+        margin-top: 7rem;
         margin-left: 15rem;
         margin-right: 0;
-        width: 57%;
-        height: 42%;
+        margin-bottom: 7rem;
+        width: 60%;
+        height: 45%;
+        display: block;
+    }
+
+    .table_alunos {
+        height: -webkit-fill-available;
+    }
+
+    .legenda_profile {
+        margin-left: 22rem;
+        width: 27%;
+        font-size: 20px;
+    }
+
+    .rectangle1 {
+        width: 26px;
+        height: 15px;
+    }
+
+    .rectangle2 {
+        width: 26px;
+        height: 15px;
     }
 }
 

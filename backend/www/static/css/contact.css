@@ -103,7 +103,6 @@ button {
 .dark-mode .modal-content {
   background-color: #444444;
   color: white;
-  border: 1px solid #888;
 }
 
 /* POP-UP */
@@ -128,6 +127,7 @@ button {
     max-width: 500px;
     box-sizing: border-box;
     border-radius: 15px;
+    border: 1px solid #ff4321;
 }
 
 .progress-bar {

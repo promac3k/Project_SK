@@ -76,6 +76,7 @@
                 if (response.status === 200) {
                     // Armazena a mensagem no armazenamento local
                     localStorage.setItem('modalMessage', 'E-mail enviado com sucesso!');
+                    modal.style.border = "1px solid green";
                     // Redireciona o usuário para a página de login
                     window.location.href = '/login';
 
