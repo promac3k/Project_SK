@@ -129,8 +129,8 @@ td {
 /* media query para deixar o site responsivo para tablet*/
 @media (min-width: 768px) and (max-width: 1023px) {
   .cal {
-    margin-left: 3rem;
-    margin-right: 3rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
   }
 
   .modal_sala_content {
@@ -153,13 +153,9 @@ td {
     width: 31%;
   }
 
-  .calendar {
-    overflow: auto;
-  }
-
   .modal_sala_content {
     margin: 68% auto;
-    height: 50%;
+    height: 68%;
     width: 80%;
   }
 

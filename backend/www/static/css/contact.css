@@ -252,7 +252,14 @@ header {
     margin-top: 0;
   }
 
-  button {
+  #voltar {
+    font-size: 8px;
+    max-width: 18vw;
+    top: 4% !important;
+    left: 13% !important;
+  }
+
+  #enviar{
     font-size: 8px;
     max-width: 18vw;
   }

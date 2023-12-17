@@ -19,7 +19,7 @@
         </header>
 
         <button style="position: absolute; top: 6%; left: 10%; transform: translate(-50%, -50%); cursor: pointer;"
-            onclick="goBack()">Voltar</button>
+            onclick="goBack()" id="voltar">Voltar</button>
         <form id="contact-form" action="/contact" method="post">
             <label class="switch">
                 <input id="switchon" type="checkbox" onclick="mySwitch()">
@@ -29,7 +29,7 @@
             <input type="email" placeholder="Email" name="email" />
             <input type="text" placeholder="Cabeçalho" name="cabecalho" />
             <textarea type="text" class="input_corpo" name="text_mail"></textarea>
-            <button type="submit" style="position: relative; top: 1%; cursor: pointer;">Enviar</button>
+            <button type="submit" id="enviar" style="position: relative; top: 1%; cursor: pointer;">Enviar</button>
         </form>
     </div>
     <div id="myModal" class="modal">
