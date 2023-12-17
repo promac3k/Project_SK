@@ -54,27 +54,33 @@ body {
 
 @media (min-width: 768px) and (max-width: 1023px) {
     .legenda_calendario {
-        width: 60% !important;
+        width: 80% !important;
         position: unset !important;
-        margin-left: 140px !important;
+        margin-left: 66px !important;
         margin-bottom: 100px !important;
     }
+
     .legenda_calendario li {
         font-size: 20px;
     }
+
     .img-container img {
         display: none;
     }
+
     .sidebar {
-        width: 20%;
-        margin-top: 5.4rem;
+        width: 20% !important;
+        margin-top: 5.4rem !important;
     }
+
     .profile_info {
         width: 30%;
     }
+
     .profile_settings {
         width: 15%;
     }
+
     .flex-container {
         margin-top: 15rem;
         margin-left: 15rem;
@@ -82,57 +88,75 @@ body {
         width: 57%;
         height: 42%;
     }
+
+    .vertical_line {
+        height: 22% !important;
+        left: 51% !important;
+    }
 }
 
 
 /* media query para deixar o site responsivo para mobile */
-
 @media (min-width: 320px) and (max-width: 480px) {
+
     .img-container img {
         display: none;
     }
+
     li {
         width: 90px;
     }
+
     .p_1 {
         display: none;
     }
+
     .legenda {
         width: 100%;
         margin: 5px 0 5px;
     }
+
     .legenda_calendario {
         width: 80% !important;
         position: unset !important;
         margin-left: 18px !important;
         margin-bottom: 100px !important;
     }
+
     .sidebar {
-        float: unset;
-        width: 40%;
-        height: 23rem;
-        margin-right: 0;
-        margin-top: 20px;
-        margin-bottom: 20px;
+        width: 48% !important;
+        height: 20% !important;
+        margin-right: 0 !important;
+        margin-top: 20px !important;
+        margin-bottom: 20px !important;
     }
+
     .blocos {
         display: flex;
         justify-content: center;
         align-items: center;
-        background: #444444;
+        background: #444444 !important;
     }
+
     .sidebar li a {
         text-align: center;
     }
+
     .blocos_li {
         width: 100%;
         margin-bottom: 23px;
     }
+
     h1 {
         font-size: 20px;
-        margin-top: 75%;
+        margin-top: 5%;
     }
+
     .title {
         font-size: 15px;
+    }
+
+    .vertical_line {
+        height: 27% !important;
     }
 }

@@ -243,11 +243,10 @@ footer a {
 
 
 /* POP-UP */
-
 .modal {
     display: none;
     position: fixed;
-    left: 65rem;
+    left: 80rem;
     top: -10rem;
     width: 100%;
     height: 100%;
@@ -255,21 +254,18 @@ footer a {
     border-radius: 10px;
     animation-name: popup;
     animation-duration: 3s;
+    z-index: 150;
 }
 
 .modal-content {
     background-color: #dbdbdb;
     color: black;
     margin: 15% auto;
-    /* Ajusta a margem superior para centralizar verticalmente */
     padding: 20px;
     border: 1px solid #ff4321;
     width: 30%;
-    /* Reduz a largura para 30% da largura da tela */
     max-width: 500px;
-    /* Define uma largura máxima para o modal */
     box-sizing: border-box;
-    /* Garante que o padding e a borda estão incluídos na largura total */
     border-radius: 15px;
 }
 
@@ -283,7 +279,6 @@ footer a {
 
 
 /*toggle switch */
-
 .switch {
     position: relative;
     display: inline-block;
@@ -342,7 +337,6 @@ input:checked+.slider:before {
 
 
 /* Rounded sliders */
-
 .slider.round {
     border-radius: 34px;
 }
@@ -353,7 +347,6 @@ input:checked+.slider:before {
 
 
 /* Dark mode*/
-
 .dark-mode {
     background-color: #141414;
     color: white;
@@ -382,18 +375,9 @@ input:checked+.slider:before {
 
 
 /* POP-UP Dark mode*/
-
-.dark-mode .modal {
-    display: none;
-    position: fixed;
-    left: 65rem;
-    top: -10rem;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    border-radius: 10px;
-    animation-name: popup;
-    animation-duration: 3s;
+.dark-mode .modal-content {
+    background-color: #444444;
+    color: white;
 }
 
 @keyframes popup {
@@ -408,30 +392,12 @@ input:checked+.slider:before {
         animation-delay: 5s;
     }
     100% {
-        left: 65rem;
+        left: 80rem;
         top: -10rem;
     }
 }
 
-.dark-mode .modal-content {
-    background-color: #444444;
-    color: white;
-    margin: 15% auto;
-    /* Ajusta a margem superior para centralizar verticalmente */
-    padding: 20px;
-    border: 1px solid #ff4321;
-    width: 30%;
-    /* Reduz a largura para 30% da largura da tela */
-    max-width: 500px;
-    /* Define uma largura máxima para o modal */
-    box-sizing: border-box;
-    /* Garante que o padding e a borda estão incluídos na largura total */
-    border-radius: 15px;
-}
-
-
 /* media query para deixar o site responsivo para tablet*/
-
 @media (min-width: 768px) and (max-width: 1023px) {
     .container {
         width: 90vw;
@@ -445,46 +411,109 @@ input:checked+.slider:before {
     span {
         font-size: 15px;
     }
+
+    .modal-content {
+        width: 50%;
+    }
+
+    .modal {
+        position: fixed;
+        top: 0%;
+        left: 30%;
+    }
+    
+
+    @keyframes popup {
+        0% {
+            left: 30%;
+            top: 0%;
+        }
+        10%,
+        90% {
+            left: 25%;
+            top: 0%;
+            animation-delay: 5s;
+        }
+        100% {
+            left: 30%;
+            top: 0%;
+        }
+    }
 }
 
-
 /* media query para deixar o site responsivo para mobile */
-
 @media (min-width: 320px) and (max-width: 480px) {
     .container {
         width: 90vw;
         min-height: 80vw;
     }
+
     #direita {
         font-size: 15px;
     }
+
     h1 {
         font-size: 18px;
     }
+
     h3 {
         font-size: 10px;
     }
+
     span {
         font-size: 10px;
     }
+
     input {
         width: 40vw;
         margin: 0;
     }
+
     p {
         font-size: 10px;
         line-height: normal;
         margin: 12px 0 12px;
     }
+
     button {
         font-size: 10px;
         padding: 5px 15px;
     }
+
     .switch {
         width: 60px;
         height: 34px;
     }
+
     .social-container {
         margin-bottom: 0;
+    }
+
+    .modal-content {
+        width: 70%;
+    }
+
+    .modal {
+        position: fixed;
+        top: 0%;
+        left: 20%;
+    }
+    
+
+    @keyframes popup {
+        0% {
+            left: 20%;
+            top: 0%;
+        }
+        10%,
+        90% {
+            left: 10%;
+            top: 0%;
+            animation-delay: 5s;
+        }
+        100% {
+            left: 20%;
+            top: 0%;
+        }
     }
 }
