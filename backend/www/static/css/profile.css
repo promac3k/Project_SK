@@ -295,14 +295,15 @@ th {
 
 
 /* media query para deixar o site responsivo para tablet*/
-
 @media (min-width: 768px) and (max-width: 1023px) {
     .profile_info {
         width: 30%;
     }
+
     .profile_settings {
         width: 15%;
     }
+
     .flex-container {
         margin-top: 15rem;
         margin-left: 15rem;
@@ -312,19 +313,38 @@ th {
     }
 }
 
+/* media query para deixar o site responsivo para telemovel*/
 @media (min-width: 320px) and (max-width: 480px) {
     .profile_settings {
-        width: 16%;
-        top: 62%;
+        width: 17%;
+        top: 58%;
     }
+
     .profile_info {
         width: 30%;
     }
+
     .flex-container {
         margin-top: 1rem;
         margin-left: 8rem;
         margin-right: 0;
         margin-bottom: 7rem;
         width: 57%;
+        height: 44%;
+        overflow: auto;
+        display: block;
+    }
+
+    .legenda_profile {
+        margin-left: 8rem;
+        width: 45%;
+    }
+
+    h1{
+        font-size: larger;
+    }
+
+    p{
+        font-size: small;
     }
 }

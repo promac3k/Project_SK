@@ -112,6 +112,7 @@ td {
 
 .modal_sala_content .table_alunos{
   display: none;
+  overflow-x: auto;
 }
 
 .fechar_editar:hover,
@@ -123,4 +124,46 @@ td {
 
 .gravar{
   display: none;
+}
+
+/* media query para deixar o site responsivo para tablet*/
+@media (min-width: 768px) and (max-width: 1023px) {
+  .cal {
+    margin-left: 3rem;
+    margin-right: 3rem;
+  }
+
+  .modal_sala_content {
+    margin: 44% auto;
+    width: 80.3%;
+  }
+}
+
+
+/* media query para deixar o site responsivo para mobile */
+@media (min-width: 320px) and (max-width: 480px) {
+  .cal {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
+  .button_back {
+    padding: 12px 28px;
+    margin: 1rem;
+    width: 31%;
+  }
+
+  .calendar {
+    overflow: auto;
+  }
+
+  .modal_sala_content {
+    margin: 68% auto;
+    height: 50%;
+    width: 80%;
+  }
+
+  .icon-button {
+    margin: 0 2rem !important;
+  }
 }
