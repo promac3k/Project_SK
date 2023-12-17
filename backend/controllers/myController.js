@@ -256,70 +256,67 @@ const get_profile = (req, res) => {
 
 
 const get_horarios = async (req, res) => {
-
     if (!req.session.loggedin) {
         res.sendFile(path.join(__dirname, '..', 'www/pages/login.html'));
     }
     try {
         const id_aluno = req.cookies.id;
-        const inscritas = await connection.query('SELECT * FROM inscritas  WHERE alunos_id_alunos = ?', [id_aluno]);
-        //console.table(inscritas[0]);
+        const horarios = await connection.query('SELECT * FROM horario WHERE aluno_id = ?', [id_aluno]);
 
-        const db_inscritas = inscritas[0];
-        const id_inscritas = db_inscritas.disciplina_id_disc;
+        // Criar um objeto para armazenar os horários organizados por dia da semana e hora do dia
+        const horariosOrganizados = {
+            segunda: {},
+            terca: {},
+            quarta: {},
+            quinta: {},
+            sexta: {}
+        };
 
-        const disciplinas = await connection.query('SELECT * FROM disciplina WHERE id_disc = ?', [id_inscritas]);
-        //console.table(disciplinas[0]);
+        for (let db_horario of horarios) {
+            const dia = db_horario.dia_semana;
+            const inicio_hora = db_horario.hora_salas;
+            const fim_hora = db_horario.fimh_salas;
 
-        const db_disciplinas = disciplinas[0];
-        const aula = db_disciplinas.nome_disc;
-        const id_prof = db_disciplinas.professores_id_prof;
+            const disciplina = await connection.query('SELECT * FROM disciplina WHERE id_disc = ?', [db_horario.disciplina_id_disc]);
+            const db_disciplina = disciplina[0];
+            const aula = db_disciplina.nome_disc;
 
-        const professores = await connection.query('SELECT * FROM professores WHERE id_prof = ?', [id_prof]);
-        //console.table(professores[0]);
+            const professore = await connection.query('SELECT * FROM professores WHERE id_prof = ?', [db_disciplina.professores_id_prof]);
+            const db_professore = professore[0];
+            const nome_prof = db_professore.nome_prof;
 
-        const db_professores = professores[0];
-        const nome_prof = db_professores.nome_prof;
+            const sala = await connection.query('SELECT * FROM salas WHERE id_salas = ?', [db_horario.salas_id_salas]);
+            const db_sala = sala[0];
+            const nr_sala = db_sala.numero_salas;
+            const bloco_sala = db_sala.bloco_salas;
 
-        const presencas = await connection.query('SELECT * FROM presenças WHERE alunos_id_alunos = ? and disciplina_id_disc = ?', [id_aluno, id_inscritas]);
-        //console.table(presencas[0]);
+            // Verificar se horariosOrganizados[dia] existe, se não, criar um objeto vazio
+            if (!horariosOrganizados[dia]) {
+                horariosOrganizados[dia] = {};
+            }
 
-        const db_presencas = presencas[0];
-        const id_horario = db_presencas.horarios_id_horario;
 
-        const horario = await connection.query('SELECT * FROM horario WHERE id_horario = ?', [id_horario]);
-        //console.table(horario[0]);
-        const db_horario = horario[0];
-        const id_salas = db_horario.salas_id_salas;
+            // Adicionar os dados ao objeto horariosOrganizados
+            if (!horariosOrganizados[dia][inicio_hora]) {
+                horariosOrganizados[dia][inicio_hora] = [];
+            }
+            horariosOrganizados[dia][inicio_hora].push({
+                aula: aula,
+                nome_prof: nome_prof,
+                nr_sala: nr_sala,
+                bloco_sala: bloco_sala,
+                fim_hora: fim_hora
+            });
+        }
 
-        const salas = await connection.query('SELECT * FROM salas WHERE id_salas = ?', [id_salas]);
-        //console.table(salas[0]);
-
-        const db_salas = salas[0];
-        const nr_sala = db_salas.numero_salas;
-        const bloco_sala = db_salas.bloco_salas;
-
-        const aulas = [aula, nr_sala, bloco_sala, nome_prof];
-        //console.table(aulas);
-
-        //Process the 'result' data and generate the HTML content for the timetable
-        //const timetableHTML = generateTimetableHTML(aulas);
-
-        //console.log(timetableHTML);
-        //res.send(timetableHTML);
-
-        res.json({
-            aula: aula,
-            nome_prof: nome_prof,
-            nr_sala: nr_sala,
-            bloco_sala: bloco_sala
-        });
+        // Enviar os dados organizados como resposta
+        res.json(horariosOrganizados);
+        
 
     } catch (err) {
         console.error(err);
         res.status(500).send('Ocorreu um erro ao buscar o horario.');
     }
-
 }
 
 // Método para lidar com a rota GET para /blocoA

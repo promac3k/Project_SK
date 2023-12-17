@@ -86,78 +86,179 @@
 
       <div class="flex-container" id="tabelaContainer">
 
-        <table class="table_alunos">
-          <tr class="tr_alunos">
-            <th>Horas</th>
-            <th>Segunda</th>
-            <th>Terça</th>
-            <th>Quarta</th>
-            <th>Quinta</th>
-            <th>Sexta</th>
-          </tr>
-
-          <tr class="tr_alunos">
-            <td>08:00 - 08:30</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>08:30 - 09:00</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr class="tr_alunos">
-            <td>09:00 - 09:30</td>
-            <td rowspan="8" class="table_aula_segunda"></td>
-            <td rowspan="8" class="table_aula_terca"></td>
-            <td rowspan="8" class="table_aula_quarta"></td>
-            <td rowspan="8" class="table_aula_quinta"></td>
-            <td rowspan="8" class="table_aula_sexta"></td>
-          </tr>
-          <tr class="tr_alunos">
-            <td>09:30 - 10:00</td>
-          </tr>
-          <tr class="tr_alunos">
-            <td>10:00 - 10:30</td>
-          </tr>
-          <tr class="tr_alunos">
-            <td>10:30 - 11:00</td>
-          </tr>
-          <tr class="tr_alunos">
-            <td>11:00 - 11:30</td>
-          </tr>
-          <tr class="tr_alunos">
-            <td>11:30 - 12:00</td>
-          </tr>
-          <tr class="tr_alunos">
-            <td>12:00 - 12:30</td>
-          </tr>
-          <tr class="tr_alunos">
-            <td>12:30 - 13:00</td>
-          </tr>
-          <tr class="tr_alunos">
-            <td>13:00 - 13:30</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-
-          <tr class="tr_alunos">
-            <td>13:30 - 14:00</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
+        <table id="test" class="table_alunos">
+          <thead>
+            <tr class="tr_alunos">
+              <th style="width: 200px;">Horas</th>
+              <th style="width: 200px;">Segunda</th>
+              <th style="width: 200px;">Terça</th>
+              <th style="width: 200px;">Quarta</th>
+              <th style="width: 200px;">Quinta</th>
+              <th style="width: 200px;">Sexta</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="tr_alunos">
+              <td>08:00 - 08:30</td>
+              <td id="table_aula_segunda_08_00"></td>
+              <td id="table_aula_terça_08_00"></td>
+              <td id="table_aula_quarta_08_00"></td>
+              <td id="table_aula_quinta_08_00"></td>
+              <td id="table_aula_sexta_08_00"></td>
+            </tr>
+            <tr>
+              <td>08:30 - 09:00</td>
+              <td id="table_aula_segunda_08_30"></td>
+              <td id="table_aula_terça_08_30"></td>
+              <td id="table_aula_quarta_08_30"></td>
+              <td id="table_aula_quinta_08_30"></td>
+              <td id="table_aula_sexta_08_30"></td>
+            </tr>
+            <tr class="tr_alunos">
+              <td>09:00 - 09:30</td>
+              <td id="table_aula_segunda_09_00"></td>
+              <td id="table_aula_terça_09_00"></td>
+              <td id="table_aula_quarta_09_00"></td>
+              <td id="table_aula_quinta_09_00"></td>
+              <td id="table_aula_sexta_09_00"></td>
+            </tr>
+            <tr class="tr_alunos">
+              <td>09:30 - 10:00</td>
+              <td id="table_aula_segunda_09_30"></td>
+              <td id="table_aula_terça_09_30"></td>
+              <td id="table_aula_quarta_09_30"></td>
+              <td id="table_aula_quinta_09_30"></td>
+              <td id="table_aula_sexta_09_30"></td>
+            </tr>
+            <tr class="tr_alunos">
+              <td>10:00 - 10:30</td>
+              <td id="table_aula_segunda_10_00"></td>
+              <td id="table_aula_terça_10_00"></td>
+              <td id="table_aula_quarta_10_00"></td>
+              <td id="table_aula_quinta_10_00"></td>
+              <td id="table_aula_sexta_10_00"></td>
+            </tr>
+            <tr class="tr_alunos">
+              <td>10:30 - 11:00</td>
+              <td id="table_aula_segunda_10_30"></td>
+              <td id="table_aula_terça_10_30"></td>
+              <td id="table_aula_quarta_10_30"></td>
+              <td id="table_aula_quinta_10_30"></td>
+              <td id="table_aula_sexta_10_30"></td>
+            </tr>
+            <tr class="tr_alunos">
+              <td>11:00 - 11:30</td>
+              <td id="table_aula_segunda_11_00"></td>
+              <td id="table_aula_terça_11_00"></td>
+              <td id="table_aula_quarta_11_00"></td>
+              <td id="table_aula_quinta_11_00"></td>
+              <td id="table_aula_sexta_11_00"></td>
+            </tr>
+            <tr class="tr_alunos">
+              <td>11:30 - 12:00</td>
+              <td id="table_aula_segunda_11_30"></td>
+              <td id="table_aula_terça_11_30"></td>
+              <td id="table_aula_quarta_11_30"></td>
+              <td id="table_aula_quinta_11_30"></td>
+              <td id="table_aula_sexta_11_30"></td>
+            </tr>
+            <tr class="tr_alunos">
+              <td>12:00 - 12:30</td>
+              <td id="table_aula_segunda_12_00"></td>
+              <td id="table_aula_terça_12_00"></td>
+              <td id="table_aula_quarta_12_00"></td>
+              <td id="table_aula_quinta_12_00"></td>
+              <td id="table_aula_sexta_12_00"></td>
+            </tr>
+            <tr class="tr_alunos">
+              <td>12:30 - 13:00</td>
+              <td id="table_aula_segunda_12_30"></td>
+              <td id="table_aula_terça_12_30"></td>
+              <td id="table_aula_quarta_12_30"></td>
+              <td id="table_aula_quinta_12_30"></td>
+              <td id="table_aula_sexta_12_30"></td>
+            </tr>
+            <tr class="tr_alunos">
+              <td>13:00 - 13:30</td>
+              <td id="table_aula_segunda_13-00"></td>
+              <td id="table_aula_terça_13_00"></td>
+              <td id="table_aula_quarta_13_00"></td>
+              <td id="table_aula_quinta_13_00"></td>
+              <td id="table_aula_sexta_13_00"></td>
+            </tr>
+            <tr class="tr_alunos">
+              <td>13:30 - 14:00</td>
+              <td id="table_aula_segunda_13_30"></td>
+              <td id="table_aula_terça_13_30"></td>
+              <td id="table_aula_quarta_13_30"></td>
+              <td id="table_aula_quinta_13_30"></td>
+              <td id="table_aula_sexta_13_30"></td>
+            </tr>
+            <tr class="tr_alunos">
+              <td>14:00 - 14:30</td>
+              <td id="table_aula_segunda_14_00"></td>
+              <td id="table_aula_terça_14_00"></td>
+              <td id="table_aula_quarta_14_00"></td>
+              <td id="table_aula_quinta_14_00"></td>
+              <td id="table_aula_sexta_14_00"></td>
+            </tr>
+            <tr class="tr_alunos">
+              <td>14:30 - 15:00</td>
+              <td id="table_aula_segunda_14_30"></td>
+              <td id="table_aula_terça_14_30"></td>
+              <td id="table_aula_quarta_14_30"></td>
+              <td id="table_aula_quinta_14_30"></td>
+              <td id="table_aula_sexta_14_30"></td>
+            </tr>
+            <tr class="tr_alunos">
+              <td>15:00 - 15:30</td>
+              <td id="table_aula_segunda_15_00"></td>
+              <td id="table_aula_terça_15_00"></td>
+              <td id="table_aula_quarta_15_00"></td>
+              <td id="table_aula_quinta_15_00"></td>
+              <td id="table_aula_sexta_15_00"></td>
+            </tr>
+            <tr class="tr_alunos">
+              <td>15:30 - 16:00</td>
+              <td id="table_aula_segunda_15_30"></td>
+              <td id="table_aula_terça_15_30"></td>
+              <td id="table_aula_quarta_15_30"></td>
+              <td id="table_aula_quinta_15_30"></td>
+              <td id="table_aula_sexta_15_30"></td>
+            </tr>
+            <tr class="tr_alunos">
+              <td>16:00 - 16:30</td>
+              <td id="table_aula_segunda_16_00"></td>
+              <td id="table_aula_terça_16_00"></td>
+              <td id="table_aula_quarta_16_00"></td>
+              <td id="table_aula_quinta_16_00"></td>
+              <td id="table_aula_sexta_16_00"></td>
+            </tr>
+            <tr class="tr_alunos">
+              <td>16:30 - 17:00</td>
+              <td id="table_aula_segunda_16_30"></td>
+              <td id="table_aula_terça_16_30"></td>
+              <td id="table_aula_quarta_16_30"></td>
+              <td id="table_aula_quinta_16_30"></td>
+              <td id="table_aula_sexta_16_30"></td>
+            </tr>
+            <tr class="tr_alunos">
+              <td>17:00 - 17:30</td>
+              <td id="table_aula_segunda_17_00"></td>
+              <td id="table_aula_terça_17_00"></td>
+              <td id="table_aula_quarta_17_00"></td>
+              <td id="table_aula_quinta_17_00"></td>
+              <td id="table_aula_sexta_17_00"></td>
+            </tr>
+            <tr class="tr_alunos">
+              <td>17:30 - 18:00</td>
+              <td id="table_aula_segunda_17_30"></td>
+              <td id="table_aula_terça_17_30"></td>
+              <td id="table_aula_quarta_17_30"></td>
+              <td id="table_aula_quinta_17_30"></td>
+              <td id="table_aula_sexta_17_30"></td>
+            </tr>
+          </tbody>
         </table>
 
       </div>
@@ -191,7 +292,64 @@
 
   window.onload = checkCookie();
 
+  fetch('/perfil/horarios')
+    .then(response => {
+      return response.json();
+    })
+    .then(data => {
+      // Iterar sobre cada dia da semana
+      for (let dia in data) {
+        // Iterar sobre cada hora do dia
+        for (let hora in data[dia]) {
+          //console.log("hora", hora)
+          // Iterar sobre cada horário nesse dia e hora
+          for (let horario of data[dia][hora]) {
 
+            const horaSemSegundos = hora.slice(0, -3);
+            const horaFormatada = horaSemSegundos.replace(/:/g, "_");
+
+            // Selecionar a célula da tabela correspondente a esse dia e hora
+            const cell = document.querySelector(`#table_aula_${dia}_${horaFormatada}`);
+            if (cell) {
+
+              // Calcular o rowspan com base na duração da aula
+              const inicio = new Date(`2023-01-01T${hora}.000Z`);
+              //console.log("inicio", inicio)
+              const fim = new Date(`2023-01-01T${horario.fim_hora}.000Z`);
+              //console.log("fim", fim)
+              const duracao = (fim - inicio) / (30 * 60 * 1000);
+              //console.log("f i ", fim - inicio)
+              cell.rowSpan = duracao;
+              //console.log("++", duracao)
+
+
+              const inicio30 = new Date(`2023-01-01T${hora}.000Z`);
+
+              for (let i = 1; i < duracao; i++) {
+                inicio30.setMinutes(inicio30.getMinutes() + 30);
+                //console.log("inicio30 : ", inicio30.getHours())    
+                const hora = String(inicio30.getHours()).padStart(2, '0');
+                const minutos = String(inicio30.getMinutes()).padStart(2, '0');
+                const horaFormatada = hora + "_" + minutos;
+                //console.log("horaFormatada : ", horaFormatada) 
+                let tabela = document.getElementById(`table_aula_${dia}_${horaFormatada}`);
+                //console.log("tabela", tabela)
+                if (tabela) {
+                  tabela.remove();
+                }
+              }
+
+              // Preencher a célula com os dados
+              cell.innerHTML = `${horario.aula} - ${horario.nome_prof}<br>${horario.bloco_sala} - Sala - ${horario.nr_sala}`;
+
+            } else {
+              console.log(`Não foi possível encontrar a célula para o dia ${dia} e a hora ${horaFormatada}`);
+            }
+
+          }
+        }
+      }
+    });
 
   // vai buscar o id do modal
   var modal_editar = document.getElementById("modal_editar");
@@ -279,25 +437,5 @@
         console.error('Erro:', error);
       });
   });
-
-  fetch('/perfil/horarios')
-    .then(response => {
-      return response.json();
-    })
-    .then(data => {
-      // Seleciona as células da tabela
-      const segundaCell = document.querySelector('.table_aula_segunda');
-      const tercaCell = document.querySelector('.table_aula_terca');
-      const quartaCell = document.querySelector('.table_aula_quarta');
-      const quintaCell = document.querySelector('.table_aula_quinta');
-      const sextaCell = document.querySelector('.table_aula_sexta');
-
-      // Preenche as células com os dados
-      segundaCell.innerHTML = `${data.aula}<br>${data.nome_prof}<br>${data.bloco_sala}<br>Sala - ${data.nr_sala}`;
-      tercaCell.innerHTML = `${data.aula}<br>${data.nome_prof}<br>${data.bloco_sala}<br>Sala - ${data.nr_sala}`;
-      quartaCell.innerHTML = `${data.aula}<br>${data.nome_prof}<br>${data.bloco_sala}<br>Sala - ${data.nr_sala}`;
-      quintaCell.innerHTML = `${data.aula}<br>${data.nome_prof}<br>${data.bloco_sala}<br>Sala - ${data.nr_sala}`;
-      sextaCell.innerHTML = `${data.aula}<br>${data.nome_prof}<br>${data.bloco_sala}<br>Sala - ${data.nr_sala}`;
-    });
 
 </script>

@@ -11,6 +11,7 @@ const config = require('../config')
     const connection =  await mysql.createConnection(config.db)
     // Executa a query SQL e retorna os resultados
     const [results,] =  await connection.execute(sql, params)
+    connection.end();
 
     return results
 }
