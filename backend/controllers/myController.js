@@ -269,7 +269,8 @@ const get_horarios = async (req, res) => {
             terca: {},
             quarta: {},
             quinta: {},
-            sexta: {}
+            sexta: {},
+            sabado: {}
         };
 
         for (let db_horario of horarios) {
