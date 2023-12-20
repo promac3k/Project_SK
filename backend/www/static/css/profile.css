@@ -231,7 +231,6 @@ th {
     border: none;
     border-radius: 10px;
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-    
 }
 
 
@@ -296,6 +295,18 @@ th {
         width: 15px;
         left: 1px;
         bottom: 8px;
+    }
+
+    .legenda_profile {
+        width: 13%;
+        left: 62rem;
+        bottom: 13rem;
+    }
+
+    .flex-container {
+        overflow: auto;
+        height: 75%;
+        display: block;
     }
 }
 
