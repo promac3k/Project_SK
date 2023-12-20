@@ -63,7 +63,6 @@
 
     window.onload = checkCookie();
 
-
     var modal = document.getElementById("myModal");
     var modal_content = document.getElementsByClassName("modal-content")[0];
     var span = document.getElementsByClassName("close")[0];
@@ -113,21 +112,22 @@
                 if (response.status === 200) {
 
                     window.location.href = '/';
-
+                    return null;
                 } else {
                     return response.text();
-                } 
+                }
             })
             .then(message => {
 
-                text.innerHTML = message;
-                modal.style.display = "block";
-                modal_content.style.border = "1px solid #ff4321";
+                if (message) { 
+                    text.innerHTML = message;
+                    modal.style.display = "block";
+                    modal_content.style.border = "1px solid #ff4321";
 
-                // Fecha o modal após 5 segundos
-                setTimeout(function () {
-                    modal.style.display = "none";
-                }, 5000);
+                    setTimeout(function () {
+                        modal.style.display = "none";
+                    }, 5000);
+                }
 
             })
             .then(data => {

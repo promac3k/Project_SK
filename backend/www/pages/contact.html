@@ -55,6 +55,7 @@
 
         var modal = document.getElementById("myModal");
         var text = document.getElementById("modalText");
+        var modal_content = document.getElementsByClassName("modal-content")[0];
 
         // Cria um objeto com os dados do formulário
         var data = { email, cabecalho, text_mail };
@@ -69,13 +70,39 @@
         })
             .then(response => {
 
-
                 // Verifica o código de status da resposta
                 if (response.status === 200) {
-                    // Armazena a mensagem no armazenamento local
-                    localStorage.setItem('modalMessage', 'E-mail enviado com sucesso!');
-                    // Redireciona o usuário para a página de login
-                    window.location.href = '/login';
+                    // Função para obter um cookie pelo nome
+                    function getCookie(name) {
+                        const value = `; ${document.cookie}`;
+                        const parts = value.split(`; ${name}=`);
+                        if (parts.length === 2) return parts.pop().split(';').shift();
+                    }
+
+                    // Verifica se o cookie 'loggedin' existe
+                    const userCookie = getCookie('user');
+
+                    if (userCookie) {
+
+                        text.innerHTML = 'E-mail enviado com sucesso!';
+                        modal.style.display = "block";
+                        // Fecha o modal após 5 segundos
+                        setTimeout(function () {
+                            modal.style.display = "none";
+                        }, 5000);
+
+                        return null;
+
+                    } else {
+
+                        // Armazena a mensagem no armazenamento local
+                        localStorage.setItem('modalMessage', 'E-mail enviado com sucesso!');
+                        // Redireciona o usuário para a página de login
+                        window.location.href = '/login';
+
+                        return null;
+                    }
+
 
                 } else {
                     return response.text();
@@ -83,13 +110,15 @@
             })
             .then(message => {
 
-                text.innerHTML = message;
-                modal.style.display = "block";
+                if (message) {
+                    text.innerHTML = message;
+                    modal.style.display = "block";
+                    modal_content.style.border = "1px solid #ff4321";
 
-                // Fecha o modal após 5 segundos
-                setTimeout(function () {
-                    modal.style.display = "none";
-                }, 5000);
+                    setTimeout(function () {
+                        modal.style.display = "none";
+                    }, 5000);
+                }
 
             })
             .then(data => {
