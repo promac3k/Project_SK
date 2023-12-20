@@ -203,7 +203,6 @@ input:checked+.slider:before {
 
 
 /* Alunos Page */
-
 .table_alunos {
     font-family: arial, sans-serif;
     border-collapse: collapse;
@@ -267,7 +266,6 @@ th {
 
 
 /* Dark mode*/
-
 .dark-mode .legenda_profile ul {
     list-style-type: none;
     padding: 0;
@@ -293,6 +291,43 @@ th {
     color: white;
 }
 
+@media (min-width: 1281px) and (max-width: 1600px){
+    h1 {
+        font-size: 25px;
+    }
+
+    .img_perfil{
+        width: 60% !important;
+    }
+
+    .title {
+        font-size: 14px;
+    }
+
+    .title_2 {
+        font-size: 14px;
+    }
+
+    .profile_settings {
+        top: 62%;
+    }
+
+    .img_settings{
+        width: 75%;
+        height: 75%;
+    }
+
+    .switch_profile {
+        height: 30px;
+    }
+
+    .slider:before {
+        height: 15px;
+        width: 15px;
+        left: 1px;
+        bottom: 8px;
+    }
+}
 
 /* media query para deixar o site responsivo para tablet*/
 @media (min-width: 768px) and (max-width: 1023px) {

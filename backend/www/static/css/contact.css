@@ -156,7 +156,19 @@ header {
   position: absolute;
 }
 
+/* media query para deixar o site responsivo para Desktops com uma resolução maior*/
+@media (min-width: 1281px) and (max-width: 1600px){
+  .container_contact {
+    height: 82vh;
+    margin-top: 2rem;
+  }
 
+  .title_contact {
+    margin: 0.5rem;
+  }
+}
+
+/* media query para deixar o site responsivo para Laptops e Desktops*/
 @media (min-width: 1024px) and (max-width: 1280px) {
 
   h1 {

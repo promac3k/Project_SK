@@ -10,7 +10,6 @@ body {
 
 
 /*css da imagem */
-
 .img_card {
     width: 85%;
     height: 55%;
@@ -49,9 +48,74 @@ body {
     color: white;
 }
 
+@media (min-width: 1281px) and (max-width: 1600px){
+    .sidebar {
+        margin-top: 1.4rem !important;
+    }
+
+    .legenda_calendario {
+        width: 59% !important;
+        padding: 0.5rem !important;
+    }
+
+    .rectangle1 {
+        width: 24px;
+        left: 0.7%;
+    }
+
+    .rectangle2 {
+        width: 24px;
+        left: 0.7%;
+    }
+
+    .rectangle3 {
+        width: 24px;
+        left: 0.7%;
+    }
+
+    .rectangle4 {
+        width: 24px;
+        left: 0.7%;
+    }
+
+    .rectangle5 {
+        width: 24px;
+        left: 0.7%;
+    }
+
+    .rectangle6 {
+        width: 24px;
+        left: 0.7%;
+    }
+
+    .rectangle7 {
+        width: 24px !important;
+        left: 49.7%;
+    }
+
+    .rectangle8 {
+        width: 24px !important;
+        left: 49.7%;
+    }
+    
+    .rectangle9 {
+        width: 24px !important;
+        left: 49.7%;
+    }
+
+    .rectangle10 {
+        width: 24px !important;
+        left: 49.7%;
+    }
+
+    .rectangle11 {
+        width: 24px !important;
+        left: 49.7%;
+    }
+}
+
 
 /* media query para deixar o site responsivo para tablet*/
-
 @media (min-width: 768px) and (max-width: 1023px) {
     .legenda_calendario {
         width: 80% !important;
