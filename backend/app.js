@@ -6,6 +6,7 @@
 const express = require('express');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
+const MySQLStore = require('express-mysql-session')(session);
 
 // Lê o arquivo .env e carrega as variáveis de ambiente
 require('dotenv/config');
@@ -17,14 +18,38 @@ const myRoute = require('./routes/myRoute.js');
 const app = express();
 const PORT = process.env.PORT;
 
+const options = {
+    host: process.env.MYSQL_HOST,
+    port: process.env.MYSQL_PORT,
+    user: process.env.MYSQL_USER,
+    password: process.env.MYSQL_PASSWORD,
+    database: process.env.MYSQL_DATABASE,
+    createDatabaseTable: true,
+    endConnectionOnClose: true,
+    charset: 'utf8mb4_bin',
+    schema: {
+        tableName: 'sessions',
+        columnNames: {
+            session_id: 'session_id',
+            expires: 'expires',
+            data: 'data'
+        }
+    }
+};
+
+const sessionStore = new MySQLStore(options);
+
+
 // Iniciar session
 app.use(session({
     secret: 'secret',
-    resave: true,
-    saveUninitialized: false,
+    name: "session_id",
+    store: sessionStore,
+    resave: false,
+    saveUninitialized: true,
     cookie: {
         path: '/',
-        maxAge: 60 * 60 * 1000,
+        maxAge: 60 * 60 * 10000,
         sameSite: true,
     },
 }));
