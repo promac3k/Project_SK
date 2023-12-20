@@ -2,7 +2,7 @@
 const { Router } = require('express');
 
 // Importa o módulo local Controllers
-const myController = require('../controllers/myController');
+const index = require('../controllers/index');
 const login = require('../controllers/login');
 const contact = require('../controllers/contact');
 const profile = require('../controllers/profile');
@@ -12,10 +12,9 @@ const blocos = require('../controllers/blocos');
 const router = Router();
 
 // Define as rotas para o router
-// Cada rota é associada a um método do objeto myController
-router.get('/', myController.get_index); // Rota para a página inicial
+router.get('/', index.get_index); // Rota para a página inicial
 
-router.get('/logout', myController.get_logout); // Rota para o logout (GET)
+router.get('/logout', index.get_logout); // Rota para o logout (GET)
 
 router.get('/login', login.get_login); // Rota para a página de login (GET)
 
@@ -27,7 +26,7 @@ router.get('/contact', contact.get_contacts); // Rota para a página de contatos
 
 router.post('/contact', contact.post_contact); // Rota para a página de contatos (POST)
 
-router.get('/eventos', myController.get_eventos); // Rota para a página de eventos
+router.get('/eventos', index.get_eventos); // Rota para a página de eventos
 
 router.get('/perfil', profile.get_profile); // Rota para a página de perfil
 
