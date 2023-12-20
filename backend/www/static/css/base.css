@@ -32,6 +32,7 @@ nav ul {
 
 li {
     display: inline-block;
+    margin-right: 17px;
 }
 
 li a {
@@ -153,9 +154,4 @@ footer i {
 footer a {
     color: #3c97bf;
     text-decoration: none;
-}
-
-
-@media (min-width: 1281px) and (max-width: 1600px){
-
 }
