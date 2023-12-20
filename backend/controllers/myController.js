@@ -50,7 +50,6 @@ const get_eventos = (req, res) => {
 
 }
 
-
 // Exporta todos os métodos como um objeto para serem usados em outros arquivos
 module.exports = {
     get_index,

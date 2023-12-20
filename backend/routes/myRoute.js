@@ -1,14 +1,12 @@
 // Importa o objeto Router do módulo Express
 const { Router } = require('express');
 
-// Importa o módulo local myController
+// Importa o módulo local Controllers
 const myController = require('../controllers/myController');
 const login = require('../controllers/login');
 const contact = require('../controllers/contact');
 const profile = require('../controllers/profile');
 const blocos = require('../controllers/blocos');
-
-
 
 // Inicializa um novo router
 const router = Router();
