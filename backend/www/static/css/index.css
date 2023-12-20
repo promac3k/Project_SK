@@ -112,6 +112,15 @@ body {
         width: 24px !important;
         left: 49.7%;
     }
+
+    .sidebar li a {
+        font-size: 19px;
+    }
+
+    .sidebar li {
+        padding: 1px !important;
+        margin-left: 15px;
+    }
 }
 
 
