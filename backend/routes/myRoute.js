@@ -23,7 +23,7 @@ router.get('/login', login.get_login); // Rota para a página de login (GET)
 
 router.post('/login', login.post_login); // Rota para a página de login (POST)
 
-router.post('/change-password', myController.post_change_password); // Rota para a página de mudança de senha (POST)
+router.post('/change-password', profile.post_change_password); // Rota para a página de mudança de senha (POST)
 
 router.get('/contact', contact.get_contacts); // Rota para a página de contatos (GET)
 

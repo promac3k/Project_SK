@@ -2,8 +2,6 @@ const connection = require('../services/db'); // Módulo para conexão com o ban
 const path = require('path'); // Módulo Node.js para trabalhar com caminhos de arquivos
 
 
-
-
 // Método para lidar com a rota GET para /blocoA
 const get_blocoA = (req, res) => {
     console.log("get_blocoA >>>>> " + req.session.loggedin);
