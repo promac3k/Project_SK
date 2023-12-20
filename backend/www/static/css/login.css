@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+
 * {
     box-sizing: border-box;
 }
@@ -133,11 +134,13 @@ input {
 }
 
 @keyframes show {
+
     0%,
     49.99% {
         opacity: 0;
         z-index: 1;
     }
+
     50%,
     100% {
         opacity: 1;
@@ -262,21 +265,12 @@ footer a {
     color: black;
     margin: 15% auto;
     padding: 20px;
-    border: 1px solid #ff4321;
+    border: 1px solid green;
     width: 30%;
     max-width: 500px;
     box-sizing: border-box;
     border-radius: 15px;
 }
-
-.progress-bar {
-    height: 8px;
-    background-color: green;
-    transition: width 5s linear;
-    direction: ltr;
-    visibility: hidden;
-}
-
 
 /*toggle switch */
 .switch {
@@ -385,12 +379,14 @@ input:checked+.slider:before {
         left: 65rem;
         top: -10rem;
     }
+
     10%,
     90% {
         left: 40rem;
         top: -10rem;
         animation-delay: 5s;
     }
+
     100% {
         left: 80rem;
         top: -10rem;
@@ -402,12 +398,15 @@ input:checked+.slider:before {
     .container {
         width: 90vw;
     }
+
     input {
         font-size: 15px;
     }
+
     button {
         padding: 18px 45px;
     }
+
     span {
         font-size: 15px;
     }
@@ -421,19 +420,21 @@ input:checked+.slider:before {
         top: 0%;
         left: 30%;
     }
-    
+
 
     @keyframes popup {
         0% {
             left: 30%;
             top: 0%;
         }
+
         10%,
         90% {
             left: 25%;
             top: 0%;
             animation-delay: 5s;
         }
+
         100% {
             left: 30%;
             top: 0%;
@@ -498,19 +499,21 @@ input:checked+.slider:before {
         top: 0%;
         left: 20%;
     }
-    
+
 
     @keyframes popup {
         0% {
             left: 20%;
             top: 0%;
         }
+
         10%,
         90% {
             left: 10%;
             top: 0%;
             animation-delay: 5s;
         }
+
         100% {
             left: 20%;
             top: 0%;
