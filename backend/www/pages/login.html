@@ -16,7 +16,6 @@
     <div id="myModal" class="modal">
         <div class="modal-content" style="border:1px solid green;">
             <span id="modalText"></span>
-            <div id="progressBar" class="progress-bar"></div>
         </div>
     </div>
 
@@ -68,7 +67,6 @@
     var modal = document.getElementById("myModal");
     var span = document.getElementsByClassName("close")[0];
     var text = document.getElementById("modalText");
-    var progressBar = document.getElementById('progressBar');
 
     // Obtém a mensagem do armazenamento local
     var message = localStorage.getItem('modalMessage');
@@ -77,12 +75,6 @@
     if (message) {
         text.innerHTML = message;
         modal.style.display = "block";
-        progressBar.style.visibility = 'visible';
-        // Inicia a barra de progresso
-        progressBar.style.width = '100%';
-        setTimeout(function () {
-            progressBar.style.width = '0%';
-        }, 0);
         // Remove a mensagem do armazenamento local
         localStorage.removeItem('modalMessage');
         // Fecha o modal após 5 segundos

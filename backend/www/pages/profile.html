@@ -431,7 +431,8 @@
       .then(response => {
         // Verifica o código de status da resposta
         if (response.status === 200) {
-
+          // Armazena a mensagem no armazenamento local
+          localStorage.setItem('modalMessage', 'Palavra-Passe alterada com sucesso!');
           window.location.href = '/logout';
 
         } else {
