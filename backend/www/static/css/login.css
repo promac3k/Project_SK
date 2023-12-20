@@ -59,6 +59,10 @@ button {
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
+button:hover{
+    cursor: pointer;
+}
+
 button:active {
     transform: scale(0.95);
 }
@@ -252,7 +256,7 @@ footer a {
     left: 80rem;
     top: -10rem;
     width: 100%;
-    height: 100%;
+    height: 45%;
     overflow: auto;
     border-radius: 10px;
     animation-name: popup;
