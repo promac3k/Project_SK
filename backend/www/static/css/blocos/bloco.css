@@ -100,8 +100,10 @@ td {
 }
 
 .modal_sala_content {
-	background-color: #444444;
-	color: white;
+  
+  background-color: #FFFFFF;
+	color: black;
+  border: 3px solid #bebcbc;
   font-size: 20px;
 	margin: 10% auto;
 	padding: 20px;
@@ -113,6 +115,12 @@ td {
 .modal_sala_content .table_alunos{
   display: none;
   overflow-x: auto;
+}
+
+.dark-mode .modal_sala_content {
+  background-color: #444444;
+	color: white;
+  border: 3px solid #272727;
 }
 
 .fechar_editar:hover,
