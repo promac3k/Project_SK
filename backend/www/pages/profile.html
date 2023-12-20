@@ -395,6 +395,7 @@
     document.getElementById('hoverText').style.color = currentColor;
   }
 
+  // Função para obter um cookie pelo nome
   function getCookie(name) {
 
     const value = "; " + document.cookie;
@@ -403,7 +404,9 @@
 
   }
 
+  // Verifica se o cookie 'user' existe
   const userCookie = getCookie('user');
+
   if (userCookie) {
     const user = JSON.parse(decodeURIComponent(userCookie));
     document.getElementById('nome').textContent = user.nome;
