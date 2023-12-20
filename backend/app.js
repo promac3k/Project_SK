@@ -42,7 +42,7 @@ const sessionStore = new MySQLStore(options);
 
 // Iniciar session
 app.use(session({
-    secret: 'secret',
+    secret: process.env.SECRET,
     name: "session_id",
     store: sessionStore,
     resave: false,
