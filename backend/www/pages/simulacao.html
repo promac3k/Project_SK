@@ -6,10 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/calendario.css">
     <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/simulacao.css">
     <script src="js/main.js"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <title>Pagina Incial</title>
 
 
@@ -19,9 +20,40 @@
 <body>
     <main>
         <div class="container">
-            
-        </div>
-           
+            <nav>
+                <ul>
+                    <li style="margin-left: 1.3rem; margin-right: auto;"><a href="/">Inicio</a></li>
+                </ul>
+            </nav>
+
+
+            <div class="switchsim_container">
+                <label class="switchsim">
+                    <input type="checkbox">
+                    <span class="switchoff"></span>
+                </label>
+            </div>
+
+            <div class="lights_container">
+                <label class="reddotoff"></label>
+                <label class="bodydot"></label>
+            </div>
+
+            <li>
+                <div class="social-container">
+                    <label class="switch">
+                        <input id="switchon" type="checkbox" onclick="mySwitch()">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+            </li>
+
+            <footer>
+                <p>
+                    Criado <i class="fa fa-heart"></i> por André Nunes, Diogo Oliveira, Gustavo Antunes, Sebastião Costa
+                    e Tiago Batista
+                </p>
+            </footer>
     </main>
 </body>
 

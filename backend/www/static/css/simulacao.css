@@ -1,0 +1,124 @@
+
+.container {
+    height: 50rem;
+    width: 75%;
+    position: absolute;
+    top: 47%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.switchsim_container {
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    position: absolute;
+    height: 10%;
+    width: 7%;
+    border-radius: 5px;
+    overflow: hidden;
+    left: 1rem;
+    top: 5rem;
+    border: #292929 3px solid;
+}
+
+.lights_container {
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    position: absolute;
+    height: 13%;
+    width: 16%;
+    border-radius: 5px;
+    overflow: hidden;
+    left: 55rem;
+    top: 5rem;
+    border: #292929 3px solid;
+    flex-direction: column-reverse;
+}
+
+#switchon {
+    display: none;
+}
+
+/* Switch on/off */
+
+.switchsim {
+    position: relative;
+    display: inline-block;
+    width: 5rem;
+    height: 3rem;
+    border: black 3px solid;
+    border-radius: 15%;
+    top: 1rem;
+  }
+  
+  .switchsim input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .switchoff {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #e70d0d;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 15%;
+  }
+
+  
+  input:checked + .switchoff {
+    background-color: #0cec1f;
+    border-radius: 15%;
+  }
+  
+  input:focus + .switchoff {
+    box-shadow: 0 0 1px #292929;
+  }
+
+  /* Light on/off */
+
+  .reddotoff {
+    position: absolute;
+    height: 3rem;
+    width: 3rem;
+    background-color: #330202;
+    border-radius: 50%;
+    display: inline-block;
+    z-index: 1;
+    left: 54.2%;
+    top: 15%;
+  }
+
+  .bodydot {
+    position: absolute;
+    height: 5rem;
+    width: 4.2rem;
+    background-color: #202020;
+    display: inline-block;
+    box-shadow: 5px 5px 10px #202020;
+    background: linear-gradient(to bottom, #303030, #181818);
+    top: 10%;
+  }
+
+  .lightoff {
+    position: relative;
+    display: inline-block;
+    width: 5rem;
+    height: 3rem;
+    border: black 3px solid;
+    border-radius: 15%;
+    left: 3rem;
+    top: 2rem;
+  }
+
+  .lightred {
+
+  }
+
+  .lightgreen {
+
+  }
+  
