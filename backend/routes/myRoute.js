@@ -6,7 +6,7 @@ const index = require('../controllers/index');
 const login = require('../controllers/login');
 const contact = require('../controllers/contact');
 const profile = require('../controllers/profile');
-const blocos = require('../controllers/blocos');
+const blocos = require('../controllers/blocos/blocos');
 
 // Inicializa um novo router
 const router = Router();

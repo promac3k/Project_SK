@@ -1,4 +1,4 @@
-const connection = require('../services/db'); // Módulo para conexão com o banco de dados
+const connection = require('../../services/db'); // Módulo para conexão com o banco de dados
 const path = require('path'); // Módulo Node.js para trabalhar com caminhos de arquivos
 
 

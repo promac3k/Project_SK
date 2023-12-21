@@ -1,0 +1,3 @@
+function salas_loading () {
+    
+}
