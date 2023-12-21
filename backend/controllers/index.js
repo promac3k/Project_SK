@@ -51,9 +51,23 @@ const get_eventos = (req, res) => {
 
 }
 
+const get_simulacao = (req, res) => {
+    console.log("get_simulacao >>>>> " + req.session.loggedin);
+
+    if (req.session.loggedin) {
+        // Envia o arquivo eventos.html como resposta
+        res.sendFile(path.join(__dirname, '..', 'www/pages/simulacao.html'))
+    } else {
+
+        res.sendFile(path.join(__dirname, '..', 'www/pages/login.html'));
+    }
+
+
+}
 // Exporta todos os métodos como um objeto para serem usados em outros arquivos
 module.exports = {
     get_index,
     get_logout,
-    get_eventos
+    get_eventos,
+    get_simulacao
 }
