@@ -82,7 +82,7 @@ function generateCalendar() {
         { name: 'Novembro', days: 30, firstDay: 3, year: 2023 },
         { name: 'Dezembro', days: 31, firstDay: 5, year: 2023 },
         { name: 'Janeiro', days: 31, firstDay: 1, year: 2023 },
-        { name: 'Fevereiro', days: 28, firstDay: 4, year: 2023 },
+        { name: 'Fevereiro', days: 29, firstDay: 4, year: 2023 },
         { name: 'Março', days: 31, firstDay: 5, year: 2023 },
         { name: 'Abril', days: 30, firstDay: 1, year: 2023 },
         { name: 'Maio', days: 31, firstDay: 3, year: 2023 },
