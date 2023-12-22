@@ -155,6 +155,8 @@ const post_bloco_ids = async (req, res) => {
                 });
             }
 
+            console.log(horariosOrganizados);
+
             // Enviar os dados organizados como resposta
             res.json(horariosOrganizados);
 
