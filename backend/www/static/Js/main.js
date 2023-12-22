@@ -212,7 +212,6 @@ function prevMonth() {
 }
 
 
-
 function generateBlocos() {
     a = document.getElementById("model_sala")
     document.addEventListener("DOMContentLoaded", function () {
@@ -257,6 +256,9 @@ function generateBlocos() {
                 };
                 td.onclick = function () {
                     document.getElementById('modal_sala').style.display = 'block';
+
+                    window.clickedCellId = this.id;
+                    console.log(window.clickedCellId);
                 };
 
                 // Adiciona o elemento td à linha

@@ -91,11 +91,27 @@ const get_blocoF = (req, res) => {
 
 }
 
+const post_bloco_ids = async (req, res) => {
+    console.log("post_bloco_ids >>>>> " + req.session.loggedin);
+
+    if (req.session.loggedin) {
+        
+        console.log(req.body);
+      
+    } else {
+
+        res.sendFile(path.join(__dirname, '..', '..', 'www/pages/login.html'));
+    }
+
+}
+
+
 module.exports = {
     get_blocoA,
     get_blocoB,
     get_blocoC,
     get_blocoD,
     get_blocoE,
-    get_blocoF
+    get_blocoF,
+    post_bloco_ids
 }
