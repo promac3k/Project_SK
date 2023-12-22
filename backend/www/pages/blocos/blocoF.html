@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
     <link rel="stylesheet" href="../css/blocos/bloco.css">
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/blocos/calendario_modal.css">
@@ -46,77 +47,178 @@
 
                 <form method="post">
                     <table class="table_alunos" id="horario_sala">
-                        <tr class="tr_alunos">
-                            <th>Horas</th>
-                            <th>Segunda</th>
-                            <th>Terça</th>
-                            <th>Quarta</th>
-                            <th>Quinta</th>
-                            <th>Sexta</th>
-                        </tr>
+                        <thead>
+                            <tr class="tr_alunos">
+                                <th style="width: 200px;">dia</th>
+                                <th style="width: 200px;">08:00 - 08:30</th>
+                                <th style="width: 200px;">08:30 - 09:00</th>
+                                <th style="width: 200px;">09:00 - 09:30</th>
+                                <th style="width: 200px;">09:30 - 10:00</th>
+                                <th style="width: 200px;">10:00 - 10:30</th>
+                                <th style="width: 200px;">10:30 - 11:00</th>
+                                <th style="width: 200px;">11:00 - 11:30</th>
+                                <th style="width: 200px;">11:30 - 12:00</th>
+                                <th style="width: 200px;">12:00 - 12:30</th>
+                                <th style="width: 200px;">12:30 - 13:00</th>
+                                <th style="width: 200px;">13:00 - 13:30</th>
+                                <th style="width: 200px;">13:30 - 14:00</th>
+                                <th style="width: 200px;">14:00 - 14:30</th>
+                                <th style="width: 200px;">14:30 - 15:00</th>
+                                <th style="width: 200px;">15:00 - 15:30</th>
+                                <th style="width: 200px;">15:30 - 16:00</th>
+                                <th style="width: 200px;">16:00 - 16:30</th>
+                                <th style="width: 200px;">16:30 - 17:00</th>
+                                <th style="width: 200px;">17:00 - 17:30</th>
+                                <th style="width: 200px;">17:30 - 18:00</th>
 
-                        <tr class="tr_alunos">
-                            <td>08:00 - 08:30</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>08:30 - 09:00</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr class="tr_alunos">
-                            <td>09:00 - 09:30</td>
-                            <td rowspan="8" class="table_aula_segunda">CIC (Teorica)<br>1ºPWDAM-01<br>F315----LT</td>
-                            <td rowspan="8" class="table_aula_terca">IPINT (TP)<br>1ºPWDAM-01<br>D108-----JVJ</td>
-                            <td rowspan="8" class="table_aula_quarta">FM (TP)<br>1ºPWDAM-01<br>F315-----ECSL</td>
-                            <td rowspan="8" class="table_aula_quinta">ING (TP)<br>1ºPWDAM-01<br>F315-----ECSL</td>
-                            <td rowspan="8" class="table_aula_sexta">SGBD (TP)<br>1ºPWDAM-01<br>F315-----ND_DSI_INF_01</td>
-                        </tr>
-                        <tr class="tr_alunos">
-                            <td>09:30 - 10:00</td>
-                        </tr>
-                        <tr class="tr_alunos">
-                            <td>10:00 - 10:30</td>
-                        </tr>
-                        <tr class="tr_alunos">
-                            <td>10:30 - 11:00</td>
-                        </tr>
-                        <tr class="tr_alunos">
-                            <td>11:00 - 11:30</td>
-                        </tr>
-                        <tr class="tr_alunos">
-                            <td>11:30 - 12:00</td>
-                        </tr>
-                        <tr class="tr_alunos">
-                            <td>12:00 - 12:30</td>
-                        </tr>
-                        <tr class="tr_alunos">
-                            <td>12:30 - 13:00</td>
-                        </tr>
-                        <tr class="tr_alunos">
-                            <td>13:00 - 13:30</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr id="segunda" class="tr_alunos linha-dia">
+                                <td>segunda</td>
+                                <td id="table_aula_segunda_08_00"></td>
+                                <td id="table_aula_segunda_08_30"></td>
+                                <td id="table_aula_segunda_09_00"></td>
+                                <td id="table_aula_segunda_09_30"></td>
+                                <td id="table_aula_segunda_10_00"></td>
+                                <td id="table_aula_segunda_10_30"></td>
+                                <td id="table_aula_segunda_11_00"></td>
+                                <td id="table_aula_segunda_11_30"></td>
+                                <td id="table_aula_segunda_12_00"></td>
+                                <td id="table_aula_segunda_12_30"></td>
+                                <td id="table_aula_segunda_13_00"></td>
+                                <td id="table_aula_segunda_13_30"></td>
+                                <td id="table_aula_segunda_14_00"></td>
+                                <td id="table_aula_segunda_14_30"></td>
+                                <td id="table_aula_segunda_15_00"></td>
+                                <td id="table_aula_segunda_15_30"></td>
+                                <td id="table_aula_segunda_16_00"></td>
+                                <td id="table_aula_segunda_16_30"></td>
+                                <td id="table_aula_segunda_17_00"></td>
+                                <td id="table_aula_segunda_17_30"></td>
 
-                        <tr class="tr_alunos">
-                            <td>13:30 - 14:00</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
+                            </tr>
+                            <tr id="terca" class="tr_alunos linha-dia">
+                                <td>terça</td>
+                                <td id="table_aula_terca_08_00"></td>
+                                <td id="table_aula_terca_08_30"></td>
+                                <td id="table_aula_terca_09_00"></td>
+                                <td id="table_aula_terca_09_30"></td>
+                                <td id="table_aula_terca_10_00"></td>
+                                <td id="table_aula_terca_10_30"></td>
+                                <td id="table_aula_terca_11_00"></td>
+                                <td id="table_aula_terca_11_30"></td>
+                                <td id="table_aula_terca_12_00"></td>
+                                <td id="table_aula_terca_12_30"></td>
+                                <td id="table_aula_terca_13_00"></td>
+                                <td id="table_aula_terca_13_30"></td>
+                                <td id="table_aula_terca_14_00"></td>
+                                <td id="table_aula_terca_14_30"></td>
+                                <td id="table_aula_terca_15_00"></td>
+                                <td id="table_aula_terca_15_30"></td>
+                                <td id="table_aula_terca_16_00"></td>
+                                <td id="table_aula_terca_16_30"></td>
+                                <td id="table_aula_terca_17_00"></td>
+                                <td id="table_aula_terca_17_30"></td>
+
+                            </tr>
+                            <tr id="quarta" class="tr_alunos linha-dia">
+                                <td>quarta</td>
+                                <td id="table_aula_quarta_08_00"></td>
+                                <td id="table_aula_quarta_08_30"></td>
+                                <td id="table_aula_quarta_09_00"></td>
+                                <td id="table_aula_quarta_09_30"></td>
+                                <td id="table_aula_quarta_10_00"></td>
+                                <td id="table_aula_quarta_10_30"></td>
+                                <td id="table_aula_quarta_11_00"></td>
+                                <td id="table_aula_quarta_11_30"></td>
+                                <td id="table_aula_quarta_12_00"></td>
+                                <td id="table_aula_quarta_12_30"></td>
+                                <td id="table_aula_quarta_13_00"></td>
+                                <td id="table_aula_quarta_13_30"></td>
+                                <td id="table_aula_quarta_14_00"></td>
+                                <td id="table_aula_quarta_14_30"></td>
+                                <td id="table_aula_quarta_15_00"></td>
+                                <td id="table_aula_quarta_15_30"></td>
+                                <td id="table_aula_quarta_16_00"></td>
+                                <td id="table_aula_quarta_16_30"></td>
+                                <td id="table_aula_quarta_17_00"></td>
+                                <td id="table_aula_quarta_17_30"></td>
+
+                            </tr>
+                            <tr id="quinta" class="tr_alunos linha-dia">
+                                <td>quinta</td>
+                                <td id="table_aula_quinta_08_00"></td>
+                                <td id="table_aula_quinta_08_30"></td>
+                                <td id="table_aula_quinta_09_00"></td>
+                                <td id="table_aula_quinta_09_30"></td>
+                                <td id="table_aula_quinta_10_00"></td>
+                                <td id="table_aula_quinta_10_30"></td>
+                                <td id="table_aula_quinta_11_00"></td>
+                                <td id="table_aula_quinta_11_30"></td>
+                                <td id="table_aula_quinta_12_00"></td>
+                                <td id="table_aula_quinta_12_30"></td>
+                                <td id="table_aula_quinta_13_00"></td>
+                                <td id="table_aula_quinta_13_30"></td>
+                                <td id="table_aula_quinta_14_00"></td>
+                                <td id="table_aula_quinta_14_30"></td>
+                                <td id="table_aula_quinta_15_00"></td>
+                                <td id="table_aula_quinta_15_30"></td>
+                                <td id="table_aula_quinta_16_00"></td>
+                                <td id="table_aula_quinta_16_30"></td>
+                                <td id="table_aula_quinta_17_00"></td>
+                                <td id="table_aula_quinta_17_30"></td>
+
+                            </tr>
+                            <tr id="sexta" class="tr_alunos linha-dia">
+                                <td>sexta</td>
+                                <td id="table_aula_sexta_08_00"></td>
+                                <td id="table_aula_sexta_08_30"></td>
+                                <td id="table_aula_sexta_09_00"></td>
+                                <td id="table_aula_sexta_09_30"></td>
+                                <td id="table_aula_sexta_10_00"></td>
+                                <td id="table_aula_sexta_10_30"></td>
+                                <td id="table_aula_sexta_11_00"></td>
+                                <td id="table_aula_sexta_11_30"></td>
+                                <td id="table_aula_sexta_12_00"></td>
+                                <td id="table_aula_sexta_12_30"></td>
+                                <td id="table_aula_sexta_13_00"></td>
+                                <td id="table_aula_sexta_13_30"></td>
+                                <td id="table_aula_sexta_14_00"></td>
+                                <td id="table_aula_sexta_14_30"></td>
+                                <td id="table_aula_sexta_15_00"></td>
+                                <td id="table_aula_sexta_15_30"></td>
+                                <td id="table_aula_sexta_16_00"></td>
+                                <td id="table_aula_sexta_16_30"></td>
+                                <td id="table_aula_sexta_17_00"></td>
+                                <td id="table_aula_sexta_17_30"></td>
+
+                            </tr>
+                            <tr id="sabado" class="tr_alunos linha-dia">
+                                <td>sabado</td>
+                                <td id="table_aula_sabado_08_00"></td>
+                                <td id="table_aula_sabado_08_30"></td>
+                                <td id="table_aula_sabado_09_00"></td>
+                                <td id="table_aula_sabado_09_30"></td>
+                                <td id="table_aula_sabado_10_00"></td>
+                                <td id="table_aula_sabado_10_30"></td>
+                                <td id="table_aula_sabado_11_00"></td>
+                                <td id="table_aula_sabado_11_30"></td>
+                                <td id="table_aula_sabado_12_00"></td>
+                                <td id="table_aula_sabado_12_30"></td>
+                                <td id="table_aula_sabado_13_00"></td>
+                                <td id="table_aula_sabado_13_30"></td>
+                                <td id="table_aula_sabado_14_00"></td>
+                                <td id="table_aula_sabado_14_30"></td>
+                                <td id="table_aula_sabado_15_00"></td>
+                                <td id="table_aula_sabado_15_30"></td>
+                                <td id="table_aula_sabado_16_00"></td>
+                                <td id="table_aula_sabado_16_30"></td>
+                                <td id="table_aula_sabado_17_00"></td>
+                                <td id="table_aula_sabado_17_30"></td>
+
+                            </tr>
+                        </tbody>
                     </table>
                     <button class="gravar" id="gravar">Gravar</button>
                 </form>
@@ -157,95 +259,178 @@
                     <tbody>
                         <tr>
                             <td>1</td>
-                            <td id="floor2_room103" onmousemove="highlightCell(this)" onmouseout="resetCell(this)" onclick="document.getElementById('modal_sala').style.display='block'">F103</td>
-                            <td id="floor2_room104" onmousemove="highlightCell(this)" onmouseout="resetCell(this)" onclick="document.getElementById('modal_sala').style.display='block'">F104</td>
-                            <td id="floor2_room105" onmousemove="highlightCell(this)" onmouseout="resetCell(this)" onclick="document.getElementById('modal_sala').style.display='block'">F105</td>
-                            <td id="floor2_room106" onmousemove="highlightCell(this)" onmouseout="resetCell(this)" onclick="document.getElementById('modal_sala').style.display='block'">F106</td>
-                            <td id="floor2_room107" onmousemove="highlightCell(this)" onmouseout="resetCell(this)" onclick="document.getElementById('modal_sala').style.display='block'">F107</td>
-                            <td id="floor2_room108" onmousemove="highlightCell(this)" onmouseout="resetCell(this)" onclick="document.getElementById('modal_sala').style.display='block'">F108</td>
-                            <td id="floor2_room109" onmousemove="highlightCell(this)" onmouseout="resetCell(this)" onclick="document.getElementById('modal_sala').style.display='block'">F109</td>
-                            <td id="floor2_room110" onmousemove="highlightCell(this)" onmouseout="resetCell(this)" onclick="document.getElementById('modal_sala').style.display='block'">F110</td>
-                            <td id="floor2_room111" onmousemove="highlightCell(this)" onmouseout="resetCell(this)" onclick="document.getElementById('modal_sala').style.display='block'">F111</td>
-                            <td id=" floor2_room151 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) " onclick="document.getElementById('modal_sala').style.display='block'">F151</td>
-                            <td id="floor2_room152 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) " onclick="document.getElementById('modal_sala').style.display='block'">F152</td>
-                            <td id="floor2_room153 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) " onclick="document.getElementById('modal_sala').style.display='block'">F153</td>
-                            <td id="floor2_room154 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) " onclick="document.getElementById('modal_sala').style.display='block'">F154</td>
-                            <td id="floor2_room155 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) " onclick="document.getElementById('modal_sala').style.display='block'">F155</td>
-                            <td id="floor2_room156 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) " onclick="document.getElementById('modal_sala').style.display='block'">F156</td>
-                            <td id="floor2_room158 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) " onclick="document.getElementById('modal_sala').style.display='block'">F158</td>
+                            <td id="floor2_room103" onmousemove="highlightCell(this)" onmouseout="resetCell(this)"
+                                onclick="document.getElementById('modal_sala').style.display='block'">F103</td>
+                            <td id="floor2_room104" onmousemove="highlightCell(this)" onmouseout="resetCell(this)"
+                                onclick="document.getElementById('modal_sala').style.display='block'">F104</td>
+                            <td id="floor2_room105" onmousemove="highlightCell(this)" onmouseout="resetCell(this)"
+                                onclick="document.getElementById('modal_sala').style.display='block'">F105</td>
+                            <td id="floor2_room106" onmousemove="highlightCell(this)" onmouseout="resetCell(this)"
+                                onclick="document.getElementById('modal_sala').style.display='block'">F106</td>
+                            <td id="floor2_room107" onmousemove="highlightCell(this)" onmouseout="resetCell(this)"
+                                onclick="document.getElementById('modal_sala').style.display='block'">F107</td>
+                            <td id="floor2_room108" onmousemove="highlightCell(this)" onmouseout="resetCell(this)"
+                                onclick="document.getElementById('modal_sala').style.display='block'">F108</td>
+                            <td id="floor2_room109" onmousemove="highlightCell(this)" onmouseout="resetCell(this)"
+                                onclick="document.getElementById('modal_sala').style.display='block'">F109</td>
+                            <td id="floor2_room110" onmousemove="highlightCell(this)" onmouseout="resetCell(this)"
+                                onclick="document.getElementById('modal_sala').style.display='block'">F110</td>
+                            <td id="floor2_room111" onmousemove="highlightCell(this)" onmouseout="resetCell(this)"
+                                onclick="document.getElementById('modal_sala').style.display='block'">F111</td>
+                            <td id=" floor2_room151 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
+                                onclick="document.getElementById('modal_sala').style.display='block'">F151</td>
+                            <td id="floor2_room152 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
+                                onclick="document.getElementById('modal_sala').style.display='block'">F152</td>
+                            <td id="floor2_room153 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
+                                onclick="document.getElementById('modal_sala').style.display='block'">F153</td>
+                            <td id="floor2_room154 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
+                                onclick="document.getElementById('modal_sala').style.display='block'">F154</td>
+                            <td id="floor2_room155 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
+                                onclick="document.getElementById('modal_sala').style.display='block'">F155</td>
+                            <td id="floor2_room156 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
+                                onclick="document.getElementById('modal_sala').style.display='block'">F156</td>
+                            <td id="floor2_room158 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
+                                onclick="document.getElementById('modal_sala').style.display='block'">F158</td>
                         </tr>
                         <tr>
                             <td>2</td>
-                            <td id="floor2_room203 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) " onclick="document.getElementById('modal_sala').style.display='block'">F203</td>
-                            <td id="floor2_room204 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) " onclick="document.getElementById('modal_sala').style.display='block'">F204</td>
-                            <td id="floor2_room205 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) " onclick="document.getElementById('modal_sala').style.display='block'">F205</td>
-                            <td id="floor2_room206 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) " onclick="document.getElementById('modal_sala').style.display='block'">F206</td>
-                            <td id="floor2_room207 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) " onclick="document.getElementById('modal_sala').style.display='block'">F207</td>
-                            <td id="floor2_room208 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) " onclick="document.getElementById('modal_sala').style.display='block'">F208</td>
-                            <td id="floor2_room209 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) " onclick="document.getElementById('modal_sala').style.display='block'">F209</td>
-                            <td id="floor2_room210 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) " onclick="document.getElementById('modal_sala').style.display='block'">F210</td>
-                            <td id="floor2_room211 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) " onclick="document.getElementById('modal_sala').style.display='block'">F211</td>
-                            <td id="floor2_room212 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) " onclick="document.getElementById('modal_sala').style.display='block'">F212</td>
-                            <td id="floor2_room251 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) " onclick="document.getElementById('modal_sala').style.display='block'">F251</td>
-                            <td id="floor2_room252 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) " onclick="document.getElementById('modal_sala').style.display='block'">F252</td>
-                            <td id="floor2_room253 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) " onclick="document.getElementById('modal_sala').style.display='block'">F253</td>
-                            <td id="floor2_room254 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) " onclick="document.getElementById('modal_sala').style.display='block'">F254</td>
-                            <td id="floor2_room255 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) " onclick="document.getElementById('modal_sala').style.display='block'">F255</td>
-                            <td id="floor2_room256 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) " onclick="document.getElementById('modal_sala').style.display='block'">F256</td>
-                            <td id="floor2_room257 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) " onclick="document.getElementById('modal_sala').style.display='block'">F257</td>
-                            <td id="floor2_room258 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) " onclick="document.getElementById('modal_sala').style.display='block'">F258</td>
-                            <td id="floor2_room259 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) " onclick="document.getElementById('modal_sala').style.display='block'">F259</td>
-                            <td id="floor2_room260 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) " onclick="document.getElementById('modal_sala').style.display='block'">F260</td>
-                            <td id="floor2_room261 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) " onclick="document.getElementById('modal_sala').style.display='block'">F261</td>
-                            <td id="floor2_room262 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) " onclick="document.getElementById('modal_sala').style.display='block'">F262</td>
-                            <td id="floor2_room263 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) " onclick="document.getElementById('modal_sala').style.display='block'">F263</td>
-                            <td id="floor2_room264 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) " onclick="document.getElementById('modal_sala').style.display='block'">F264</td>
-                            <td id="floor2_room265 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) " onclick="document.getElementById('modal_sala').style.display='block'">F265</td>
-                            <td id="floor2_room266 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) " onclick="document.getElementById('modal_sala').style.display='block'">F266</td>
-                            <td id="floor2_room267 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) " onclick="document.getElementById('modal_sala').style.display='block'">F267</td>
-                            <td id="floor2_room268 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) " onclick="document.getElementById('modal_sala').style.display='block'">F268</td>
-                            <td id="floor2_room269 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) " onclick="document.getElementById('modal_sala').style.display='block'">F269</td>
+                            <td id="floor2_room203 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
+                                onclick="document.getElementById('modal_sala').style.display='block'">F203</td>
+                            <td id="floor2_room204 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
+                                onclick="document.getElementById('modal_sala').style.display='block'">F204</td>
+                            <td id="floor2_room205 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
+                                onclick="document.getElementById('modal_sala').style.display='block'">F205</td>
+                            <td id="floor2_room206 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
+                                onclick="document.getElementById('modal_sala').style.display='block'">F206</td>
+                            <td id="floor2_room207 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
+                                onclick="document.getElementById('modal_sala').style.display='block'">F207</td>
+                            <td id="floor2_room208 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
+                                onclick="document.getElementById('modal_sala').style.display='block'">F208</td>
+                            <td id="floor2_room209 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
+                                onclick="document.getElementById('modal_sala').style.display='block'">F209</td>
+                            <td id="floor2_room210 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
+                                onclick="document.getElementById('modal_sala').style.display='block'">F210</td>
+                            <td id="floor2_room211 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
+                                onclick="document.getElementById('modal_sala').style.display='block'">F211</td>
+                            <td id="floor2_room212 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
+                                onclick="document.getElementById('modal_sala').style.display='block'">F212</td>
+                            <td id="floor2_room251 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
+                                onclick="document.getElementById('modal_sala').style.display='block'">F251</td>
+                            <td id="floor2_room252 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
+                                onclick="document.getElementById('modal_sala').style.display='block'">F252</td>
+                            <td id="floor2_room253 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
+                                onclick="document.getElementById('modal_sala').style.display='block'">F253</td>
+                            <td id="floor2_room254 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
+                                onclick="document.getElementById('modal_sala').style.display='block'">F254</td>
+                            <td id="floor2_room255 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
+                                onclick="document.getElementById('modal_sala').style.display='block'">F255</td>
+                            <td id="floor2_room256 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
+                                onclick="document.getElementById('modal_sala').style.display='block'">F256</td>
+                            <td id="floor2_room257 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
+                                onclick="document.getElementById('modal_sala').style.display='block'">F257</td>
+                            <td id="floor2_room258 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
+                                onclick="document.getElementById('modal_sala').style.display='block'">F258</td>
+                            <td id="floor2_room259 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
+                                onclick="document.getElementById('modal_sala').style.display='block'">F259</td>
+                            <td id="floor2_room260 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
+                                onclick="document.getElementById('modal_sala').style.display='block'">F260</td>
+                            <td id="floor2_room261 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
+                                onclick="document.getElementById('modal_sala').style.display='block'">F261</td>
+                            <td id="floor2_room262 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
+                                onclick="document.getElementById('modal_sala').style.display='block'">F262</td>
+                            <td id="floor2_room263 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
+                                onclick="document.getElementById('modal_sala').style.display='block'">F263</td>
+                            <td id="floor2_room264 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
+                                onclick="document.getElementById('modal_sala').style.display='block'">F264</td>
+                            <td id="floor2_room265 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
+                                onclick="document.getElementById('modal_sala').style.display='block'">F265</td>
+                            <td id="floor2_room266 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
+                                onclick="document.getElementById('modal_sala').style.display='block'">F266</td>
+                            <td id="floor2_room267 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
+                                onclick="document.getElementById('modal_sala').style.display='block'">F267</td>
+                            <td id="floor2_room268 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
+                                onclick="document.getElementById('modal_sala').style.display='block'">F268</td>
+                            <td id="floor2_room269 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
+                                onclick="document.getElementById('modal_sala').style.display='block'">F269</td>
                         </tr>
                         <tr>
                             <td>3</td>
-                            <td id="floor2_room303 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) " onclick="document.getElementById('modal_sala').style.display='block'">F303</td>
-                            <td id="floor2_room304 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) " onclick="document.getElementById('modal_sala').style.display='block'">F304</td>
-                            <td id="floor2_room305 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) " onclick="document.getElementById('modal_sala').style.display='block'">F305</td>
-                            <td id="floor2_room306 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) " onclick="document.getElementById('modal_sala').style.display='block'">F306</td>
-                            <td id="floor2_room307 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) " onclick="document.getElementById('modal_sala').style.display='block'">F307</td>
-                            <td id="floor2_room308 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) " onclick="document.getElementById('modal_sala').style.display='block'">F308</td>
-                            <td id="floor2_room309 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) " onclick="document.getElementById('modal_sala').style.display='block'">F309</td>
-                            <td id="floor2_room310 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) " onclick="document.getElementById('modal_sala').style.display='block'">F310</td>
-                            <td id="floor2_room311 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) " onclick="document.getElementById('modal_sala').style.display='block'">F311</td>
-                            <td id="floor2_room312 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) " onclick="document.getElementById('modal_sala').style.display='block'">F312</td>
-                            <td id="floor2_room313 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) " onclick="document.getElementById('modal_sala').style.display='block'">F313</td>
-                            <td id="floor2_room314 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) " onclick="document.getElementById('modal_sala').style.display='block'">F314</td>
-                            <td id="floor2_room315 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) " onclick="document.getElementById('modal_sala').style.display='block'">F315</td>
-                            <td id="floor2_room316 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) " onclick="document.getElementById('modal_sala').style.display='block'">F316</td>
-                            <td id="floor2_room317 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) " onclick="document.getElementById('modal_sala').style.display='block'">F317</td>
-                            <td id="floor2_room318 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) " onclick="document.getElementById('modal_sala').style.display='block'">F318</td>
-                            <td id="floor2_room319 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) " onclick="document.getElementById('modal_sala').style.display='block'">F319</td>
-                            <td id="floor2_room320 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) " onclick="document.getElementById('modal_sala').style.display='block'">F320</td>
-                            <td id="floor2_room351 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) " onclick="document.getElementById('modal_sala').style.display='block'">F351</td>
-                            <td id="floor2_room352 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) " onclick="document.getElementById('modal_sala').style.display='block'">F352</td>
-                            <td id="floor2_room353 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) " onclick="document.getElementById('modal_sala').style.display='block'">F353</td>
-                            <td id="floor2_room354 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) " onclick="document.getElementById('modal_sala').style.display='block'">F354</td>
-                            <td id="floor2_room355 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) " onclick="document.getElementById('modal_sala').style.display='block'">F355</td>
-                            <td id="floor2_room356 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) " onclick="document.getElementById('modal_sala').style.display='block'">F356</td>
-                            <td id="floor2_room357 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) " onclick="document.getElementById('modal_sala').style.display='block'">F357</td>
-                            <td id="floor2_room358 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) " onclick="document.getElementById('modal_sala').style.display='block'">F358</td>
-                            <td id="floor2_room359 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) " onclick="document.getElementById('modal_sala').style.display='block'">F359</td>
-                            <td id="floor2_room360 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) " onclick="document.getElementById('modal_sala').style.display='block'">F360</td>
-                            <td id="floor2_room361 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) " onclick="document.getElementById('modal_sala').style.display='block'">F361</td>
-                            <td id="floor2_room362 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) " onclick="document.getElementById('modal_sala').style.display='block'">F362</td>
-                            <td id="floor2_room363 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) " onclick="document.getElementById('modal_sala').style.display='block'">F363</td>
-                            <td id="floor2_room364 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) " onclick="document.getElementById('modal_sala').style.display='block'">F364</td>
-                            <td id="floor2_room365 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) " onclick="document.getElementById('modal_sala').style.display='block'">F365</td>
-                            <td id="floor2_room366 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) " onclick="document.getElementById('modal_sala').style.display='block'">F366</td>
-                            <td id="floor2_room367 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) " onclick="document.getElementById('modal_sala').style.display='block'">F367</td>
-                            <td id=" floor2_room368 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) " onclick="document.getElementById('modal_sala').style.display='block'">F368</td>
-                            <td id="floor2_room369 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) " onclick="document.getElementById('modal_sala').style.display='block'">F369</td>
-                            <td id="floor2_room370 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) " onclick="document.getElementById('modal_sala').style.display='block'">F370</td>
+                            <td id="floor2_room303 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
+                                onclick="document.getElementById('modal_sala').style.display='block'">F303</td>
+                            <td id="floor2_room304 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
+                                onclick="document.getElementById('modal_sala').style.display='block'">F304</td>
+                            <td id="floor2_room305 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
+                                onclick="document.getElementById('modal_sala').style.display='block'">F305</td>
+                            <td id="floor2_room306 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
+                                onclick="document.getElementById('modal_sala').style.display='block'">F306</td>
+                            <td id="floor2_room307 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
+                                onclick="document.getElementById('modal_sala').style.display='block'">F307</td>
+                            <td id="floor2_room308 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
+                                onclick="document.getElementById('modal_sala').style.display='block'">F308</td>
+                            <td id="floor2_room309 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
+                                onclick="document.getElementById('modal_sala').style.display='block'">F309</td>
+                            <td id="floor2_room310 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
+                                onclick="document.getElementById('modal_sala').style.display='block'">F310</td>
+                            <td id="floor2_room311 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
+                                onclick="document.getElementById('modal_sala').style.display='block'">F311</td>
+                            <td id="floor2_room312 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
+                                onclick="document.getElementById('modal_sala').style.display='block'">F312</td>
+                            <td id="floor2_room313 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
+                                onclick="document.getElementById('modal_sala').style.display='block'">F313</td>
+                            <td id="floor2_room314 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
+                                onclick="document.getElementById('modal_sala').style.display='block'">F314</td>
+                            <td id="floor2_room315 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
+                                onclick="document.getElementById('modal_sala').style.display='block'">F315</td>
+                            <td id="floor2_room316 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
+                                onclick="document.getElementById('modal_sala').style.display='block'">F316</td>
+                            <td id="floor2_room317 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
+                                onclick="document.getElementById('modal_sala').style.display='block'">F317</td>
+                            <td id="floor2_room318 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
+                                onclick="document.getElementById('modal_sala').style.display='block'">F318</td>
+                            <td id="floor2_room319 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
+                                onclick="document.getElementById('modal_sala').style.display='block'">F319</td>
+                            <td id="floor2_room320 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
+                                onclick="document.getElementById('modal_sala').style.display='block'">F320</td>
+                            <td id="floor2_room351 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
+                                onclick="document.getElementById('modal_sala').style.display='block'">F351</td>
+                            <td id="floor2_room352 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
+                                onclick="document.getElementById('modal_sala').style.display='block'">F352</td>
+                            <td id="floor2_room353 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
+                                onclick="document.getElementById('modal_sala').style.display='block'">F353</td>
+                            <td id="floor2_room354 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
+                                onclick="document.getElementById('modal_sala').style.display='block'">F354</td>
+                            <td id="floor2_room355 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
+                                onclick="document.getElementById('modal_sala').style.display='block'">F355</td>
+                            <td id="floor2_room356 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
+                                onclick="document.getElementById('modal_sala').style.display='block'">F356</td>
+                            <td id="floor2_room357 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
+                                onclick="document.getElementById('modal_sala').style.display='block'">F357</td>
+                            <td id="floor2_room358 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
+                                onclick="document.getElementById('modal_sala').style.display='block'">F358</td>
+                            <td id="floor2_room359 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
+                                onclick="document.getElementById('modal_sala').style.display='block'">F359</td>
+                            <td id="floor2_room360 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
+                                onclick="document.getElementById('modal_sala').style.display='block'">F360</td>
+                            <td id="floor2_room361 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
+                                onclick="document.getElementById('modal_sala').style.display='block'">F361</td>
+                            <td id="floor2_room362 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
+                                onclick="document.getElementById('modal_sala').style.display='block'">F362</td>
+                            <td id="floor2_room363 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
+                                onclick="document.getElementById('modal_sala').style.display='block'">F363</td>
+                            <td id="floor2_room364 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
+                                onclick="document.getElementById('modal_sala').style.display='block'">F364</td>
+                            <td id="floor2_room365 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
+                                onclick="document.getElementById('modal_sala').style.display='block'">F365</td>
+                            <td id="floor2_room366 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
+                                onclick="document.getElementById('modal_sala').style.display='block'">F366</td>
+                            <td id="floor2_room367 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
+                                onclick="document.getElementById('modal_sala').style.display='block'">F367</td>
+                            <td id=" floor2_room368 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
+                                onclick="document.getElementById('modal_sala').style.display='block'">F368</td>
+                            <td id="floor2_room369 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
+                                onclick="document.getElementById('modal_sala').style.display='block'">F369</td>
+                            <td id="floor2_room370 " onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
+                                onclick="document.getElementById('modal_sala').style.display='block'">F370</td>
 
                     </tbody>
                 </table>
@@ -254,7 +439,8 @@
 
             <footer>
                 <p>
-                    Criado <i class="fa fa-heart "></i> por André Nunes, Diogo Oliveira, Gustavo Antunes, Sebastião Costa e Tiago Batista
+                    Criado <i class="fa fa-heart "></i> por André Nunes, Diogo Oliveira, Gustavo Antunes, Sebastião
+                    Costa e Tiago Batista
                 </p>
             </footer>
         </div>
@@ -277,7 +463,7 @@
     var span = document.getElementsByClassName("fechar_editar ")[0];
 
     //fecha o modal quando o botao dentro do modal for clicado
-    span.onclick = function() {
+    span.onclick = function () {
         modal.style.display = "none ";
         horario_sala.style.display = 'none';
         gravar.style.display = 'none';
