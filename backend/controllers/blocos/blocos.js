@@ -11,7 +11,7 @@ const get_blocoA = (req, res) => {
         res.sendFile(path.join(__dirname, '..', '..', 'www/pages/blocos/blocoA.html'))
     } else {
 
-        res.sendFile(path.join(__dirname, '..', 'www/pages/login.html'));
+        res.sendFile(path.join(__dirname, '..', '..', 'www/pages/login.html'));
     }
 
 
@@ -26,7 +26,7 @@ const get_blocoB = (req, res) => {
         res.sendFile(path.join(__dirname, '..', '..', 'www/pages/blocos/blocoB.html'))
     } else {
 
-        res.sendFile(path.join(__dirname, '..', 'www/pages/login.html'));
+        res.sendFile(path.join(__dirname, '..', '..', 'www/pages/login.html'));
     }
 
 
@@ -41,7 +41,7 @@ const get_blocoC = (req, res) => {
         res.sendFile(path.join(__dirname, '..', '..', 'www/pages/blocos/blocoC.html'))
     } else {
 
-        res.sendFile(path.join(__dirname, '..', 'www/pages/login.html'));
+        res.sendFile(path.join(__dirname, '..', '..', 'www/pages/login.html'));
     }
 
 
@@ -56,7 +56,7 @@ const get_blocoD = (req, res) => {
         res.sendFile(path.join(__dirname, '..', '..', 'www/pages/blocos/blocoD.html'))
     } else {
 
-        res.sendFile(path.join(__dirname, '..', 'www/pages/login.html'));
+        res.sendFile(path.join(__dirname, '..', '..', 'www/pages/login.html'));
     }
 
 
@@ -71,7 +71,7 @@ const get_blocoE = (req, res) => {
         res.sendFile(path.join(__dirname, '..', '..', 'www/pages/blocos/blocoE.html'))
     } else {
 
-        res.sendFile(path.join(__dirname, '..', 'www/pages/login.html'));
+        res.sendFile(path.join(__dirname,'..', '..', 'www/pages/login.html'));
     }
 
 
@@ -86,7 +86,7 @@ const get_blocoF = (req, res) => {
         res.sendFile(path.join(__dirname, '..', '..', 'www/pages/blocos/blocoF.html'))
     } else {
 
-        res.sendFile(path.join(__dirname, '..', 'www/pages/login.html'));
+        res.sendFile(path.join(__dirname, '..', '..', 'www/pages/login.html'));
     }
 
 }
