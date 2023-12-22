@@ -238,7 +238,7 @@ function generateBlocos() {
                 }
 
                 // Combina tudo para formar um ID distinto
-                const cellId = "floor" + (floor + 1) + "_room" + roomNumber;
+                const cellId = roomNumber;
 
                 // Cria um novo elemento td
                 var td = document.createElement('td');
