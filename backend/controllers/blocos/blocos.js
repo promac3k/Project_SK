@@ -8,7 +8,7 @@ const get_blocoA = (req, res) => {
 
     if (req.session.loggedin) {
         // Envia o arquivo blocoA.html como resposta
-        res.sendFile(path.join(__dirname, '..', 'www/pages/blocos/blocoA.html'))
+        res.sendFile(path.join(__dirname, '..', '..', 'www/pages/blocos/blocoA.html'))
     } else {
 
         res.sendFile(path.join(__dirname, '..', 'www/pages/login.html'));
@@ -23,7 +23,7 @@ const get_blocoB = (req, res) => {
 
     if (req.session.loggedin) {
         // Envia o arquivo blocoB.html como resposta
-        res.sendFile(path.join(__dirname, '..', 'www/pages/blocos/blocoB.html'))
+        res.sendFile(path.join(__dirname, '..', '..', 'www/pages/blocos/blocoB.html'))
     } else {
 
         res.sendFile(path.join(__dirname, '..', 'www/pages/login.html'));
@@ -38,7 +38,7 @@ const get_blocoC = (req, res) => {
 
     if (req.session.loggedin) {
         // Envia o arquivo blocoC.html como resposta
-        res.sendFile(path.join(__dirname, '..', 'www/pages/blocos/blocoC.html'))
+        res.sendFile(path.join(__dirname, '..', '..', 'www/pages/blocos/blocoC.html'))
     } else {
 
         res.sendFile(path.join(__dirname, '..', 'www/pages/login.html'));
@@ -53,7 +53,7 @@ const get_blocoD = (req, res) => {
 
     if (req.session.loggedin) {
         // Envia o arquivo blocoD.html como resposta
-        res.sendFile(path.join(__dirname, '..', 'www/pages/blocos/blocoD.html'))
+        res.sendFile(path.join(__dirname, '..', '..', 'www/pages/blocos/blocoD.html'))
     } else {
 
         res.sendFile(path.join(__dirname, '..', 'www/pages/login.html'));
@@ -68,7 +68,7 @@ const get_blocoE = (req, res) => {
 
     if (req.session.loggedin) {
         // Envia o arquivo blocoE.html como resposta
-        res.sendFile(path.join(__dirname, '..', 'www/pages/blocos/blocoE.html'))
+        res.sendFile(path.join(__dirname, '..', '..', 'www/pages/blocos/blocoE.html'))
     } else {
 
         res.sendFile(path.join(__dirname, '..', 'www/pages/login.html'));
@@ -83,7 +83,7 @@ const get_blocoF = (req, res) => {
 
     if (req.session.loggedin) {
         // Envia o arquivo blocoF.html como resposta
-        res.sendFile(path.join(__dirname, '..', 'www/pages/blocos/blocoF.html'))
+        res.sendFile(path.join(__dirname, '..', '..', 'www/pages/blocos/blocoF.html'))
     } else {
 
         res.sendFile(path.join(__dirname, '..', 'www/pages/login.html'));
