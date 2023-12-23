@@ -294,6 +294,14 @@
         }
     });
 
+    // Esconder todas as linhas
+    let linhas = document.querySelectorAll('.linha-dia');
+    for (let linha of linhas) {
+        linha.style.display = 'none';
+    }
+
+
+
     let bloco = 'Bloco D';
     let year = 2023;
     let month = 11;
@@ -393,13 +401,6 @@
     }
 
     generateCalendarModal(year, month);
-
-    // Esconder todas as linhas
-    let linhas = document.querySelectorAll('.linha-dia');
-    for (let linha of linhas) {
-        linha.style.display = 'none';
-    }
-
 
 </script>
 

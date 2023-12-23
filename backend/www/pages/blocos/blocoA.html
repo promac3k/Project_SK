@@ -24,7 +24,7 @@
 
             <div class="modal_sala_content">
                 <div class="modal-header">
-                    <span class="fechar_editar">&times;</span>
+                    <span id="fechar_editar" class="fechar_editar">&times;</span>
                 </div>
                 <h1>Horário</h1>
 
@@ -264,21 +264,21 @@
                         <tr>
                             <td>2</td>
                             <td id="213" onmousemove="highlightCell(this)" onmouseout="resetCell(this)"
-                                onclick="document.getElementById('modal_sala').style.display='block'">A213</td>
+                                onclick="openModel(this)">A213</td>
                             <td id="220" onmousemove="highlightCell(this)" onmouseout="resetCell(this)"
-                                onclick="document.getElementById('modal_sala').style.display='block'">A220</td>
+                                onclick="openModel(this)">A220</td>
                             <td id="231" onmousemove="highlightCell(this)" onmouseout="resetCell(this)"
-                                onclick="document.getElementById('modal_sala').style.display='block'">A231</td>
+                                onclick="openModel(this)">A231</td>
                             <td id="242" onmousemove="highlightCell(this)" onmouseout="resetCell(this)"
-                                onclick="document.getElementById('modal_sala').style.display='block'">A242</td>
+                                onclick="openModel(this)">A242</td>
                             <td id="259" onmousemove="highlightCell(this)" onmouseout="resetCell(this)"
-                                onclick="document.getElementById('modal_sala').style.display='block'">A259</td>
+                                onclick="openModel(this)">A259</td>
                             <td id="260" onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
-                                onclick="document.getElementById('modal_sala').style.display='block'">A260</td>
+                                onclick="openModel(this)">A260</td>
                             <td id="261" onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
-                                onclick="document.getElementById('modal_sala').style.display='block'">A261</td>
-                            <td id="262" onmousemove="highlightCell(this) " onmouseout="resetCell(this) "
-                                onclick="document.getElementById('modal_sala').style.display='block'">A262</td>
+                                onclick="openModel(this)">A261</td>
+                            <td id="262" onmousemove="highlightCell(this) " onmouseout="resetCell(this)"
+                                onclick="openModel(this)">A262</td>
                         </tr>
                         <tr>
                             <td>3</td>
@@ -302,6 +302,15 @@
 <script>
     window.onload = checkCookie();
 
+    var td = document.createElement('td');
+    function openModel(td) {
+        document.getElementById('modal_sala').style.display = 'block';
+
+        window.clickedCellId = td.id;
+        console.log(window.clickedCellId);
+        console.log('Clicado em: ' + td.id);
+    };
+
 
     // JavaScript functions for events
     function highlightCell(cell) {
@@ -316,6 +325,30 @@
         alert(cell.id);
         model_sala.style.display = "none ";
     }
+
+
+    const calendario_top = document.getElementById('fechar_editar');
+
+    calendario_top.addEventListener('click', function (e) {
+        //const table = document.getElementById('horario_sala');
+        //table.innerHTML = '';
+        const tds = document.querySelectorAll('td[id^="table_aula_"]');
+        // Limpar o innerHTML de cada td
+        tds.forEach(td => {
+            td.innerHTML = '';
+        });
+
+        for (let linha of linhas) {
+            linha.style.display = 'none';
+        }
+    });
+
+    // Esconder todas as linhas
+    let linhas = document.querySelectorAll('.linha-dia');
+    for (let linha of linhas) {
+        linha.style.display = 'none';
+    }
+
 
     let bloco = 'Bloco A';
     let year = 2023;

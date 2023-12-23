@@ -67,11 +67,9 @@ function mySwitch() {
     }
 }
 
-
 function goBack() {
     window.location.replace(document.referrer);
 }
-
 
 function generateCalendar() {
     const calendarBody = document.getElementById('calendar-body');
@@ -201,10 +199,10 @@ function sendIdsToServer(bloco, clickedCellId, clickedDayId) {
         return;
     }
 
-    //console.log('Enviando IDs para o servidor...');
-    //console.log('Bloco: ' + bloco);
-    //console.log('ID da célula clicada: ' + clickedCellId);
-    //console.log('ID do dia clicado: ' + clickedDayId);
+    console.log('Enviando IDs para o servidor...');
+    console.log('Bloco: ' + bloco);
+    console.log('ID da célula clicada: ' + clickedCellId);
+    console.log('ID do dia clicado: ' + clickedDayId);
 
 
     // Cria o corpo da solicitação
@@ -214,8 +212,6 @@ function sendIdsToServer(bloco, clickedCellId, clickedDayId) {
         dia: clickedDayId
     };
 
-
-    console.log(requestBody);
 
     // Faz uma solicitação POST para o servidor
     fetch('/bloco_ids', {
@@ -261,7 +257,7 @@ function sendIdsToServer(bloco, clickedCellId, clickedDayId) {
                             // Selecionar a célula da tabela correspondente a esse dia e hora
                             const cell = document.querySelector(`#table_aula_${dia}_${horaFormatada}`);
 
-                            //console.log(`table_aula_${dia}_${horaFormatada}`)
+                            console.log(`table_aula_${dia}_${horaFormatada}`)
 
                             if (cell) {
 
