@@ -24,7 +24,7 @@
 
             <div class="modal_sala_content">
                 <div class="modal-header">
-                    <span class="fechar_editar">&times;</span>
+                    <span id="fechar_editar" class="fechar_editar">&times;</span>
                 </div>
                 <h1>Horário</h1>
 
@@ -275,6 +275,29 @@
 <script>
     window.onload = checkCookie();
     generateBlocos();
+
+    const calendario_top = document.getElementById('fechar_editar');
+
+    calendario_top.addEventListener('click', function (e) {
+        //const table = document.getElementById('horario_sala');
+        //table.innerHTML = '';
+        const tds = document.querySelectorAll('td[id^="table_aula_"]');
+        // Limpar o innerHTML de cada td
+        tds.forEach(td => {
+            td.innerHTML = '';
+        });
+
+        for (let linha of linhas) {
+            linha.style.display = 'none';
+        }
+    });
+
+    // Esconder todas as linhas
+    let linhas = document.querySelectorAll('.linha-dia');
+    for (let linha of linhas) {
+        linha.style.display = 'none';
+    }
+
 
 
     let bloco = 'Bloco C';
