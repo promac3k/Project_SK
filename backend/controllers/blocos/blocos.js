@@ -98,9 +98,9 @@ const post_bloco_ids = async (req, res) => {
         try {
 
             const { bloco, sala, dia } = req.body;
-            console.log("bloco: " + bloco);
-            console.log("sala: " + sala);
-            console.log("dia: " + dia);
+            //console.log("bloco: " + bloco);
+            //console.log("sala: " + sala);
+            //console.log("dia: " + dia);
 
             const horario = await connection.query(`
                 SELECT 
@@ -155,7 +155,7 @@ const post_bloco_ids = async (req, res) => {
                 });
             }
 
-            console.log(horariosOrganizados);
+            //console.log(horariosOrganizados);
 
             // Enviar os dados organizados como resposta
             res.json(horariosOrganizados);
