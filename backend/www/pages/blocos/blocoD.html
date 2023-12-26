@@ -45,7 +45,7 @@
 
                 </div>
 
-                <form method="post">
+                <form>
                     <table class="table_alunos" id="horario_sala">
                         <thead>
                             <tr class="tr_alunos">
@@ -225,6 +225,22 @@
             </div>
         </div>
 
+      <!-- Modal Editar Palavra-Passe -->
+      <div id="modal_teste" class="modal">
+        <div class="modal_conteudo">
+          <div class="modal-header">
+
+            <span class="fechar_editar">&times;</span>
+          </div>
+
+          <div class="modal-content">
+              <form method="post">
+
+              </form>
+          </div>
+        </div>
+      </div>
+
 
         <div class="container">
             <nav>
@@ -300,8 +316,6 @@
         linha.style.display = 'none';
     }
 
-
-
     let bloco = 'Bloco D';
     let year = 2023;
     let month = 11;
@@ -309,9 +323,15 @@
     let modal = document.getElementById('modal_sala');
     let horario_sala = document.getElementById('horario_sala');
     let gravar = document.getElementById('gravar');
+    let modal_teste = document.getElementById('modal_teste');
 
     // vai buscar a class do botao para fechar o modal
     var span = document.getElementsByClassName("fechar_editar")[0];
+
+    //abre outro modal ao carregar no botao gravar
+    gravar.onclick = function(){
+        modal_teste.style.display = 'block';
+    }
 
     //fecha o modal quando o botao dentro do modal for clicado
     span.onclick = function () {
@@ -355,6 +375,7 @@
             dayElement.addEventListener('click', () => {
                 horario.style.display = "none";
                 horario_sala.style.display = 'block';
+                gravar.style.display = 'block';
                 clickedDayId = dayElement.id;
                 console.log(clickedDayId);
 
