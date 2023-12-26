@@ -29,13 +29,21 @@ const post_login = async (req, res) => {
     if (!email || !password) {
         return res.status(400).send("Os campos são todos obrigatorios");
     }
-
+    // Verificar se o email é válido
     if (string.validate.isEmail(email) === false) {
         return res.status(404).send('Por favor, insira um email/senha valido!');
     }
-
+    // Verificar se a senha é válida
     if (string.validate.isPassword6to15(password) === false) {
         return res.status(404).send('Por favor, insira uma email/senha valida!');
+    }
+    
+    tipo = null;
+
+    if (email.includes('professores')) {
+        tipo = 1;
+    }else {
+        tipo = 0;
     }
 
     //console.log(email, password);
@@ -58,7 +66,8 @@ const post_login = async (req, res) => {
                     if (err) return next(err);
                 });
 
-                const user = { nome: db.nome_aluno, email: db.email_aluno, turma: db.turma_aluno, curso: db.nome_curso, ano: db.ano_aluno }
+                
+                const user = { nome: db.nome_aluno, email: db.email_aluno, turma: db.turma_aluno, curso: db.nome_curso, ano: db.ano_aluno, tipo: tipo }
                 const id = db.id_alunos;
                 res.cookie("user", JSON.stringify(user));
                 res.cookie("id", id);
