@@ -27,10 +27,10 @@
             </nav>
 
 
-            <div class="switchsim_container">
-                <label class="switchsim">
-                    <input type="checkbox">
-                    <span class="switchoff"></span>
+            <div class="switchcheck_container">
+                <label class="switchbody">
+                    <input type="checkbox" id="switchcheck">
+                    <span class="switchcheck"></span>
                 </label>
             </div>
 
@@ -70,6 +70,23 @@
 
 <script>
     window.onload = checkCookie();
+
+    document.querySelector('.fingerprint_container .fingerprint').addEventListener('click', function () {
+        this.classList.add('clicked');
+    });
+
+    var fingerprint = document.querySelector('.fingerprint_container .fingerprint');
+    var switchcheck = document.getElementById("switchcheck");
+    var reddotoff = document.querySelector('.reddotoff');
+    var greendotoff = document.querySelector('.greendotoff');
+
+    fingerprint.addEventListener('animationend', function () {
+        if (switchcheck.checked == true) {
+            greendotoff.style.backgroundColor = '#0cec1f';
+        } else {
+            reddotoff.style.backgroundColor = '#e70d0d';
+        }
+    });
 </script>
 
 </html>

@@ -7,16 +7,16 @@
   transform: translate(-50%, -50%);
 }
 
-.switchsim_container {
+.switchcheck_container {
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
   position: absolute;
   height: 10%;
   width: 7%;
   border-radius: 5px;
   overflow: hidden;
-  left: 1rem;
+  left: 10rem;
   top: 5rem;
-  border: #292929 3px solid;
+  border: #030303 3px solid;
 }
 
 .lights_container {
@@ -26,7 +26,7 @@
   width: 16%;
   border-radius: 5px;
   overflow: hidden;
-  left: 55rem;
+  left: 49rem;
   top: 5rem;
   border: #030303 3px solid;
   flex-direction: column-reverse;
@@ -41,7 +41,7 @@
   overflow: hidden;
   left: 40rem;
   top: 23rem;
-  border: #292929 3px solid;
+  border: #030303 3px solid;
 }
 
 .fingerprint_container {
@@ -53,7 +53,7 @@
   overflow: hidden;
   left: 10rem;
   top: 23rem;
-  border: #292929 3px solid;
+  border: #030303 3px solid;
 }
 
 .fingerprint_container .fingerprint {
@@ -61,6 +61,8 @@
   position: absolute;
   width: 100%;
   height: 100%;
+  left: -0.5rem;
+  top: -1.5rem;
   background: url(https://cdn.discordapp.com/attachments/1187433811819122759/1187439394848768040/impressao2-01.png?ex=6596e41d&is=65846f1d&hm=7e367412298eb11a7843aa4d5c8ea1ee1da3135dac83db80bcba3819216cca2e&);
   background-size: cover;
 }
@@ -70,9 +72,11 @@
   position: absolute;
   width: 100%;
   height: 100%;
+  left: 0.1%;
   background: url(https://cdn.discordapp.com/attachments/980817501267042334/1189235393854460055/impressao-red.png?ex=659d6cc4&is=658af7c4&hm=9819ede3c42a6cac34137e97a8eeb0ce2ba6840e68b530612e766fa32cb952be&);
   background-size: cover;
-  animation: animate 4s ease-in-out infinite;
+  animation: none;
+  opacity: 0;
 }
 
 .fingerprint_container .fingerprint::after {
@@ -80,44 +84,61 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 8px;
+  width: 150%;
+  height: 4px;
   background: #f50000;
   border-radius: 8px;
-  filter: drop-shadow(0 0 20px #f50000) drop-shadow(0 0 60px #f50000);
-  animation: animation_line 4s ease-in-out infinite;
+  filter: drop-shadow(0 0 20px #f50000) drop-shadow(0 0 120px #f50000);
+  animation: none;
+}
 
+.fingerprint_container .fingerprint.clicked::before {
+  animation: animate 6s ease-in-out, fadeInOut 6s ease-in-out;
+}
+
+.fingerprint_container .fingerprint.clicked::after {
+  animation: animation_line 6s ease-in-out;
+}
+
+@keyframes fadeInOut {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
 }
 
 @keyframes animate {
+
   0%,
   100% {
-   height: 0%;
+    height: 0%;
   }
+
   50% {
-    height: 100%;
+    height: 110%;
   }
 }
 
 @keyframes animation_line {
+
   0%,
   100% {
-   top: 0%;
+    top: 0%;
   }
+
   50% {
-   top: 100%;
+    top: 110%;
   }
 }
 
-
-
- #switchon {
+#switchon {
   display: none;
 }
 
 /* Switch on/off */
 
-.switchsim {
+.switchbody {
   position: relative;
   display: inline-block;
   width: 5rem;
@@ -127,13 +148,13 @@
   top: 1rem;
 }
 
-.switchsim input {
+.switchcheck input {
   opacity: 0;
   width: 0;
   height: 0;
 }
 
-.switchoff {
+.switchcheck {
   position: absolute;
   cursor: pointer;
   top: 0;
@@ -147,12 +168,12 @@
 }
 
 
-input:checked+.switchoff {
+input:checked+.switchcheck {
   background-color: #0cec1f;
   border-radius: 15%;
 }
 
-input:focus+.switchoff {
+input:focus+.switchcheck {
   box-shadow: 0 0 1px #292929;
 }
 
@@ -218,7 +239,3 @@ input:focus+.switchoff {
   left: 3rem;
   top: 2rem;
 }
-
-.lightred {}
-
-.lightgreen {}
