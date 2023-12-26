@@ -1,124 +1,224 @@
-
 .container {
-    height: 50rem;
-    width: 75%;
-    position: absolute;
-    top: 47%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  height: 50rem;
+  width: 75%;
+  position: absolute;
+  top: 47%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .switchsim_container {
-    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-    position: absolute;
-    height: 10%;
-    width: 7%;
-    border-radius: 5px;
-    overflow: hidden;
-    left: 1rem;
-    top: 5rem;
-    border: #292929 3px solid;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  position: absolute;
+  height: 10%;
+  width: 7%;
+  border-radius: 5px;
+  overflow: hidden;
+  left: 1rem;
+  top: 5rem;
+  border: #292929 3px solid;
 }
 
 .lights_container {
-    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-    position: absolute;
-    height: 13%;
-    width: 16%;
-    border-radius: 5px;
-    overflow: hidden;
-    left: 55rem;
-    top: 5rem;
-    border: #292929 3px solid;
-    flex-direction: column-reverse;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  position: absolute;
+  height: 13%;
+  width: 16%;
+  border-radius: 5px;
+  overflow: hidden;
+  left: 55rem;
+  top: 5rem;
+  border: #030303 3px solid;
+  flex-direction: column-reverse;
 }
 
-#switchon {
-    display: none;
+.lock_container {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  position: absolute;
+  height: 20rem;
+  width: 30rem;
+  border-radius: 5px;
+  overflow: hidden;
+  left: 40rem;
+  top: 23rem;
+  border: #292929 3px solid;
+}
+
+.fingerprint_container {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  position: absolute;
+  height: 20rem;
+  width: 20rem;
+  border-radius: 5px;
+  overflow: hidden;
+  left: 10rem;
+  top: 23rem;
+  border: #292929 3px solid;
+}
+
+.fingerprint_container .fingerprint {
+  object-fit: cover;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: url(https://cdn.discordapp.com/attachments/1187433811819122759/1187439394848768040/impressao2-01.png?ex=6596e41d&is=65846f1d&hm=7e367412298eb11a7843aa4d5c8ea1ee1da3135dac83db80bcba3819216cca2e&);
+  background-size: cover;
+}
+
+.fingerprint_container .fingerprint::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: url(https://cdn.discordapp.com/attachments/980817501267042334/1189235393854460055/impressao-red.png?ex=659d6cc4&is=658af7c4&hm=9819ede3c42a6cac34137e97a8eeb0ce2ba6840e68b530612e766fa32cb952be&);
+  background-size: cover;
+  animation: animate 4s ease-in-out infinite;
+}
+
+.fingerprint_container .fingerprint::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  background: #f50000;
+  border-radius: 8px;
+  filter: drop-shadow(0 0 20px #f50000) drop-shadow(0 0 60px #f50000);
+  animation: animation_line 4s ease-in-out infinite;
+
+}
+
+@keyframes animate {
+  0%,
+  100% {
+   height: 0%;
+  }
+  50% {
+    height: 100%;
+  }
+}
+
+@keyframes animation_line {
+  0%,
+  100% {
+   top: 0%;
+  }
+  50% {
+   top: 100%;
+  }
+}
+
+
+
+ #switchon {
+  display: none;
 }
 
 /* Switch on/off */
 
 .switchsim {
-    position: relative;
-    display: inline-block;
-    width: 5rem;
-    height: 3rem;
-    border: black 3px solid;
-    border-radius: 15%;
-    top: 1rem;
-  }
-  
-  .switchsim input { 
-    opacity: 0;
-    width: 0;
-    height: 0;
-  }
-  
-  .switchoff {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #e70d0d;
-    -webkit-transition: .4s;
-    transition: .4s;
-    border-radius: 15%;
-  }
+  position: relative;
+  display: inline-block;
+  width: 5rem;
+  height: 3rem;
+  border: black 3px solid;
+  border-radius: 15%;
+  top: 1rem;
+}
 
-  
-  input:checked + .switchoff {
-    background-color: #0cec1f;
-    border-radius: 15%;
-  }
-  
-  input:focus + .switchoff {
-    box-shadow: 0 0 1px #292929;
-  }
+.switchsim input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
 
-  /* Light on/off */
+.switchoff {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #e70d0d;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 15%;
+}
 
-  .reddotoff {
-    position: absolute;
-    height: 3rem;
-    width: 3rem;
-    background-color: #330202;
-    border-radius: 50%;
-    display: inline-block;
-    z-index: 1;
-    left: 54.2%;
-    top: 15%;
-  }
 
-  .bodydot {
-    position: absolute;
-    height: 5rem;
-    width: 4.2rem;
-    background-color: #202020;
-    display: inline-block;
-    box-shadow: 5px 5px 10px #202020;
-    background: linear-gradient(to bottom, #303030, #181818);
-    top: 10%;
-  }
+input:checked+.switchoff {
+  background-color: #0cec1f;
+  border-radius: 15%;
+}
 
-  .lightoff {
-    position: relative;
-    display: inline-block;
-    width: 5rem;
-    height: 3rem;
-    border: black 3px solid;
-    border-radius: 15%;
-    left: 3rem;
-    top: 2rem;
-  }
+input:focus+.switchoff {
+  box-shadow: 0 0 1px #292929;
+}
 
-  .lightred {
+/* Light on/off */
 
-  }
+.reddotoff {
+  position: absolute;
+  height: 3rem;
+  width: 3rem;
+  background-color: #330202;
+  border-radius: 50%;
+  display: inline-block;
+  z-index: 1;
+  right: 14.2%;
+  top: 15%;
+}
 
-  .lightgreen {
+.greendotoff {
+  position: absolute;
+  height: 3rem;
+  width: 3rem;
+  background-color: #02330a;
+  border-radius: 50%;
+  display: inline-block;
+  z-index: 1;
+  left: 14.2%;
+  top: 15%;
+}
 
-  }
-  
+.redbodydot {
+  position: absolute;
+  height: 5rem;
+  width: 4.2rem;
+  background-color: #202020;
+  display: inline-block;
+  background: linear-gradient(to bottom, #3d3d3d, #252525);
+  top: 10%;
+  right: 10%;
+  border-radius: 20%;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.greenbodydot {
+  position: absolute;
+  height: 5rem;
+  width: 4.2rem;
+  background-color: #202020;
+  display: inline-block;
+  background: linear-gradient(to bottom, #3d3d3d, #252525);
+  left: 10%;
+  top: 10%;
+  border-radius: 20%;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.lightoff {
+  position: relative;
+  display: inline-block;
+  width: 5rem;
+  height: 3rem;
+  border: black 3px solid;
+  border-radius: 15%;
+  left: 3rem;
+  top: 2rem;
+}
+
+.lightred {}
+
+.lightgreen {}
