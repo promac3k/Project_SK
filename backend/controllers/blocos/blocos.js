@@ -219,7 +219,60 @@ const get_cursos = async (req, res) => {
 
 const post_marcar = async (req, res) => {
 
+    console.log("post_bloco_ids >>>>> " + req.session.loggedin);
 
+    if (req.session.loggedin) {
+        try {
+
+            const { disciplina, curso, horarioInicial, horarioFinal, bloco_, sala, dia, semana_ } = req.body;
+
+            console.log("disciplina: " + disciplina);
+            console.log("curso: " + curso);
+            console.log("horarioInicial: " + horarioInicial);
+            console.log("horarioFinal: " + horarioFinal);
+            console.log("bloco_: " + bloco_);
+            console.log("sala: " + sala);
+            console.log("dia: " + dia);
+            console.log("teste: " + semana_);
+
+
+
+            const result = await connection.query(`SELECT * FROM disciplina where nome_disc = ? `, [disciplina])
+
+            const db_disc = result[0];
+
+            const id_disc = db_disc.id_disc;
+
+            const result2 = await connection.query(`SELECT * FROM salas where bloco_salas = ? AND numero_salas = ? `, [bloco_, sala])
+
+            const db_sala = result2[0];
+
+            const id_sala = db_sala.id_salas;
+
+            // Substitua 'tabela' pelo nome da sua tabela e 'coluna1', 'coluna2', etc., pelos nomes das colunas
+            const query = 'INSERT INTO horario_salas (disciplina_id_disc, salas_id_salas, data_salas, dia_semana, hora_salas, fimh_salas) VALUES (?, ?, ?, ?, ?, ?)';
+
+            connection.query(query, [id_disc, id_sala, dia, semana_, horarioInicial, horarioFinal ], function (error, results, fields) {
+                if (error) {
+                    // Trate o erro aqui
+                    console.error('Erro ao inserir: ', error);
+                } else {
+                    // Os dados foram inseridos com sucesso
+                    console.log('Inserido com sucesso');
+                }
+            });
+
+
+
+
+
+        } catch (err) {
+            console.error(err);
+            res.status(500).send('Ocorreu um erro ao buscar o horario.');
+        }
+    } else {
+        res.sendFile(path.join(__dirname, '..', '..', 'www/pages/login.html'));
+    }
 
 
 
