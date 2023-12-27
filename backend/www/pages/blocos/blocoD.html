@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/blocos/calendario_modal.css">
     <script src="../js/main.js"></script>
+    <script src="../js/dropdown.js"></script>
     <title>Bloco D</title>
 
 
@@ -437,59 +438,6 @@
 
     generateCalendarModal(year, month);
 
-    const dropdown = document.getElementById('dropdown');
-
-    // Fazer uma solicitação GET para a sua API
-    fetch('/disciplinas')
-        .then(response => response.json())
-        .then(data => {
-
-            // Criar um novo array que contém apenas valores únicos
-            const uniqueData = [...new Set(data)];
-
-            // Criar e adicionar uma opção em branco
-            const blankOption = document.createElement('option');
-            blankOption.value = '';
-            blankOption.text = '';
-            dropdown.add(blankOption);
-
-            // Para cada item na resposta, adicionar uma opção ao dropdown
-            uniqueData.forEach(item => {
-                console.log(item);
-                const option = document.createElement('option');
-                option.value = item;
-                option.text = item;
-                dropdown.add(option);
-            });
-        })
-        .catch(error => console.error('Error:', error));
-
-    const dropdownCursos = document.getElementById('dropdownCursos');
-
-    // Fazer uma solicitação GET para a sua API
-    fetch('/cursos')
-        .then(response => response.json())
-        .then(data => {
-
-            // Criar um novo array que contém apenas valores únicos
-            const uniqueData = [...new Set(data)];
-
-            // Criar e adicionar uma opção em branco
-            const blankOption = document.createElement('option');
-            blankOption.value = '';
-            blankOption.text = '';
-            dropdownCursos.add(blankOption);
-
-            // Para cada item na resposta, adicionar uma opção ao dropdown
-            uniqueData.forEach(item => {
-                console.log(item);
-                const option = document.createElement('option');
-                option.value = item;
-                option.text = item;
-                dropdownCursos.add(option);
-            });
-        })
-        .catch(error => console.error('Error:', error));
 
 </script>
 
