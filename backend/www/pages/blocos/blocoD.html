@@ -221,9 +221,9 @@
                         </tr>
                     </tbody>
                 </table>
+
                 <button class="gravar" id="gravar">Marcar</button>
                 <button class="desmarcar" id="desmarcar">desmarcar</button>
-
 
             </div>
         </div>
@@ -232,7 +232,7 @@
         <div id="modal_teste" class="modal">
             <div class="modal_sala_content">
                 <div class="modal-header">
-                    <span class="fechar_editar">&times;</span>
+                    <span class="fechar_editar" id="fechar">&times;</span>
                 </div>
 
                 <div class="modal-content">
@@ -336,6 +336,7 @@
 
     // vai buscar a class do botao para fechar o modal
     var span = document.getElementsByClassName("fechar_editar")[0];
+    let fechar_marcar = document.getElementById('fechar');
 
     //abre outro modal ao carregar no botao gravar
     gravar.onclick = function () {
@@ -344,7 +345,6 @@
         gravar.style.display = 'none';
         horario.style.display = "grid";
         modal_teste.style.display = 'block';
-        console.log("teste");
     }
 
     //fecha o modal quando o botao dentro do modal for clicado
@@ -353,6 +353,9 @@
         horario_sala.style.display = 'none';
         gravar.style.display = 'none';
         horario.style.display = "grid";
+    }
+
+    fechar_marcar.onclick = function (){
         modal_teste.style.display = 'none';
     }
 
