@@ -174,8 +174,10 @@ const get_disciplinas = async (req, res) => {
 
 
     if (req.session.loggedin) {
-        
-        const result = await connection.query(`SELECT * FROM disciplina`);
+        const id_prof = req.cookies.id;
+        console.log(id_prof);
+
+        const result = await connection.query(`SELECT * FROM disciplina where professores_id_prof = ? `, [id_prof])
 
         const materias = result.map(db => db.nome_disc);
 
@@ -194,11 +196,18 @@ const get_cursos = async (req, res) => {
 
     if (req.session.loggedin) {
 
-        const result = await connection.query(`SELECT * FROM cursos`);
+        const id_prof = req.cookies.id;
+        console.log(id_prof);
+
+        const result = await connection.query(`
+            SELECT disciplina.*, cursos.nome_curso 
+            FROM disciplina 
+            INNER JOIN cursos ON disciplina.cursos_id_cursos = cursos.id_cursos 
+            WHERE disciplina.professores_id_prof = ? 
+        `, [id_prof]);
 
         const cursos = result.map(db => db.nome_curso);
 
-        //console.log(cursos);
 
         res.json(cursos);
 
