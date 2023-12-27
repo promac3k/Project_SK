@@ -170,6 +170,43 @@ const post_bloco_ids = async (req, res) => {
 
 }
 
+const get_disciplinas = async (req, res) => {
+
+
+    if (req.session.loggedin) {
+        
+        const result = await connection.query(`SELECT * FROM disciplina`);
+
+        const materias = result.map(db => db.nome_disc);
+
+        //console.log(materias);
+
+        res.json(materias);
+
+    } else {
+
+        res.sendFile(path.join(__dirname, '..', '..', 'www/pages/login.html'));
+    }
+}
+
+const get_cursos = async (req, res) => {
+
+
+    if (req.session.loggedin) {
+
+        const result = await connection.query(`SELECT * FROM cursos`);
+
+        const cursos = result.map(db => db.nome_curso);
+
+        //console.log(cursos);
+
+        res.json(cursos);
+
+    } else {
+
+        res.sendFile(path.join(__dirname, '..', '..', 'www/pages/login.html'));
+    }
+}
 
 module.exports = {
     get_blocoA,
@@ -178,5 +215,7 @@ module.exports = {
     get_blocoD,
     get_blocoE,
     get_blocoF,
-    post_bloco_ids
+    post_bloco_ids,
+    get_disciplinas,
+    get_cursos
 }

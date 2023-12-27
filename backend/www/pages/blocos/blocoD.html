@@ -220,7 +220,9 @@
                         </tr>
                     </tbody>
                 </table>
-                <button class="gravar" id="gravar">Gravar</button>
+                <button class="gravar" id="gravar">Marcar</button>
+                <button class="desmarcar" id="desmarcar">desmarcar</button>
+
 
             </div>
         </div>
@@ -233,13 +235,21 @@
                 </div>
 
                 <div class="modal-content">
-                    <form method="post">
-
+                    <form id="sala-form" action="/" method="post">
+                        <h1>Marcaçao</h1>
+                        <span>Disciplina</span>
+                        <select id="dropdown"></select>
+                        <span>Curso</span>
+                        <select id="dropdownCursos"></select>
+                        <span>horario inicial</span>
+                        <select id="dropdownHorario"></select>
+                        <span>horario final</span>
+                        <select id="dropdownHorarioFinal"></select>
+                        <button type="submit">Salvar Marcaçao</button>
                     </form>
                 </div>
             </div>
         </div>
-
 
         <div class="container">
             <nav>
@@ -284,7 +294,6 @@
                 </p>
             </footer>
         </div>
-
 
     </main>
 </body>
@@ -427,6 +436,60 @@
     }
 
     generateCalendarModal(year, month);
+
+    const dropdown = document.getElementById('dropdown');
+
+    // Fazer uma solicitação GET para a sua API
+    fetch('/disciplinas')
+        .then(response => response.json())
+        .then(data => {
+
+            // Criar um novo array que contém apenas valores únicos
+            const uniqueData = [...new Set(data)];
+
+            // Criar e adicionar uma opção em branco
+            const blankOption = document.createElement('option');
+            blankOption.value = '';
+            blankOption.text = '';
+            dropdown.add(blankOption);
+
+            // Para cada item na resposta, adicionar uma opção ao dropdown
+            uniqueData.forEach(item => {
+                console.log(item);
+                const option = document.createElement('option');
+                option.value = item;
+                option.text = item;
+                dropdown.add(option);
+            });
+        })
+        .catch(error => console.error('Error:', error));
+
+    const dropdownCursos = document.getElementById('dropdownCursos');
+
+    // Fazer uma solicitação GET para a sua API
+    fetch('/cursos')
+        .then(response => response.json())
+        .then(data => {
+
+            // Criar um novo array que contém apenas valores únicos
+            const uniqueData = [...new Set(data)];
+
+            // Criar e adicionar uma opção em branco
+            const blankOption = document.createElement('option');
+            blankOption.value = '';
+            blankOption.text = '';
+            dropdownCursos.add(blankOption);
+
+            // Para cada item na resposta, adicionar uma opção ao dropdown
+            uniqueData.forEach(item => {
+                console.log(item);
+                const option = document.createElement('option');
+                option.value = item;
+                option.text = item;
+                dropdownCursos.add(option);
+            });
+        })
+        .catch(error => console.error('Error:', error));
 
 </script>
 

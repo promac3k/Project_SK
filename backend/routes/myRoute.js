@@ -44,7 +44,11 @@ router.get('/blocos/blocoE', blocos.get_blocoE); // Rota para a página do bloco
 
 router.get('/blocos/blocoF', blocos.get_blocoF); // Rota para a página do bloco F
 
-router.post('/bloco_ids', blocos.post_bloco_ids);
+router.post('/bloco_ids', blocos.post_bloco_ids); 
+
+router.get('/disciplinas', blocos.get_disciplinas); 
+
+router.get('/cursos', blocos.get_cursos);
 
 router.get('/simulacao', index.get_simulacao); // Rota para simulação
 
