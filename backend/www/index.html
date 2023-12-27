@@ -60,6 +60,10 @@
 
 
             <h1>Calendário Escolar</h1>
+
+            <button id="trimestralButton">Trimestral</button>
+            <button id="semestralButton">Semestral</button>
+
             <div class="cal">
                 <table>
                     <thead>
@@ -104,7 +108,9 @@
                             <th>2º</th>
                         </tr>
                     </thead>
-                    <tbody id="calendar-body"></tbody>
+                    <tbody id="calendar-body-trimestral"></tbody>
+
+                    <tbody id="calendar-body-semestral"></tbody>
                 </table>
             </div>
 
@@ -181,7 +187,30 @@
 
 <script>
     window.onload = checkCookie();
-    generateCalendar();
+    
+    window.onload = function() {
+    // Hide the semestral calendar when the page loads
+    document.getElementById('calendar-body-semestral').style.display = 'none';
+    };
+
+    generateCalendarSemestral();
+    generateCalendarTrimestral();
+
+    document.getElementById('trimestralButton').addEventListener('click', function() {
+    // Hide the semestral calendar
+    document.getElementById('calendar-body-semestral').style.display = 'none';
+    // Show the trimestral calendar
+    document.getElementById('calendar-body-trimestral').style.display = '';
+});
+
+// When the 'semestralButton' is clicked
+document.getElementById('semestralButton').addEventListener('click', function() {
+    // Hide the trimestral calendar
+    document.getElementById('calendar-body-trimestral').style.display = 'none';
+    // Show the semestral calendar
+    document.getElementById('calendar-body-semestral').style.display = '';
+});
+
 </script>
 
 </html>

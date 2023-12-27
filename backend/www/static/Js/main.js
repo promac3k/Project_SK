@@ -71,8 +71,72 @@ function goBack() {
     window.location.replace(document.referrer);
 }
 
-function generateCalendar() {
-    const calendarBody = document.getElementById('calendar-body');
+function generateCalendarTrimestral() {
+    const calendarBody = document.getElementById('calendar-body-trimestral');
+    const calendarType = 'Trimestral';
+
+    const months = [
+        { name: 'Setembro', days: 30, firstDay: 5, year: 2023 },
+        { name: 'Outubro', days: 31, firstDay: 0, year: 2023 },
+        { name: 'Novembro', days: 30, firstDay: 3, year: 2023 },
+        { name: 'Dezembro', days: 31, firstDay: 5, year: 2023 },
+        { name: 'Janeiro', days: 31, firstDay: 1, year: 2023 },
+        { name: 'Fevereiro', days: 28, firstDay: 4, year: 2023 },
+        { name: 'Março', days: 31, firstDay: 5, year: 2023 },
+        { name: 'Abril', days: 30, firstDay: 1, year: 2023 },
+        { name: 'Maio', days: 31, firstDay: 3, year: 2023 },
+        { name: 'Junho', days: 30, firstDay: 6, year: 2023 },
+        { name: 'Julho', days: 31, firstDay: 1, year: 2023 },
+        { name: 'Agosto', days: 31, firstDay: 4, year: 2023 },
+        { name: 'Setembro', days: 30, firstDay: 7, year: 2024 },
+    ];
+
+
+    for (let i = 0; i < months.length; i++) {
+        const monthRow = document.createElement('tr');
+        monthRow.innerHTML = `<td class="month">${months[i].name}</td>`;
+
+        // Obtém o primeiro dia do mês e o número total de dias
+        const firstDay = months[i].firstDay;
+        const daysInMonth = months[i].days;
+        const year = months[i].year;
+
+        // Adicione células vazias para os dias anteriores ao primeiro dia do mês
+        for (let j = 0; j < firstDay; j++) {
+            monthRow.innerHTML += '<td class="empty"></td>';
+        }
+
+        //Adicione células diárias para o mês inteiro com IDs distintos
+        for (let day = 1; day <= daysInMonth; day++) {
+            const dayId = `${calendarType}-${months[i].name}-${day}-${year}`;
+            const td = document.createElement('td');
+            td.id = dayId;
+            td.className = 'number';
+            td.onclick = function () {
+                alert(this.id);
+            };
+            const span = document.createElement('span');
+            span.onmouseover = function () {
+                // Altera a cor do número quando o mouse passa sobre ele
+                this.style.color = "red";
+            };
+            span.onmouseout = function () {
+                // Retorna à cor original quando o mouse sai do número
+                this.style.color = "";
+            };
+            span.textContent = day;
+            td.appendChild(span);
+            monthRow.appendChild(td);
+        }
+
+        calendarBody.appendChild(monthRow);
+    }
+
+}
+
+function generateCalendarSemestral() {
+    const calendarBody = document.getElementById('calendar-body-semestral');
+    const calendarType = 'Semestral';
 
     const months = [
         { name: 'Setembro', days: 30, firstDay: 5, year: 2023 },
@@ -107,7 +171,7 @@ function generateCalendar() {
 
         //Adicione células diárias para o mês inteiro com IDs distintos
         for (let day = 1; day <= daysInMonth; day++) {
-            const dayId = `${months[i].name}-${day}-${year}`;
+            const dayId = `${calendarType}-${months[i].name}-${day}-${year}`;
             const td = document.createElement('td');
             td.id = dayId;
             td.className = 'number';
