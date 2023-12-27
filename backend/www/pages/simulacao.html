@@ -42,7 +42,9 @@
             </div>
 
             <div class="lock_container">
+               <div class="lock" id="openlock">
 
+               </div>
             </div>
 
             <div class="fingerprint_container">
@@ -79,10 +81,12 @@
     var switchcheck = document.getElementById("switchcheck");
     var reddotoff = document.querySelector('.reddotoff');
     var greendotoff = document.querySelector('.greendotoff');
+    var openlock = document.getElementById('openlock');
 
     fingerprint.addEventListener('animationend', function () {
         if (switchcheck.checked == true) {
             greendotoff.style.backgroundColor = '#0cec1f';
+            openlock.className = 'openlock';
         } else {
             reddotoff.style.backgroundColor = '#e70d0d';
         }

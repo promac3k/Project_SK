@@ -44,6 +44,30 @@
   border: #030303 3px solid;
 }
 
+.lock {
+  object-fit: cover;
+  position: absolute;
+  width: 50rem;
+  height: 50rem;
+  left: -16.5rem;
+  top: -18.5rem;
+  background: url(https://cdn.discordapp.com/attachments/1161984743357829120/1189582732829937784/c2-01.png?ex=659eb040&is=658c3b40&hm=c40f1c6de6379f32565c27b55ec4c911fe66c8f28268d49535f4fcc55891b801&);
+  background-size: cover;
+
+}
+
+.openlock {
+  object-fit: cover;
+  position: absolute;
+  width: 50rem;
+  height: 50rem;
+  left: -16.5rem;
+  top: -18.5rem;
+  background: url(https://cdn.discordapp.com/attachments/1161984743357829120/1189582732616019968/c2-02.png?ex=659eb040&is=658c3b40&hm=631b0775f4b3ad632ad52a835ab89a57b9450ed454898b854694798fc07689f3&);
+  background-size: cover;
+
+}
+
 .fingerprint_container {
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
   position: absolute;
@@ -88,7 +112,7 @@
   height: 4px;
   background: #f50000;
   border-radius: 8px;
-  filter: drop-shadow(0 0 20px #f50000) drop-shadow(0 0 120px #f50000);
+  filter: drop-shadow(0 0 20px #f50000) drop-shadow(0 0 60px #f50000);
   animation: none;
 }
 
@@ -130,6 +154,8 @@
   50% {
     top: 110%;
   }
+
+
 }
 
 #switchon {
