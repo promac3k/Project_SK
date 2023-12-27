@@ -175,7 +175,7 @@ const get_disciplinas = async (req, res) => {
 
     if (req.session.loggedin) {
         const id_prof = req.cookies.id;
-        console.log(id_prof);
+        //console.log(id_prof);
 
         const result = await connection.query(`SELECT * FROM disciplina where professores_id_prof = ? `, [id_prof])
 
@@ -197,7 +197,7 @@ const get_cursos = async (req, res) => {
     if (req.session.loggedin) {
 
         const id_prof = req.cookies.id;
-        console.log(id_prof);
+        //console.log(id_prof);
 
         const result = await connection.query(`
             SELECT disciplina.*, cursos.nome_curso 

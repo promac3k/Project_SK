@@ -333,6 +333,7 @@
     let horario_sala = document.getElementById('horario_sala');
     let gravar = document.getElementById('gravar');
     let modal_teste = document.getElementById('modal_teste');
+    let desmarcar = document.getElementById('desmarcar');
 
     // vai buscar a class do botao para fechar o modal
     var span = document.getElementsByClassName("fechar_editar")[0];
@@ -355,7 +356,7 @@
         horario.style.display = "grid";
     }
 
-    fechar_marcar.onclick = function (){
+    fechar_marcar.onclick = function () {
         modal_teste.style.display = 'none';
     }
 
@@ -393,7 +394,12 @@
             dayElement.addEventListener('click', () => {
                 horario.style.display = "none";
                 horario_sala.style.display = 'block';
-                gravar.style.display = 'block';
+
+                if (valor === 1) {
+                    gravar.style.display = 'block';
+                    desmarcar.style.display = 'block';
+                }
+
                 clickedDayId = dayElement.id;
                 console.log(clickedDayId);
 
@@ -472,11 +478,11 @@
         })
             .then(response => {
 
-              
+
             })
             .then(message => {
 
-              
+
 
             })
             .then(data => {
@@ -489,6 +495,21 @@
             });
     });
 
+    function getCookie(name) {
+
+        const value = "; " + document.cookie;
+        const parts = value.split("; " + name + "=");
+        if (parts.length == 2) return parts.pop().split(";").shift();
+    }
+
+    // Verifica se o cookie 'user' existe
+    const userCookie = getCookie('user');
+
+    if (userCookie) {
+        const user = JSON.parse(decodeURIComponent(userCookie));
+        valor = user.tipo;
+        console.log(valor);
+    }
 
 
 </script>

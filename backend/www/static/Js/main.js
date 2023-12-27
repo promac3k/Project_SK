@@ -243,6 +243,9 @@ function generateBlocos() {
                 td.onclick = function () {
                     document.getElementById('modal_sala').style.display = 'block';
 
+                    document.getElementById('gravar').style.display = 'none';
+                    document.getElementById('desmarcar').style.display = 'none';
+
                     window.clickedCellId = this.id;
                     console.log(window.clickedCellId);
                 };
