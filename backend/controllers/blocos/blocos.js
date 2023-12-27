@@ -208,6 +208,14 @@ const get_cursos = async (req, res) => {
     }
 }
 
+const post_marcar = async (req, res) => {
+
+
+
+
+
+}
+
 module.exports = {
     get_blocoA,
     get_blocoB,
@@ -217,5 +225,6 @@ module.exports = {
     get_blocoF,
     post_bloco_ids,
     get_disciplinas,
-    get_cursos
+    get_cursos,
+    post_marcar
 }

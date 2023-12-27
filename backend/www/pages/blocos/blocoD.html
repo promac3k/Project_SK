@@ -236,7 +236,7 @@
                 </div>
 
                 <div class="modal-content">
-                    <form id="sala-form" action="/" method="post">
+                    <form id="sala-form" action="/marcar" method="post">
                         <h1>Marcaçao</h1>
                         <span>Disciplina</span>
                         <select id="dropdown"></select>
@@ -437,6 +437,55 @@
     }
 
     generateCalendarModal(year, month);
+
+
+    // Adiciona um ouvinte de evento 'submit' ao formulário com o id 'contact-form'
+    document.getElementById('sala-form').addEventListener('submit', function (event) {
+        // Previne o comportamento padrão do evento 'submit', que é recarregar a página
+        event.preventDefault();
+
+        // Obtém os valores dos campos do formulário
+        var disciplina = document.getElementById('dropdown').value;
+        var curso = document.getElementById('dropdownCursos').value;
+        var horarioInicial = document.getElementById('dropdownHorario').value;
+        var horarioFinal = document.getElementById('dropdownHorarioFinal').value;
+
+        var bloco_ = bloco;
+        var sala = clickedCellId;
+        var dia = clickedDayId;
+
+        // Cria um objeto com os dados do formulário
+        var data = { disciplina, curso, horarioInicial, horarioFinal, bloco_, sala, dia };
+
+        console.log(data);
+
+        // Envia uma solicitação POST para o servidor
+        fetch('/marcar', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data), // Converte os dados do formulário em uma string JSON
+        })
+            .then(response => {
+
+              
+            })
+            .then(message => {
+
+              
+
+            })
+            .then(data => {
+                // Loga o corpo da resposta no console
+                console.log('Sucesso:', data);
+            })
+            .catch((error) => {
+                // Loga qualquer erro que ocorra durante a solicitação no console
+                console.error('Erro:', error);
+            });
+    });
+
 
 
 </script>

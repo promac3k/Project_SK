@@ -50,6 +50,8 @@ router.get('/disciplinas', blocos.get_disciplinas);
 
 router.get('/cursos', blocos.get_cursos);
 
+router.post('/marcar', blocos.post_marcar);
+
 router.get('/simulacao', index.get_simulacao); // Rota para simulação
 
 

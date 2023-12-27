@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         // Adicionar as opções filtradas a dropdownHorarioFinal
         horariosFinal.forEach(horario => {
             const option = document.createElement('option');
-            option.value = horario;
+            option.value = horario + ':00';
             option.text = horario;
             dropdownHorarioFinal.add(option);
         });
