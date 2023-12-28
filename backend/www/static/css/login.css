@@ -422,7 +422,7 @@ input:checked+.slider:before {
     .modal {
         position: fixed;
         top: 0%;
-        left: 30%;
+        left: 90%;
     }
 
 
@@ -501,25 +501,25 @@ input:checked+.slider:before {
     .modal {
         position: fixed;
         top: 0%;
-        left: 20%;
+        left: 100%;
     }
 
 
     @keyframes popup {
         0% {
-            left: 20%;
+            left: 40%;
             top: 0%;
         }
 
         10%,
         90% {
-            left: 10%;
+            left: 20%;
             top: 0%;
             animation-delay: 5s;
         }
 
         100% {
-            left: 20%;
+            left: 40%;
             top: 0%;
         }
     }
