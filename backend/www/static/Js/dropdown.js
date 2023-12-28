@@ -1,12 +1,12 @@
 document.addEventListener('DOMContentLoaded', (event) => {
 
     const dropdown = document.getElementById('dropdown');
+    const dropdownCursos = document.getElementById('dropdownCursos');
 
     // Fazer uma solicitação GET para a sua API
     fetch('/disciplinas')
         .then(response => response.json())
         .then(data => {
-
             // Criar um novo array que contém apenas valores únicos
             const uniqueData = [...new Set(data)];
 
@@ -18,7 +18,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
             // Para cada item na resposta, adicionar uma opção ao dropdown
             uniqueData.forEach(item => {
-                //console.log(item);
                 const option = document.createElement('option');
                 option.value = item;
                 option.text = item;
@@ -27,32 +26,37 @@ document.addEventListener('DOMContentLoaded', (event) => {
         })
         .catch(error => console.error('Error:', error));
 
-    const dropdownCursos = document.getElementById('dropdownCursos');
+    // Adicionar um event listener para o evento change do dropdown
+    dropdown.addEventListener('change', function () {
+        // Obtenha a disciplina selecionada
+        const disciplinaSelecionada = this.value;
 
-    // Fazer uma solicitação GET para a sua API
-    fetch('/cursos')
-        .then(response => response.json())
-        .then(data => {
+        // Fazer uma solicitação GET para a sua API
+        fetch(`/cursos?disciplina=${disciplinaSelecionada}`)
+            .then(response => response.json())
+            .then(data => {
+                // Criar um novo array que contém apenas valores únicos
+                const uniqueData = [...new Set(data)];
 
-            // Criar um novo array que contém apenas valores únicos
-            const uniqueData = [...new Set(data)];
+                // Limpar o dropdown de cursos
+                dropdownCursos.innerHTML = '';
 
-            // Criar e adicionar uma opção em branco
-            const blankOption = document.createElement('option');
-            blankOption.value = '';
-            blankOption.text = '';
-            dropdownCursos.add(blankOption);
+                // Criar e adicionar uma opção em branco
+                const blankOption = document.createElement('option');
+                blankOption.value = '';
+                blankOption.text = '';
+                dropdownCursos.add(blankOption);
 
-            // Para cada item na resposta, adicionar uma opção ao dropdown
-            uniqueData.forEach(item => {
-                //console.log(item);
-                const option = document.createElement('option');
-                option.value = item;
-                option.text = item;
-                dropdownCursos.add(option);
-            });
-        })
-        .catch(error => console.error('Error:', error));
+                // Para cada item na resposta, adicionar uma opção ao dropdown
+                uniqueData.forEach(item => {
+                    const option = document.createElement('option');
+                    option.value = item;
+                    option.text = item;
+                    dropdownCursos.add(option);
+                });
+            })
+            .catch(error => console.error('Error:', error));
+    });
 
     const dropdownHorario = document.getElementById('dropdownHorario');
 

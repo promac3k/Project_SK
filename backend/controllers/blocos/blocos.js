@@ -198,13 +198,14 @@ const get_cursos = async (req, res) => {
 
         const id_prof = req.cookies.id;
         //console.log(id_prof);
+        const disciplinaSelecionada = req.query.disciplina; // Obter a disciplina selecionada a partir do parâmetro de consulta
 
         const result = await connection.query(`
             SELECT disciplina.*, cursos.nome_curso 
             FROM disciplina 
             INNER JOIN cursos ON disciplina.cursos_id_cursos = cursos.id_cursos 
-            WHERE disciplina.professores_id_prof = ? 
-        `, [id_prof]);
+            WHERE disciplina.professores_id_prof = ? AND disciplina.nome_disc = ?
+        `, [id_prof, disciplinaSelecionada]);
 
         const cursos = result.map(db => db.nome_curso);
 
