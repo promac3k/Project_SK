@@ -304,8 +304,23 @@
     generateBlocos();
 
     const calendario_top = document.getElementById('fechar_editar');
+    const calendario_top2 = document.getElementById('fechar');
 
     calendario_top.addEventListener('click', function (e) {
+        //const table = document.getElementById('horario_sala');
+        //table.innerHTML = '';
+        const tds = document.querySelectorAll('td[id^="table_aula_"]');
+        // Limpar o innerHTML de cada td
+        tds.forEach(td => {
+            td.innerHTML = '';
+        });
+
+        for (let linha of linhas) {
+            linha.style.display = 'none';
+        }
+    });
+
+    calendario_top2.addEventListener('click', function (e) {
         //const table = document.getElementById('horario_sala');
         //table.innerHTML = '';
         const tds = document.querySelectorAll('td[id^="table_aula_"]');
@@ -458,11 +473,10 @@
         var curso = document.getElementById('dropdownCursos').value;
         var horarioInicial = document.getElementById('dropdownHorario').value;
         var horarioFinal = document.getElementById('dropdownHorarioFinal').value;
-
         var bloco_ = bloco;
         var sala = clickedCellId;
         var dia = clickedDayId;
-        var semana_ = semana; 
+        var semana_ = semana;
 
         // Cria um objeto com os dados do formulário
         var data = { disciplina, curso, horarioInicial, horarioFinal, bloco_, sala, dia, semana_ };
@@ -479,11 +493,34 @@
         })
             .then(response => {
 
+                // Verifica o código de status da resposta
+                if (response.status === 200) {
 
+                    text.innerHTML = response.text();
+                    console.log(response.text());
+                    modal.style.display = "block";
+                    // Fecha o modal após 5 segundos
+                    setTimeout(function () {
+                        modal.style.display = "none";
+                    }, 5000);
+                    return null;
+
+                } else {
+                    return response.text();
+                }
             })
             .then(message => {
 
+                if (message) {
+                    text.innerHTML = message;
+                    console.log(message);
+                    modal.style.display = "block";
+                    modal_content.style.border = "1px solid #ff4321";
 
+                    setTimeout(function () {
+                        modal.style.display = "none";
+                    }, 5000);
+                }
 
             })
             .then(data => {

@@ -233,38 +233,40 @@ const post_marcar = async (req, res) => {
             console.log("bloco_: " + bloco_);
             console.log("sala: " + sala);
             console.log("dia: " + dia);
-            console.log("teste: " + semana_);
+            console.log("semana: " + semana_);
+
+            // Primeiro, verifique se já existe um horário nesse dia e horário
+            const checkResult = await connection.query(`
+                SELECT * FROM horario_salas 
+                WHERE data_salas = ? AND ((hora_salas <= ? AND fimh_salas > ?) OR (hora_salas < ? AND fimh_salas >= ?))
+            `, [dia, horarioInicial, horarioInicial, horarioFinal, horarioFinal]);
 
 
+            if (checkResult.length > 0) {
+                // Se já existe um horário nesse dia e horário, não insira um novo horário
+                console.log('Já existe um horário nesse dia e horário');
+                return res.status(400).send('Já existe uma reserva nessas horas');
+            } else {
+                // Se não existe um horário nesse dia e horário, insira um novo horário
+                const result = await connection.query(`SELECT * FROM disciplina where nome_disc = ? `, [disciplina]);
+                const db_disc = result[0];
+                const id_disc = db_disc.id_disc;
 
-            const result = await connection.query(`SELECT * FROM disciplina where nome_disc = ? `, [disciplina])
+                const result2 = await connection.query(`SELECT * FROM salas where bloco_salas = ? AND numero_salas = ? `, [bloco_, sala]);
+                const db_sala = result2[0];
+                const id_sala = db_sala.id_salas;
 
-            const db_disc = result[0];
-
-            const id_disc = db_disc.id_disc;
-
-            const result2 = await connection.query(`SELECT * FROM salas where bloco_salas = ? AND numero_salas = ? `, [bloco_, sala])
-
-            const db_sala = result2[0];
-
-            const id_sala = db_sala.id_salas;
-
-            // Substitua 'tabela' pelo nome da sua tabela e 'coluna1', 'coluna2', etc., pelos nomes das colunas
-            const query = 'INSERT INTO horario_salas (disciplina_id_disc, salas_id_salas, data_salas, dia_semana, hora_salas, fimh_salas) VALUES (?, ?, ?, ?, ?, ?)';
-
-            connection.query(query, [id_disc, id_sala, dia, semana_, horarioInicial, horarioFinal ], function (error, results, fields) {
-                if (error) {
-                    // Trate o erro aqui
-                    console.error('Erro ao inserir: ', error);
-                } else {
-                    // Os dados foram inseridos com sucesso
-                    console.log('Inserido com sucesso');
-                }
-            });
-
-
-
-
+                const query = 'INSERT INTO horario_salas (disciplina_id_disc, salas_id_salas, data_salas, dia_semana, hora_salas, fimh_salas) VALUES (?, ?, ?, ?, ?, ?)';
+                connection.query(query, [id_disc, id_sala, dia, semana_, horarioInicial, horarioFinal], function (error, results, fields) {
+                    if (error) {
+                        console.error('Erro ao inserir: ', error);
+                        res.status(500).send('Ocorreu um erro ao inserir o horario.');
+                    } else {
+                        console.log('Inserido com sucesso');
+                        res.status(200).send('Horario inserido com sucesso!');
+                    }
+                });
+            }
 
         } catch (err) {
             console.error(err);
