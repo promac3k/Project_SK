@@ -126,7 +126,7 @@ const get_horarios = async (req, res) => {
                 const nr_sala = db_horario.numero_salas;
                 const bloco_sala = db_horario.bloco_salas;
 
-                console.log(dia, inicio_hora, fim_hora, aula, curso, nr_sala, bloco_sala);
+                //console.log(dia, inicio_hora, fim_hora, aula, curso, nr_sala, bloco_sala);
 
 
                 // Verificar se horariosOrganizados[dia] existe, se não, criar um objeto vazio
@@ -148,7 +148,7 @@ const get_horarios = async (req, res) => {
                 });
             }
 
-            console.log(horariosOrganizados);
+            //console.log(horariosOrganizados);
 
             // Enviar os dados organizados como resposta
             res.json(horariosOrganizados);
