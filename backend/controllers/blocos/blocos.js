@@ -174,7 +174,7 @@ const get_disciplinas = async (req, res) => {
 
 
     if (req.session.loggedin) {
-        const id_prof = req.cookies.id;
+        const id_prof = req.cookies.id_prof;
         //console.log(id_prof);
 
         const result = await connection.query(`SELECT * FROM disciplina where professores_id_prof = ? `, [id_prof])
@@ -196,7 +196,7 @@ const get_cursos = async (req, res) => {
 
     if (req.session.loggedin) {
 
-        const id_prof = req.cookies.id;
+        const id_prof = req.cookies.id_prof;
         //console.log(id_prof);
         const disciplinaSelecionada = req.query.disciplina; // Obter a disciplina selecionada a partir do parâmetro de consulta
 

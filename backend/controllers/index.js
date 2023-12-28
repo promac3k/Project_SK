@@ -32,6 +32,7 @@ const get_logout = (req, res) => {
     req.session.destroy();
     res.clearCookie('user');
     res.clearCookie('id');
+    res.clearCookie('id_prof');
     res.clearCookie('connect.sid');
     res.redirect('/');
 }
