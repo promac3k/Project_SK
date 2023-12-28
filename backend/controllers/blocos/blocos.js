@@ -1,5 +1,6 @@
 const connection = require('../../services/db'); // Módulo para conexão com o banco de dados
 const path = require('path'); // Módulo Node.js para trabalhar com caminhos de arquivos
+const email = require('../../services/email'); // Módulo para enviar emails
 
 
 // Método para lidar com a rota GET para /blocoA
@@ -225,6 +226,12 @@ const post_marcar = async (req, res) => {
     if (req.session.loggedin) {
         try {
 
+            const id_prof = req.cookies.id_prof;
+
+            const result = await connection.query(`SELECT * FROM professores where id_prof = ? `, [id_prof]);
+            const db_prof = result[0];
+            const nome_prof = db_prof.nome_prof;
+
             const { disciplina, curso, horarioInicial, horarioFinal, bloco_, sala, dia, semana_ } = req.body;
 
             console.log("disciplina: " + disciplina);
@@ -258,6 +265,14 @@ const post_marcar = async (req, res) => {
                 const db_curso = result3[0];
                 const id_curso = db_curso.id_cursos;
 
+                const result4 = await connection.query(`SELECT * FROM alunos where cursos_id_cursos = ? `, [id_curso]);
+                //console.log(result4);
+                const db_alunos = result4;
+                //console.log(db_alunos);
+                const email_alunos = db_alunos.map(db => db.email_aluno);
+                //console.log(email_alunos);
+
+
                 // Se não existe um horário nesse dia e horário, insira um novo horário
                 const result = await connection.query(`SELECT * FROM disciplina where nome_disc = ? AND cursos_id_cursos = ? `, [disciplina, id_curso]);
                 const db_disc = result[0];
@@ -266,6 +281,30 @@ const post_marcar = async (req, res) => {
                 const result2 = await connection.query(`SELECT * FROM salas where bloco_salas = ? AND numero_salas = ? `, [bloco_, sala]);
                 const db_sala = result2[0];
                 const id_sala = db_sala.id_salas;
+
+
+                // Itera sobre os endereços de e-mail
+                email_alunos.forEach(email_aluno => {
+                    // Define as opções do e-mail
+                    const mailOptions = {
+                        from: process.env.EMAIL_TO,
+                        to: email_aluno,
+                        subject: 'Mudança de sala',
+                        text: 'A aula de ' + disciplina + ", vai ser na sala " + sala + " do " + bloco_ + " no dia " + dia + " das " + horarioInicial + " às " + horarioFinal + " horas." + "\n" + "Cumprimentos, " + "\n" + nome_prof
+                    }
+
+                    // Tenta enviar o e-mail
+                    email.sendMail(mailOptions, function (error) {
+                        if (error) {
+                            // Se houver um erro, loga o erro
+                            console.log('Erro ao enviar o e-mail: ', error);
+                        } else {
+                            // Se o e-mail for enviado com sucesso, loga uma mensagem de sucesso
+                            console.log('Email enviado com sucesso para: ' + email_aluno);
+
+                        }
+                    });
+                });
 
                 const query = 'INSERT INTO horario_salas (disciplina_id_disc, salas_id_salas, data_salas, dia_semana, hora_salas, fimh_salas) VALUES (?, ?, ?, ?, ?, ?)';
                 connection.query(query, [id_disc, id_sala, dia, semana_, horarioInicial, horarioFinal], function (error, results, fields) {
@@ -277,6 +316,7 @@ const post_marcar = async (req, res) => {
                         res.status(200).send('Horario inserido com sucesso!');
                     }
                 });
+
             }
 
         } catch (err) {
