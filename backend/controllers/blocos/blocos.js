@@ -272,7 +272,6 @@ const post_marcar = async (req, res) => {
                 const email_alunos = db_alunos.map(db => db.email_aluno);
                 //console.log(email_alunos);
 
-
                 // Se não existe um horário nesse dia e horário, insira um novo horário
                 const result = await connection.query(`SELECT * FROM disciplina where nome_disc = ? AND cursos_id_cursos = ? `, [disciplina, id_curso]);
                 const db_disc = result[0];
@@ -281,7 +280,6 @@ const post_marcar = async (req, res) => {
                 const result2 = await connection.query(`SELECT * FROM salas where bloco_salas = ? AND numero_salas = ? `, [bloco_, sala]);
                 const db_sala = result2[0];
                 const id_sala = db_sala.id_salas;
-
 
                 // Itera sobre os endereços de e-mail
                 email_alunos.forEach(email_aluno => {
@@ -316,9 +314,7 @@ const post_marcar = async (req, res) => {
                         res.status(200).send('Horario inserido com sucesso!');
                     }
                 });
-
             }
-
         } catch (err) {
             console.error(err);
             res.status(500).send('Ocorreu um erro ao buscar o horario.');
@@ -326,9 +322,6 @@ const post_marcar = async (req, res) => {
     } else {
         res.sendFile(path.join(__dirname, '..', '..', 'www/pages/login.html'));
     }
-
-
-
 }
 
 module.exports = {
