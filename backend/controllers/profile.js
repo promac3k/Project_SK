@@ -92,6 +92,7 @@ const get_horarios = async (req, res) => {
 
 const post_change_password = async (req, res) => {
 
+
     const { pass_antiga, pass_nova, pass_confirme } = req.body;
 
     if (!pass_antiga || !pass_nova || !pass_confirme) {
@@ -110,40 +111,78 @@ const post_change_password = async (req, res) => {
         return res.status(404).send('Por favor, insira uma senha valida, com 6 a 15 caracteres e um caracter especial!');
     }
 
-    const result = await connection.query('SELECT pass_aluno FROM alunos WHERE email_aluno = ?', [req.session.user]);
 
-    if (result.length > 0) {
+    if (req.cookies.id) {
+        const result = await connection.query('SELECT pass_aluno FROM alunos WHERE email_aluno = ?', [req.session.user]);
 
-        const db = result[0];
-        const result_pass = await bcrypt.comparePasswords(pass_antiga, db.pass_aluno);
+        if (result.length > 0) {
 
-        if (result_pass) {
+            const db = result[0];
+            const result_pass = await bcrypt.comparePasswords(pass_antiga, db.pass_aluno);
 
-            if (pass_antiga === pass_nova) {
-                return res.status(404).send('A nova senha não pode ser igual a antiga!');
-            }
+            if (result_pass) {
 
-            if (pass_nova === pass_confirme) {
+                if (pass_antiga === pass_nova) {
+                    return res.status(404).send('A nova senha não pode ser igual a antiga!');
+                }
 
-                const hash = await bcrypt.hashPassword(pass_nova);
-                const result = await connection.query('UPDATE alunos SET pass_aluno = ? WHERE email_aluno = ?', [hash, req.session.user]);
+                if (pass_nova === pass_confirme) {
 
-                if (result.affectedRows > 0) {
-                    console.log(">>>>> Senha alterada com sucesso!");
-                    return res.status(200).send("Senha alterada com sucesso!");
+                    const hash = await bcrypt.hashPassword(pass_nova);
+                    const result = await connection.query('UPDATE alunos SET pass_aluno = ? WHERE email_aluno = ?', [hash, req.session.user]);
+
+                    if (result.affectedRows > 0) {
+                        console.log(">>>>> Senha alterada com sucesso!");
+                        return res.status(200).send("Senha alterada com sucesso!");
+                    } else {
+                        return res.status(404).send('Erro ao alterar a senha!');
+                    }
+
                 } else {
-                    return res.status(404).send('Erro ao alterar a senha!');
+                    return res.status(404).send('As senhas não correspondem!');
                 }
 
             } else {
-                return res.status(404).send('As senhas não correspondem!');
+                return res.status(404).send('Senha incorreta!');
             }
-
-        } else {
-            return res.status(404).send('Senha incorreta!');
         }
     }
+    if (req.cookies.id_prof) {
 
+        const result = await connection.query('SELECT pass_prof FROM professores WHERE email_prof = ?', [req.session.user]);
+
+        if (result.length > 0) {
+
+            const db = result[0];
+            const result_pass = await bcrypt.comparePasswords(pass_antiga, db.pass_prof);
+
+            if (result_pass) {
+
+                if (pass_antiga === pass_nova) {
+                    return res.status(404).send('A nova senha não pode ser igual a antiga!');
+                }
+
+                if (pass_nova === pass_confirme) {
+
+                    const hash = await bcrypt.hashPassword(pass_nova);
+                    const result = await connection.query('UPDATE professores SET pass_prof = ? WHERE email_prof = ?', [hash, req.session.user]);
+
+                    if (result.affectedRows > 0) {
+                        console.log(">>>>> Senha alterada com sucesso!");
+                        return res.status(200).send("Senha alterada com sucesso!");
+                    } else {
+                        return res.status(404).send('Erro ao alterar a senha!');
+                    }
+
+                } else {
+                    return res.status(404).send('As senhas não correspondem!');
+                }
+
+            } else {
+                return res.status(404).send('Senha incorreta!');
+            }
+        }
+    }
 }
 
 module.exports = {
