@@ -252,8 +252,13 @@ const post_marcar = async (req, res) => {
                 console.log('Já existe um horário nesse dia e horário');
                 return res.status(400).send('Já existe uma reserva nessas horas');
             } else {
+
+                const result3 = await connection.query(`SELECT * FROM cursos where nome_curso = ? `, [curso]);
+                const db_curso = result3[0];
+                const id_curso = db_curso.id_cursos;
+
                 // Se não existe um horário nesse dia e horário, insira um novo horário
-                const result = await connection.query(`SELECT * FROM disciplina where nome_disc = ? `, [disciplina]);
+                const result = await connection.query(`SELECT * FROM disciplina where nome_disc = ? AND cursos_id_cursos = ? `, [disciplina, id_curso]);
                 const db_disc = result[0];
                 const id_disc = db_disc.id_disc;
 
