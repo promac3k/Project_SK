@@ -476,7 +476,22 @@
         var bloco_ = bloco;
         var sala = clickedCellId;
         var dia = clickedDayId;
-        var semana_ = semana;
+
+        // Crie um objeto Date com a data
+        var data = new Date(dia);
+
+        // Obtenha o dia da semana como um número entre 0 e 6
+        var diaDaSemanaNumero = data.getDay();
+
+        // Mapeie o número do dia da semana para o nome do dia da semana
+        var diasDaSemana = ['domingo', 'segunda', 'terca', 'quarta', 'quinta', 'sexta', 'sabado'];
+        var diaDaSemana = diasDaSemana[diaDaSemanaNumero];
+
+        console.log(diaDaSemana); // por exemplo, 'Quarta'
+
+        var semana_ = semana || diaDaSemana;
+
+        //console.log(disciplina, curso, horarioInicial, horarioFinal, bloco_, sala, dia, semana_);
 
         // Cria um objeto com os dados do formulário
         var data = { disciplina, curso, horarioInicial, horarioFinal, bloco_, sala, dia, semana_ };
