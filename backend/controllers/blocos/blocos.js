@@ -235,11 +235,16 @@ const post_marcar = async (req, res) => {
             console.log("dia: " + dia);
             console.log("semana: " + semana_);
 
+            const result2 = await connection.query(`SELECT * FROM salas where bloco_salas = ? AND numero_salas = ? `, [bloco_, sala]);
+            const db_sala = result2[0];
+            const id_sala = db_sala.id_salas;
+
+
             // Primeiro, verifique se já existe um horário nesse dia e horário
             const checkResult = await connection.query(`
                 SELECT * FROM horario_salas 
-                WHERE data_salas = ? AND ((hora_salas <= ? AND fimh_salas > ?) OR (hora_salas < ? AND fimh_salas >= ?))
-            `, [dia, horarioInicial, horarioInicial, horarioFinal, horarioFinal]);
+                WHERE salas_id_salas = ? AND data_salas = ? AND ((hora_salas <= ? AND fimh_salas > ?) OR (hora_salas < ? AND fimh_salas >= ?))
+            `, [id_sala, dia, horarioInicial, horarioInicial, horarioFinal, horarioFinal]);
 
 
             if (checkResult.length > 0) {
