@@ -47,14 +47,7 @@ body {
     color: white;
 }
 
-.sidebar li{
-    margin: 0px;
-}
-
 @media (min-width: 1281px) and (max-width: 1600px){
-    .sidebar {
-        margin-top: 1.4rem !important;
-    }
 
     .legenda_calendario {
         width: 59% !important;
@@ -116,6 +109,10 @@ body {
         left: 49.7%;
     }
 
+    .sidebar {
+        margin-top: 1.4rem !important;
+    }
+
     .sidebar li a {
         font-size: 19px;
     }
@@ -144,11 +141,6 @@ body {
         display: none;
     }
 
-    .sidebar {
-        width: 20% !important;
-        margin-top: 5.4rem !important;
-    }
-
     .profile_info {
         width: 30%;
     }
@@ -166,21 +158,26 @@ body {
     }
 
     .vertical_line {
-        height: 22% !important;
-        left: 51% !important;
+        height: 20% !important;
+        left: 49.5% !important;
+    }
+
+    .sidebar {
+        width: 20% !important;
+        margin-top: 5.4rem !important;
+        height: 100% !important;
+    }
+
+    .sidebar li {
+        margin: 5px !important;
     }
 }
 
 
 /* media query para deixar o site responsivo para mobile */
 @media (min-width: 320px) and (max-width: 480px) {
-
     .img-container img {
         display: none;
-    }
-
-    li {
-        width: 90px;
     }
 
     .p_1 {
@@ -199,6 +196,18 @@ body {
         margin-bottom: 100px !important;
     }
 
+    .blocos {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #444444 !important;
+    }
+
+    .blocos_li {
+        width: 100% !important;
+        margin-bottom: 5px !important;
+    }
+
     .sidebar {
         width: 48% !important;
         height: 20% !important;
@@ -207,20 +216,9 @@ body {
         margin-bottom: 20px !important;
     }
 
-    .blocos {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: #444444 !important;
-    }
-
     .sidebar li a {
         text-align: center;
-    }
-
-    .blocos_li {
-        width: 100%;
-        margin-bottom: 23px;
+        font-size: 18px;
     }
 
     h1 {
@@ -233,6 +231,11 @@ body {
     }
 
     .vertical_line {
-        height: 27% !important;
+        height: 26% !important;
+        margin-left: 17px;
+    }
+
+    .legenda_calendario li {
+        width: 90% !important;
     }
 }

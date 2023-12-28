@@ -83,6 +83,7 @@ a {
 .sidebar li {
     display: block;
     text-align: center;
+    margin: 0px;
 }
   
 .sidebar li a:hover {
@@ -154,4 +155,26 @@ footer i {
 footer a {
     color: #3c97bf;
     text-decoration: none;
+}
+
+@media (min-width: 1281px) and (max-width: 1600px){
+    
+}
+
+/* media query para deixar o site responsivo para tablet*/
+@media (min-width: 768px) and (max-width: 1023px) {
+    
+}
+
+/* media query para deixar o site responsivo para mobile */
+@media (min-width: 320px) and (max-width: 480px) {
+    .navbar li {
+        margin-left: 18px !important;
+        width: 35px !important;
+    }
+
+    .navbar li a {
+        padding: 14px 0px !important;
+        font-size: 16px;
+    }
 }
