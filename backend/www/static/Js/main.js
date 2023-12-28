@@ -357,7 +357,7 @@ function sendIdsToServer(bloco, clickedCellId, clickedDayId) {
 
                                 window.semana = dia;
 
-                                //console.log("dia", dia)
+                                console.log("dia", dia)
 
                                 // Preencher a célula com os dados
                                 cell.innerHTML = `${horario.aula} - ${horario.nome_prof}<br>${horario.curso}`;
