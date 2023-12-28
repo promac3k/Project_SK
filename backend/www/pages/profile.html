@@ -38,7 +38,7 @@
           alt="" style="width:80%" class="img_perfil">
         <p class="title" id="curso"></p>
         <p class="title" id="turma"></p>
-        <p class="title_2">ESTS</p>
+        <p class="title_2" id="escola"></p>
       </div>
       <div class="profile_settings">
         <span>
@@ -315,64 +315,151 @@
 
   window.onload = checkCookie();
 
-  fetch('/perfil/horarios')
-    .then(response => {
-      return response.json();
-    })
-    .then(data => {
-      // Iterar sobre cada dia da semana
-      for (let dia in data) {
-        // Iterar sobre cada hora do dia
-        for (let hora in data[dia]) {
-          //console.log("hora", hora)
-          // Iterar sobre cada horário nesse dia e hora
-          for (let horario of data[dia][hora]) {
+  // Função para obter um cookie pelo nome
+  function getCookie(name) {
 
-            const horaSemSegundos = hora.slice(0, -3);
-            const horaFormatada = horaSemSegundos.replace(/:/g, "_");
+    const value = "; " + document.cookie;
+    const parts = value.split("; " + name + "=");
+    if (parts.length == 2) return parts.pop().split(";").shift();
 
-            // Selecionar a célula da tabela correspondente a esse dia e hora
-            const cell = document.querySelector(`#table_aula_${dia}_${horaFormatada}`);
-            if (cell) {
+  }
 
-              // Calcular o rowspan com base na duração da aula
-              const inicio = new Date(`2023-01-01T${hora}.000Z`);
-              //console.log("inicio", inicio)
-              const fim = new Date(`2023-01-01T${horario.fim_hora}.000Z`);
-              //console.log("fim", fim)
-              const duracao = (fim - inicio) / (30 * 60 * 1000);
-              //console.log("f i ", fim - inicio)
-              cell.rowSpan = duracao;
-              //console.log("++", duracao)
+  // Verifica se o cookie 'user' existe
+  const userCookie = getCookie('user');
+
+  if (userCookie) {
+    const user = JSON.parse(decodeURIComponent(userCookie));
+    document.getElementById('nome').textContent = user.nome;
+    document.getElementById('turma').textContent = user.turma;
+    document.getElementById('curso').textContent = user.curso;
+    document.getElementById('escola').textContent = user.escola;
+    valor = user.tipo;
+    console.log(valor);
+  }
 
 
-              const inicio30 = new Date(`2023-01-01T${hora}.000Z`);
+  if (valor === 0) {
+    fetch('/perfil/horarios')
+      .then(response => {
+        return response.json();
+      })
+      .then(data => {
+        // Iterar sobre cada dia da semana
+        for (let dia in data) {
+          // Iterar sobre cada hora do dia
+          for (let hora in data[dia]) {
+            //console.log("hora", hora)
+            // Iterar sobre cada horário nesse dia e hora
+            for (let horario of data[dia][hora]) {
 
-              for (let i = 1; i < duracao; i++) {
-                inicio30.setMinutes(inicio30.getMinutes() + 30);
-                //console.log("inicio30 : ", inicio30.getHours())    
-                const hora = String(inicio30.getHours()).padStart(2, '0');
-                const minutos = String(inicio30.getMinutes()).padStart(2, '0');
-                const horaFormatada = hora + "_" + minutos;
-                //console.log("horaFormatada : ", horaFormatada) 
-                let tabela = document.getElementById(`table_aula_${dia}_${horaFormatada}`);
-                //console.log("tabela", tabela)
-                if (tabela) {
-                  tabela.remove();
+              const horaSemSegundos = hora.slice(0, -3);
+              const horaFormatada = horaSemSegundos.replace(/:/g, "_");
+
+              // Selecionar a célula da tabela correspondente a esse dia e hora
+              const cell = document.querySelector(`#table_aula_${dia}_${horaFormatada}`);
+              if (cell) {
+
+                // Calcular o rowspan com base na duração da aula
+                const inicio = new Date(`2023-01-01T${hora}.000Z`);
+                //console.log("inicio", inicio)
+                const fim = new Date(`2023-01-01T${horario.fim_hora}.000Z`);
+                //console.log("fim", fim)
+                const duracao = (fim - inicio) / (30 * 60 * 1000);
+                //console.log("f i ", fim - inicio)
+                cell.rowSpan = duracao;
+                //console.log("++", duracao)
+
+
+                const inicio30 = new Date(`2023-01-01T${hora}.000Z`);
+
+                for (let i = 1; i < duracao; i++) {
+                  inicio30.setMinutes(inicio30.getMinutes() + 30);
+                  //console.log("inicio30 : ", inicio30.getHours())    
+                  const hora = String(inicio30.getHours()).padStart(2, '0');
+                  const minutos = String(inicio30.getMinutes()).padStart(2, '0');
+                  const horaFormatada = hora + "_" + minutos;
+                  //console.log("horaFormatada : ", horaFormatada) 
+                  let tabela = document.getElementById(`table_aula_${dia}_${horaFormatada}`);
+                  //console.log("tabela", tabela)
+                  if (tabela) {
+                    tabela.remove();
+                  }
                 }
+
+                // Preencher a célula com os dados
+                cell.innerHTML = `${horario.aula} - ${horario.nome_prof}<br>${horario.bloco_sala} - Sala - ${horario.nr_sala}`;
+
+              } else {
+                console.log(`Não foi possível encontrar a célula para o dia ${dia} e a hora ${horaFormatada}`);
               }
 
-              // Preencher a célula com os dados
-              cell.innerHTML = `${horario.aula} - ${horario.nome_prof}<br>${horario.bloco_sala} - Sala - ${horario.nr_sala}`;
-
-            } else {
-              console.log(`Não foi possível encontrar a célula para o dia ${dia} e a hora ${horaFormatada}`);
             }
-
           }
         }
-      }
-    });
+      });
+  }
+  if (valor === 1) {
+
+    fetch('/perfil/horarios')
+      .then(response => {
+        return response.json();
+      })
+      .then(data => {
+        // Iterar sobre cada dia da semana
+        for (let dia in data) {
+          // Iterar sobre cada hora do dia
+          for (let hora in data[dia]) {
+            //console.log("hora", hora)
+            // Iterar sobre cada horário nesse dia e hora
+            for (let horario of data[dia][hora]) {
+
+              const horaSemSegundos = hora.slice(0, -3);
+              const horaFormatada = horaSemSegundos.replace(/:/g, "_");
+
+              // Selecionar a célula da tabela correspondente a esse dia e hora
+              const cell = document.querySelector(`#table_aula_${dia}_${horaFormatada}`);
+              if (cell) {
+
+                // Calcular o rowspan com base na duração da aula
+                const inicio = new Date(`2023-01-01T${hora}.000Z`);
+                //console.log("inicio", inicio)
+                const fim = new Date(`2023-01-01T${horario.fim_hora}.000Z`);
+                //console.log("fim", fim)
+                const duracao = (fim - inicio) / (30 * 60 * 1000);
+                //console.log("f i ", fim - inicio)
+                cell.rowSpan = duracao;
+                //console.log("++", duracao)
+
+
+                const inicio30 = new Date(`2023-01-01T${hora}.000Z`);
+
+                for (let i = 1; i < duracao; i++) {
+                  inicio30.setMinutes(inicio30.getMinutes() + 30);
+                  //console.log("inicio30 : ", inicio30.getHours())    
+                  const hora = String(inicio30.getHours()).padStart(2, '0');
+                  const minutos = String(inicio30.getMinutes()).padStart(2, '0');
+                  const horaFormatada = hora + "_" + minutos;
+                  //console.log("horaFormatada : ", horaFormatada) 
+                  let tabela = document.getElementById(`table_aula_${dia}_${horaFormatada}`);
+                  //console.log("tabela", tabela)
+                  if (tabela) {
+                    tabela.remove();
+                  }
+                }
+
+                // Preencher a célula com os dados
+                cell.innerHTML = `${horario.aula} - ${horario.curso}<br>${horario.bloco_sala} - Sala - ${horario.nr_sala}`;
+
+              } else {
+                console.log(`Não foi possível encontrar a célula para o dia ${dia} e a hora ${horaFormatada}`);
+              }
+
+            }
+          }
+        }
+      });
+  }
+
 
   // vai buscar o id do modal
   var modal_editar = document.getElementById("modal_editar");
@@ -393,25 +480,6 @@
     var bodyStyles = window.getComputedStyle(document.body);
     var currentColor = bodyStyles.getPropertyValue('--text-color');
     document.getElementById('hoverText').style.color = currentColor;
-  }
-
-  // Função para obter um cookie pelo nome
-  function getCookie(name) {
-
-    const value = "; " + document.cookie;
-    const parts = value.split("; " + name + "=");
-    if (parts.length == 2) return parts.pop().split(";").shift();
-
-  }
-
-  // Verifica se o cookie 'user' existe
-  const userCookie = getCookie('user');
-
-  if (userCookie) {
-    const user = JSON.parse(decodeURIComponent(userCookie));
-    document.getElementById('nome').textContent = user.nome;
-    document.getElementById('turma').textContent = user.turma;
-    document.getElementById('curso').textContent = user.curso;
   }
 
   document.getElementById('change-password-form').addEventListener('submit', function (event) {

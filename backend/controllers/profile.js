@@ -24,8 +24,10 @@ const get_horarios = async (req, res) => {
         res.sendFile(path.join(__dirname, '..', 'www/pages/login.html'));
     }
     try {
-        const id_aluno = req.cookies.id;
-        const query = `
+
+        if (req.cookies.id) {
+            const id_aluno = req.cookies.id;
+            const query = `
             SELECT 
                 horario.dia_semana, 
                 horario.hora_salas, 
@@ -39,50 +41,120 @@ const get_horarios = async (req, res) => {
             JOIN professores ON disciplina.professores_id_prof = professores.id_prof 
             JOIN salas ON horario.salas_id_salas = salas.id_salas 
             WHERE horario.aluno_id = ?
-        `;
-        const horarios = await connection.query(query, [id_aluno]);
+            `;
+            const horarios = await connection.query(query, [id_aluno]);
 
-        // Criar um objeto para armazenar os horários organizados por dia da semana e hora do dia
-        const horariosOrganizados = {
-            segunda: {},
-            terca: {},
-            quarta: {},
-            quinta: {},
-            sexta: {},
-            sabado: {}
-        };
+            // Criar um objeto para armazenar os horários organizados por dia da semana e hora do dia
+            const horariosOrganizados = {
+                segunda: {},
+                terca: {},
+                quarta: {},
+                quinta: {},
+                sexta: {},
+                sabado: {}
+            };
 
-        for (let db_horario of horarios) {
-            const dia = db_horario.dia_semana;
-            const inicio_hora = db_horario.hora_salas;
-            const fim_hora = db_horario.fimh_salas;
-            const aula = db_horario.aula;
-            const nome_prof = db_horario.nome_prof;
-            const nr_sala = db_horario.nr_sala;
-            const bloco_sala = db_horario.bloco_salas;
+            for (let db_horario of horarios) {
+                const dia = db_horario.dia_semana;
+                const inicio_hora = db_horario.hora_salas;
+                const fim_hora = db_horario.fimh_salas;
+                const aula = db_horario.aula;
+                const nome_prof = db_horario.nome_prof;
+                const nr_sala = db_horario.nr_sala;
+                const bloco_sala = db_horario.bloco_salas;
 
-            // Verificar se horariosOrganizados[dia] existe, se não, criar um objeto vazio
-            if (!horariosOrganizados[dia]) {
-                horariosOrganizados[dia] = {};
+                // Verificar se horariosOrganizados[dia] existe, se não, criar um objeto vazio
+                if (!horariosOrganizados[dia]) {
+                    horariosOrganizados[dia] = {};
+                }
+
+
+                // Adicionar os dados ao objeto horariosOrganizados
+                if (!horariosOrganizados[dia][inicio_hora]) {
+                    horariosOrganizados[dia][inicio_hora] = [];
+                }
+                horariosOrganizados[dia][inicio_hora].push({
+                    aula: aula,
+                    nome_prof: nome_prof,
+                    nr_sala: nr_sala,
+                    bloco_sala: bloco_sala,
+                    fim_hora: fim_hora
+                });
             }
 
-
-            // Adicionar os dados ao objeto horariosOrganizados
-            if (!horariosOrganizados[dia][inicio_hora]) {
-                horariosOrganizados[dia][inicio_hora] = [];
-            }
-            horariosOrganizados[dia][inicio_hora].push({
-                aula: aula,
-                nome_prof: nome_prof,
-                nr_sala: nr_sala,
-                bloco_sala: bloco_sala,
-                fim_hora: fim_hora
-            });
+            // Enviar os dados organizados como resposta
+            res.json(horariosOrganizados);
         }
+        if (req.cookies.id_prof) {
 
-        // Enviar os dados organizados como resposta
-        res.json(horariosOrganizados);
+            const id_prof = req.cookies.id_prof;
+            
+            const query = `
+            SELECT 
+                horario_prof.dia_semana, 
+                horario_prof.hora_salas, 
+                horario_prof.fimh_salas, 
+                disciplina.nome_disc,
+                cursos.nome_curso,
+                salas.numero_salas, 
+                salas.bloco_salas 
+            FROM horario_prof 
+            JOIN disciplina ON horario_prof.disciplina_id_disc = disciplina.id_disc
+            JOIN cursos ON disciplina.cursos_id_cursos = id_cursos
+            JOIN salas ON horario_prof.salas_id_salas = id_salas 
+            WHERE horario_prof.Prof_id = ?
+            `;
+            const horarios = await connection.query(query, [id_prof]);
 
+
+            // Criar um objeto para armazenar os horários organizados por dia da semana e hora do dia
+            const horariosOrganizados = {
+                segunda: {},
+                terca: {},
+                quarta: {},
+                quinta: {},
+                sexta: {},
+                sabado: {}
+            };
+
+            for (let db_horario of horarios) {
+                const dia = db_horario.dia_semana;
+                const inicio_hora = db_horario.hora_salas;
+                const fim_hora = db_horario.fimh_salas;
+                const aula = db_horario.nome_disc;
+                const curso = db_horario.nome_curso;
+                const nr_sala = db_horario.numero_salas;
+                const bloco_sala = db_horario.bloco_salas;
+
+                console.log(dia, inicio_hora, fim_hora, aula, curso, nr_sala, bloco_sala);
+
+
+                // Verificar se horariosOrganizados[dia] existe, se não, criar um objeto vazio
+                if (!horariosOrganizados[dia]) {
+                    horariosOrganizados[dia] = {};
+                }
+
+                // Adicionar os dados ao objeto horariosOrganizados
+                if (!horariosOrganizados[dia][inicio_hora]) {
+                    horariosOrganizados[dia][inicio_hora] = [];
+                }
+                horariosOrganizados[dia][inicio_hora].push({
+                    aula: aula,
+                    fim_hora: fim_hora,
+                    curso: curso,
+                    nr_sala: nr_sala,
+                    bloco_sala: bloco_sala
+
+                });
+            }
+
+            console.log(horariosOrganizados);
+
+            // Enviar os dados organizados como resposta
+            res.json(horariosOrganizados);
+
+
+        }
 
     } catch (err) {
         console.error(err);

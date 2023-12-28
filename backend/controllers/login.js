@@ -100,7 +100,7 @@ const post_login = async (req, res) => {
                     });
 
 
-                    const user = { nome: db.nome_aluno, email: db.email_aluno, turma: db.turma_aluno, curso: db.nome_curso, ano: db.ano_aluno, tipo: tipo }
+                    const user = { nome: db.nome_aluno, email: db.email_aluno, turma: db.turma_aluno, curso: db.nome_curso, ano: db.ano_aluno, escola: db.escola, tipo: tipo }
                     const id = db.id_alunos;
                     res.cookie("user", JSON.stringify(user));
                     res.cookie("id", id);
