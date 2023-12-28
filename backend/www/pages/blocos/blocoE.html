@@ -366,6 +366,10 @@
 
     fechar_marcar.onclick = function () {
         modal_teste.style.display = 'none';
+        document.getElementById('dropdown').selectedIndex = '0';
+        document.getElementById('dropdownCursos').selectedIndex = '0';
+        document.getElementById('dropdownHorario').selectedIndex = '0';
+        document.getElementById('dropdownHorarioFinal').selectedIndex = '0';
     }
 
     //fecha o modal quando o botao dentro do modal for clicado

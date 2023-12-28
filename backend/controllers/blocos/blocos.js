@@ -299,7 +299,6 @@ const post_marcar = async (req, res) => {
                         } else {
                             // Se o e-mail for enviado com sucesso, loga uma mensagem de sucesso
                             console.log('Email enviado com sucesso para: ' + email_aluno);
-
                         }
                     });
                 });

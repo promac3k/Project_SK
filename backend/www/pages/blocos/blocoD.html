@@ -246,7 +246,7 @@
                         <select id="dropdownHorario"></select>
                         <span>horario final</span>
                         <select id="dropdownHorarioFinal"></select>
-                        <button type="submit">Salvar Marcaçao</button>
+                        <button type="submit" id="salvar">Salvar Marcaçao</button>
                     </form>
                 </div>
             </div>
@@ -374,6 +374,10 @@
 
     fechar_marcar.onclick = function () {
         modal_teste.style.display = 'none';
+        document.getElementById('dropdown').selectedIndex = '0';
+        document.getElementById('dropdownCursos').selectedIndex = '0';
+        document.getElementById('dropdownHorario').selectedIndex = '0';
+        document.getElementById('dropdownHorarioFinal').selectedIndex = '0';
     }
 
     function generateCalendarModal() {
@@ -510,8 +514,7 @@
             .then(response => {
 
                 // Verifica o código de status da resposta
-                if (response.status === 200) {
-
+                if (response.status === 200) {                    
                     text.innerHTML = response.text();
                     console.log(response.text());
                     modal.style.display = "block";
