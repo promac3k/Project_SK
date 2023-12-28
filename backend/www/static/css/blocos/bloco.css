@@ -195,15 +195,20 @@ main{
 
 /* media query para deixar o site responsivo para mobile */
 @media (min-width: 320px) and (max-width: 480px) {
+  h1{
+    font-size: 30px;
+  }
+
   .cal {
     margin-left: 1rem;
     margin-right: 1rem;
   }
 
   .button_back {
-    padding: 12px 28px;
+    padding: 12px 0px;
     margin: 1rem;
-    width: 31%;
+    width: 24%;
+    font-size: 10px;
   }
 
   .modal_sala_content {
