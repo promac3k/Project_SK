@@ -203,20 +203,25 @@
     document.getElementById('calendar-body-semestral').style.display = 'none';
     // Show the trimestral calendar
     document.getElementById('calendar-body-trimestral').style.display = '';
-        // Change the background color to purple
-        document.getElementById('trimestralButton').style.backgroundColor = "purple";
-        document.getElementById('semestralButton').style.backgroundColor = "#FF4B2B";
+    // Change the background color to purple
+    this.style.backgroundColor = "#ff8a2b";
+    document.getElementById('semestralButton').style.backgroundColor = "#FF4B2B";
+    // Make the button bigger
+    this.style.transform = 'scale(1.1)';
+    document.getElementById('semestralButton').style.transform = 'scale(1)';
 });
 
-// When the 'semestralButton' is clicked
 document.getElementById('semestralButton').addEventListener('click', function() {
     // Hide the trimestral calendar
     document.getElementById('calendar-body-trimestral').style.display = 'none';
     // Show the semestral calendar
     document.getElementById('calendar-body-semestral').style.display = '';
     // Change the background color to purple
-    document.getElementById('semestralButton').style.backgroundColor = "purple";
+    this.style.backgroundColor = "#ff8a2b";
     document.getElementById('trimestralButton').style.backgroundColor = "#FF4B2B";
+    // Make the button bigger
+    this.style.transform = 'scale(1.1)';
+    document.getElementById('trimestralButton').style.transform = 'scale(1)';
 });
 
 </script>

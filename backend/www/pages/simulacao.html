@@ -74,23 +74,35 @@
     window.onload = checkCookie();
 
     document.querySelector('.fingerprint_container .fingerprint').addEventListener('click', function () {
-        this.classList.add('clicked');
-    });
+    this.classList.remove('clicked'); // Remove the animation class
+    void this.offsetWidth; // Trigger a reflow, flushing the CSS changes
+    this.classList.add('clicked'); // Re-add the animation class
+});
 
-    var fingerprint = document.querySelector('.fingerprint_container .fingerprint');
-    var switchcheck = document.getElementById("switchcheck");
-    var reddotoff = document.querySelector('.reddotoff');
-    var greendotoff = document.querySelector('.greendotoff');
-    var openlock = document.getElementById('openlock');
+var fingerprint = document.querySelector('.fingerprint_container .fingerprint');
+var switchcheck = document.getElementById("switchcheck");
+var reddotoff = document.querySelector('.reddotoff');
+var greendotoff = document.querySelector('.greendotoff');
+var openlock = document.getElementById('openlock');
 
-    fingerprint.addEventListener('animationend', function () {
-        if (switchcheck.checked == true) {
-            greendotoff.style.backgroundColor = '#0cec1f';
-            openlock.className = 'openlock';
-        } else {
-            reddotoff.style.backgroundColor = '#e70d0d';
-        }
-    });
+fingerprint.addEventListener('animationend', function () {
+    if (switchcheck.checked == true) {
+        greendotoff.style.backgroundColor = '#0cec1f';
+        openlock.className = 'openlock';
+        // Reset the color and lock image after 5 seconds
+        setTimeout(function() {
+            greendotoff.style.backgroundColor = ''; // Replace with original color
+            openlock.className = 'lock'; // Replace with original class
+        }, 5000);
+    } else {
+        reddotoff.style.backgroundColor = '#e70d0d';
+        // Reset the color after 5 seconds
+        setTimeout(function() {
+            reddotoff.style.backgroundColor = ''; // Replace with original color
+        }, 5000);
+    }
+    this.classList.remove('clicked'); // Remove the animation class at the end of the animation
+});
 </script>
 
 </html>

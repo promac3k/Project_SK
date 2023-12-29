@@ -15,6 +15,9 @@
     width: 20px;
 }
 
+.opacityonhover:hover {
+    opacity: 0.5;
+}
 
 /* toggle switch */
 
@@ -133,9 +136,9 @@ input:checked+.slider:before {
 .profile_settings {
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
     position: absolute;
-    top: 64%;
+    top: 61%;
     left: 7.2%;
-    height: 25%;
+    height: 27%;
     width: 7%;
     border-radius: 50px;
     overflow: hidden;
@@ -143,6 +146,7 @@ input:checked+.slider:before {
     place-items: center;
     border: rgb(255, 255, 255)3px solid;
 }
+
 
 .legenda_profile {
     position: absolute;
