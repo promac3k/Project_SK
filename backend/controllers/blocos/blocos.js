@@ -382,11 +382,12 @@ const post_desmarcar = async (req, res) => {
                 if (error) {
                     console.error('Erro ao deletar: ', error);
                     return res.status(500).send('Ocorreu um erro ao deletar o horario.');
-                } else {
-                    console.log('Deletado com sucesso');
-                    return res.status(200).send('Horario deletado com sucesso!');
-                }
+                } 
             });
+
+            console.log('Deletado com sucesso');
+            return res.status(200).send('Horario deletado com sucesso!');
+            
         } catch (err) {
             console.error(err);
             res.status(500).send('Ocorreu um erro ao buscar o horario.');
