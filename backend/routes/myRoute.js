@@ -54,6 +54,8 @@ router.post('/marcar', blocos.post_marcar);
 
 router.post('/desmarcar', blocos.post_desmarcar);
 
+router.get('/emails', index.get_emails);
+
 router.get('/simulacao', index.get_simulacao); // Rota para simulação
 
 

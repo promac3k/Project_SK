@@ -93,11 +93,22 @@
           <div class="modal-header">
             <h1>Mensagens</h1>
 
-            <span class="fechar_editar" onclick="document.getElementById('modal_mensagem').style.display='none'">&times;</span>
+            <span class="fechar_editar"
+              onclick="document.getElementById('modal_mensagem').style.display='none'">&times;</span>
           </div>
 
           <div class="modal-content">
-
+            <table class="email-table">
+              <thead class="">
+                <tr>
+                  <th scope="col" style="text-align:center">De</th>
+                  <th scope="col" style="text-align:center">Titulo</th>
+                  <th scope="col" style="text-align:center">Mensagem</th>
+                </tr>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
@@ -416,6 +427,32 @@
           }
         }
       });
+    document.addEventListener('DOMContentLoaded', (event) => {
+      fetch('/emails')
+        .then(response => response.json())
+        .then(emails => {
+
+          console.log(emails);
+
+          const tableBody = document.querySelector('.email-table tbody');
+          if (tableBody) { // check if tableBody is not null
+            emails.forEach(email => {
+              // check if email has from, subject, and text
+              if (email.from && email.subject && email.text) {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                            <td>${email.from}</td>
+                            <td>${email.subject}</td>
+                            <td>${email.text}</td>
+                        `;
+                tableBody.appendChild(row);
+              }
+            });
+          } else {
+            console.error('Erro: elemento .email-table tbody não encontrado');
+          }
+        });
+    });
   }
   if (valor === 1) {
 

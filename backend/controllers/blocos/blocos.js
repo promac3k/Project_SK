@@ -286,24 +286,24 @@ const post_marcar = async (req, res) => {
 
                 // Envia e-mails para os alunos
                 let emailPromises = email_alunos.map(email_aluno => {
-                    return new Promise((resolve, reject) => {
-                        const mailOptions = {
-                            from: process.env.EMAIL_TO,
-                            to: email_aluno,
-                            subject: 'Mudança de sala',
-                            text: `A aula de ${disciplina}, vai ser na sala ${sala} do ${bloco_} no dia ${dia} das ${horarioInicial} às ${horarioFinal} horas.\nCumprimentos,\n${nome_prof}`
-                        }
+                    const mailOptions = {
+                        from: process.env.EMAIL_TO,
+                        to: email_aluno,
+                        subject: 'Mudança de sala',
+                        text: `A aula de ${disciplina}, vai ser na sala ${sala} do ${bloco_} no dia ${dia} das ${horarioInicial} às ${horarioFinal} horas.\nCumprimentos,\n${nome_prof}`
+                    }
 
-                        email.sendMail(mailOptions, function (error) {
-                            if (error) {
-                                console.log('Erro ao enviar o e-mail: ', error);
-                                reject(error);
-                            } else {
-                                console.log('Email enviado com sucesso para: ' + email_aluno);
-                                resolve();
-                            }
+                    return email.sendMail(mailOptions)
+                        .then(() => {
+                            console.log('Email enviado com sucesso para: ' + email_aluno);
+                            return connection.query('INSERT INTO emails (`from`, `to`, subject, text) VALUES (?, ?, ?, ?)', [mailOptions.from, mailOptions.to, mailOptions.subject, mailOptions.text]);
+                        })
+                        .then(() => {
+                            console.log('Email inserido com sucesso no banco de dados');
+                        })
+                        .catch(error => {
+                            console.log('Erro ao enviar o e-mail: ', error);
                         });
-                    });
                 });
 
                 Promise.all(emailPromises)
@@ -388,7 +388,7 @@ const post_desmarcar = async (req, res) => {
             await connection.query('DELETE FROM horario_salas WHERE disciplina_id_disc = ? AND salas_id_salas = ? AND data_salas = ? AND dia_semana = ?', [id_disc, id_sala, dia, semana_]);
 
             return res.status(200).send('Horário deletado com sucesso.');
-            
+
         } catch (err) {
             console.error(err);
             res.status(500).send('Ocorreu um erro ao buscar o horario.');

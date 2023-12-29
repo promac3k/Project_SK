@@ -1,4 +1,5 @@
 // Importa os módulos locais necessários
+const connection = require('../services/db'); // Módulo para conexão com o banco de dados
 const path = require('path'); // Módulo Node.js para trabalhar com caminhos de arquivos
 
 
@@ -65,10 +66,49 @@ const get_simulacao = (req, res) => {
 
 
 }
+
+const get_emails = async (req, res) => {
+    console.log("get_emails >>>>> " + req.session.loggedin);
+
+    if (req.session.loggedin) {
+        const id_aluno = req.cookies.id;
+        //console.log(id_aluno);
+
+        try {
+            const [db_alunos] = await connection.query(`SELECT * FROM alunos where id_alunos = ? `, [id_aluno]);
+            const email_aluno = db_alunos.email_aluno;
+
+            const db_emails = await connection.query(`SELECT * FROM emails where \`to\` = ? `, [email_aluno]);
+
+            //console.log(db_emails);
+            
+            // Create an array of emails
+            const emails = db_emails.map(email => ({
+                from: email.from,
+                subject: email.subject,
+                text: email.text
+            }));
+
+            //console.log(emails);
+
+            res.json(emails);
+
+        } catch (err) {
+            console.error(err);
+            res.status(500).send('Ocorreu um erro ao buscar os emails.');
+        }
+
+    } else {
+        res.sendFile(path.join(__dirname, '..', '..', 'www/pages/login.html'));
+    }
+}
+
+
 // Exporta todos os métodos como um objeto para serem usados em outros arquivos
 module.exports = {
     get_index,
     get_logout,
     get_eventos,
-    get_simulacao
+    get_simulacao,
+    get_emails
 }
