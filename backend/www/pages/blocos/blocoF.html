@@ -257,6 +257,12 @@
             </div>
         </div>
 
+        <div id="modal_popup" class="modal_popup">
+            <div class="modal_popup_content">
+              <span id="modalText"></span>
+            </div>
+        </div>
+
         <div class="container">
             <nav class="navbar">
                 <ul>
@@ -541,6 +547,10 @@
     let gravar = document.getElementById('gravar');
     let modal_teste = document.getElementById('modal_teste');
     let desmarcar = document.getElementById('desmarcar');
+    let modal_popup = document.getElementById('modal_popup');
+    let modal_popup_content = document.getElementsByClassName('modal_popup_content');
+    let text = document.getElementById('modalText');
+
 
     // vai buscar a class do botao para fechar o modal
     var span = document.getElementsByClassName("fechar_editar ")[0];
@@ -558,7 +568,6 @@
         document.getElementById('marcar-form').style.display = 'block';
         // Oculta o formulário 'desmarcar'
         document.getElementById('desmarcar-form').style.display = 'none';
-
     }
 
     desmarcar.onclick = function () {
@@ -739,13 +748,13 @@
 
                 // Verifica o código de status da resposta
                 if (response.status === 200) {
-
+                    console.log(response);
                     text.innerHTML = response.text();
-                    console.log(response.text());
-                    //modal.style.display = "block";
+                    console.log(text.innerHTML);
+                    modal_popup.style.display = 'block'
                     // Fecha o modal após 5 segundos
                     setTimeout(function () {
-                        modal.style.display = "none";
+                        modal_popup.style.display = "none";
                     }, 5000);
                     return null;
 
@@ -754,15 +763,14 @@
                 }
             })
             .then(message => {
-
                 if (message) {
                     text.innerHTML = message;
                     console.log(message);
-                    //modal.style.display = "block";
-                    //modal_content.style.border = "1px solid #ff4321";
+                    modal_popup.style.display = 'block'
+                    modal_popup_content.style.border = "1px solid #ff4321";
 
                     setTimeout(function () {
-                        modal.style.display = "none";
+                        modal_popup.style.display = "none";
                     }, 5000);
                 }
 
