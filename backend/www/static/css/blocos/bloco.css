@@ -182,7 +182,7 @@ main{
   margin: 15% auto;
   /* Ajusta a margem superior para centralizar verticalmente */
   padding: 20px;
-  border: 1px solid #ff4321;
+  border: 1px solid green;
   width: 30%;
   /* Reduz a largura para 30% da largura da tela */
   max-width: 500px;
@@ -196,7 +196,6 @@ main{
 .dark-mode .modal_popup_content {
   background-color: #444444;
   color: white;
-  border: 1px solid #ff4321;
 }
 
 @media (min-width: 1281px) and (max-width: 1600px){

@@ -259,7 +259,7 @@
 
         <div id="modal_popup" class="modal_popup">
             <div class="modal_popup_content">
-              <span id="modalText"></span>
+                <span id="modalText"></span>
             </div>
         </div>
 
@@ -548,7 +548,7 @@
     let modal_teste = document.getElementById('modal_teste');
     let desmarcar = document.getElementById('desmarcar');
     let modal_popup = document.getElementById('modal_popup');
-    let modal_popup_content = document.getElementsByClassName('modal_popup_content');
+    let modal_popup_content = document.getElementsByClassName('modal_popup_content')[0];
     let text = document.getElementById('modalText');
 
 
@@ -748,10 +748,21 @@
 
                 // Verifica o código de status da resposta
                 if (response.status === 200) {
-                    console.log(response);
-                    text.innerHTML = response.text();
-                    console.log(text.innerHTML);
+
+                    modal.style.display = "none";
+                    horario_sala.style.display = 'none';
+                    gravar.style.display = 'none';
+                    horario.style.display = "grid";
+                    modal_teste.style.display = 'none';
+                    document.getElementById('dropdown').selectedIndex = '0';
+                    document.getElementById('dropdownCursos').selectedIndex = '0';
+                    document.getElementById('dropdownHorario').selectedIndex = '0';
+                    document.getElementById('dropdownHorarioFinal').selectedIndex = '0';
+                    //console.log(response);
+                    text.innerHTML = "Aula marcada com sucesso!";
                     modal_popup.style.display = 'block'
+                    modal_popup_content.style.border = "1px solid green";
+
                     // Fecha o modal após 5 segundos
                     setTimeout(function () {
                         modal_popup.style.display = "none";
@@ -765,7 +776,7 @@
             .then(message => {
                 if (message) {
                     text.innerHTML = message;
-                    console.log(message);
+                    //console.log(message);
                     modal_popup.style.display = 'block'
                     modal_popup_content.style.border = "1px solid #ff4321";
 
@@ -846,13 +857,25 @@
 
                 // Verifica o código de status da resposta
                 if (response.status === 200) {
-                    text.innerHTML = response.text();
-                    console.log(response.text());
-                    //modal.style.display = "block";
+                    modal.style.display = "none";
+                    horario_sala.style.display = 'none';
+                    gravar.style.display = 'none';
+                    horario.style.display = "grid";
+                    modal_teste.style.display = 'none';
+                    document.getElementById('dropdown').selectedIndex = '0';
+                    document.getElementById('dropdownCursos').selectedIndex = '0';
+                    document.getElementById('dropdownHorario').selectedIndex = '0';
+                    document.getElementById('dropdownHorarioFinal').selectedIndex = '0';
+                    //console.log(response);
+                    text.innerHTML = "Aula desmarcada com sucesso!";
+                    modal_popup.style.display = 'block'
+                    modal_popup_content.style.border = "1px solid green";
+
                     // Fecha o modal após 5 segundos
                     setTimeout(function () {
-                        modal.style.display = "none";
+                        modal_popup.style.display = "none";
                     }, 5000);
+
                     return null;
 
                 } else {
@@ -860,18 +883,16 @@
                 }
             })
             .then(message => {
-
                 if (message) {
                     text.innerHTML = message;
                     console.log(message);
-                    //modal.style.display = "block";
-                    //modal_content.style.border = "1px solid #ff4321";
+                    modal_popup.style.display = 'block'
+                    modal_popup_content.style.border = "1px solid #ff4321";
 
                     setTimeout(function () {
-                        modal.style.display = "none";
+                        modal_popup.style.display = "none";
                     }, 5000);
                 }
-
             })
             .then(data => {
                 // Loga o corpo da resposta no console
