@@ -61,8 +61,8 @@
 
             <h1>Calendário Escolar</h1>
 
-            <button id="trimestralButton">Trimestral</button>
-            <button id="semestralButton">Semestral</button>
+            <button class="button_cal_def" id="trimestralButton">Trimestral</button>
+            <button class="button_cal" id="semestralButton">Semestral</button>
 
             <div class="cal">
                 <table>
@@ -193,6 +193,8 @@
     document.getElementById('calendar-body-semestral').style.display = 'none';
     };
 
+    
+
     generateCalendarSemestral();
     generateCalendarTrimestral();
 
@@ -201,6 +203,9 @@
     document.getElementById('calendar-body-semestral').style.display = 'none';
     // Show the trimestral calendar
     document.getElementById('calendar-body-trimestral').style.display = '';
+        // Change the background color to purple
+        document.getElementById('trimestralButton').style.backgroundColor = "purple";
+        document.getElementById('semestralButton').style.backgroundColor = "#FF4B2B";
 });
 
 // When the 'semestralButton' is clicked
@@ -209,6 +214,9 @@ document.getElementById('semestralButton').addEventListener('click', function() 
     document.getElementById('calendar-body-trimestral').style.display = 'none';
     // Show the semestral calendar
     document.getElementById('calendar-body-semestral').style.display = '';
+    // Change the background color to purple
+    document.getElementById('semestralButton').style.backgroundColor = "purple";
+    document.getElementById('trimestralButton').style.backgroundColor = "#FF4B2B";
 });
 
 </script>
