@@ -285,34 +285,45 @@ const post_marcar = async (req, res) => {
                 const email_alunos = db_alunos.map(db => db.email_aluno);
 
                 // Envia e-mails para os alunos
-                email_alunos.forEach(email_aluno => {
-                    const mailOptions = {
-                        from: process.env.EMAIL_TO,
-                        to: email_aluno,
-                        subject: 'Mudança de sala',
-                        text: `A aula de ${disciplina}, vai ser na sala ${sala} do ${bloco_} no dia ${dia} das ${horarioInicial} às ${horarioFinal} horas.\nCumprimentos,\n${nome_prof}`
-                    }
-
-                    email.sendMail(mailOptions, function (error) {
-                        if (error) {
-                            console.log('Erro ao enviar o e-mail: ', error);
-                        } else {
-                            console.log('Email enviado com sucesso para: ' + email_aluno);
+                let emailPromises = email_alunos.map(email_aluno => {
+                    return new Promise((resolve, reject) => {
+                        const mailOptions = {
+                            from: process.env.EMAIL_TO,
+                            to: email_aluno,
+                            subject: 'Mudança de sala',
+                            text: `A aula de ${disciplina}, vai ser na sala ${sala} do ${bloco_} no dia ${dia} das ${horarioInicial} às ${horarioFinal} horas.\nCumprimentos,\n${nome_prof}`
                         }
+
+                        email.sendMail(mailOptions, function (error) {
+                            if (error) {
+                                console.log('Erro ao enviar o e-mail: ', error);
+                                reject(error);
+                            } else {
+                                console.log('Email enviado com sucesso para: ' + email_aluno);
+                                resolve();
+                            }
+                        });
                     });
                 });
 
-                // Insere o novo horário
-                const query = 'INSERT INTO horario_salas (disciplina_id_disc, salas_id_salas, data_salas, dia_semana, hora_salas, fimh_salas) VALUES (?, ?, ?, ?, ?, ?)';
-                connection.query(query, [id_disc, id_sala, dia, semana_, horarioInicial, horarioFinal], function (error, results, fields) {
-                    if (error) {
-                        console.error('Erro ao inserir: ', error);
-                        return res.status(500).send('Ocorreu um erro ao inserir o horario.');
-                    } else {
+                Promise.all(emailPromises)
+                    .then(() => {
+                        // Insere o novo horário
+                        const query = 'INSERT INTO horario_salas (disciplina_id_disc, salas_id_salas, data_salas, dia_semana, hora_salas, fimh_salas) VALUES (?, ?, ?, ?, ?, ?)';
+                        connection.query(query, [id_disc, id_sala, dia, semana_, horarioInicial, horarioFinal], function (error, results, fields) {
+                            if (error) {
+                                console.error('Erro ao inserir: ', error);
+                                return res.status(500).send('Ocorreu um erro ao inserir o horario.');
+                            }
+                        });
+                        
                         console.log('Inserido com sucesso');
                         return res.status(200).send('Horario inserido com sucesso!');
-                    }
-                });
+                    })
+                    .catch((error) => {
+                        console.error('Erro ao enviar e-mails: ', error);
+                        return res.status(500).send('Ocorreu um erro ao enviar os e-mails.');
+                    });
             }
         } catch (err) {
             console.error(err);
