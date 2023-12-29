@@ -54,11 +54,11 @@
             src="https://img.icons8.com/material-rounded/40/settings.png" alt="settings" class="opacityonhover" />
           </svg></span>
         <span id="mail" class="opacityonhover" style="cursor: pointer;"
-          onclick="document.getElementById('modal_editar').style.display='block'"><img width="40" height="40"
+          onclick="document.getElementById('modal_mensagem').style.display='block'"><img width="40" height="40"
             src="https://img.icons8.com/glyph-neue/40/mail.png" alt="mail" />
           </svg></span>
         <a href="/logout"><span><img width="40" height="40" src="https://img.icons8.com/windows/40/exit.png" alt="exit"
-             class="img_settings" /></span></a>
+              class="img_settings" /></span></a>
 
       </div>
 
@@ -68,7 +68,7 @@
           <div class="modal-header">
             <h1>Alterar Palavra-Passe</h1>
 
-            <span class="fechar_editar">&times;</span>
+            <span class="fechar_editar" id="fechar">&times;</span>
           </div>
 
           <div class="modal-content">
@@ -83,6 +83,21 @@
                 <button type="submit" class="button_contacto">Gravar </button>
               </form>
             </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal mostra as mensagens -->
+      <div id="modal_mensagem" class="modal">
+        <div class="modal_conteudo">
+          <div class="modal-header">
+            <h1>Mensagens</h1>
+
+            <span class="fechar_editar" onclick="document.getElementById('modal_mensagem').style.display='none'">&times;</span>
+          </div>
+
+          <div class="modal-content">
+
           </div>
         </div>
       </div>
@@ -467,6 +482,7 @@
 
   // vai buscar o id do modal
   var modal_editar = document.getElementById("modal_editar");
+  var modal_mensagem = document.getElementById('modal_mensagem')
 
   // vai buscar a class do botao para fechar o modal
   var span = document.getElementsByClassName("fechar_editar")[0];
