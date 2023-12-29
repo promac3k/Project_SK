@@ -198,7 +198,7 @@ main{
   color: white;
 }
 
-@media (min-width: 1281px) and (max-width: 2000px){
+@media (min-width: 1537px) and (max-width: 2000px){
   .week {
     font-size: 22px !important;
     line-height: 12px;
@@ -212,6 +212,25 @@ main{
 
   .modal {
     bottom: 9%;
+    width: 100%;
+    left: 0%;
+  }
+}
+
+@media (min-width: 1281px) and (max-width: 1536px){
+  .week {
+    font-size: 22px !important;
+    line-height: 12px;
+    height: 30%;
+  }
+
+  .day {
+    line-height: 12px;
+    height: 25%;
+  }
+
+  .modal {
+    bottom: 21%;
     width: 100%;
     left: 0%;
   }
