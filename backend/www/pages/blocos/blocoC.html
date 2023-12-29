@@ -675,6 +675,15 @@
                     document.getElementById('dropdownHorarioFinal').selectedIndex = '0';
                     document.getElementById('dropdownDesmarcar').selectedIndex = '0';
                     document.getElementById('dropdownCursosDesmarcar').selectedIndex = '0';
+                    const tds = document.querySelectorAll('td[id^="table_aula_"]');
+                    // Limpar o innerHTML de cada td
+                    tds.forEach(td => {
+                        td.innerHTML = '';
+                    });
+
+                    for (let linha of linhas) {
+                        linha.style.display = 'none';
+                    }
                     //console.log(response);
                     text.innerHTML = "Aula desmarcada com sucesso!";
                     modal_popup.style.display = 'block'
