@@ -316,7 +316,7 @@ const post_marcar = async (req, res) => {
                                 return res.status(500).send('Ocorreu um erro ao inserir o horario.');
                             }
                         });
-                        
+
                         console.log('Inserido com sucesso');
                         return res.status(200).send('Horario inserido com sucesso!');
                     })
@@ -376,17 +376,18 @@ const post_desmarcar = async (req, res) => {
             }
             const id_disc = db_disc.id_disc;
 
-            // Deleta o horário
-            const query = 'DELETE FROM horario_salas WHERE disciplina_id_disc = ? AND salas_id_salas = ? AND data_salas = ? AND dia_semana = ?';
-            connection.query(query, [id_disc, id_sala, dia, semana_], function (error, results, fields) {
-                if (error) {
-                    console.error('Erro ao deletar: ', error);
-                    return res.status(500).send('Ocorreu um erro ao deletar o horario.');
-                } 
-            });
 
-            console.log('Deletado com sucesso');
-            return res.status(200).send('Horario deletado com sucesso!');
+            const salaResult = await connection.query('SELECT * FROM horario_salas WHERE disciplina_id_disc = ? AND salas_id_salas = ? AND data_salas = ? AND dia_semana = ?', [id_disc, id_sala, dia, semana_]);
+
+            if (salaResult.length == 0) {
+
+                return res.status(404).send('Horário não encontrado.');
+
+            }
+
+            await connection.query('DELETE FROM horario_salas WHERE disciplina_id_disc = ? AND salas_id_salas = ? AND data_salas = ? AND dia_semana = ?', [id_disc, id_sala, dia, semana_]);
+
+            return res.status(200).send('Horário deletado com sucesso.');
             
         } catch (err) {
             console.error(err);
