@@ -106,5 +106,64 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 dropdownHorarioFinal.add(option);
             });
         });
+
+
+        const dropdownDesmarcar = document.getElementById('dropdownDesmarcar');
+        const dropdownCursosDesmarcar = document.getElementById('dropdownCursosDesmarcar');
+
+        // Fazer uma solicitação GET para a sua API
+        fetch('/disciplinas')
+            .then(response => response.json())
+            .then(data => {
+                // Criar um novo array que contém apenas valores únicos
+                const uniqueData = [...new Set(data)];
+
+                // Criar e adicionar uma opção em branco
+                const blankOption = document.createElement('option');
+                blankOption.value = '';
+                blankOption.text = '';
+                dropdownDesmarcar.add(blankOption);
+
+                // Para cada item na resposta, adicionar uma opção ao dropdown
+                uniqueData.forEach(item => {
+                    const option = document.createElement('option');
+                    option.value = item;
+                    option.text = item;
+                    dropdownDesmarcar.add(option);
+                });
+            })
+            .catch(error => console.error('Error:', error));
+
+        // Adicionar um event listener para o evento change do dropdown
+        dropdownDesmarcar.addEventListener('change', function () {
+            // Obtenha a disciplina selecionada
+            const disciplinaSelecionada = this.value;
+
+            // Fazer uma solicitação GET para a sua API
+            fetch(`/cursos?disciplina=${disciplinaSelecionada}`)
+                .then(response => response.json())
+                .then(data => {
+                    // Criar um novo array que contém apenas valores únicos
+                    const uniqueData = [...new Set(data)];
+
+                    // Limpar o dropdown de cursos
+                    dropdownCursosDesmarcar.innerHTML = '';
+
+                    // Criar e adicionar uma opção em branco
+                    const blankOption = document.createElement('option');
+                    blankOption.value = '';
+                    blankOption.text = '';
+                    dropdownCursosDesmarcar.add(blankOption);
+
+                    // Para cada item na resposta, adicionar uma opção ao dropdown
+                    uniqueData.forEach(item => {
+                        const option = document.createElement('option');
+                        option.value = item;
+                        option.text = item;
+                        dropdownCursosDesmarcar.add(option);
+                    });
+                })
+                .catch(error => console.error('Error:', error));
+        });
     }
 });

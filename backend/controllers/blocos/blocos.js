@@ -221,17 +221,11 @@ const get_cursos = async (req, res) => {
 
 const post_marcar = async (req, res) => {
 
-    console.log("post_bloco_ids >>>>> " + req.session.loggedin);
+    console.log("post_marcar >>>>> " + req.session.loggedin);
 
     if (req.session.loggedin) {
         try {
-
             const id_prof = req.cookies.id_prof;
-
-            const result = await connection.query(`SELECT * FROM professores where id_prof = ? `, [id_prof]);
-            const db_prof = result[0];
-            const nome_prof = db_prof.nome_prof;
-
             const { disciplina, curso, horarioInicial, horarioFinal, bloco_, sala, dia, semana_ } = req.body;
 
             console.log("disciplina: " + disciplina);
@@ -243,77 +237,145 @@ const post_marcar = async (req, res) => {
             console.log("dia: " + dia);
             console.log("semana: " + semana_);
 
-            const result2 = await connection.query(`SELECT * FROM salas where bloco_salas = ? AND numero_salas = ? `, [bloco_, sala]);
-            const db_sala = result2[0];
+            // Validação dos dados recebidos
+            if (!disciplina || !curso || !horarioInicial || !horarioFinal || !bloco_ || !sala || !dia || !semana_) {
+                return res.status(400).send('Todos os campos são obrigatórios.');
+            }
+
+            // Busca o professor
+            const [db_prof] = await connection.query(`SELECT * FROM professores where id_prof = ? `, [id_prof]);
+            if (!db_prof) {
+                return res.status(404).send('Professor não encontrado.');
+            }
+            const nome_prof = db_prof.nome_prof;
+
+            // Busca a sala
+            const [db_sala] = await connection.query(`SELECT * FROM salas where bloco_salas = ? AND numero_salas = ? `, [bloco_, sala]);
+            if (!db_sala) {
+                return res.status(404).send('Sala não encontrada.');
+            }
             const id_sala = db_sala.id_salas;
 
-
-            // Primeiro, verifique se já existe um horário nesse dia e horário
+            // Verifica se já existe um horário nesse dia e horário
             const checkResult = await connection.query(`
                 SELECT * FROM horario_salas 
                 WHERE salas_id_salas = ? AND data_salas = ? AND ((hora_salas <= ? AND fimh_salas > ?) OR (hora_salas < ? AND fimh_salas >= ?))
             `, [id_sala, dia, horarioInicial, horarioInicial, horarioFinal, horarioFinal]);
 
-
             if (checkResult.length > 0) {
                 // Se já existe um horário nesse dia e horário, não insira um novo horário
-                console.log('Já existe um horário nesse dia e horário');
                 return res.status(400).send('Já existe uma reserva nessas horas');
             } else {
-
-                const result3 = await connection.query(`SELECT * FROM cursos where nome_curso = ? `, [curso]);
-                const db_curso = result3[0];
+                // Busca o curso
+                const [db_curso] = await connection.query(`SELECT * FROM cursos where nome_curso = ? `, [curso]);
+                if (!db_curso) {
+                    return res.status(404).send('Curso não encontrado.');
+                }
                 const id_curso = db_curso.id_cursos;
 
-                const result4 = await connection.query(`SELECT * FROM alunos where cursos_id_cursos = ? `, [id_curso]);
-                //console.log(result4);
-                const db_alunos = result4;
-                //console.log(db_alunos);
-                const email_alunos = db_alunos.map(db => db.email_aluno);
-                //console.log(email_alunos);
-
-                // Se não existe um horário nesse dia e horário, insira um novo horário
-                const result = await connection.query(`SELECT * FROM disciplina where nome_disc = ? AND cursos_id_cursos = ? `, [disciplina, id_curso]);
-                const db_disc = result[0];
+                // Busca a disciplina
+                const [db_disc] = await connection.query(`SELECT * FROM disciplina where nome_disc = ? AND cursos_id_cursos = ? `, [disciplina, id_curso]);
+                if (!db_disc) {
+                    return res.status(404).send('Disciplina não encontrada.');
+                }
                 const id_disc = db_disc.id_disc;
 
-                const result2 = await connection.query(`SELECT * FROM salas where bloco_salas = ? AND numero_salas = ? `, [bloco_, sala]);
-                const db_sala = result2[0];
-                const id_sala = db_sala.id_salas;
+                // Busca os alunos do curso
+                const db_alunos = await connection.query(`SELECT * FROM alunos where cursos_id_cursos = ? `, [id_curso]);
+                const email_alunos = db_alunos.map(db => db.email_aluno);
 
-                // Itera sobre os endereços de e-mail
+                // Envia e-mails para os alunos
                 email_alunos.forEach(email_aluno => {
-                    // Define as opções do e-mail
                     const mailOptions = {
                         from: process.env.EMAIL_TO,
                         to: email_aluno,
                         subject: 'Mudança de sala',
-                        text: 'A aula de ' + disciplina + ", vai ser na sala " + sala + " do " + bloco_ + " no dia " + dia + " das " + horarioInicial + " às " + horarioFinal + " horas." + "\n" + "Cumprimentos, " + "\n" + nome_prof
+                        text: `A aula de ${disciplina}, vai ser na sala ${sala} do ${bloco_} no dia ${dia} das ${horarioInicial} às ${horarioFinal} horas.\nCumprimentos,\n${nome_prof}`
                     }
 
-                    // Tenta enviar o e-mail
                     email.sendMail(mailOptions, function (error) {
                         if (error) {
-                            // Se houver um erro, loga o erro
                             console.log('Erro ao enviar o e-mail: ', error);
                         } else {
-                            // Se o e-mail for enviado com sucesso, loga uma mensagem de sucesso
                             console.log('Email enviado com sucesso para: ' + email_aluno);
                         }
                     });
                 });
 
+                // Insere o novo horário
                 const query = 'INSERT INTO horario_salas (disciplina_id_disc, salas_id_salas, data_salas, dia_semana, hora_salas, fimh_salas) VALUES (?, ?, ?, ?, ?, ?)';
                 connection.query(query, [id_disc, id_sala, dia, semana_, horarioInicial, horarioFinal], function (error, results, fields) {
                     if (error) {
                         console.error('Erro ao inserir: ', error);
-                        res.status(500).send('Ocorreu um erro ao inserir o horario.');
+                        return res.status(500).send('Ocorreu um erro ao inserir o horario.');
                     } else {
                         console.log('Inserido com sucesso');
-                        res.status(200).send('Horario inserido com sucesso!');
+                        return res.status(200).send('Horario inserido com sucesso!');
                     }
                 });
             }
+        } catch (err) {
+            console.error(err);
+            return res.status(500).send('Ocorreu um erro ao buscar o horario.');
+        }
+    } else {
+        res.sendFile(path.join(__dirname, '..', '..', 'www/pages/login.html'));
+    }
+}
+
+const post_desmarcar = async (req, res) => {
+
+    console.log("post_desmarcar >>>>> " + req.session.loggedin);
+
+    if (req.session.loggedin) {
+        try {
+            const id_prof = req.cookies.id_prof;
+            const { disciplina, curso, bloco_, sala, dia, semana_ } = req.body;
+
+            console.log("disciplina: " + disciplina);
+            console.log("curso: " + curso);
+            console.log("bloco_: " + bloco_);
+            console.log("sala: " + sala);
+            console.log("dia: " + dia);
+            console.log("semana: " + semana_);
+
+            // Validação dos dados recebidos
+            if (!disciplina || !curso || !bloco_ || !sala || !dia || !semana_) {
+                return res.status(400).send('Todos os campos são obrigatórios.');
+            }
+
+            // Busca a sala
+            const [db_sala] = await connection.query(`SELECT * FROM salas where bloco_salas = ? AND numero_salas = ? `, [bloco_, sala]);
+            if (!db_sala) {
+                return res.status(404).send('Sala não encontrada.');
+            }
+            const id_sala = db_sala.id_salas;
+
+            // Busca o curso
+            const [db_curso] = await connection.query(`SELECT * FROM cursos where nome_curso = ? `, [curso]);
+            if (!db_curso) {
+                return res.status(404).send('Curso não encontrado.');
+            }
+            const id_curso = db_curso.id_cursos;
+
+            // Busca a disciplina
+            const [db_disc] = await connection.query(`SELECT * FROM disciplina where nome_disc = ? AND professores_id_prof = ? AND cursos_id_cursos = ? `, [disciplina, id_prof, id_curso]);
+            if (!db_disc) {
+                return res.status(404).send('Disciplina não encontrada.');
+            }
+            const id_disc = db_disc.id_disc;
+
+            // Deleta o horário
+            const query = 'DELETE FROM horario_salas WHERE disciplina_id_disc = ? AND salas_id_salas = ? AND data_salas = ? AND dia_semana = ?';
+            connection.query(query, [id_disc, id_sala, dia, semana_], function (error, results, fields) {
+                if (error) {
+                    console.error('Erro ao deletar: ', error);
+                    return res.status(500).send('Ocorreu um erro ao deletar o horario.');
+                } else {
+                    console.log('Deletado com sucesso');
+                    return res.status(200).send('Horario deletado com sucesso!');
+                }
+            });
         } catch (err) {
             console.error(err);
             res.status(500).send('Ocorreu um erro ao buscar o horario.');
@@ -322,6 +384,7 @@ const post_marcar = async (req, res) => {
         res.sendFile(path.join(__dirname, '..', '..', 'www/pages/login.html'));
     }
 }
+
 
 module.exports = {
     get_blocoA,
@@ -333,5 +396,6 @@ module.exports = {
     post_bloco_ids,
     get_disciplinas,
     get_cursos,
-    post_marcar
+    post_marcar,
+    post_desmarcar
 }

@@ -236,7 +236,7 @@
                 </div>
 
                 <div class="modal-content">
-                    <form id="sala-form" action="/marcar" method="post">
+                    <form id="marcar-form" action="/marcar" method="post">
                         <h1>Marcaçao</h1>
                         <span>Disciplina</span>
                         <select id="dropdown"></select>
@@ -246,7 +246,15 @@
                         <select id="dropdownHorario"></select>
                         <span>horario final</span>
                         <select id="dropdownHorarioFinal"></select>
-                        <button type="submit" id="salvar">Salvar Marcaçao</button>
+                        <button type="submit" id="marcar">Marcar</button>
+                    </form>
+                    <form id="desmarcar-form" action="/desmarcar" method="post">
+                        <h1>Desmarcaçao</h1>
+                        <span>Disciplina</span>
+                        <select id="dropdownDesmarcar"></select>
+                        <span>Curso</span>
+                        <select id="dropdownCursosDesmarcar"></select>
+                        <button type="submit" id="desmarcar">Desmarcar</button>
                     </form>
                 </div>
             </div>
@@ -362,6 +370,23 @@
         gravar.style.display = 'none';
         horario.style.display = "grid";
         modal_teste.style.display = 'block';
+        // Mostra o formulário 'marcar'
+        document.getElementById('marcar-form').style.display = 'block';
+        // Oculta o formulário 'desmarcar'
+        document.getElementById('desmarcar-form').style.display = 'none';
+
+    }
+
+    desmarcar.onclick = function () {
+        modal.style.display = "none";
+        horario_sala.style.display = 'none';
+        gravar.style.display = 'none';
+        horario.style.display = "grid";
+        modal_teste.style.display = 'block';
+        // Mostra o formulário 'desmarcar'
+        document.getElementById('desmarcar-form').style.display = 'block';
+        // Oculta o formulário 'marcar'
+        document.getElementById('marcar-form').style.display = 'none';
     }
 
     //fecha o modal quando o botao dentro do modal for clicado
@@ -469,7 +494,7 @@
 
 
     // Adiciona um ouvinte de evento 'submit' ao formulário com o id 'contact-form'
-    document.getElementById('sala-form').addEventListener('submit', function (event) {
+    document.getElementById('marcar-form').addEventListener('submit', function (event) {
         // Previne o comportamento padrão do evento 'submit', que é recarregar a página
         event.preventDefault();
 
@@ -514,10 +539,10 @@
             .then(response => {
 
                 // Verifica o código de status da resposta
-                if (response.status === 200) {                    
+                if (response.status === 200) {
                     text.innerHTML = response.text();
                     console.log(response.text());
-                    modal.style.display = "block";
+                    //modal.style.display = "block";
                     // Fecha o modal após 5 segundos
                     setTimeout(function () {
                         modal.style.display = "none";
@@ -533,8 +558,8 @@
                 if (message) {
                     text.innerHTML = message;
                     console.log(message);
-                    modal.style.display = "block";
-                    modal_content.style.border = "1px solid #ff4321";
+                    //modal.style.display = "block";
+                    //modal_content.style.border = "1px solid #ff4321";
 
                     setTimeout(function () {
                         modal.style.display = "none";
@@ -567,6 +592,90 @@
         valor = user.tipo;
         console.log(valor);
     }
+
+
+    // Adiciona um ouvinte de evento 'submit' ao formulário com o id 'contact-form'
+    document.getElementById('desmarcar-form').addEventListener('submit', function (event) {
+        // Previne o comportamento padrão do evento 'submit', que é recarregar a página
+        event.preventDefault();
+
+        // Obtém os valores dos campos do formulário
+        var disciplina = document.getElementById('dropdownDesmarcar').value;
+        var curso = document.getElementById('dropdownCursosDesmarcar').value;
+        var bloco_ = bloco;
+        var sala = clickedCellId;
+        var dia = clickedDayId;
+
+        // Crie um objeto Date com a data
+        var data = new Date(dia);
+
+        // Obtenha o dia da semana como um número entre 0 e 6
+        var diaDaSemanaNumero = data.getDay();
+
+        // Mapeie o número do dia da semana para o nome do dia da semana
+        var diasDaSemana = ['domingo', 'segunda', 'terca', 'quarta', 'quinta', 'sexta', 'sabado'];
+        var diaDaSemana = diasDaSemana[diaDaSemanaNumero];
+
+        //console.log(diaDaSemana); // por exemplo, 'Quarta'
+
+        var semana_ = semana || diaDaSemana;
+
+        //console.log(disciplina, curso, horarioInicial, horarioFinal, bloco_, sala, dia, semana_);
+
+        // Cria um objeto com os dados do formulário
+        var data = { disciplina, curso, bloco_, sala, dia, semana_ };
+
+        console.log(data);
+
+        // Envia uma solicitação POST para o servidor
+        fetch('/desmarcar', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data), // Converte os dados do formulário em uma string JSON
+        })
+            .then(response => {
+
+                // Verifica o código de status da resposta
+                if (response.status === 200) {
+                    text.innerHTML = response.text();
+                    console.log(response.text());
+                    //modal.style.display = "block";
+                    // Fecha o modal após 5 segundos
+                    setTimeout(function () {
+                        modal.style.display = "none";
+                    }, 5000);
+                    return null;
+
+                } else {
+                    return response.text();
+                }
+            })
+            .then(message => {
+
+                if (message) {
+                    text.innerHTML = message;
+                    console.log(message);
+                    //modal.style.display = "block";
+                    //modal_content.style.border = "1px solid #ff4321";
+
+                    setTimeout(function () {
+                        modal.style.display = "none";
+                    }, 5000);
+                }
+
+            })
+            .then(data => {
+                // Loga o corpo da resposta no console
+                console.log('Sucesso:', data);
+            })
+            .catch((error) => {
+                // Loga qualquer erro que ocorra durante a solicitação no console
+                console.error('Erro:', error);
+            });
+    });
+
 
 
 </script>
