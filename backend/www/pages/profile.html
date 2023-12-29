@@ -419,6 +419,9 @@
   }
   if (valor === 1) {
 
+    document.getElementById("mail").style.display = "none";
+
+
     fetch('/perfil/horarios')
       .then(response => {
         return response.json();
