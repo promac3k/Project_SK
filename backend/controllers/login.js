@@ -70,7 +70,7 @@ const post_login = async (req, res) => {
                     var id_encrypted = cookie_bcrypt.encrypt(id.toString());
 
                     res.cookie("user", cookie_bcrypt.encrypt(JSON.stringify(user)));
-                    res.cookie("id", id_encrypted);
+                    res.cookie("id_prof", id_encrypted);
                     res.status(200).send("Login efetuado com sucesso!")
 
                 } else {
