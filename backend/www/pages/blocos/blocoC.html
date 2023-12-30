@@ -22,11 +22,12 @@
     <main>
         <!-- Modal Editar Palavra-Passe -->
         <div id="modal_sala" class="modal">
-
             <div class="modal_sala_content">
+
                 <div class="modal-header">
                     <span id="fechar_editar" class="fechar_editar">&times;</span>
                 </div>
+
                 <h1>Horário</h1>
 
                 <div id="horario">
@@ -46,31 +47,31 @@
 
                 </div>
 
-
                 <table class="table_alunos" id="horario_sala">
                     <thead>
                         <tr class="tr_alunos">
-                            <th style="width: 200px;">dia</th>
-                            <th style="width: 200px;">08:00 - 08:30</th>
-                            <th style="width: 200px;">08:30 - 09:00</th>
-                            <th style="width: 200px;">09:00 - 09:30</th>
-                            <th style="width: 200px;">09:30 - 10:00</th>
-                            <th style="width: 200px;">10:00 - 10:30</th>
-                            <th style="width: 200px;">10:30 - 11:00</th>
-                            <th style="width: 200px;">11:00 - 11:30</th>
-                            <th style="width: 200px;">11:30 - 12:00</th>
-                            <th style="width: 200px;">12:00 - 12:30</th>
-                            <th style="width: 200px;">12:30 - 13:00</th>
-                            <th style="width: 200px;">13:00 - 13:30</th>
-                            <th style="width: 200px;">13:30 - 14:00</th>
-                            <th style="width: 200px;">14:00 - 14:30</th>
-                            <th style="width: 200px;">14:30 - 15:00</th>
-                            <th style="width: 200px;">15:00 - 15:30</th>
-                            <th style="width: 200px;">15:30 - 16:00</th>
-                            <th style="width: 200px;">16:00 - 16:30</th>
-                            <th style="width: 200px;">16:30 - 17:00</th>
-                            <th style="width: 200px;">17:00 - 17:30</th>
-                            <th style="width: 200px;">17:30 - 18:00</th>
+                            <th style="width: 150px;">Dia</th>
+                            <th style="width: 150px;">08:00</th>
+                            <th style="width: 150px;">08:30</th>
+                            <th style="width: 150px;">09:00</th>
+                            <th style="width: 150px;">09:30</th>
+                            <th style="width: 150px;">10:00</th>
+                            <th style="width: 150px;">10:30</th>
+                            <th style="width: 150px;">11:00</th>
+                            <th style="width: 150px;">11:30</th>
+                            <th style="width: 150px;">12:00</th>
+                            <th style="width: 150px;">12:30</th>
+                            <th style="width: 150px;">13:00</th>
+                            <th style="width: 150px;">13:30</th>
+                            <th style="width: 150px;">14:00</th>
+                            <th style="width: 150px;">14:30</th>
+                            <th style="width: 150px;">15:00</th>
+                            <th style="width: 150px;">15:30</th>
+                            <th style="width: 150px;">16:00</th>
+                            <th style="width: 150px;">16:30</th>
+                            <th style="width: 150px;">17:00</th>
+                            <th style="width: 150px;">17:30</th>
+                            <th style="width: 150px;">18:00</th>
 
                         </tr>
                     </thead>
@@ -97,6 +98,7 @@
                             <td id="table_aula_segunda_16_30"></td>
                             <td id="table_aula_segunda_17_00"></td>
                             <td id="table_aula_segunda_17_30"></td>
+                            <td id="table_aula_segunda_18_00"></td>
 
                         </tr>
                         <tr id="terca" class="tr_alunos linha-dia">
@@ -121,6 +123,7 @@
                             <td id="table_aula_terca_16_30"></td>
                             <td id="table_aula_terca_17_00"></td>
                             <td id="table_aula_terca_17_30"></td>
+                            <td id="table_aula_terca_18_00"></td>
 
                         </tr>
                         <tr id="quarta" class="tr_alunos linha-dia">
@@ -145,6 +148,7 @@
                             <td id="table_aula_quarta_16_30"></td>
                             <td id="table_aula_quarta_17_00"></td>
                             <td id="table_aula_quarta_17_30"></td>
+                            <td id="table_aula_quarta_18_00"></td>
 
                         </tr>
                         <tr id="quinta" class="tr_alunos linha-dia">
@@ -169,6 +173,7 @@
                             <td id="table_aula_quinta_16_30"></td>
                             <td id="table_aula_quinta_17_00"></td>
                             <td id="table_aula_quinta_17_30"></td>
+                            <td id="table_aula_quinta_18_00"></td>
 
                         </tr>
                         <tr id="sexta" class="tr_alunos linha-dia">
@@ -193,6 +198,7 @@
                             <td id="table_aula_sexta_16_30"></td>
                             <td id="table_aula_sexta_17_00"></td>
                             <td id="table_aula_sexta_17_30"></td>
+                            <td id="table_aula_sexta_18_00"></td>
 
                         </tr>
                         <tr id="sabado" class="tr_alunos linha-dia">
@@ -217,11 +223,13 @@
                             <td id="table_aula_sabado_16_30"></td>
                             <td id="table_aula_sabado_17_00"></td>
                             <td id="table_aula_sabado_17_30"></td>
+                            <td id="table_aula_sabado_18_00"></td>
 
                         </tr>
                     </tbody>
                 </table>
-                <button class="gravar" id="gravar">Gravar</button>
+
+                <button class="gravar" id="gravar">Marcar</button>
                 <button class="desmarcar" id="desmarcar">desmarcar</button>
 
             </div>
@@ -260,7 +268,7 @@
 
         <div id="modal_popup" class="modal_popup">
             <div class="modal_popup_content">
-              <span id="modalText"></span>
+                <span id="modalText"></span>
             </div>
         </div>
 
@@ -445,26 +453,29 @@
 
         // Add days of the month with distinctive IDs and click event listener
         for (let day = 1; day <= daysInMonth; day++) {
+            const date = new Date(year, month, day);
             const dayElement = document.createElement('div');
             dayElement.classList.add('day');
             dayElement.textContent = day;
             dayElement.id = `${year}-${month + 1}-${day}`;
 
-            dayElement.addEventListener('click', () => {
-                horario.style.display = "none";
-                horario_sala.style.display = 'block';
+            // If the day is not Sunday, add the click event listener
+            if (date.getDay() !== 0) {
+                dayElement.addEventListener('click', () => {
+                    horario.style.display = "none";
+                    horario_sala.style.display = 'block';
 
-                if (valor === 1) {
-                    gravar.style.display = 'block';
-                    desmarcar.style.display = 'block';
-                }
+                    if (valor === 1) {
+                        gravar.style.display = 'block';
+                        desmarcar.style.display = 'block';
+                    }
 
-                clickedDayId = dayElement.id;
-                console.log(clickedDayId);
+                    clickedDayId = dayElement.id;
+                    console.log(clickedDayId);
 
-                sendIdsToServer(bloco, clickedCellId, clickedDayId);
-
-            });
+                    sendIdsToServer(bloco, clickedCellId, clickedDayId);
+                });
+            }
 
             calendarContainer.appendChild(dayElement);
         }

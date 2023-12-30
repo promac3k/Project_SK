@@ -111,12 +111,80 @@ td {
 	border-radius: 15px;
 }
 
+.modal_sala_content_table{
+  background-color: #FFFFFF;
+	color: black;
+  border: 3px solid #bebcbc;
+  font-size: 20px;
+	margin: 10% auto;
+	padding: 20px;
+	width: 60%;
+	box-sizing: border-box;
+	border-radius: 15px;
+}
+
+.table_alunos {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.7em;
+  line-height: 2.1;
+  border-collapse: separate;
+  border-spacing: 5px;
+  border-radius: 10px;
+}
+
+.tr_alunos th {
+  border: 1px solid #dddddd;
+  text-align: center;
+  border: 1px solid #ccc;
+  width: 10%;
+}
+
 .modal_sala_content .table_alunos{
   display: none;
   overflow-x: auto;
 }
 
+.modal-content-marcar {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  width: 30%;
+  position: relative;
+  top: -5px;
+  z-index: 10;
+  border-radius: 10px;
+}
+
+.dark-mode .modal-content-marcar {
+  background-color: #444444;
+  margin: auto;
+  padding: 20px;
+  width: 80%;
+  position: relative;
+  top: -5px;
+  z-index: 10;
+  align-items: center;
+  justify-content: center;
+}
+
+.dropdown_campo {
+  padding: 8px 10px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: 1px solid #555;
+}
+
+
 .dark-mode .modal_sala_content {
+  background-color: #444444;
+	color: white;
+  border: 3px solid #272727;
+}
+
+.modal_sala_content_table{
   background-color: #444444;
 	color: white;
   border: 3px solid #272727;
