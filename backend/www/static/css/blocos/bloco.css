@@ -226,11 +226,32 @@ td {
   text-transform: uppercase;
   transition: transform 80ms ease-in;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-  margin-left: 43.5%;
+  margin-left: 54.5%;
   margin-top: 3%;
 }
 
 .gravar:hover{
+  cursor: pointer;
+}
+
+.desmarcar{
+  display: none;
+  border-radius: 20px;
+  border: 1px solid black;
+  background-color: #FF4B2B;
+  color: #FFFFFF;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 12px 45px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: transform 80ms ease-in;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  margin-left: 29.5%;
+  margin-top: -3.7%;
+}
+
+.desmarcar:hover{
   cursor: pointer;
 }
 
@@ -251,6 +272,26 @@ td {
 }
 
 #marcar:hover{
+  cursor: pointer;
+}
+
+#desmarcar{
+  border-radius: 20px;
+  border: 1px solid black;
+  background-color: #FF4B2B;
+  color: #FFFFFF;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 12px 45px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: transform 80ms ease-in;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  margin-left: 35.5%;
+  margin-top: 3%;
+}
+
+#desmarcar:hover{
   cursor: pointer;
 }
 

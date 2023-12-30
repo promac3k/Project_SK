@@ -230,7 +230,7 @@
                 </table>
 
                 <button class="gravar" id="gravar">Marcar</button>
-                <button class="desmarcar" id="desmarcar">desmarcar</button>
+                <button class="desmarcar" id="desmarcar_modal">desmarcar</button>
 
             </div>
         </div>
@@ -263,10 +263,12 @@
 
                     <form id="desmarcar-form" action="/desmarcar" method="post">
                         <h1 class="marcacaoborder">Desmarcaçao</h1>
-                        <span class="marcacaominiborder">Disciplina</span>
-                        <select id="dropdownDesmarcar"></select>
-                        <span class="marcacaominiborder">Curso</span>
-                        <select id="dropdownCursosDesmarcar"></select>
+                        <div class="container_campo">
+                            <span class="marcacaominiborder">Disciplina</span>
+                            <select id="dropdownDesmarcar"></select>
+                            <span class="marcacaominiborder" style="margin-left: 32%;">Curso</span>
+                            <select id="dropdownCursosDesmarcar" style="width: 25%;"></select>
+                        </div>
                         <button type="submit" id="desmarcar">Desmarcar</button>
                     </form>
                 </div>
@@ -377,7 +379,7 @@
     let horario_sala = document.getElementById('horario_sala');
     let gravar = document.getElementById('gravar');
     let modal_teste = document.getElementById('modal_teste');
-    let desmarcar = document.getElementById('desmarcar');
+    let desmarcar = document.getElementById('desmarcar_modal');
     let modal_popup = document.getElementById('modal_popup');
     let modal_popup_content = document.getElementsByClassName('modal_popup_content')[0];
     let text = document.getElementById('modalText');
@@ -410,6 +412,7 @@
         document.getElementById('desmarcar-form').style.display = 'block';
         // Oculta o formulário 'marcar'
         document.getElementById('marcar-form').style.display = 'none';
+        document.getElementById('desmarcar').style.display = 'block'
     }
 
     //fecha o modal quando o botao dentro do modal for clicado
@@ -682,6 +685,7 @@
                     document.getElementById('dropdownHorarioFinal').selectedIndex = '0';
                     document.getElementById('dropdownDesmarcar').selectedIndex = '0';
                     document.getElementById('dropdownCursosDesmarcar').selectedIndex = '0';
+                    desmarcar.style.display = 'none';
                     const tds = document.querySelectorAll('td[id^="table_aula_"]');
                     // Limpar o innerHTML de cada td
                     tds.forEach(td => {
