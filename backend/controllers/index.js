@@ -8,20 +8,22 @@ const cookie_bcrypt = require('../services/cookie_bcrypt'); // Módulo para crip
 const get_index = (req, res) => {
 
     console.log("get_index >>>>> " + req.session.loggedin);
-    if (req.cookies.user) {
-
-        const decryptedUser = cookie_bcrypt.decrypt(req.cookies.user);
-        console.log("get_index >>>>> " + JSON.parse(decryptedUser));
-    }
 
     if (req.session.loggedin) {
-        // Output username
-        var cookie = cookie_bcrypt.decrypt(req.cookies.user);
-        console.log(cookie);
+
+        if (req.cookies.user) {
+            //const decryptedUser = cookie_bcrypt.decrypt(req.cookies.user);
+            //console.log("get_index >>>>> " + JSON.parse(decryptedUser));
+            var cookie = cookie_bcrypt.decrypt(req.cookies.user);
+            console.log(cookie);
+        }
+
         if (cookie === undefined) {
             res.cookie("user", req.session.user);
         }
+
         res.sendFile(path.join(__dirname, '..', 'www/index.html'));
+
     } else {
 
         res.sendFile(path.join(__dirname, '..', 'www/pages/login.html'));
@@ -83,7 +85,7 @@ const get_emails = async (req, res) => {
             const db_emails = await connection.query(`SELECT * FROM emails where \`to\` = ? `, [email_aluno]);
 
             //console.log(db_emails);
-            
+
             // Create an array of emails
             const emails = db_emails.map(email => ({
                 from: email.from,
