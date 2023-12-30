@@ -182,15 +182,10 @@ td {
   margin: 8px 0;
   box-sizing: border-box;
   border-radius: 5px;
-<<<<<<< Updated upstream
-  border: 3px solid #272727;
-
-=======
   border: 1px solid #555;
   display: flex;
   flex-direction: column;
   align-items: center;
->>>>>>> Stashed changes
 }
 
 
