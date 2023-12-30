@@ -312,6 +312,7 @@
 
 <script>
     window.onload = checkCookie();
+    window.onload = fetchUserType();
     generateBlocos();
 
     const calendario_top = document.getElementById('fechar_editar');
@@ -600,21 +601,6 @@
             });
     });
 
-    function getCookie(name) {
-
-        const value = "; " + document.cookie;
-        const parts = value.split("; " + name + "=");
-        if (parts.length == 2) return parts.pop().split(";").shift();
-    }
-
-    // Verifica se o cookie 'user' existe
-    const userCookie = getCookie('user');
-
-    if (userCookie) {
-        const user = JSON.parse(decodeURIComponent(userCookie));
-        valor = user.tipo;
-        console.log(valor);
-    }
 
     // Adiciona um ouvinte de evento 'submit' ao formulário com o id 'contact-form'
     document.getElementById('desmarcar-form').addEventListener('submit', function (event) {

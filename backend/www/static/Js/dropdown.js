@@ -1,4 +1,8 @@
-document.addEventListener('DOMContentLoaded', (event) => {
+async function fetchUserType() {
+    const response = await fetch('/decrypt-user');
+    const user = await response.json();
+
+    window.valor = user.tipo;
 
     if (valor === 1) {
 
@@ -166,4 +170,5 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 .catch(error => console.error('Error:', error));
         });
     }
-});
+
+}
