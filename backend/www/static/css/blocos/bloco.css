@@ -174,7 +174,8 @@ td {
   margin: 8px 0;
   box-sizing: border-box;
   border-radius: 5px;
-  border: 1px solid #555;
+  border: 3px solid #272727;
+
 }
 
 
@@ -184,7 +185,7 @@ td {
   border: 3px solid #272727;
 }
 
-.modal_sala_content_table{
+.dark-mode .modal_sala_content_table{
   background-color: #444444;
 	color: white;
   border: 3px solid #272727;
