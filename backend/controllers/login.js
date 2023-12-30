@@ -66,8 +66,11 @@ const post_login = async (req, res) => {
 
                     const user = { nome: db.nome_prof, email: db.email_prof, tipo: tipo }
                     const id = db.id_prof;
+
+                    var id_encrypted = cookie_bcrypt.encrypt(id.toString());
+
                     res.cookie("user", cookie_bcrypt.encrypt(JSON.stringify(user)));
-                    res.cookie("id", cookie_bcrypt.encrypt(toString(id)));
+                    res.cookie("id", id_encrypted);
                     res.status(200).send("Login efetuado com sucesso!")
 
                 } else {
@@ -104,8 +107,11 @@ const post_login = async (req, res) => {
                     const user = { nome: db.nome_aluno, email: db.email_aluno, turma: db.turma_aluno, curso: db.nome_curso, ano: db.ano_aluno, escola: db.escola, tipo: tipo }
                     const id = db.id_alunos;
 
+                    var id_encrypted = cookie_bcrypt.encrypt(id.toString());
+
                     res.cookie("user", cookie_bcrypt.encrypt(JSON.stringify(user)));
-                    res.cookie("id", cookie_bcrypt.encrypt(toString(id)));
+                    res.cookie("id", id_encrypted);
+                    //console.log("decrypted id: ", cookie_bcrypt.decrypt(id_encrypted));
                     res.status(200).send("Login efetuado com sucesso!")
 
                 } else {

@@ -106,11 +106,24 @@ const get_emails = async (req, res) => {
 }
 
 
+const get_decrypt_user = (req, res) => {
+
+    if (req.cookies.user) {
+        const decryptedUser = cookie_bcrypt.decrypt(req.cookies.user);
+        res.json(JSON.parse(decryptedUser));
+    } else {
+        res.status(400).send('No user cookie found');
+    }
+
+}
+
+
 // Exporta todos os métodos como um objeto para serem usados em outros arquivos
 module.exports = {
     get_index,
     get_logout,
     get_eventos,
     get_simulacao,
-    get_emails
+    get_emails,
+    get_decrypt_user
 }

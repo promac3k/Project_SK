@@ -58,6 +58,8 @@ router.get('/emails', index.get_emails);
 
 router.get('/simulacao', index.get_simulacao); // Rota para simulação
 
+router.get('/decrypt-user', index.get_decrypt_user); // Rota para a página sobre
+
 
 // Exporta o router para que ele possa ser importado e usado em outros arquivos
 module.exports = router;
