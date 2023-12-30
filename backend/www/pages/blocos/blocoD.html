@@ -242,30 +242,30 @@
                 </div>
 
                 <div class="modal-content-marcar">
-                    <div class="dropdown_campo">
-                        <form id="marcar-form" action="/marcar" method="post" style="width: 60%;">
-                            <h1>Marcaçao</h1>
+                  
+                        <form id="marcar-form" action="/marcar" method="post">
+                            <h1 class="marcacaoborder">Marcaçao</h1>
                             <div class="container_campo">
-                                <span>Disciplina</span>
+                                <span class="marcacaominiborder">Disciplina</span>
                                 <select id="dropdown"></select>
-                                <span style="margin-left: 5%;">Curso</span>
+                                <span style="margin-left: 5%;" class="marcacaominiborder">Curso</span>
                                 <select id="dropdownCursos" class="dropdown"></select>
                             </div>
                             <div class="container_campo">
-                                <span>horario inicial</span>
+                                <span class="marcacaominiborder">Horario inicial</span>
                                 <select id="dropdownHorario"></select>
-                                <span style="margin-left: 2%;">horario final</span>
+                                <span style="margin-left: 2%;" class="marcacaominiborder">Horario final</span>
                                 <select id="dropdownHorarioFinal"></select>
                             </div>
                             <button type="submit" id="marcar" class="gravar">Marcar</button>
                         </form>
-                    </div>
+                    
 
                     <form id="desmarcar-form" action="/desmarcar" method="post">
-                        <h1>Desmarcaçao</h1>
-                        <span>Disciplina</span>
+                        <h1 class="marcacaoborder">Desmarcaçao</h1>
+                        <span class="marcacaominiborder">Disciplina</span>
                         <select id="dropdownDesmarcar"></select>
-                        <span>Curso</span>
+                        <span class="marcacaominiborder">Curso</span>
                         <select id="dropdownCursosDesmarcar"></select>
                         <button type="submit" id="desmarcar">Desmarcar</button>
                     </form>
