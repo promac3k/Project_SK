@@ -3,6 +3,7 @@ const connection = require('../services/db'); // Módulo para conexão com o ban
 const path = require('path'); // Módulo Node.js para trabalhar com caminhos de arquivos
 const string = require("string-sanitizer"); // Módulo para sanitizar strings
 const bcrypt = require('../services/bcrypt'); // Módulo para criptografar senhas
+const cookie_bcrypt = require('../services/cookie_bcrypt'); // Módulo para criptografar cookies
 
 
 const get_login = (req, res) => {
@@ -65,8 +66,8 @@ const post_login = async (req, res) => {
 
                     const user = { nome: db.nome_prof, email: db.email_prof, tipo: tipo }
                     const id = db.id_prof;
-                    res.cookie("user", JSON.stringify(user));
-                    res.cookie("id_prof", id);
+                    res.cookie("user", cookie_bcrypt.encrypt(JSON.stringify(user)));
+                    res.cookie("id", cookie_bcrypt.encrypt(toString(id)));
                     res.status(200).send("Login efetuado com sucesso!")
 
                 } else {
@@ -102,8 +103,9 @@ const post_login = async (req, res) => {
 
                     const user = { nome: db.nome_aluno, email: db.email_aluno, turma: db.turma_aluno, curso: db.nome_curso, ano: db.ano_aluno, escola: db.escola, tipo: tipo }
                     const id = db.id_alunos;
-                    res.cookie("user", JSON.stringify(user));
-                    res.cookie("id", id);
+
+                    res.cookie("user", cookie_bcrypt.encrypt(JSON.stringify(user)));
+                    res.cookie("id", cookie_bcrypt.encrypt(toString(id)));
                     res.status(200).send("Login efetuado com sucesso!")
 
                 } else {

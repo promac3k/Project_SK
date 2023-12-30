@@ -1,6 +1,7 @@
 const connection = require('../../services/db'); // Módulo para conexão com o banco de dados
 const path = require('path'); // Módulo Node.js para trabalhar com caminhos de arquivos
 const email = require('../../services/email'); // Módulo para enviar emails
+const cookie_bcrypt = require('../../services/cookie_bcrypt'); // Módulo para criptografar cookies
 
 
 // Método para lidar com a rota GET para /blocoA
@@ -175,7 +176,7 @@ const get_disciplinas = async (req, res) => {
 
 
     if (req.session.loggedin) {
-        const id_prof = req.cookies.id_prof;
+        const id_prof = cookie_bcrypt.decrypt(req.cookies.id_prof);
         //console.log(id_prof);
 
         const result = await connection.query(`SELECT * FROM disciplina where professores_id_prof = ? `, [id_prof])
@@ -197,7 +198,7 @@ const get_cursos = async (req, res) => {
 
     if (req.session.loggedin) {
 
-        const id_prof = req.cookies.id_prof;
+        const id_prof = cookie_bcrypt.decrypt(req.cookies.id_prof);
         //console.log(id_prof);
         const disciplinaSelecionada = req.query.disciplina; // Obter a disciplina selecionada a partir do parâmetro de consulta
 
@@ -225,7 +226,7 @@ const post_marcar = async (req, res) => {
 
     if (req.session.loggedin) {
         try {
-            const id_prof = req.cookies.id_prof;
+            const id_prof = cookie_bcrypt.decrypt(req.cookies.id_prof);
             const { disciplina, curso, horarioInicial, horarioFinal, bloco_, sala, dia, semana_ } = req.body;
 
             console.log("disciplina: " + disciplina);
@@ -340,7 +341,7 @@ const post_desmarcar = async (req, res) => {
 
     if (req.session.loggedin) {
         try {
-            const id_prof = req.cookies.id_prof;
+            const id_prof = cookie_bcrypt.decrypt(req.cookies.id_prof);
             const { disciplina, curso, bloco_, sala, dia, semana_ } = req.body;
 
             console.log("disciplina: " + disciplina);

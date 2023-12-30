@@ -3,6 +3,7 @@ const connection = require('../services/db'); // Módulo para conexão com o ban
 const path = require('path'); // Módulo Node.js para trabalhar com caminhos de arquivos
 const string = require("string-sanitizer"); // Módulo para sanitizar strings
 const bcrypt = require('../services/bcrypt'); // Módulo para criptografar senhas
+const cookie_bcrypt = require('../services/cookie_bcrypt'); // Módulo para criptografar cookies
 
 
 //Profile pages
@@ -26,7 +27,7 @@ const get_horarios = async (req, res) => {
     try {
 
         if (req.cookies.id) {
-            const id_aluno = req.cookies.id;
+            const id_aluno = cookie_bcrypt.decrypt(req.cookies.id);
             const query = `
             SELECT 
                 horario.dia_semana, 
@@ -87,7 +88,7 @@ const get_horarios = async (req, res) => {
         }
         if (req.cookies.id_prof) {
 
-            const id_prof = req.cookies.id_prof;
+            const id_prof = cookie_bcrypt.decrypt(req.cookies.id_prof);
             
             const query = `
             SELECT 

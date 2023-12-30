@@ -1,7 +1,7 @@
 // Importa os módulos locais necessários
 const connection = require('../services/db'); // Módulo para conexão com o banco de dados
 const path = require('path'); // Módulo Node.js para trabalhar com caminhos de arquivos
-
+const cookie_bcrypt = require('../services/cookie_bcrypt'); // Módulo para criptografar cookies
 
 //Login Page
 // Métodos para serem executados nas rotas
@@ -9,12 +9,14 @@ const get_index = (req, res) => {
 
     console.log("get_index >>>>> " + req.session.loggedin);
     if (req.cookies.user) {
-        console.log("get_index >>>>> " + JSON.parse(req.cookies.user));
+
+        const decryptedUser = cookie_bcrypt.decrypt(req.cookies.user);
+        console.log("get_index >>>>> " + JSON.parse(decryptedUser));
     }
 
     if (req.session.loggedin) {
         // Output username
-        var cookie = req.cookies.user;
+        var cookie = cookie_bcrypt.decrypt(req.cookies.user);
         console.log(cookie);
         if (cookie === undefined) {
             res.cookie("user", req.session.user);
@@ -71,7 +73,7 @@ const get_emails = async (req, res) => {
     console.log("get_emails >>>>> " + req.session.loggedin);
 
     if (req.session.loggedin) {
-        const id_aluno = req.cookies.id;
+        const id_aluno = cookie_bcrypt.decrypt(req.cookies.id);
         //console.log(id_aluno);
 
         try {
