@@ -26,8 +26,6 @@ router.get('/contact', contact.get_contacts); // Rota para a página de contatos
 
 router.post('/contact', contact.post_contact); // Rota para a página de contatos (POST)
 
-router.get('/eventos', index.get_eventos); // Rota para a página de eventos
-
 router.get('/perfil', profile.get_profile); // Rota para a página de perfil
 
 router.get('/perfil/horarios', profile.get_horarios); // Rota para a página sobre

@@ -42,20 +42,6 @@ const get_logout = (req, res) => {
     res.redirect('/');
 }
 
-// Método para lidar com a rota GET para /eventos
-const get_eventos = (req, res) => {
-    console.log("get_eventos >>>>> " + req.session.loggedin);
-
-    if (req.session.loggedin) {
-        // Envia o arquivo eventos.html como resposta
-        res.sendFile(path.join(__dirname, '..', 'www/pages/eventos.html'))
-    } else {
-
-        res.sendFile(path.join(__dirname, '..', 'www/pages/login.html'));
-    }
-
-
-}
 
 const get_simulacao = (req, res) => {
     console.log("get_simulacao >>>>> " + req.session.loggedin);
@@ -124,7 +110,6 @@ const get_decrypt_user = (req, res) => {
 module.exports = {
     get_index,
     get_logout,
-    get_eventos,
     get_simulacao,
     get_emails,
     get_decrypt_user
