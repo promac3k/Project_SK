@@ -241,24 +241,24 @@
                 </div>
 
                 <div class="modal-content-marcar">
-                  
-                        <form id="marcar-form" action="/marcar" method="post">
-                            <h1 class="marcacaoborder">Marcaçao</h1>
-                            <div class="container_campo">
-                                <span class="marcacaominiborder">Disciplina</span>
-                                <select id="dropdown"></select>
-                                <span style="margin-left: 30%;" class="marcacaominiborder">Curso</span>
-                                <select id="dropdownCursos" class="dropdown"></select>
-                            </div>
-                            <div class="container_campo">
-                                <span class="marcacaominiborder">Horario inicial</span>
-                                <select id="dropdownHorario"></select>
-                                <span style="margin-left: 30%;" class="marcacaominiborder">Horario final</span>
-                                <select id="dropdownHorarioFinal"></select>
-                            </div>
-                            <button type="submit" id="marcar" class="gravar">Marcar</button>
-                        </form>
-                    
+
+                    <form id="marcar-form" action="/marcar" method="post">
+                        <h1 class="marcacaoborder">Marcaçao</h1>
+                        <div class="container_campo">
+                            <span class="marcacaominiborder">Disciplina</span>
+                            <select id="dropdown"></select>
+                            <span style="margin-left: 30%;" class="marcacaominiborder">Curso</span>
+                            <select id="dropdownCursos" class="dropdown"></select>
+                        </div>
+                        <div class="container_campo">
+                            <span class="marcacaominiborder">Horario inicial</span>
+                            <select id="dropdownHorario"></select>
+                            <span style="margin-left: 30%;" class="marcacaominiborder">Horario final</span>
+                            <select id="dropdownHorarioFinal"></select>
+                        </div>
+                        <button type="submit" id="marcar" class="gravar">Marcar</button>
+                    </form>
+
 
                     <form id="desmarcar-form" action="/desmarcar" method="post">
                         <h1 class="marcacaoborder">Desmarcaçao</h1>
@@ -338,6 +338,16 @@
     calendario_top.addEventListener('click', function (e) {
         //const table = document.getElementById('horario_sala');
         //table.innerHTML = '';
+
+        const modalContent = document.querySelector('.modal_sala_content_table');
+        modal.style.display = "none";
+        horario_sala.style.display = 'none';
+        gravar.style.display = 'none';
+        horario.style.display = "grid";
+        modalContent.classList.remove('modal_sala_content_table');
+        modalContent.classList.add('modal_sala_content');
+        desmarcar.style.display = 'none';
+
         const tds = document.querySelectorAll('td[id^="table_aula_"]');
         // Limpar o innerHTML de cada td
         tds.forEach(td => {
@@ -352,6 +362,17 @@
     calendario_top2.addEventListener('click', function (e) {
         //const table = document.getElementById('horario_sala');
         //table.innerHTML = '';
+
+        modal_teste.style.display = 'none';
+        document.getElementById('dropdown').selectedIndex = '0';
+        document.getElementById('dropdownCursos').selectedIndex = '0';
+        document.getElementById('dropdownHorario').selectedIndex = '0';
+        document.getElementById('dropdownHorarioFinal').selectedIndex = '0';
+        document.getElementById('dropdownDesmarcar').selectedIndex = '0';
+        document.getElementById('dropdownCursosDesmarcar').selectedIndex = '0';
+        desmarcar.style.display = 'none';
+
+
         const tds = document.querySelectorAll('td[id^="table_aula_"]');
         // Limpar o innerHTML de cada td
         tds.forEach(td => {
@@ -383,10 +404,7 @@
     let modal_popup_content = document.getElementsByClassName('modal_popup_content')[0];
     let text = document.getElementById('modalText');
 
-    // vai buscar a class do botao para fechar o modal
-    var span = document.getElementsByClassName("fechar_editar")[0];
-    let fechar_marcar = document.getElementById('fechar');
-
+  
     //abre outro modal ao carregar no botao gravar
     gravar.onclick = function () {
         modal.style.display = "none";
@@ -414,26 +432,6 @@
         document.getElementById('desmarcar').style.display = 'block'
     }
 
-    //fecha o modal quando o botao dentro do modal for clicado
-    span.onclick = function () {
-        const modalContent = document.querySelector('.modal_sala_content_table');
-        modal.style.display = "none";
-        horario_sala.style.display = 'none';
-        gravar.style.display = 'none';
-        horario.style.display = "grid";
-        modalContent.classList.remove('modal_sala_content_table');
-        modalContent.classList.add('modal_sala_content');
-    }
-
-    fechar_marcar.onclick = function () {
-        modal_teste.style.display = 'none';
-        document.getElementById('dropdown').selectedIndex = '0';
-        document.getElementById('dropdownCursos').selectedIndex = '0';
-        document.getElementById('dropdownHorario').selectedIndex = '0';
-        document.getElementById('dropdownHorarioFinal').selectedIndex = '0';
-        document.getElementById('dropdownDesmarcar').selectedIndex = '0';
-        document.getElementById('dropdownCursosDesmarcar').selectedIndex = '0';
-    }
 
     function generateCalendarModal() {
         const today = new Date();
