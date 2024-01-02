@@ -231,7 +231,6 @@
 
                 <button class="gravar" id="gravar">Marcar</button>
                 <button class="desmarcar" id="desmarcar_modal">desmarcar</button>
-
             </div>
         </div>
 
@@ -434,7 +433,7 @@
     let horario_sala = document.getElementById('horario_sala');
     let gravar = document.getElementById('gravar');
     let modal_teste = document.getElementById('modal_teste');
-    let desmarcar = document.getElementById('desmarcar');
+    let desmarcar = document.getElementById('desmarcar_modal');
     let modal_popup = document.getElementById('modal_popup');
     let modal_popup_content = document.getElementsByClassName('modal_popup_content')[0];
     let text = document.getElementById('modalText');
@@ -455,7 +454,6 @@
         document.getElementById('marcar-form').style.display = 'block';
         // Oculta o formulário 'desmarcar'
         document.getElementById('desmarcar-form').style.display = 'none';
-
     }
 
     desmarcar.onclick = function () {
