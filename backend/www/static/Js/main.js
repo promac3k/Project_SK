@@ -112,18 +112,7 @@ function generateCalendarTrimestral() {
             const td = document.createElement('td');
             td.id = dayId;
             td.className = 'number';
-            td.onclick = function () {
-                alert(this.id);
-            };
             const span = document.createElement('span');
-            span.onmouseover = function () {
-                // Altera a cor do número quando o mouse passa sobre ele
-                this.style.color = "red";
-            };
-            span.onmouseout = function () {
-                // Retorna à cor original quando o mouse sai do número
-                this.style.color = "";
-            };
             span.textContent = day;
             td.appendChild(span);
             monthRow.appendChild(td);
@@ -175,18 +164,7 @@ function generateCalendarSemestral() {
             const td = document.createElement('td');
             td.id = dayId;
             td.className = 'number';
-            td.onclick = function () {
-                alert(this.id);
-            };
             const span = document.createElement('span');
-            span.onmouseover = function () {
-                // Altera a cor do número quando o mouse passa sobre ele
-                this.style.color = "red";
-            };
-            span.onmouseout = function () {
-                // Retorna à cor original quando o mouse sai do número
-                this.style.color = "";
-            };
             span.textContent = day;
             td.appendChild(span);
             monthRow.appendChild(td);
