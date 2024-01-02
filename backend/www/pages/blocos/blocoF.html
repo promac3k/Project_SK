@@ -568,6 +568,7 @@
         const tds = document.querySelectorAll('td[id^="table_aula_"]');
         // Limpar o innerHTML de cada td
 
+        const modalContent = document.querySelector('.modal_sala_content_table');
         modal_teste.style.display = 'none';
         document.getElementById('dropdown').selectedIndex = '0';
         document.getElementById('dropdownCursos').selectedIndex = '0';
@@ -576,6 +577,8 @@
         document.getElementById('dropdownDesmarcar').selectedIndex = '0';
         document.getElementById('dropdownCursosDesmarcar').selectedIndex = '0';
         desmarcar.style.display = 'none';
+        modalContent.classList.remove('modal_sala_content_table');
+        modalContent.classList.add('modal_sala_content');
 
 
         tds.forEach(td => {
