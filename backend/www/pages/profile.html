@@ -440,10 +440,58 @@
                         <td>${email.from}</td>
                         <td>${email.subject}</td>
                         <td>${email.text}</td>
+                        <td><button class="delete-button" data-email-id="${email.id}">Delete</button></td>
                     `;
                   tableBody.appendChild(row);
                 }
+
               });
+
+              // Add event listener to delete buttons
+              document.querySelectorAll('.delete-button').forEach(button => {
+                button.addEventListener('click', async (event) => {
+                  var text2 = document.getElementById("modalText");
+                  const emailId = event.target.getAttribute('data-email-id');
+                  const row = event.target.parentNode.parentNode;
+                  const [from, subject, text] = Array.from(row.children).map(cell => cell.textContent);
+
+                  const data = {
+                    id: emailId,
+                    from,
+                    subject,
+                    text
+                  };
+
+                  try {
+                    const response = await fetch(`/delete-email`, {
+                      method: 'POST',
+                      headers: {
+                        'Content-Type': 'application/json'
+                      },
+                      body: JSON.stringify(data),
+                    });
+
+                    if (!response.ok) {
+                      const message =  await response.text();
+                      //console.log(message);
+                      throw new Error(message);
+                    }
+
+                    // Remove row from table
+                    row.parentNode.removeChild(row);
+                  } catch (error) {
+                    console.error('There has been a problem with your fetch operation:', error);
+                    
+                    text2.innerHTML = error.message;
+                    modal_erro.style.display = "block";
+
+                    setTimeout(function () {
+                      modal_erro.style.display = "none";
+                    }, 5000);
+                  }
+                });
+              });
+
             } else {
               console.error('Erro: elemento .email-table tbody não encontrado');
             }

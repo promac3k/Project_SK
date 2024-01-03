@@ -54,6 +54,8 @@ router.post('/desmarcar', blocos.post_desmarcar);
 
 router.get('/emails', index.get_emails);
 
+router.post('/delete-email', index.post_delete_email);
+
 router.get('/simulacao', index.get_simulacao); // Rota para simulação
 
 router.get('/decrypt-user', index.get_decrypt_user); // Rota para a página sobre

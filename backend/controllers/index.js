@@ -74,6 +74,7 @@ const get_emails = async (req, res) => {
 
             // Create an array of emails
             const emails = db_emails.map(email => ({
+                id: email.id_email,
                 from: email.from,
                 subject: email.subject,
                 text: email.text
@@ -90,6 +91,52 @@ const get_emails = async (req, res) => {
 
     } else {
         res.sendFile(path.join(__dirname, '..', '..', 'www/pages/login.html'));
+    }
+}
+
+const post_delete_email = async (req, res) => {
+
+    console.log("delete_email >>>>> " + req.session.loggedin);
+
+    if (!req.session.loggedin) {
+        return res.sendFile(path.join(__dirname, '..', '..', 'www/pages/login.html'));
+    }
+
+    const { id, from, subject, text } = req.body;
+
+    //console.log(id, from, subject, text);
+
+    try {
+        // First, select the email from the database
+        const [db_emails] = await connection.query(`SELECT * FROM emails WHERE id_email = ?`, [id]);
+
+        if (!db_emails || db_emails.length === 0) {
+            return res.status(400).send('Nenhum email encontrado com o ID fornecido.');
+        }
+
+        const { from: from2, subject: subject2, text: text2 } = db_emails;
+
+        //console.log(from2, subject2, text2);
+
+        // Check if the email exists and the data matches
+        if (from2 === from && subject2 === subject && text2 === text) {
+            
+            //console.log("Email matches");
+
+            // If the data matches, delete the email
+            await connection.query(`DELETE FROM emails WHERE id_email = ?`, [id]);
+
+            return res.json({
+                status: 'success',
+                message: 'Email deleted'
+            });
+        } else {
+            // If the data does not match, send an error response
+            return res.status(400).send('Os dados fornecidos não correspondem ao email existente.');
+        }
+    } catch (err) {
+        console.error(err);
+        return res.status(500).send('Ocorreu um erro ao deletar o email.');
     }
 }
 
@@ -112,5 +159,6 @@ module.exports = {
     get_logout,
     get_simulacao,
     get_emails,
+    post_delete_email,
     get_decrypt_user
 }
