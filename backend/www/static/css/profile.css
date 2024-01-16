@@ -204,6 +204,15 @@ input:checked+.slider:before {
     margin-top: 0.1rem;
 }
 
+.email-table {
+    display: block;
+    height: 32vh;
+    overflow: auto;
+}
+
+.email-table th{
+    width: 100%;
+}
 
 /* Alunos Page */
 .table_alunos {
@@ -264,12 +273,12 @@ th {
     color: white;
 }
 
-@media (min-width: 1281px) and (max-width: 1600px){
+@media (min-width: 1281px) and (max-width: 1600px) {
     h1 {
         font-size: 25px;
     }
 
-    .img_perfil{
+    .img_perfil {
         width: 60% !important;
     }
 
@@ -285,7 +294,7 @@ th {
         top: 62%;
     }
 
-    .img_settings{
+    .img_settings {
         width: 75%;
         height: 75%;
     }
@@ -382,11 +391,11 @@ th {
         width: 45%;
     }
 
-    h1{
+    h1 {
         font-size: larger;
     }
 
-    p{
+    p {
         font-size: small;
     }
 }

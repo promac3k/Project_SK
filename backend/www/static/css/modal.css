@@ -1,12 +1,12 @@
 .modal {
     display: none;
     position: absolute;
-    padding-top: 30vh;
-    left: 0;
+    padding-top: 25vh;
+    left: -39.5%;
     top: 0;
-    width: 100%;
+    width: 185%;
     height: 100%;
-    overflow: auto;
+    overflow: hidden;
     background-color: rgba(0, 0, 0, 0.4);
 }
 
