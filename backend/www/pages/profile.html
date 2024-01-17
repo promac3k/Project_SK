@@ -439,7 +439,7 @@
                   row.innerHTML = `
                         <td>${email.from}</td>
                         <td>${email.subject}</td>
-                        <td>${email.text}</td>
+                        <td class = "email_mensagem">${email.text}</td>
                         <td><button class="delete-button" data-email-id="${email.id}">Delete</button></td>
                     `;
                   tableBody.appendChild(row);

@@ -210,8 +210,8 @@ input:checked+.slider:before {
     overflow: auto;
 }
 
-.email-table th{
-    width: 100%;
+.email_mensagem{
+    width: 25%;
 }
 
 /* Alunos Page */
