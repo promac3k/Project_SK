@@ -426,8 +426,7 @@
                         <td>${email.from}</td>
                         <td>${email.subject}</td>
                         <td class = "email_mensagem">${email.text}</td>
-                        <td class="invisible_box"><a class="delete-button" data-email-id="${email.id}"><span><img width="30" height="30" src="https://img.icons8.com/fluency-systems-filled/30/filled-trash.png" alt="exit"
-              class="img_settings" /></span></a></td>
+                        <td class="invisible_box"><button class="delete-button" data-email-id="${email.id}">Delete</button></td>
                     `;
                   tableBody.appendChild(row);
                 }
