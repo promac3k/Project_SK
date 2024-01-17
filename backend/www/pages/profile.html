@@ -440,7 +440,8 @@
                         <td>${email.from}</td>
                         <td>${email.subject}</td>
                         <td class = "email_mensagem">${email.text}</td>
-                        <td><button class="delete-button" data-email-id="${email.id}">Delete</button></td>
+                        <td class="invisible_box"><a class="delete-button" data-email-id="${email.id}"><span><img width="30" height="30" src="https://img.icons8.com/fluency-systems-filled/30/filled-trash.png" alt="exit"
+              class="img_settings" /></span></a></td>
                     `;
                   tableBody.appendChild(row);
                 }
@@ -472,7 +473,7 @@
                     });
 
                     if (!response.ok) {
-                      const message =  await response.text();
+                      const message = await response.text();
                       //console.log(message);
                       throw new Error(message);
                     }
@@ -481,7 +482,7 @@
                     row.parentNode.removeChild(row);
                   } catch (error) {
                     console.error('There has been a problem with your fetch operation:', error);
-                    
+
                     text2.innerHTML = error.message;
                     modal_erro.style.display = "block";
 

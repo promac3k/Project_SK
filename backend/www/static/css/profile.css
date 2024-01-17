@@ -210,6 +210,11 @@ input:checked+.slider:before {
     overflow: auto;
 }
 
+.invisible_box {
+    border: none;
+    width: 5%;
+}
+
 .email_mensagem{
     width: 25%;
 }
