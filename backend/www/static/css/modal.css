@@ -217,6 +217,11 @@ a:hover {
         width: 20%;
         height: 10%;
     }
+
+    .modal {
+        left: -7.5%;
+        width: 116%;
+    }
 }
 
 
@@ -246,6 +251,11 @@ a:hover {
     }
     .fechar {
         font-size: 20px;
+    }
+
+    .modal {
+        left: -11.5%;
+        width: 125%;
     }
 }
 
