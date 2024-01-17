@@ -324,6 +324,7 @@ th {
     .flex-container {
         overflow: auto;
         height: 75%;
+        margin-top: 2rem;
         display: block;
     }
 }

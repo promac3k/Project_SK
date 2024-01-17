@@ -2,9 +2,9 @@
     display: none;
     position: absolute;
     padding-top: 25vh;
-    left: -39.5%;
+    left: 0%;
     top: 0;
-    width: 185%;
+    width: 100%;
     height: 100%;
     overflow: hidden;
     background-color: rgba(0, 0, 0, 0.4);
@@ -31,6 +31,18 @@
     justify-content: space-between;
     border-top-right-radius: 20px;
     border-top-left-radius: 20px;
+}
+
+#modal_mensagem{
+    display: none;
+    position: absolute;
+    padding-top: 25vh;
+    left: -39.5%;
+    top: 0;
+    width: 185%;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
 
@@ -219,8 +231,8 @@ a:hover {
     }
 
     .modal {
-        left: -7.5%;
-        width: 116%;
+        left: -7.5% !important;
+        width: 116% !important;
     }
 }
 
@@ -254,8 +266,8 @@ a:hover {
     }
 
     .modal {
-        left: -11.5%;
-        width: 125%;
+        left: -11.5% !important;
+        width: 125% !important;
     }
 }
 
