@@ -215,7 +215,7 @@ input:checked+.slider:before {
     width: 5%;
 }
 
-.email_mensagem{
+.email_mensagem {
     width: 25%;
 }
 
@@ -243,9 +243,9 @@ th {
     align-items: center;
     font-family: Arial, sans-serif;
     display: flex;
-    margin-top: 2rem;
-    margin-left: 26rem;
-    margin-right: 18rem;
+    margin-top: 4rem;
+    margin-left: 25rem;
+    margin-right: 6rem;
     border: none;
     border-radius: 10px;
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
@@ -339,17 +339,14 @@ th {
     }
 
     .flex-container {
-        margin-top: 7rem;
+        margin-top: 3rem;
         margin-left: 15rem;
         margin-right: 0;
         margin-bottom: 7rem;
         width: 60%;
-        height: 45%;
+        height: 82%;
+        overflow: auto;
         display: block;
-    }
-
-    .table_alunos {
-        height: -webkit-fill-available;
     }
 
     .legenda_profile {
@@ -386,7 +383,7 @@ th {
         margin-right: 0;
         margin-bottom: 7rem;
         width: 57%;
-        height: 44%;
+        height: 77%;
         overflow: auto;
         display: block;
     }
@@ -403,4 +400,5 @@ th {
     p {
         font-size: small;
     }
+
 }
